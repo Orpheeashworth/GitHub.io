@@ -9,6 +9,10 @@
 body{background:#000;color:#fff;padding:40px 20px 120px;animation:fadeIn 1s}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
+/* 流水聲按鈕 */
+.audio-control{position:fixed;top:15px;left:15px;z-index:999}
+.audio-btn{background:#000;color:#fff;border:1px solid #888;padding:5px 10px;border-radius:6px;cursor:pointer;font-size:12px}
+
 .nav{position:fixed;top:15px;right:15px;display:flex;gap:10px;font-size:12px;z-index:999}
 .lang-switch button{padding:3px 6px;border:1px solid #666;background:#000;color:#fff;border-radius:3px}
 .nav button{background:none;border:none;color:#fff;cursor:pointer}
@@ -19,13 +23,13 @@ body{background:#000;color:#fff;padding:40px 20px 120px;animation:fadeIn 1s}
 .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px 20px;max-width:900px;margin:0 auto}
 .product{text-align:center}
 
-/* 真實香水瓶 + 旋轉動畫 */
 .perfume-bottle {
   position: relative;
   width: 70px;
   height: 100px;
   margin: 0 auto 10px;
   animation: spin 16s infinite linear;
+  cursor: pointer;
 }
 @keyframes spin {
   0%{transform:rotateY(0deg)}
@@ -73,7 +77,8 @@ body{background:#000;color:#fff;padding:40px 20px 120px;animation:fadeIn 1s}
 
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:1000;align-items:center;justify-content:center}
 .modal-box{background:#111;padding:30px;width:90%;max-width:500px;position:relative;border:1px solid #333;border-radius:8px}
-.close{position:absolute;top:15px;right:15px;font-size:18px;cursor:pointer;color:#fff}
+.close{position:absolute;top:15px;right:15px;font-size:24px;cursor:pointer;color:#fff}
+.desc{margin-top:10px;line-height:1.6;font-size:14px;color:#ccc}
 
 .whatsapp-float{position:fixed;bottom:30px;right:30px;background:#25D366;color:#fff;padding:12px 20px;border-radius:50px;font-size:14px;cursor:pointer;transition:0.2s}
 .whatsapp-float:hover{transform:scale(1.08)}
@@ -88,7 +93,17 @@ body.fr [lang-fr]{display:block}
 body.de [lang-de]{display:block}
 </style>
 </head>
+
 <body class="zh">
+
+<!-- 流水聲按鈕 -->
+<div class="audio-control">
+  <button class="audio-btn" onclick="toggleSound()">🔊 流水聲</button>
+</div>
+<!-- 流水聲音檔 -->
+<audio id="waterSound" loop>
+  <source src="https://www.soundjay.com/water/sounds/water-stream-02.mp3" type="audio/mpeg">
+
 
 <div class="nav">
   <div class="lang-switch">
@@ -115,12 +130,10 @@ body.de [lang-de]{display:block}
 <div class="product-grid">
 
   <div class="product">
-    <div class="perfume-bottle">
+    <div class="perfume-bottle" onclick="showDetail('午夜木蘭','木質花香調｜木蘭、玫瑰、麝香、檀香','溫柔優雅的白花香，帶輕微木質底蘊，持久而高貴。')">
       <div class="bottle-top"></div>
       <div class="bottle-neck"></div>
-      <div class="bottle-body">
-        <div class="bottle-label">Orphee & Ashworth</div>
-      </div>
+      <div class="bottle-body"><div class="bottle-label">Orphee & Ashworth</div></div>
     </div>
     <div class="product-name" lang-zh>午夜木蘭</div>
     <div class="product-price">HK$ 480</div>
@@ -129,12 +142,10 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <div class="perfume-bottle">
+    <div class="perfume-bottle" onclick="showDetail('海風橙花','柑橘清新調｜橙花、檸檬、海洋鹽、白麝香','陽光海風感，乾淨明亮，適合日常清爽氛圍。')">
       <div class="bottle-top"></div>
       <div class="bottle-neck"></div>
-      <div class="bottle-body">
-        <div class="bottle-label">Orphee & Ashworth</div>
-      </div>
+      <div class="bottle-body"><div class="bottle-label">Orphee & Ashworth</div></div>
     </div>
     <div class="product-name" lang-zh>海風橙花</div>
     <div class="product-price">HK$ 420</div>
@@ -143,12 +154,10 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <div class="perfume-bottle">
+    <div class="perfume-bottle" onclick="showDetail('晨曦玫瑰','經典玫瑰調｜保加利亞玫瑰、荔枝、廣藿香、琥珀','甜而不膩的玫瑰，充滿朝氣與女人味。')">
       <div class="bottle-top"></div>
       <div class="bottle-neck"></div>
-      <div class="bottle-body">
-        <div class="bottle-label">Orphee & Ashworth</div>
-      </div>
+      <div class="bottle-body"><div class="bottle-label">Orphee & Ashworth</div></div>
     </div>
     <div class="product-name" lang-zh>晨曦玫瑰</div>
     <div class="product-price">HK$ 520</div>
@@ -157,12 +166,10 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <div class="perfume-bottle">
+    <div class="perfume-bottle" onclick="showDetail('白麝香','柔軟肌膚調｜白麝香、茉莉、纖維素、輕微奶香','極致貼膚的乾淨體香，溫柔無攻擊性。')">
       <div class="bottle-top"></div>
       <div class="bottle-neck"></div>
-      <div class="bottle-body">
-        <div class="bottle-label">Orphee & Ashworth</div>
-      </div>
+      <div class="bottle-body"><div class="bottle-label">Orphee & Ashworth</div></div>
     </div>
     <div class="product-name" lang-zh>白麝香</div>
     <div class="product-price">HK$ 460</div>
@@ -171,12 +178,10 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <div class="perfume-bottle">
+    <div class="perfume-bottle" onclick="showDetail('木質沉香','東方木質調｜沉香、檀木、胡椒、煙燻、皮革','沉穩神秘、高級冷艷，適合夜晚與正式場合。')">
       <div class="bottle-top"></div>
       <div class="bottle-neck"></div>
-      <div class="bottle-body">
-        <div class="bottle-label">Orphee & Ashworth</div>
-      </div>
+      <div class="bottle-body"><div class="bottle-label">Orphee & Ashworth</div></div>
     </div>
     <div class="product-name" lang-zh>木質沉香</div>
     <div class="product-price">HK$ 580</div>
@@ -185,12 +190,10 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <div class="perfume-bottle">
+    <div class="perfume-bottle" onclick="showDetail('黑加侖花香','果香花香調｜黑加侖、桃子、茉莉、牡丹','年輕活潑、香甜多汁，充滿朝氣。')">
       <div class="bottle-top"></div>
       <div class="bottle-neck"></div>
-      <div class="bottle-body">
-        <div class="bottle-label">Orphee & Ashworth</div>
-      </div>
+      <div class="bottle-body"><div class="bottle-label">Orphee & Ashworth</div></div>
     </div>
     <div class="product-name" lang-zh>黑加侖花香</div>
     <div class="product-price">HK$ 450</div>
@@ -199,12 +202,10 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <div class="perfume-bottle">
+    <div class="perfume-bottle" onclick="showDetail('琥珀檀香','東方暖香調｜琥珀、檀木、香草、零陵香豆','溫暖療癒，貼膚舒適，冬天最合適。')">
       <div class="bottle-top"></div>
       <div class="bottle-neck"></div>
-      <div class="bottle-body">
-        <div class="bottle-label">Orphee & Ashworth</div>
-      </div>
+      <div class="bottle-body"><div class="bottle-label">Orphee & Ashworth</div></div>
     </div>
     <div class="product-name" lang-zh>琥珀檀香</div>
     <div class="product-price">HK$ 550</div>
@@ -213,12 +214,10 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <div class="perfume-bottle">
+    <div class="perfume-bottle" onclick="showDetail('海洋之息','海洋木質調｜海水、薄荷、薰衣草、松木','極致清爽、乾淨、運動感，夏日必備。')">
       <div class="bottle-top"></div>
       <div class="bottle-neck"></div>
-      <div class="bottle-body">
-        <div class="bottle-label">Orphee & Ashworth</div>
-      </div>
+      <div class="bottle-body"><div class="bottle-label">Orphee & Ashworth</div></div>
     </div>
     <div class="product-name" lang-zh>海洋之息</div>
     <div class="product-price">HK$ 430</div>
@@ -227,12 +226,10 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <div class="perfume-bottle">
+    <div class="perfume-bottle" onclick="showDetail('香草雲呢拿','美食甜香調｜香草、焦糖、牛奶、檀木','香甜軟綿，像甜品一樣溫暖誘人。')">
       <div class="bottle-top"></div>
       <div class="bottle-neck"></div>
-      <div class="bottle-body">
-        <div class="bottle-label">Orphee & Ashworth</div>
-      </div>
+      <div class="bottle-body"><div class="bottle-label">Orphee & Ashworth</div></div>
     </div>
     <div class="product-name" lang-zh>香草雲呢拿</div>
     <div class="product-price">HK$ 440</div>
@@ -241,12 +238,10 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <div class="perfume-bottle">
+    <div class="perfume-bottle" onclick="showDetail('廣藿香玫瑰','木質玫瑰調｜玫瑰、廣藿香、胡椒、琥珀','成熟高貴，帶點野性與神秘感。')">
       <div class="bottle-top"></div>
       <div class="bottle-neck"></div>
-      <div class="bottle-body">
-        <div class="bottle-label">Orphee & Ashworth</div>
-      </div>
+      <div class="bottle-body"><div class="bottle-label">Orphee & Ashworth</div></div>
     </div>
     <div class="product-name" lang-zh>廣藿香玫瑰</div>
     <div class="product-price">HK$ 560</div>
@@ -255,12 +250,10 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <div class="perfume-bottle">
+    <div class="perfume-bottle" onclick="showDetail('檸檬柑橘','清新柑橘調｜檸檬、佛手柑、薄荷、綠葉','醒神活力，早上用超清爽，夏日必備。')">
       <div class="bottle-top"></div>
       <div class="bottle-neck"></div>
-      <div class="bottle-body">
-        <div class="bottle-label">Orphee & Ashworth</div>
-      </div>
+      <div class="bottle-body"><div class="bottle-label">Orphee & Ashworth</div></div>
     </div>
     <div class="product-name" lang-zh>檸檬柑橘</div>
     <div class="product-price">HK$ 410</div>
@@ -269,12 +262,10 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <div class="perfume-bottle">
+    <div class="perfume-bottle" onclick="showDetail('東方花香','東方花香調｜依蘭、晚香玉、檀木、麝香','濃郁華麗，充滿異國情懷與女人味。')">
       <div class="bottle-top"></div>
       <div class="bottle-neck"></div>
-      <div class="bottle-body">
-        <div class="bottle-label">Orphee & Ashworth</div>
-      </div>
+      <div class="bottle-body"><div class="bottle-label">Orphee & Ashworth</div></div>
     </div>
     <div class="product-name" lang-zh>東方花香</div>
     <div class="product-price">HK$ 530</div>
@@ -283,12 +274,10 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <div class="perfume-bottle">
+    <div class="perfume-bottle" onclick="showDetail('雪松香調','冷冽木質調｜雪松、白麝香、綠竹、輕微柑橘','乾淨冷艷，中性高級感，男女皆宜。')">
       <div class="bottle-top"></div>
       <div class="bottle-neck"></div>
-      <div class="bottle-body">
-        <div class="bottle-label">Orphee & Ashworth</div>
-      </div>
+      <div class="bottle-body"><div class="bottle-label">Orphee & Ashworth</div></div>
     </div>
     <div class="product-name" lang-zh>雪松香調</div>
     <div class="product-price">HK$ 490</div>
@@ -297,12 +286,10 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <div class="perfume-bottle">
+    <div class="perfume-bottle" onclick="showDetail('黑玫瑰','暗黑玫瑰調｜黑玫瑰、烏木、廣藿香、莓果','神秘誘人，冷豔高級，適合夜晚派對。')">
       <div class="bottle-top"></div>
       <div class="bottle-neck"></div>
-      <div class="bottle-body">
-        <div class="bottle-label">Orphee & Ashworth</div>
-      </div>
+      <div class="bottle-body"><div class="bottle-label">Orphee & Ashworth</div></div>
     </div>
     <div class="product-name" lang-zh>黑玫瑰</div>
     <div class="product-price">HK$ 570</div>
@@ -311,12 +298,10 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <div class="perfume-bottle">
+    <div class="perfume-bottle" onclick="showDetail('白麝香絲綢','絲絨肌膚調｜白麝香、天絲綢、茉莉、輕暖琥珀','柔滑如絲，貼膚高級，專屬你的體香。')">
       <div class="bottle-top"></div>
       <div class="bottle-neck"></div>
-      <div class="bottle-body">
-        <div class="bottle-label">Orphee & Ashworth</div>
-      </div>
+      <div class="bottle-body"><div class="bottle-label">Orphee & Ashworth</div></div>
     </div>
     <div class="product-name" lang-zh>白麝香絲綢</div>
     <div class="product-price">HK$ 470</div>
@@ -337,7 +322,8 @@ body.de [lang-de]{display:block}
 <div class="modal" id="modal">
   <div class="modal-box">
     <div class="close" onclick="closeModal()">✕</div>
-    <div id="modalContent"></div>
+    <h3 id="detailTitle"></h3>
+    <div class="desc" id="detailDesc"></div>
   </div>
 </div>
 
@@ -349,6 +335,20 @@ body.de [lang-de]{display:block}
 <script>
 let cart = []
 let wishlist = []
+let audio = document.getElementById('waterSound')
+let isPlaying = false
+
+// 流水聲開關
+function toggleSound() {
+  if (!isPlaying) {
+    audio.volume = 0.3
+    audio.play()
+    isPlaying = true
+  } else {
+    audio.pause()
+    isPlaying = false
+  }
+}
 
 function setLang(lang) {
   document.body.className = lang
@@ -356,8 +356,9 @@ function setLang(lang) {
 function closeModal() {
   document.getElementById('modal').style.display = 'none'
 }
-function showDetail(name) {
-  document.getElementById('modalContent').innerHTML = `<h3>${name}</h3>`
+function showDetail(name, note, desc) {
+  document.getElementById('detailTitle').innerText = name + '｜' + note
+  document.getElementById('detailDesc').innerText = desc
   document.getElementById('modal').style.display = 'flex'
 }
 function addToCart(name, price) {
@@ -377,7 +378,8 @@ function openCart() {
     total += item.price
   })
   html += `<p><br>總額 HK$${total}</p>`
-  document.getElementById('modalContent').innerHTML = html
+  document.getElementById('detailTitle').innerText = ''
+  document.getElementById('detailDesc').innerHTML = html
   document.getElementById('modal').style.display = 'flex'
 }
 function openWishlist() {
@@ -385,7 +387,8 @@ function openWishlist() {
   wishlist.forEach(item => {
     html += `<p>${item}</p>`
   })
-  document.getElementById('modalContent').innerHTML = html
+  document.getElementById('detailTitle').innerText = ''
+  document.getElementById('detailDesc').innerHTML = html
   document.getElementById('modal').style.display = 'flex'
 }
 </script>
