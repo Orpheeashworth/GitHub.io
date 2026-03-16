@@ -6,66 +6,179 @@
 <title>Orphee & Ashworth</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body<!DOCTYPE html>
-<html lang="zh-HK">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Orphee & Ashworth</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#000;color:#fff;padding:40px 20px}
-.logo{text-align:center;margin-bottom:40px;font-size:32px}
-.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:900px;margin:0 auto}
-.product{text-align:center}
-.bottle{width:70px;height:100px;margin:0 auto 10px}
-.product-name{font-size:13px;margin-bottom:4px}
-.product-price{font-size:13px;color:#aaa}
-.btn{padding:6px 10px;background:#fff;color:#000;border:none;font-size:11px;cursor:pointer;margin:2px}
+
+/* 藍金背景 + 閃爍動畫 */
+body{
+  background: linear-gradient(135deg, #0b1d3a, #1a2f55, #ffd700, #0b1d3a);
+  background-size: 400% 400%;
+  animation: bgShimmer 8s ease infinite;
+  color: #ffd700;
+  padding:40px 20px
+}
+
+/* 閃爍動畫 */
+@keyframes bgShimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.logo{
+  text-align:center;
+  margin-bottom:40px;
+  font-size:32px;
+  color:#ffd700
+}
+
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  max-width:900px;
+  margin:0 auto
+}
+
+.product{
+  text-align:center
+}
+
+.bottle{
+  width:70px;
+  height:100px;
+  margin:0 auto 10px
+}
+
+.product-name{
+  font-size:13px;
+  margin-bottom:4px;
+  color:#ffd700
+}
+
+.product-price{
+  font-size:13px;
+  color:#ffd700
+}
+
+.btn{
+  padding:6px 10px;
+  background:#ffd700;
+  color:#0b1d3a;
+  border:none;
+  font-size:11px;
+  cursor:pointer;
+  margin:2px
+}
 </style>
 </head>
 <body>
 <div class="logo">Orphee & Ashworth</div>
 <div class="product-grid">
+
   <div class="product">
     <div class="bottle">🍾</div>
     <div class="product-name">午夜木蘭</div>
     <div class="product-price">HK$ 480</div>
     <button class="btn">購物車</button>
   </div>
+
   <div class="product">
     <div class="bottle">🍾</div>
     <div class="product-name">海風橙花</div>
     <div class="product-price">HK$ 420</div>
     <button class="btn">購物車</button>
   </div>
-</div>
-</body>
-</html>
-.logo{text-align:center;margin-bottom:40px;font-size:32px}
-.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:900px;margin:0 auto}
-.product{text-align:center}
-.bottle{width:70px;height:100px;margin:0 auto 10px}
-.product-name{font-size:13px;margin-bottom:4px}
-.product-price{font-size:13px;color:#aaa}
-.btn{padding:6px 10px;background:#fff;color:#000;border:none;font-size:11px;cursor:pointer;margin:2px}
-</style>
-</head>
-<body>
-<div class="logo">Orphee & Ashworth</div>
-<div class="product-grid">
+
   <div class="product">
     <div class="bottle">🍾</div>
-    <div class="product-name">午夜木蘭</div>
+    <div class="product-name">白桃雲呢拿</div>
+    <div class="product-price">HK$ 460</div>
+    <button class="btn">購物車</button>
+  </div>
+
+  <div class="product">
+    <div class="bottle">🍾</div>
+    <div class="product-name">黑加侖荔枝</div>
+    <div class="product-price">HK$ 450</div>
+    <button class="btn">購物車</button>
+  </div>
+
+  <div class="product">
+    <div class="bottle">🍾</div>
+    <div class="product-name">熱情果芒果</div>
+    <div class="product-price">HK$ 430</div>
+    <button class="btn">購物車</button>
+  </div>
+
+  <div class="product">
+    <div class="bottle">🍾</div>
+    <div class="product-name">紅莓玫瑰</div>
+    <div class="product-price">HK$ 470</div>
+    <button class="btn">購物車</button>
+  </div>
+
+  <div class="product">
+    <div class="bottle">🍾</div>
+    <div class="product-name">青提子麝香</div>
+    <div class="product-price">HK$ 440</div>
+    <button class="btn">購物車</button>
+  </div>
+
+  <div class="product">
+    <div class="bottle">🍾</div>
+    <div class="product-name">檸檬薄荷</div>
+    <div class="product-price">HK$ 410</div>
+    <button class="btn">購物車</button>
+  </div>
+
+  <div class="product">
+    <div class="bottle">🍾</div>
+    <div class="product-name">椰子鳳梨</div>
+    <div class="product-price">HK$ 450</div>
+    <button class="btn">購物車</button>
+  </div>
+
+  <div class="product">
+    <div class="bottle">🍾</div>
+    <div class="product-name">藍莓芝士</div>
+    <div class="product-price">HK$ 490</div>
+    <button class="btn">購物車</button>
+  </div>
+
+  <div class="product">
+    <div class="bottle">🍾</div>
+    <div class="product-name">伯爵茶梨</div>
+    <div class="product-price">HK$ 460</div>
+    <button class="btn">購物車</button>
+  </div>
+
+  <div class="product">
+    <div class="bottle">🍾</div>
+    <div class="product-name">薰衣草蜂蜜</div>
     <div class="product-price">HK$ 480</div>
     <button class="btn">購物車</button>
   </div>
+
   <div class="product">
     <div class="bottle">🍾</div>
-    <div class="product-name">海風橙花</div>
-    <div class="product-price">HK$ 420</div>
+    <div class="product-name">蜜瓜白桃</div>
+    <div class="product-price">HK$ 440</div>
     <button class="btn">購物車</button>
   </div>
+
+  <div class="product">
+    <div class="bottle">🍾</div>
+    <div class="product-name">野莓雲呢拿</div>
+    <div class="product-price">HK$ 470</div>
+    <button class="btn">購物車</button>
+  </div>
+
+  <div class="product">
+    <div class="bottle">🍾</div>
+    <div class="product-name">經典香檳</div>
+    <div class="product-price">HK$ 520</div>
+    <button class="btn">購物車</button>
+  </div>
+
 </div>
 </body>
 </html>
