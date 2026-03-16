@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Orphée & Ashworth</title>
+<title>Orphee & Ashworth</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 body{background:#000;color:#fff;padding:40px 20px 120px;animation:fadeIn 1s}
@@ -13,20 +13,57 @@ body{background:#000;color:#fff;padding:40px 20px 120px;animation:fadeIn 1s}
 .lang-switch button{padding:3px 6px;border:1px solid #666;background:#000;color:#fff;border-radius:3px}
 .nav button{background:none;border:none;color:#fff;cursor:pointer}
 
-.logo{text-align:center;margin-bottom:40px;font-size:42px;font-weight:300}
+.logo{text-align:center;margin-bottom:40px;font-size:32px;font-weight:300;letter-spacing:1px}
 .about{text-align:center;margin-bottom:50px;line-height:1.6;font-size:20px}
 
 .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px 20px;max-width:900px;margin:0 auto}
 .product{text-align:center}
 
-/* 輕慢 360度旋轉動畫 */
-.bottle{
-  width:70px;height:90px;margin:0 auto 10px;
-  animation:spin 12s infinite linear;
+/* 真實香水瓶 + 旋轉動畫 */
+.perfume-bottle {
+  position: relative;
+  width: 70px;
+  height: 100px;
+  margin: 0 auto 10px;
+  animation: spin 16s infinite linear;
 }
-@keyframes spin{
+@keyframes spin {
   0%{transform:rotateY(0deg)}
   100%{transform:rotateY(360deg)}
+}
+
+.bottle-top {
+  width: 20px;
+  height: 22px;
+  background: #ddd;
+  margin: 0 auto;
+  border-radius: 2px;
+}
+.bottle-neck {
+  width: 16px;
+  height: 12px;
+  background: rgba(255,255,255,0.2);
+  margin: 0 auto;
+}
+.bottle-body {
+  width: 50px;
+  height: 65px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px 8px 20px 20px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+.bottle-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 7px;
+  color: #fff;
+  font-weight: bold;
+  white-space: nowrap;
 }
 
 .product-name{font-size:13px;margin-bottom:4px}
@@ -65,7 +102,7 @@ body.de [lang-de]{display:block}
   <button onclick="openCart()"><span lang-zh>購物車</span><span lang-zhs>购物车</span><span lang-en>Cart</span><span lang-fr>Panier</span><span lang-de>Warenkorb</span> (<span id="cartCount">0</span>)</button>
 </div>
 
-<div class="logo">Orphée & Ashworth</div>
+<div class="logo">Orphee & Ashworth</div>
 
 <div class="about">
   <p lang-zh>匠心奢華香氛 · 獨特氣息</p>
@@ -78,11 +115,13 @@ body.de [lang-de]{display:block}
 <div class="product-grid">
 
   <div class="product">
-    <svg class="bottle" viewBox="0 0 20 30">
-      <circle cx="10" cy="5" r="2" fill="#fff"/>
-      <rect x="8" y="7" width="4" height="3" fill="#fff"/>
-      <path d="M7 10 L13 10 L14 25 L6 25 Z" fill="#fff"/>
-    </svg>
+    <div class="perfume-bottle">
+      <div class="bottle-top"></div>
+      <div class="bottle-neck"></div>
+      <div class="bottle-body">
+        <div class="bottle-label">Orphee & Ashworth</div>
+      </div>
+    </div>
     <div class="product-name" lang-zh>午夜木蘭</div>
     <div class="product-price">HK$ 480</div>
     <button class="btn" onclick="addToCart('午夜木蘭',480)">購物車</button>
@@ -90,11 +129,13 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <svg class="bottle" viewBox="0 0 20 30">
-      <circle cx="10" cy="5" r="2" fill="#fff"/>
-      <rect x="8" y="7" width="4" height="3" fill="#fff"/>
-      <path d="M7 10 L13 10 L14 25 L6 25 Z" fill="#fff"/>
-    </svg>
+    <div class="perfume-bottle">
+      <div class="bottle-top"></div>
+      <div class="bottle-neck"></div>
+      <div class="bottle-body">
+        <div class="bottle-label">Orphee & Ashworth</div>
+      </div>
+    </div>
     <div class="product-name" lang-zh>海風橙花</div>
     <div class="product-price">HK$ 420</div>
     <button class="btn" onclick="addToCart('海風橙花',420)">購物車</button>
@@ -102,11 +143,13 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <svg class="bottle" viewBox="0 0 20 30">
-      <circle cx="10" cy="5" r="2" fill="#fff"/>
-      <rect x="8" y="7" width="4" height="3" fill="#fff"/>
-      <path d="M7 10 L13 10 L14 25 L6 25 Z" fill="#fff"/>
-    </svg>
+    <div class="perfume-bottle">
+      <div class="bottle-top"></div>
+      <div class="bottle-neck"></div>
+      <div class="bottle-body">
+        <div class="bottle-label">Orphee & Ashworth</div>
+      </div>
+    </div>
     <div class="product-name" lang-zh>晨曦玫瑰</div>
     <div class="product-price">HK$ 520</div>
     <button class="btn" onclick="addToCart('晨曦玫瑰',520)">購物車</button>
@@ -114,11 +157,13 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <svg class="bottle" viewBox="0 0 20 30">
-      <circle cx="10" cy="5" r="2" fill="#fff"/>
-      <rect x="8" y="7" width="4" height="3" fill="#fff"/>
-      <path d="M7 10 L13 10 L14 25 L6 25 Z" fill="#fff"/>
-    </svg>
+    <div class="perfume-bottle">
+      <div class="bottle-top"></div>
+      <div class="bottle-neck"></div>
+      <div class="bottle-body">
+        <div class="bottle-label">Orphee & Ashworth</div>
+      </div>
+    </div>
     <div class="product-name" lang-zh>白麝香</div>
     <div class="product-price">HK$ 460</div>
     <button class="btn" onclick="addToCart('白麝香',460)">購物車</button>
@@ -126,11 +171,13 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <svg class="bottle" viewBox="0 0 20 30">
-      <circle cx="10" cy="5" r="2" fill="#fff"/>
-      <rect x="8" y="7" width="4" height="3" fill="#fff"/>
-      <path d="M7 10 L13 10 L14 25 L6 25 Z" fill="#fff"/>
-    </svg>
+    <div class="perfume-bottle">
+      <div class="bottle-top"></div>
+      <div class="bottle-neck"></div>
+      <div class="bottle-body">
+        <div class="bottle-label">Orphee & Ashworth</div>
+      </div>
+    </div>
     <div class="product-name" lang-zh>木質沉香</div>
     <div class="product-price">HK$ 580</div>
     <button class="btn" onclick="addToCart('木質沉香',580)">購物車</button>
@@ -138,11 +185,13 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <svg class="bottle" viewBox="0 0 20 30">
-      <circle cx="10" cy="5" r="2" fill="#fff"/>
-      <rect x="8" y="7" width="4" height="3" fill="#fff"/>
-      <path d="M7 10 L13 10 L14 25 L6 25 Z" fill="#fff"/>
-    </svg>
+    <div class="perfume-bottle">
+      <div class="bottle-top"></div>
+      <div class="bottle-neck"></div>
+      <div class="bottle-body">
+        <div class="bottle-label">Orphee & Ashworth</div>
+      </div>
+    </div>
     <div class="product-name" lang-zh>黑加侖花香</div>
     <div class="product-price">HK$ 450</div>
     <button class="btn" onclick="addToCart('黑加侖花香',450)">購物車</button>
@@ -150,11 +199,13 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <svg class="bottle" viewBox="0 0 20 30">
-      <circle cx="10" cy="5" r="2" fill="#fff"/>
-      <rect x="8" y="7" width="4" height="3" fill="#fff"/>
-      <path d="M7 10 L13 10 L14 25 L6 25 Z" fill="#fff"/>
-    </svg>
+    <div class="perfume-bottle">
+      <div class="bottle-top"></div>
+      <div class="bottle-neck"></div>
+      <div class="bottle-body">
+        <div class="bottle-label">Orphee & Ashworth</div>
+      </div>
+    </div>
     <div class="product-name" lang-zh>琥珀檀香</div>
     <div class="product-price">HK$ 550</div>
     <button class="btn" onclick="addToCart('琥珀檀香',550)">購物車</button>
@@ -162,11 +213,13 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <svg class="bottle" viewBox="0 0 20 30">
-      <circle cx="10" cy="5" r="2" fill="#fff"/>
-      <rect x="8" y="7" width="4" height="3" fill="#fff"/>
-      <path d="M7 10 L13 10 L14 25 L6 25 Z" fill="#fff"/>
-    </svg>
+    <div class="perfume-bottle">
+      <div class="bottle-top"></div>
+      <div class="bottle-neck"></div>
+      <div class="bottle-body">
+        <div class="bottle-label">Orphee & Ashworth</div>
+      </div>
+    </div>
     <div class="product-name" lang-zh>海洋之息</div>
     <div class="product-price">HK$ 430</div>
     <button class="btn" onclick="addToCart('海洋之息',430)">購物車</button>
@@ -174,11 +227,13 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <svg class="bottle" viewBox="0 0 20 30">
-      <circle cx="10" cy="5" r="2" fill="#fff"/>
-      <rect x="8" y="7" width="4" height="3" fill="#fff"/>
-      <path d="M7 10 L13 10 L14 25 L6 25 Z" fill="#fff"/>
-    </svg>
+    <div class="perfume-bottle">
+      <div class="bottle-top"></div>
+      <div class="bottle-neck"></div>
+      <div class="bottle-body">
+        <div class="bottle-label">Orphee & Ashworth</div>
+      </div>
+    </div>
     <div class="product-name" lang-zh>香草雲呢拿</div>
     <div class="product-price">HK$ 440</div>
     <button class="btn" onclick="addToCart('香草雲呢拿',440)">購物車</button>
@@ -186,11 +241,13 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <svg class="bottle" viewBox="0 0 20 30">
-      <circle cx="10" cy="5" r="2" fill="#fff"/>
-      <rect x="8" y="7" width="4" height="3" fill="#fff"/>
-      <path d="M7 10 L13 10 L14 25 L6 25 Z" fill="#fff"/>
-    </svg>
+    <div class="perfume-bottle">
+      <div class="bottle-top"></div>
+      <div class="bottle-neck"></div>
+      <div class="bottle-body">
+        <div class="bottle-label">Orphee & Ashworth</div>
+      </div>
+    </div>
     <div class="product-name" lang-zh>廣藿香玫瑰</div>
     <div class="product-price">HK$ 560</div>
     <button class="btn" onclick="addToCart('廣藿香玫瑰',560)">購物車</button>
@@ -198,11 +255,13 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <svg class="bottle" viewBox="0 0 20 30">
-      <circle cx="10" cy="5" r="2" fill="#fff"/>
-      <rect x="8" y="7" width="4" height="3" fill="#fff"/>
-      <path d="M7 10 L13 10 L14 25 L6 25 Z" fill="#fff"/>
-    </svg>
+    <div class="perfume-bottle">
+      <div class="bottle-top"></div>
+      <div class="bottle-neck"></div>
+      <div class="bottle-body">
+        <div class="bottle-label">Orphee & Ashworth</div>
+      </div>
+    </div>
     <div class="product-name" lang-zh>檸檬柑橘</div>
     <div class="product-price">HK$ 410</div>
     <button class="btn" onclick="addToCart('檸檬柑橘',410)">購物車</button>
@@ -210,11 +269,13 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <svg class="bottle" viewBox="0 0 20 30">
-      <circle cx="10" cy="5" r="2" fill="#fff"/>
-      <rect x="8" y="7" width="4" height="3" fill="#fff"/>
-      <path d="M7 10 L13 10 L14 25 L6 25 Z" fill="#fff"/>
-    </svg>
+    <div class="perfume-bottle">
+      <div class="bottle-top"></div>
+      <div class="bottle-neck"></div>
+      <div class="bottle-body">
+        <div class="bottle-label">Orphee & Ashworth</div>
+      </div>
+    </div>
     <div class="product-name" lang-zh>東方花香</div>
     <div class="product-price">HK$ 530</div>
     <button class="btn" onclick="addToCart('東方花香',530)">購物車</button>
@@ -222,11 +283,13 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <svg class="bottle" viewBox="0 0 20 30">
-      <circle cx="10" cy="5" r="2" fill="#fff"/>
-      <rect x="8" y="7" width="4" height="3" fill="#fff"/>
-      <path d="M7 10 L13 10 L14 25 L6 25 Z" fill="#fff"/>
-    </svg>
+    <div class="perfume-bottle">
+      <div class="bottle-top"></div>
+      <div class="bottle-neck"></div>
+      <div class="bottle-body">
+        <div class="bottle-label">Orphee & Ashworth</div>
+      </div>
+    </div>
     <div class="product-name" lang-zh>雪松香調</div>
     <div class="product-price">HK$ 490</div>
     <button class="btn" onclick="addToCart('雪松香調',490)">購物車</button>
@@ -234,11 +297,13 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <svg class="bottle" viewBox="0 0 20 30">
-      <circle cx="10" cy="5" r="2" fill="#fff"/>
-      <rect x="8" y="7" width="4" height="3" fill="#fff"/>
-      <path d="M7 10 L13 10 L14 25 L6 25 Z" fill="#fff"/>
-    </svg>
+    <div class="perfume-bottle">
+      <div class="bottle-top"></div>
+      <div class="bottle-neck"></div>
+      <div class="bottle-body">
+        <div class="bottle-label">Orphee & Ashworth</div>
+      </div>
+    </div>
     <div class="product-name" lang-zh>黑玫瑰</div>
     <div class="product-price">HK$ 570</div>
     <button class="btn" onclick="addToCart('黑玫瑰',570)">購物車</button>
@@ -246,11 +311,13 @@ body.de [lang-de]{display:block}
   </div>
 
   <div class="product">
-    <svg class="bottle" viewBox="0 0 20 30">
-      <circle cx="10" cy="5" r="2" fill="#fff"/>
-      <rect x="8" y="7" width="4" height="3" fill="#fff"/>
-      <path d="M7 10 L13 10 L14 25 L6 25 Z" fill="#fff"/>
-    </svg>
+    <div class="perfume-bottle">
+      <div class="bottle-top"></div>
+      <div class="bottle-neck"></div>
+      <div class="bottle-body">
+        <div class="bottle-label">Orphee & Ashworth</div>
+      </div>
+    </div>
     <div class="product-name" lang-zh>白麝香絲綢</div>
     <div class="product-price">HK$ 470</div>
     <button class="btn" onclick="addToCart('白麝香絲綢',470)">購物車</button>
