@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Orphee & Ashworth</title>
+<title>Orphée & Ashworth</title>
 <style>
 * {
   margin: 0;
@@ -10,159 +10,63 @@
   box-sizing: border-box;
 }
 body {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a22 100%);
+  background: #000;
   color: #fff;
   font-family: "Georgia", serif;
-  line-height: 1.6;
+  min-height: 100vh;
+  background-image: url('https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/0c677e09500940a0ad218694f4ff6e79.jpeg~tplv-a9rns2rl98-image_dld_watermark_1_6.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
-/* Your Logo */
+/* 你嘅圓形Logo（正確版本） */
 .logo {
-  width: 320px;
+  width: 300px;
   display: block;
-  margin: 30px auto;
+  margin: 40px auto 20px;
 }
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-.perfume {
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
-  padding: 26px;
-  margin-bottom: 22px;
-  backdrop-filter: blur(8px);
+.shop-now {
   text-align: center;
+  margin: 30px 0;
 }
-.perfume h2 {
-  color: #ffd700;
-  margin-bottom: 10px;
-  font-size: 22px;
-}
-.note {
-  color: #d4c2e8;
-  margin: 4px 0;
-  font-size: 15px;
-}
-.buy {
-  background: #ffd700;
-  color: #000;
+.shop-btn {
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  color: #900;
   border: none;
-  padding: 13px 28px;
-  border-radius: 10px;
-  font-size: 16px;
+  padding: 18px 60px;
+  border-radius: 50px;
+  font-size: 24px;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 12px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.6);
 }
 .footer {
   text-align: center;
   margin: 40px 0;
-  color: #aaa;
+  color: #ddd;
+  font-size: 16px;
+}
+.payment-icons {
+  margin-top: 10px;
+  font-size: 20px;
 }
 </style>
 </head>
 <body>
-<div class="container">
-  <!-- Your Original Logo -->
-  <img class="logo" src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/5e064c0e58744143b40fc3002f328871.jpeg~tplv-a9rns2rl98-image_dld_watermark_1_5.png" alt="Orphee & Ashworth Logo">
+  <!-- 你嘅正確Logo -->
+  <img class="logo" src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/5e064c0e58744143b40fc3002f328871.jpeg" alt="Orphée & Ashworth Logo">
 
-  <!-- 1. Midnight Magnolia -->
-  <div class="perfume">
-    <h2>Midnight Magnolia</h2>
-    <p class="note">Top: Bergamot, Blackcurrant</p>
-    <p class="note">Heart: Magnolia, Tuberose</p>
-    <p class="note">Base: Sandalwood, Musk</p>
-    <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">Buy Now</button>
+  <!-- Shop Now 按鈕 -->
+  <div class="shop-now">
+    <button class="shop-btn" onclick="window.location.href='https://wa.me/85290475370'">Shop Now</button>
   </div>
 
-  <!-- 2. Sea Breeze Orange Blossom -->
-  <div class="perfume">
-    <h2>Sea Breeze Orange Blossom</h2>
-    <p class="note">Top: Orange Blossom, Lemon</p>
-    <p class="note">Heart: Jasmine, Sea Salt</p>
-    <p class="note">Base: White Musk, Amber</p>
-    <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">Buy Now</button>
-  </div>
-
-  <!-- 3. Dawn Rose -->
-  <div class="perfume">
-    <h2>Dawn Rose</h2>
-    <p class="note">Top: Pink Pepper, Lychee</p>
-    <p class="note">Heart: Damask Rose, Peony</p>
-    <p class="note">Base: Ambergris, Patchouli</p>
-    <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">Buy Now</button>
-  </div>
-
-  <!-- 4. Pine Snow Breeze -->
-  <div class="perfume">
-    <h2>Pine Snow Breeze</h2>
-    <p class="note">Top: Mint, Cedarwood</p>
-    <p class="note">Heart: Pine Needles, White Pine Resin</p>
-    <p class="note">Base: Oakmoss, Musk</p>
-    <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">Buy Now</button>
-  </div>
-
-  <!-- 5. Amber Oud Sandalwood -->
-  <div class="perfume">
-    <h2>Amber Oud Sandalwood</h2>
-    <p class="note">Top: Pepper, Saffron</p>
-    <p class="note">Heart: Sandalwood, Agarwood</p>
-    <p class="note">Base: Amber, Frankincense</p>
-    <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">Buy Now</button>
-  </div>
-
-  <!-- 6. Moonlit White Orchid -->
-  <div class="perfume">
-    <h2>Moonlit White Orchid</h2>
-    <p class="note">Top: Green Leaves, Citrus</p>
-    <p class="note">Heart: White Orchid, Lily of the Valley</p>
-    <p class="note">Base: Vanilla, Musk</p>
-    <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">Buy Now</button>
-  </div>
-
-  <!-- 7. Misty Oolong -->
-  <div class="perfume">
-    <h2>Misty Oolong</h2>
-    <p class="note">Top: Pear, Bergamot</p>
-    <p class="note">Heart: Oolong Tea, Jasmine</p>
-    <p class="note">Base: Musk, Woody Notes</p>
-    <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">Buy Now</button>
-  </div>
-
-  <!-- 8. Love Bean Acacia -->
-  <div class="perfume">
-    <h2>Love Bean Acacia</h2>
-    <p class="note">Top: Red Bean, Raspberry</p>
-    <p class="note">Heart: Rose, Peony</p>
-    <p class="note">Base: Vanilla, Patchouli</p>
-    <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">Buy Now</button>
-  </div>
-
-  <!-- 9. Lime Mint Breeze -->
-  <div class="perfume">
-    <h2>Lime Mint Breeze</h2>
-    <p class="note">Top: Lime, Mint</p>
-    <p class="note">Heart: Basil, Perilla</p>
-    <p class="note">Base: White Musk, Cedarwood</p>
-    <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">Buy Now</button>
-  </div>
-
-  <!-- 10. Black Gold Oud -->
-  <div class="perfume">
-    <h2>Black Gold Oud</h2>
-    <p class="note">Top: Leather, Tobacco</p>
-    <p class="note">Heart: Agarwood, Oud</p>
-    <p class="note">Base: Musk, Ambergris</p>
-    <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">Buy Now</button>
-  </div>
-
-  <!-- Footer Info -->
+  <!-- 底部地址 -->
   <div class="footer">
-    <p>📍 Our Store: Mong Kok, Kowloon, Hong Kong</p>
-    <p>📞 WhatsApp: 9047-5370</p>
-    <p>💳 Payment: PayMe / FPS / Bank Transfer</p>
+    <p>Address: Whatshop, Ying Kok, Kowloon, Hong Kong</p>
+    <div class="payment-icons">
+      💳 📲 💵
+    </div>
   </div>
-</div>
 </body>
 </html>
