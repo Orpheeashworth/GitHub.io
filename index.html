@@ -41,13 +41,13 @@ body {
   cursor: pointer;
 }
 
-/* Logo */
+/* Logo（改用文字版，避免圖片失效） */
 .logo {
   text-align: center;
   margin-bottom: 40px;
-}
-.logo img {
-  height: 40px;
+  font-size: 42px;
+  font-weight: 300;
+  letter-spacing: 1px;
 }
 
 /* 介紹 */
@@ -55,9 +55,10 @@ body {
   text-align: center;
   margin-bottom: 50px;
   line-height: 1.6;
+  font-size: 20px;
 }
 
-/* 15支香水網格 */
+/* 香水網格 */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -70,7 +71,7 @@ body {
 }
 .product img {
   width: 70px;
-  height: auto;
+  height: 90px;
   margin-bottom: 10px;
   object-fit: contain;
   cursor: pointer;
@@ -136,13 +137,6 @@ body {
   font-size: 14px;
   cursor: pointer;
   z-index: 998;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.whatsapp-float::before {
-  content: "WhatsApp";
-  font-weight: bold;
 }
 
 /* 底部資訊 */
@@ -186,18 +180,13 @@ body.de [lang-de] { display: block; }
   </button>
 </div>
 
-<!-- Logo -->
+<!-- Logo（改用文字，避免圖片失效） -->
 <div class="logo">
-  <img src="https://i.imgur.com/8X7Z1pY.png" alt="Logo">
+  Orphée & Ashworth
 </div>
 
 <!-- 品牌介紹 -->
 <div class="about">
-  <h2 lang-zh>Orphée & Ashworth</h2>
-  <h2 lang-zhs>Orphée & Ashworth</h2>
-  <h2 lang-en>Orphée & Ashworth</h2>
-  <h2 lang-fr>Orphée & Ashworth</h2>
-  <h2 lang-de>Orphée & Ashworth</h2>
   <p lang-zh>匠心奢華香氛 · 獨特氣息</p>
   <p lang-zhs>匠心奢华香氛 · 独特气息</p>
   <p lang-en>Luxury Fragrances · Unique Scents</p>
@@ -209,109 +198,123 @@ body.de [lang-de] { display: block; }
 <div class="product-grid">
 
   <div class="product">
-    <img src="https://images.unsplash.com/photo-159405911965-7ed076fd3171?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" onclick="showDetail('...')">
+    <img src="https://images.unsplash.com/photo-1594059111965-7ed076fd3171?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" onclick="showDetail('午夜木蘭')">
     <div class="product-name" lang-zh>午夜木蘭</div>
     <div class="product-price">HK$ 480</div>
     <button class="btn" onclick="addToCart('午夜木蘭',480)">購物車</button>
-    <button class="btn" onclick="addToWish('午夜木蘭',480)">願望</button>
+    <button class="btn" onclick="addToWish('午夜木蘭')">願望</button>
   </div>
 
   <div class="product">
-    <img src="https://images.unsplash.com/photo-1559563458-cd4ed289b60?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" onclick="showDetail('...')">
+    <img src="https://images.unsplash.com/photo-1559563458-cd4ed289b60?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" onclick="showDetail('海風橙花')">
     <div class="product-name" lang-zh>海風橙花</div>
     <div class="product-price">HK$ 420</div>
-    <button class="btn">購物車</button><button class="btn">願望</button>
+    <button class="btn" onclick="addToCart('海風橙花',420)">購物車</button>
+    <button class="btn" onclick="addToWish('海風橙花')">願望</button>
   </div>
 
   <div class="product">
-    <img src="https://images.unsplash.com/photo-1541632140577-1f0eb742697d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" onclick="showDetail('...')">
+    <img src="https://images.unsplash.com/photo-1541632140577-1f0eb742697d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" onclick="showDetail('晨曦玫瑰')">
     <div class="product-name" lang-zh>晨曦玫瑰</div>
     <div class="product-price">HK$ 520</div>
-    <button class="btn">購物車</button><button class="btn">願望</button>
+    <button class="btn" onclick="addToCart('晨曦玫瑰',520)">購物車</button>
+    <button class="btn" onclick="addToWish('晨曦玫瑰')">願望</button>
   </div>
 
   <div class="product">
-    <img src="https://images.unsplash.com/photo-1610866142653-1a14c1399018?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" onclick="showDetail('...')">
+    <img src="https://images.unsplash.com/photo-1610866142653-1a14c1399018?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" onclick="showDetail('白麝香')">
     <div class="product-name" lang-zh>白麝香</div>
     <div class="product-price">HK$ 460</div>
-    <button class="btn">購物車</button><button class="btn">願望</button>
+    <button class="btn" onclick="addToCart('白麝香',460)">購物車</button>
+    <button class="btn" onclick="addToWish('白麝香')">願望</button>
   </div>
 
   <div class="product">
-    <img src="https://images.unsplash.com/photo-1523952458356-7cc6c1718158?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" onclick="showDetail('...')">
+    <img src="https://images.unsplash.com/photo-1523952458356-7cc6c1718158?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" onclick="showDetail('木質沉香')">
     <div class="product-name" lang-zh>木質沉香</div>
     <div class="product-price">HK$ 580</div>
-    <button class="btn">購物車</button><button class="btn">願望</button>
+    <button class="btn" onclick="addToCart('木質沉香',580)">購物車</button>
+    <button class="btn" onclick="addToWish('木質沉香')">願望</button>
   </div>
 
   <div class="product">
-    <img src="https://images.unsplash.com/photo-1524413818227-ba643f4416b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" onclick="showDetail('...')">
+    <img src="https://images.unsplash.com/photo-1524413818227-ba643f4416b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" onclick="showDetail('黑加侖花香')">
     <div class="product-name" lang-zh>黑加侖花香</div>
     <div class="product-price">HK$ 450</div>
-    <button class="btn">購物車</button><button class="btn">願望</button>
+    <button class="btn" onclick="addToCart('黑加侖花香',450)">購物車</button>
+    <button class="btn" onclick="addToWish('黑加侖花香')">願望</button>
   </div>
 
   <div class="product">
-    <img src="https://images.unsplash.com/photo-1529136183701-41d6d80199af?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" onclick="showDetail('...')">
+    <img src="https://images.unsplash.com/photo-1529136183701-41d6d80199af?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" onclick="showDetail('琥珀檀香')">
     <div class="product-name" lang-zh>琥珀檀香</div>
     <div class="product-price">HK$ 550</div>
-    <button class="btn">購物車</button><button class="btn">願望</button>
+    <button class="btn" onclick="addToCart('琥珀檀香',550)">購物車</button>
+    <button class="btn" onclick="addToWish('琥珀檀香')">願望</button>
   </div>
 
   <div class="product">
-    <img src="https://images.unsplash.com/photo-1527999962994-79f0a5992989?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" onclick="showDetail('...')">
+    <img src="https://images.unsplash.com/photo-1527999962994-79f0a5992989?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" onclick="showDetail('海洋之息')">
     <div class="product-name" lang-zh>海洋之息</div>
     <div class="product-price">HK$ 430</div>
-    <button class="btn">購物車</button><button class="btn">願望</button>
+    <button class="btn" onclick="addToCart('海洋之息',430)">購物車</button>
+    <button class="btn" onclick="addToWish('海洋之息')">願望</button>
   </div>
 
   <div class="product">
-    <img src="https://images.unsplash.com/photo-1522336687276-33288b92b82b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" onclick="showDetail('...')">
+    <img src="https://images.unsplash.com/photo-1522336687276-33288b92b82b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" onclick="showDetail('香草雲呢拿')">
     <div class="product-name" lang-zh>香草雲呢拿</div>
     <div class="product-price">HK$ 440</div>
-    <button class="btn">購物車</button><button class="btn">願望</button>
+    <button class="btn" onclick="addToCart('香草雲呢拿',440)">購物車</button>
+    <button class="btn" onclick="addToWish('香草雲呢拿')">願望</button>
   </div>
 
   <div class="product">
-    <img src="https://images.unsplash.com/photo-1526854534207-03790b1ed012?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" onclick="showDetail('...')">
+    <img src="https://images.unsplash.com/photo-1526854534207-03790b1ed012?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" onclick="showDetail('廣藿香玫瑰')">
     <div class="product-name" lang-zh>廣藿香玫瑰</div>
     <div class="product-price">HK$ 560</div>
-    <button class="btn">購物車</button><button class="btn">願望</button>
+    <button class="btn" onclick="addToCart('廣藿香玫瑰',560)">購物車</button>
+    <button class="btn" onclick="addToWish('廣藿香玫瑰')">願望</button>
   </div>
 
   <div class="product">
-    <img src="https://images.unsplash.com/photo-1528734218302-54d44171488e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" onclick="showDetail('...')">
+    <img src="https://images.unsplash.com/photo-1528734218302-54d44171488e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" onclick="showDetail('檸檬柑橘')">
     <div class="product-name" lang-zh>檸檬柑橘</div>
     <div class="product-price">HK$ 410</div>
-    <button class="btn">購物車</button><button class="btn">願望</button>
+    <button class="btn" onclick="addToCart('檸檬柑橘',410)">購物車</button>
+    <button class="btn" onclick="addToWish('檸檬柑橘')">願望</button>
   </div>
 
   <div class="product">
-    <img src="https://images.unsplash.com/photo-1617293341714-4c4b0d5117f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" onclick="showDetail('...')">
+    <img src="https://images.unsplash.com/photo-1617293341714-4c4b0d5117f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" onclick="showDetail('東方花香')">
     <div class="product-name" lang-zh>東方花香</div>
     <div class="product-price">HK$ 530</div>
-    <button class="btn">購物車</button><button class="btn">願望</button>
+    <button class="btn" onclick="addToCart('東方花香',530)">購物車</button>
+    <button class="btn" onclick="addToWish('東方花香')">願望</button>
   </div>
 
   <div class="product">
-    <img src="https://images.unsplash.com/photo-1597163543697-5c65f4325cb8?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" onclick="showDetail('...')">
+    <img src="https://images.unsplash.com/photo-1597163543697-5c65f4325cb8?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" onclick="showDetail('雪松香調')">
     <div class="product-name" lang-zh>雪松香調</div>
     <div class="product-price">HK$ 490</div>
-    <button class="btn">購物車</button><button class="btn">願望</button>
+    <button class="btn" onclick="addToCart('雪松香調',490)">購物車</button>
+    <button class="btn" onclick="addToWish('雪松香調')">願望</button>
   </div>
 
   <div class="product">
-    <img src="https://images.unsplash.com/photo-1600619163499-961930399e3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" onclick="showDetail('...')">
+    <img src="https://images.unsplash.com/photo-1600619163499-961930399e3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" onclick="showDetail('黑玫瑰')">
     <div class="product-name" lang-zh>黑玫瑰</div>
     <div class="product-price">HK$ 570</div>
-    <button class="btn">購物車</button><button class="btn">願望</button>
+    <button class="btn" onclick="addToCart('黑玫瑰',570)">購物車</button>
+    <button class="btn" onclick="addToWish('黑玫瑰')">願望</button>
   </div>
 
   <div class="product">
-    <img src="https://images.unsplash.com/photo-1596443686262-1020572d67c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" onclick="showDetail('...')">
+    <img src="https://images.unsplash.com/photo-1596443686262-1020572d67c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" onclick="showDetail('白麝香絲綢')">
     <div class="product-name" lang-zh>白麝香絲綢</div>
     <div class="product-price">HK$ 470</div>
-    <button class="btn">購物車</button><button class="btn">願望</button>
+    <button class="btn" onclick="addToCart('白麝香絲綢',470)">購物車</button>
+    <button class="btn" onclick="addToWish('白麝香絲綢')">願望</button>
   </div>
 
 </div>
@@ -353,7 +356,7 @@ function closeModal() {
   document.getElementById('modal').style.display = 'none';
 }
 function showDetail(name) {
-  document.getElementById('modalContent').innerHTML = `<h3>${name}</h3><p>香調資料顯示於此</p>`;
+  document.getElementById('modalContent').innerHTML = `<h3>${name}</h3><p>香調資料將顯示於此</p>`;
   document.getElementById('modal').style.display = 'flex';
 }
 function addToCart(name, price) {
