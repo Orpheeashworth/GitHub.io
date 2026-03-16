@@ -5,95 +5,122 @@
   <title>Orphee & Ashworth</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <style>
-    body { background-color: #a7c7e7; font-family: 'Playfair Display', serif; margin:0; }
-    header { text-align:center; padding:40px; }
-    h1 { animation: fadeIn 2s; color:#2c2c2c; font-size:48px; letter-spacing:2px; }
+    body {
+      background-color: #0b1d3a; /* 深藍底 */
+      color: #d4af37; /* 金色字體 */
+      font-family: 'Playfair Display', serif;
+      margin:0;
+    }
+    header {
+      height: 300px;
+      display:flex; justify-content:center; align-items:center; flex-direction:column;
+      background: linear-gradient(135deg, #0b1d3a, #001f3f);
+      animation: bgFade 6s infinite alternate;
+    }
+    @keyframes bgFade {
+      from { background: linear-gradient(135deg, #0b1d3a, #001f3f); }
+      to { background: linear-gradient(135deg, #001f3f, #0b1d3a); }
+    }
+    h1 { font-size:50px; color:#ffd700; animation: fadeIn 3s; }
     @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
-    p { color:#444; font-size:18px; }
     nav { text-align:center; margin:20px; }
-    nav select { padding:8px; border-radius:5px; border:1px solid #ccc; }
-    .product { 
-      border:1px solid #ddd; margin:20px; padding:20px; background:#fff; 
-      display:inline-block; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    nav select { padding:8px; border-radius:5px; border:1px solid #d4af37; background:#0b1d3a; color:#ffd700; }
+    .products { display:grid; grid-template-columns: repeat(5, 1fr); gap:20px; padding:20px; }
+    .product {
+      background:#fff; color:#0b1d3a;
+      border:1px solid #d4af37; border-radius:10px;
+      padding:15px; text-align:center;
       transition: transform 0.3s;
     }
     .product:hover { transform: scale(1.05); }
-    .product img { width:250px; border-radius:8px; cursor:pointer; transition:0.3s; }
+    .product img { width:100%; border-radius:8px; cursor:pointer; transition:0.3s; }
     .product img:hover { transform: scale(1.1); }
-    .btn { 
-      background:#fff; border:2px solid #bfa14a; color:#2c2c2c; 
-      padding:10px 20px; margin:5px; border-radius:5px; cursor:pointer; 
-      transition:0.3s;
+    .btn {
+      background:#fff; border:2px solid #d4af37; color:#0b1d3a;
+      padding:8px 15px; margin:5px 0; border-radius:5px; cursor:pointer;
+      transition:0.3s; width:100%;
     }
-    .btn:hover { background:#bfa14a; color:#fff; }
-    .cart { position:fixed; top:20px; right:20px; background:#fff; padding:10px; border:1px solid #333; border-radius:5px; }
-    .whatsapp { position:fixed; bottom:20px; right:20px; background:#25D366; color:#fff; padding:12px 18px; text-decoration:none; border-radius:50px; font-weight:bold; }
+    .btn:hover { background:#d4af37; color:#fff; }
+    .cart, .favorites {
+      position:fixed; top:20px; background:#fff; padding:10px;
+      border:1px solid #d4af37; border-radius:5px; color:#0b1d3a;
+    }
+    .cart { right:20px; cursor:pointer; }
+    .favorites { right:120px; }
+    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); }
+    .modal-content { background:#fff; margin:10% auto; padding:20px; width:300px; border-radius:10px; color:#0b1d3a; }
   </style>
 </head>
 <body>
   <header>
     <h1>Orphee & Ashworth</h1>
-    <p>公司簡介：融合香港文化與歐洲美學，打造獨特香水。</p>
+    <p>融合香港文化與歐洲美學，打造獨特香水</p>
   </header>
 
   <nav>
     <label>語言選擇：</label>
-    <select>
-      <option>English</option>
-      <option>Français</option>
-      <option>简体中文</option>
-      <option>繁體中文</option>
-      <option>Deutsch</option>
-      <option>Italiano</option>
+    <select onchange="changeLanguage(this.value)">
+      <option value="zh-HK">繁體中文</option>
+      <option value="en">English</option>
     </select>
   </nav>
 
-  <div class="product">
-    <img src="perfume.jpg" alt="香水" onclick="zoomImage(this)">
-    <h2>香水 A</h2>
-    <p>簡介：清新花香調</p>
-    <p>價錢：HK$880</p>
-    <button class="btn" onclick="checkoutStripe()">Stripe 付款</button>
-    <div id="paypal-button-container"></div>
-    <button class="btn" onclick="addToFavorites('香水 A')">我的最愛</button>
+  <div class="products">
+    <div class="product" onclick="showInfo('Hot Water Scent','HK$880','玫瑰、茉莉、檀香')"><img src="perfume1.jpg"><h3>Hot Water Scent</h3></div>
+    <div class="product" onclick="showInfo('Astingiray','HK$920','柑橘、麝香、雪松')"><img src="perfume2.jpg"><h3>Astingiray</h3></div>
+    <div class="product" onclick="showInfo('香水 3','HK$850','薰衣草、檀香、香根草')"><img src="perfume3.jpg"><h3>香水 3</h3></div>
+    <div class="product" onclick="showInfo('香水 4','HK$950','東方香料、琥珀、麝香')"><img src="perfume4.jpg"><h3>香水 4</h3></div>
+    <div class="product" onclick="showInfo('香水 5','HK$780','清新柑橘、綠茶、竹子')"><img src="perfume5.jpg"><h3>香水 5</h3></div>
+    <div class="product" onclick="showInfo('香水 6','HK$890','果香、香草、雪松')"><img src="perfume6.jpg"><h3>香水 6</h3></div>
+    <div class="product" onclick="showInfo('香水 7','HK$930','牡丹、麝香、花果調')"><img src="perfume7.jpg"><h3>香水 7</h3></div>
+    <div class="product" onclick="showInfo('香水 8','HK$970','麝香、琥珀、檀香')"><img src="perfume8.jpg"><h3>香水 8</h3></div>
+    <div class="product" onclick="showInfo('香水 9','HK$860','海洋調、檸檬、雪松')"><img src="perfume9.jpg"><h3>香水 9</h3></div>
+    <div class="product" onclick="showInfo('香水 10','HK$910','綠意調、青草、白麝香')"><img src="perfume10.jpg"><h3>香水 10</h3></div>
   </div>
 
-  <div class="cart">購物車：<span id="cartItems">0</span></div>
+  <div class="cart" onclick="showCart()">購物車：<span id="cartItems">0</span></div>
+  <div class="favorites">我的最愛：<span id="favItems">0</span></div>
 
-  <a class="whatsapp" href="https://wa.me/85290475370" target="_blank">WhatsApp</a>
+  <!-- 彈出視窗 -->
+  <div id="infoModal" class="modal">
+    <div class="modal-content">
+      <span onclick="closeModal()" style="cursor:pointer; float:right;">✖</span>
+      <h2 id="perfumeName"></h2>
+      <p id="perfumePrice"></p>
+      <p id="perfumeIngredients"></p>
+      <button class="btn" onclick="addToCart(document.getElementById('perfumeName').innerText)">加入購物車</button>
+    </div>
+  </div>
 
-  <!-- Stripe JS -->
-  <script src="https://js.stripe.com/v3/"></script>
-  <!-- PayPal JS -->
-  <script src="https://www.paypal.com/sdk/js?client-id=你的PayPalClientID&currency=HKD"></script>
+  <!-- 購物車視窗 -->
+  <div id="cartModal" class="modal">
+    <div class="modal-content">
+      <span onclick="closeCart()" style="cursor:pointer; float:right;">✖</span>
+      <h3>購物車內容</h3>
+      <ul id="cartList"></ul>
+    </div>
+  </div>
 
   <script>
-    const stripe = Stripe("你的Stripe公開金鑰");
-    let cartCount = 0, favCount = 0;
+    let cartCount = 0, favCount = 0, cartItems = [];
 
-    function checkoutStripe() {
-      fetch("/create-checkout-session", { method: "POST" })
-        .then(res => res.json())
-        .then(session => stripe.redirectToCheckout({ sessionId: session.id }));
+    function showInfo(name, price, ingredients) {
+      document.getElementById('perfumeName').innerText = name;
+      document.getElementById('perfumePrice').innerText = "價錢：" + price;
+      document.getElementById('perfumeIngredients').innerText = "成分：" + ingredients;
+      document.getElementById('infoModal').style.display = "block";
     }
+    function closeModal() { document.getElementById('infoModal').style.display = "none"; }
 
-    paypal.Buttons({
-      createOrder: (data, actions) => actions.order.create({
-        purchase_units: [{ amount: { value: '880.00', currency_code: 'HKD' }, description: '香水 A' }]
-      }),
-      onApprove: (data, actions) => actions.order.capture().then(details => alert('付款成功，謝謝 ' + details.payer.name.given_name)),
-      onCancel: () => alert('付款已取消')
-    }).render('#paypal-button-container');
-
-    function addToFavorites(item) {
-      favCount++;
-      alert(item + " 已加入我的最愛");
+    function addToCart(item) {
+      cartCount++;
+      cartItems.push(item);
+      document.getElementById('cartItems').innerText = cartCount;
+      alert(item + " 已加入購物車");
     }
-
-    function zoomImage(img) {
-      let newWin = window.open("", "ImageZoom", "width=600,height=600");
-      newWin.document.write("<img src='" + img.src + "' style='width:100%'>");
-    }
-  </script>
-</body>
-</html>
+    function showCart() {
+      let list = document.getElementById('cartList');
+      list.innerHTML = "";
+      cartItems.forEach(product => {
+        let li = document.createElement('li');
+        li
