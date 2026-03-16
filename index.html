@@ -5,241 +5,196 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Orphée & Ashworth</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
-body{background:#fff;color:#111;padding-bottom:100px}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+body {
+  background: #fff;
+  color: #111;
+  padding: 40px 20px 100px;
+}
 
-/* 頂部導航 */
-.navbar{position:fixed;top:0;left:0;width:100%;height:70px;background:#fff;border-bottom:1px solid #eee;display:flex;align-items:center;justify-content:space-between;padding:0 30px;z-index:999}
-.logo{height:32px}
-.nav-right{display:flex;gap:24px;font-size:14px;align-items:center}
-.nav-right button{background:none;border:none;cursor:pointer}
+.nav {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 12px;
+  font-size: 13px;
+  align-items: center;
+  z-index: 999;
+}
+.lang-switch button {
+  padding: 3px 6px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.nav button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+}
 
-/* 語言切換 */
-.lang-switch{display:flex;gap:8px}
-.lang-switch button{padding:4px 8px;border:1px solid #ddd;background:#fff;border-radius:4px;cursor:pointer}
+.logo {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.logo img {
+  height: 40px;
+}
 
-/* 內容 */
-.container{max-width:1200px;margin:120px auto 0;padding:0 20px}
-.about{text-align:center;margin-bottom:60px;line-height:1.8}
+.about {
+  text-align: center;
+  margin-bottom: 50px;
+  line-height: 1.7;
+}
 
-/* 產品 */
-.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 20px}
-.product{text-align:center}
-.product img{width:100%;height:auto;margin-bottom:12px;cursor:pointer}
-.product-name{font-size:14px;margin-bottom:4px}
-.product-price{font-size:14px;color:#666;margin-bottom:8px}
-.btn{padding:8px 14px;background:#111;color:#fff;border:none;font-size:12px;cursor:pointer;margin:3px}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.product {
+  text-align: center;
+}
+.product img {
+  width: 80px;
+  height: auto;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.product-name {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.product-price {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+.btn {
+  padding: 6px 10px;
+  background: #111;
+  color: #fff;
+  border: none;
+  font-size: 11px;
+  cursor: pointer;
+  margin: 2px;
+}
 
-/* 彈窗 */
-.modal{display:none;position:fixed;inset:0;background:rgba(255,255,255,0.95);z-index:1000;align-items:center;justify-content:center}
-.modal-box{background:#fff;padding:40px;width:90%;max-width:600px;position:relative}
-.close{position:absolute;top:20px;right:20px;font-size:18px;cursor:pointer}
-.modal-info{margin:20px 0;line-height:1.8}
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.96);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+.modal-box {
+  background: #fff;
+  padding: 30px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+}
+.close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.modal-info {
+  margin: 16px 0;
+  line-height: 1.6;
+  font-size: 14px;
+}
 
-/* WhatsApp */
-.whatsapp-float{position:fixed;bottom:30px;right:30px;background:#25D366;color:#fff;padding:14px 20px;border-radius:50px;font-size:14px;cursor:pointer;z-index:998}
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #25D366;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 50px;
+  font-size: 13px;
+  cursor: pointer;
+  z-index: 998;
+}
 
-/* 語言控制 */
-[lang-en],[lang-fr]{display:none}
-body.en [lang-en]{display:block}
-body.en [lang-zh]{display:none}
-body.fr [lang-fr]{display:block}
-body.fr [lang-zh]{display:none}
+[lang-zhs],[lang-zh],[lang-en],[lang-fr],[lang-de] { display: none; }
+body.zh [lang-zh] { display: block; }
+body.zhs [lang-zhs] { display: block; }
+body.en [lang-en] { display: block; }
+body.fr [lang-fr] { display: block; }
+body.de [lang-de] { display: block; }
 </style>
 </head>
 
-<body>
+<body class="zh">
 
-<!-- 導航 -->
-<div class="navbar">
+<div class="nav">
   <div class="lang-switch">
-    <button onclick="setLang('zh')">中</button>
+    <button onclick="setLang('zh')">繁</button>
+    <button onclick="setLang('zhs')">简</button>
     <button onclick="setLang('en')">EN</button>
     <button onclick="setLang('fr')">FR</button>
+    <button onclick="setLang('de')">DE</button>
   </div>
-  <img class="logo" src="https://p26-flow-imagex.sign.bytedance.com/obj/rc-gen-image/5e064c0e58744143b40fc3002f328871" alt="Logo">
-  <div class="nav-right">
-    <button onclick="openLogin()"><span lang-zh>登入</span><span lang-en>Login</span><span lang-fr>Connexion</span></button>
-    <button onclick="openWishlist()"><span lang-zh>願望清單</span><span lang-en>Wishlist</span><span lang-fr>Liste de souhaits</span></button>
-    <button onclick="openCart()"><span lang-zh>購物車</span> (<span id="cartCount">0</span>)</button>
-  </div>
+  <button onclick="openWishlist()">
+    <span lang-zh>願望</span><span lang-zhs>愿望</span>
+    <span lang-en>Wish</span><span lang-fr>Souhait</span><span lang-de>Wunsch</span>
+  </button>
+  <button onclick="openCart()">
+    <span lang-zh>購物車</span><span lang-zhs>购物车</span>
+    <span lang-en>Cart</span><span lang-fr>Panier</span><span lang-de>Warenkorb</span>
+    (<span id="cartCount">0</span>)
+  </button>
 </div>
 
-<!-- 簡介 -->
-<div class="container">
-  <div class="about">
-    <div lang-zh><h2>關於我們</h2><p>Orphée & Ashworth 專注奢華香氛，匠心調製獨特氣息。</p></div>
-    <div lang-en><h2>About Us</h2><p>Orphée & Ashworth creates refined, long-lasting luxury fragrances.</p></div>
-    <div lang-fr><h2>À Propos</h2><p>Orphée & Ashworth crée des parfums de luxe raffinés et durables.</p></div>
-  </div>
-
-  <!-- 產品 -->
-  <div class="product-grid">
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1594059111965-7ed076fd3171" 
-           onclick="showDetail(
-            '午夜木蘭','Midnight Magnolia','Magnolia de Minuit',480,
-            '前調：香橙、黑加侖子<br>中調：木蘭、晚香玉<br>後調：檀香、麝香',
-            'Top: Bergamot, Blackcurrant<br>Heart: Magnolia, Tuberose<br>Base: Sandalwood, Musk',
-            'Tête: Bergamote, Cassis<br>Cœur: Magnolia, Tubéreuse<br>Fond: Santal, Musc'
-          )">
-      <div class="product-name" lang-zh>午夜木蘭</div>
-      <div class="product-name" lang-en>Midnight Magnolia</div>
-      <div class="product-name" lang-fr>Magnolia de Minuit</div>
-      <div class="product-price">HK$ 480</div>
-      <button class="btn" onclick="addToCart('午夜木蘭',480)" lang-zh>加入購物車</button>
-      <button class="btn" onclick="addToWish('午夜木蘭',480)" lang-zh>加入願望</button>
-    </div>
-
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1559563458-cd4ed289b160" 
-           onclick="showDetail(
-            '海風橙花','Sea Breeze','Brise Marine',420,
-            '前調：檸檬、橙花<br>中調：茉莉、海洋香<br>後調：白麝香、琥珀',
-            'Top: Lemon, Orange Blossom<br>Heart: Jasmine, Marine<br>Base: White Musk, Amber',
-            'Tête: Citron, Fleur d’Oranger<br>Cœur: Jasmin, Marine<br>Fond: Musc Blanc, Ambre'
-          )">
-      <div class="product-name" lang-zh>海風橙花</div>
-      <div class="product-name" lang-en>Sea Breeze</div>
-      <div class="product-name" lang-fr>Brise Marine</div>
-      <div class="product-price">HK$ 420</div>
-      <button class="btn" onclick="addToCart('海風橙花',420)" lang-zh>加入購物車</button>
-      <button class="btn" onclick="addToWish('海風橙花',420)" lang-zh>加入願望</button>
-    </div>
-
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1541643184530-2b7b83f07702" 
-           onclick="showDetail(
-            '黎明玫瑰','Dawn Rose','Rose de l’Aube',520,
-            '前調：粉胡椒、荔枝<br>中調：玫瑰、牡丹<br>後調：廣藿香、龍涎香',
-            'Top: Pink Pepper, Lychee<br>Heart: Rose, Peony<br>Base: Patchouli, Ambroxan',
-            'Tête: Poivre Rose, Litchi<br>Cœur: Rose, Pivoine<br>Fond: Patchouli, Ambroxane'
-          )">
-      <div class="product-name" lang-zh>黎明玫瑰</div>
-      <div class="product-name" lang-en>Dawn Rose</div>
-      <div class="product-name" lang-fr>Rose de l’Aube</div>
-      <div class="product-price">HK$ 520</div>
-      <button class="btn" onclick="addToCart('黎明玫瑰',520)" lang-zh>加入購物車</button>
-      <button class="btn" onclick="addToWish('黎明玫瑰',520)" lang-zh>加入願望</button>
-    </div>
-  </div>
+<div class="logo">
+  <img src="https://i.imgur.com/8X7Z1pY.png" alt="Logo">
 </div>
 
-<!-- 彈窗 -->
-<div class="modal" id="modal">
-  <div class="modal-box">
-    <div class="close" onclick="closeModal()">✕</div>
-    <div id="modalContent"></div>
+<div class="about">
+  <h2 lang-zh>關於我們</h2><h2 lang-zhs>关于我们</h2>
+  <h2 lang-en>About Us</h2><h2 lang-fr>À Propos</h2><h2 lang-de>Über Uns</h2>
+  <p lang-zh>Orphée & Ashworth 專注奢華香氛，匠心調製獨特氣息。</p>
+  <p lang-zhs>Orphée & Ashworth 专注奢华香氛，匠心调制独特气息。</p>
+  <p lang-en>Orphée & Ashworth creates refined luxury fragrances.</p>
+  <p lang-fr>Orphée & Ashworth crée des parfums de luxe raffinés.</p>
+  <p lang-de>Orphée & Ashworth schafft edle Luxusparfüms.</p>
+</div>
+
+<div class="product-grid">
+
+  <div class="product">
+    <img src="https://images.unsplash.com/photo-1594059111965-7ed076fd3171" onclick="showDetail(
+    '午夜木蘭','午夜木兰','Midnight Magnolia','Magnolia de Minuit','Mitternachts-Magnolie',480,
+    '前調：香橙、黑加侖子<br>中調：木蘭、晚香玉<br>後調：檀香、麝香',
+    '前调：香橙、黑加仑子<br>中调：木兰、晚香玉<br>后调：檀香、麝香',
+    'Top: Bergamot, Blackcurrant<br>Heart: Magnolia, Tuberose<br>Base: Sandalwood, Musk',
+    'Tête: Bergamote, Cassis<br>Cœur: Magnolia, Tubéreuse<br>Fond: Santal, Musc',
+    'Kopf: Bergamotte, Johannisbeere<br>Herz: Magnolie, Tuberose<br>Basis: Sandelholz, Moschus')">
+    <div class="product-name" lang-zh>午夜木蘭</div>
+    <div class="product-price">HK$ 480</div>
+    <button class="btn" onclick="addToCart('午夜木蘭',480)">購物車</button>
+    <button class="btn" onclick="addToWish('午夜木蘭',480)">願望</button>
   </div>
-</div>
 
-<!-- WhatsApp -->
-<div class="whatsapp-float" onclick="window.open('https://wa.me/85290475370','_blank')">
-  <span lang-zh>WhatsApp 聯絡我們</span>
-  <span lang-en>WhatsApp Us</span>
-  <span lang-fr>Contactez-nous sur WhatsApp</span>
-</div>
-
-<script>
-let cart = [];
-let wishlist = [];
-
-function setLang(lang) {
-  document.body.className = lang;
-}
-
-function closeModal() {
-  document.getElementById('modal').style.display = 'none';
-}
-
-// 產品詳細頁 + 願望清單按鈕
-function showDetail(zhName, enName, frName, price, infoZh, infoEn, infoFr) {
-  let html = `
-    <h2 lang-zh>${zhName}</h2>
-    <h2 lang-en>${enName}</h2>
-    <h2 lang-fr>${frName}</h2>
-    <p>HK$ ${price}</p>
-    <div class="modal-info">
-      <div lang-zh>${infoZh}</div>
-      <div lang-en>${infoEn}</div>
-      <div lang-fr>${infoFr}</div>
-    </div>
-    <br>
-    <button class="btn" onclick="addToCart('${zhName}',${price});closeModal()" lang-zh>加入購物車</button>
-    <button class="btn" onclick="addToWish('${zhName}',${price});closeModal()" lang-zh>加入願望清單</button>
-  `;
-  document.getElementById('modalContent').innerHTML = html;
-  document.getElementById('modal').style.display = 'flex';
-}
-
-// 購物車
-function addToCart(name, price) {
-  cart.push({name, price});
-  document.getElementById('cartCount').innerText = cart.length;
-  alert(name + ' 已加入購物車');
-}
-
-function openCart() {
-  let total = 0;
-  let html = `
-    <h3 lang-zh>購物車</h3>
-    <h3 lang-en>Shopping Cart</h3>
-    <h3 lang-fr>Panier</h3>
-  `;
-  cart.forEach(item => {
-    total += item.price;
-    html += `<p>${item.name} HK$${item.price}</p>`;
-  });
-  html += `<p><strong>Total HK$${total}</strong></p><br>`;
-  html += `<button class="btn" onclick="goToPayment()" lang-zh>前往付款</button>`;
-  document.getElementById('modalContent').innerHTML = html;
-  document.getElementById('modal').style.display = 'flex';
-}
-
-// 願望清單
-function addToWish(name, price) {
-  wishlist.push({name, price});
-  alert(name + ' 已加入願望清單');
-}
-
-function openWishlist() {
-  let html = `
-    <h3 lang-zh>願望清單</h3>
-    <h3 lang-en>Wishlist</h3>
-    <h3 lang-fr>Liste de souhaits</h3>
-  `;
-  wishlist.forEach(item => {
-    html += `<p>${item.name} HK$${item.price}</p>`;
-  });
-  document.getElementById('modalContent').innerHTML = html;
-  document.getElementById('modal').style.display = 'flex';
-}
-
-// 登入
-function openLogin() {
-  let html = `
-    <h3 lang-zh>會員登入</h3>
-    <h3 lang-en>Login</h3>
-    <h3 lang-fr>Connexion</h3>
-    <input placeholder="Email" lang-zh placeholder="電郵"><br>
-    <input type="password" placeholder="Password" lang-zh placeholder="密碼"><br><br>
-    <button class="btn" onclick="alert('登入成功');closeModal()">OK</button>
-  `;
-  document.getElementById('modalContent').innerHTML = html;
-  document.getElementById('modal').style.display = 'flex';
-}
-
-// 付款
-function goToPayment() {
-  let html = `
-    <h3 lang-zh>付款方式</h3>
-    <h3 lang-en>Payment</h3>
-    <h3 lang-fr>Paiement</h3>
-    <p>PayMe / FPS / 信用卡 / 銀行轉帳</p>
-    <p>付款後請傳送收據至 WhatsApp：9047 5370</p>
-  `;
-  document.getElementById('modalContent').innerHTML = html;
-}
-</script>
-</body>
-</html>
+  <div class="product">
+    <img src="https://images.unsplash.com/photo-1559563458-cd4ed289b60" onclick="showDetail(
+    '海風橙花','海风橙花','Sea Breeze','Brise Marine','Meeresbrise',420,
+    '前調：檸檬、橙花<br>中調：茉莉、海洋香<br>後調：白麝香、琥珀',
+    '前调：柠檬、橙花<br>中调
