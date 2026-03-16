@@ -9,7 +9,6 @@
 body{background:#000;color:#fff;padding:40px 20px 120px;animation:fadeIn 1s}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-/* 流水聲按鈕 */
 .audio-control{position:fixed;top:15px;left:15px;z-index:999}
 .audio-btn{background:#000;color:#fff;border:1px solid #888;padding:5px 10px;border-radius:6px;cursor:pointer;font-size:12px}
 
@@ -77,7 +76,7 @@ body{background:#000;color:#fff;padding:40px 20px 120px;animation:fadeIn 1s}
 
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:1000;align-items:center;justify-content:center}
 .modal-box{background:#111;padding:30px;width:90%;max-width:500px;position:relative;border:1px solid #333;border-radius:8px}
-.close{position:absolute;top:15px;right:15px;font-size:24px;cursor:pointer;color:#fff}
+.close{position:absolute;top:15px;right:15px;font-size:24px;cursor-pointer;color:#fff}
 .desc{margin-top:10px;line-height:1.6;font-size:14px;color:#ccc}
 
 .whatsapp-float{position:fixed;bottom:30px;right:30px;background:#25D366;color:#fff;padding:12px 20px;border-radius:50px;font-size:14px;cursor:pointer;transition:0.2s}
@@ -96,11 +95,10 @@ body.de [lang-de]{display:block}
 
 <body class="zh">
 
-<!-- 流水聲按鈕 -->
 <div class="audio-control">
   <button class="audio-btn" onclick="toggleSound()">🔊 流水聲</button>
 </div>
-<!-- 流水聲音檔 -->
+
 <audio id="waterSound" loop>
   <source src="https://www.soundjay.com/water/sounds/water-stream-02.mp3" type="audio/mpeg">
 
@@ -333,63 +331,62 @@ body.de [lang-de]{display:block}
 </div>
 
 <script>
-let cart = []
-let wishlist = []
-let audio = document.getElementById('waterSound')
-let isPlaying = false
+let cart = [];
+let wishlist = [];
+let audio = document.getElementById('waterSound');
+let isPlaying = false;
 
-// 流水聲開關
 function toggleSound() {
   if (!isPlaying) {
-    audio.volume = 0.3
-    audio.play()
-    isPlaying = true
+    audio.volume = 0.3;
+    audio.play();
+    isPlaying = true;
   } else {
-    audio.pause()
-    isPlaying = false
+    audio.pause();
+    isPlaying = false;
   }
 }
 
 function setLang(lang) {
-  document.body.className = lang
+  document.body.className = lang;
 }
 function closeModal() {
-  document.getElementById('modal').style.display = 'none'
+  document.getElementById('modal').style.display = 'none';
 }
 function showDetail(name, note, desc) {
-  document.getElementById('detailTitle').innerText = name + '｜' + note
-  document.getElementById('detailDesc').innerText = desc
-  document.getElementById('modal').style.display = 'flex'
+  document.getElementById('detailTitle').innerText = name + '｜' + note;
+  document.getElementById('detailDesc').innerText = desc;
+  document.getElementById('modal').style.display = 'flex';
 }
 function addToCart(name, price) {
-  cart.push({ name, price })
-  document.getElementById('cartCount').innerText = cart.length
-  alert(name + ' 已加入購物車')
+  cart.push({ name, price });
+  document.getElementById('cartCount').innerText = cart.length;
+  alert(name + ' 已加入購物車');
 }
 function addToWish(name) {
-  wishlist.push(name)
-  alert(name + ' 已加入願望清單')
+  wishlist.push(name);
+  alert(name + ' 已加入願望清單');
 }
 function openCart() {
-  let html = '<h4>購物車</h4>'
-  let total = 0
+  let html = '<h4>購物車</h4>';
+  let total = 0;
   cart.forEach(item => {
-    html += `<p>${item.name} HK$${item.price}</p>`
-    total += item.price
-  })
-  html += `<p><br>總額 HK$${total}</p>`
-  document.getElementById('detailTitle').innerText = ''
-  document.getElementById('detailDesc').innerHTML = html
-  document.getElementById('modal').style.display = 'flex'
+    html += `<p>${item.name} HK$${item.price}</p>`;
+    total += item.price;
+  });
+  html += `<p><br>總額 HK$${total}</p>`;
+  document.getElementById('detailTitle').innerText = '';
+  document.getElementById('detailDesc').innerHTML = html;
+  document.getElementById('modal').style.display = 'flex';
 }
 function openWishlist() {
-  let html = '<h4>願望清單</h4>'
+  let html = '<h4>願望清單</h4>';
   wishlist.forEach(item => {
-    html += `<p>${item}</p>`
-  })
-  document.getElementById('detailTitle').innerText = ''
-  document.getElementById('detailDesc').innerHTML = html
-  document.getElementById('modal').style.display = 'flex'
+    html += `<p>${item}</p>`;
+  });
+  document.getElementById('detailTitle').innerText = '';
+  document.getElementById('detailDesc').innerHTML = html;
+  document.getElementById('modal').style.display = 'flex';
 }
 </script>
 </body>
