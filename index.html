@@ -12,20 +12,43 @@
 body {
   background: #000;
   color: #fff;
-  font-family: "Georgia", serif;
+  font-family: Georgia, serif;
   min-height: 100vh;
-  background-image: url('https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/0c677e09500940a0ad218694f4ff6e79.jpeg~tplv-a9rns2rl98-image_dld_watermark_1_6.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  padding-bottom: 80px;
 }
-/* Logo */
 .logo {
-  width: 300px;
+  width: 280px;
   display: block;
-  margin: 40px auto 20px;
+  margin: 40px auto;
 }
-/* 購物車圖標 */
+.about-section {
+  max-width: 800px;
+  margin: 0 auto 50px;
+  padding: 0 20px;
+  text-align: center;
+  line-height: 1.8;
+  font-size: 16px;
+}
+.about-section h2 {
+  color: #ffd700;
+  margin-bottom: 16px;
+}
+.user-bar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+}
+.user-bar button {
+  background: #ffd700;
+  color: #000;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 30px;
+  font-weight: bold;
+  margin-right: 8px;
+  cursor: pointer;
+}
 .cart-icon {
   position: fixed;
   top: 20px;
@@ -36,262 +59,441 @@ body {
   border-radius: 30px;
   font-weight: bold;
   cursor: pointer;
-  z-index: 100;
+  z-index: 999;
 }
-/* 香水網格 */
+.wishlist-icon {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background: #ffd700;
+  color: #000;
+  padding: 10px 16px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 999;
+}
 .perfume-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-  max-width: 1200px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 20px;
 }
 .perfume-item {
+  background: rgba(255,255,255,0.07);
+  padding: 20px;
+  border-radius: 14px;
   text-align: center;
-  background: rgba(255,255,255,0.08);
-  padding: 15px;
-  border-radius: 12px;
 }
 .perfume-item img {
-  width: 100%;
-  max-width: 120px;
+  width: 110px;
+  height: 160px;
+  object-fit: cover;
   border-radius: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
 }
 .perfume-name {
-  margin: 10px 0;
-  font-size: 16px;
   color: #ffd700;
+  font-size: 16px;
+  margin-bottom: 6px;
 }
-.add-to-cart {
+.price {
+  margin-bottom: 12px;
+}
+.add-to-cart, .add-wish {
   background: #ffd700;
   color: #000;
   border: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 10px;
   font-weight: bold;
+  cursor: pointer;
+  margin: 4px;
 }
-/* 購物車彈窗 */
-.cart-modal {
+.modal {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
-  z-index: 200;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.9);
+  z-index: 2000;
   justify-content: center;
   align-items: center;
 }
-.cart-content {
+.modal-content {
   background: #111;
   padding: 30px;
   border-radius: 16px;
   width: 90%;
-  max-width: 500px;
+  max-width: 550px;
+  color: #fff;
 }
-.cart-item {
+.close-modal {
+  text-align: right;
+  color: #ffd700;
+  cursor: pointer;
+  font-size: 18px;
+}
+.product-detail img {
+  width: 140px;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 16px;
+}
+.product-detail h2 {
+  color: #ffd700;
+  margin-bottom: 12px;
+}
+.auth-form input, .contact-form input, .contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+}
+.auth-form button, .contact-form button {
+  width: 100%;
+  padding: 12px;
+  background: #ffd700;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.cart-item, .wish-item {
   display: flex;
   justify-content: space-between;
-  margin: 10px 0;
-  padding: 10px;
+  padding: 10px 0;
   border-bottom: 1px solid #333;
 }
 .cart-total {
+  text-align: right;
   font-size: 20px;
   font-weight: bold;
   margin: 20px 0;
-  text-align: right;
+}
+.discount-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: none;
 }
 .checkout-btn {
+  width: 100%;
+  padding: 14px;
   background: #ffd700;
   color: #000;
-  border: none;
-  padding: 12px 30px;
-  border-radius: 8px;
-  font-size: 18px;
   font-weight: bold;
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
-  width: 100%;
 }
-.close-cart {
-  text-align: right;
+.payment-method {
+  background: #222;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
   cursor: pointer;
-  color: #ffd700;
-}
-/* Shop Now & 底部 */
-.shop-now {
   text-align: center;
-  margin: 40px 0;
 }
-.shop-btn {
-  background: linear-gradient(135deg, #ffd700, #ffed4e);
-  color: #900;
-  border: none;
-  padding: 18px 60px;
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #25d366;
+  color: #fff;
+  padding: 14px 20px;
   border-radius: 50px;
-  font-size: 24px;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 0 20px rgba(255,215,0,0.6);
+  z-index: 9999;
 }
 .footer {
   text-align: center;
-  margin: 40px 0;
-  color: #ddd;
-  font-size: 16px;
+  margin-top: 60px;
+  color: #ccc;
+  padding: 20px;
 }
 </style>
 </head>
+
 <body>
-<!-- 購物車圖標 -->
+
+<!-- Login & Register -->
+<div class="user-bar">
+  <button onclick="openLogin()">Login</button>
+  <button onclick="openRegister()">Register</button>
+</div>
+
+<!-- Cart & Wishlist -->
 <div class="cart-icon" onclick="openCart()">🛒 Cart (<span id="cartCount">0</span>)</div>
+<div class="wishlist-icon" onclick="openWishlist()">❤️ Wishlist (<span id="wishCount">0</span>)</div>
 
 <!-- Logo -->
-<img class="logo" src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/5e064c0e58744143b40fc3002f328871.jpeg" alt="Orphée & Ashworth Logo">
+<img class="logo" src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/5e064c0e58744143b40fc3002f38871.jpeg" alt="Orphée & Ashworth">
 
-<!-- 10支香水 -->
+<!-- About Us -->
+<div class="about-section">
+  <h2>About Us</h2>
+  <p>Orphée & Ashworth is a luxury perfume house based in Hong Kong. We craft elegant, long-lasting scents inspired by nature and modern elegance. Each fragrance is blended with premium ingredients to bring you a unique sensory experience.</p>
+  <br>
+  <p>For any inquiries, please contact us via WhatsApp.</p>
+</div>
+
+<!-- Products -->
 <div class="perfume-grid">
   <div class="perfume-item">
-    <img src="https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/0c677e09500940a0ad218694f4ff6e79.jpeg~tplv-a9rns2rl98-image_dld_watermark_1_6.png" alt="Midnight Magnolia">
-    <p class="perfume-name">Midnight Magnolia</p>
-    <p>HK$480</p>
-    <button class="add-to-cart" onclick="addToCart('Midnight Magnolia', 480)">Add to Cart</button>
+    <img src="https://images.unsplash.com/photo-1594059111965-7ed076fd3171" onclick="showDetail('Midnight Magnolia',480,'Top: Bergamot, Blackcurrant<br>Heart: Magnolia, Tuberose<br>Base: Sandalwood, Musk<br>50ml')">
+    <div class="perfume-name">Midnight Magnolia</div>
+    <div class="price">HK$480</div>
+    <button class="add-to-cart" onclick="addToCart('Midnight Magnolia',480)">Add to Cart</button>
+    <button class="add-wish" onclick="addToWish('Midnight Magnolia',480)">❤️ Wish</button>
   </div>
+
   <div class="perfume-item">
-    <img src="https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/0c677e09500940a0ad218694f4ff6e79.jpeg~tplv-a9rns2rl98-image_dld_watermark_1_6.png" alt="Sea Breeze Orange Blossom">
-    <p class="perfume-name">Sea Breeze Orange Blossom</p>
-    <p>HK$420</p>
-    <button class="add-to-cart" onclick="addToCart('Sea Breeze Orange Blossom', 420)">Add to Cart</button>
+    <img src="https://images.unsplash.com/photo-1559563458-cd4ed289b160" onclick="showDetail('Sea Breeze',420,'Top: Orange Blossom, Lemon<br>Heart: Jasmine, Sea Salt<br>Base: White Musk, Amber<br>50ml')">
+    <div class="perfume-name">Sea Breeze</div>
+    <div class="price">HK$420</div>
+    <button class="add-to-cart" onclick="addToCart('Sea Breeze',420)">Add to Cart</button>
+    <button class="add-wish" onclick="addToWish('Sea Breeze',420)">❤️ Wish</button>
   </div>
+
   <div class="perfume-item">
-    <img src="https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/0c677e09500940a0ad218694f4ff6e79.jpeg~tplv-a9rns2rl98-image_dld_watermark_1_6.png" alt="Dawn Rose">
-    <p class="perfume-name">Dawn Rose</p>
-    <p>HK$520</p>
-    <button class="add-to-cart" onclick="addToCart('Dawn Rose', 520)">Add to Cart</button>
+    <img src="https://images.unsplash.com/photo-1541643184530-2b7b83f07702" onclick="showDetail('Dawn Rose',520,'Top: Pink Pepper, Lychee<br>Heart: Damask Rose, Peony<br>Base: Ambergris, Patchouli<br>50ml')">
+    <div class="perfume-name">Dawn Rose</div>
+    <div class="price">HK$520</div>
+    <button class="add-to-cart" onclick="addToCart('Dawn Rose',520)">Add to Cart</button>
+    <button class="add-wish" onclick="addToWish('Dawn Rose',520)">❤️ Wish</button>
   </div>
+
   <div class="perfume-item">
-    <img src="https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/0c677e09500940a0ad218694f4ff6e79.jpeg~tplv-a9rns2rl98-image_dld_watermark_1_6.png" alt="Pine Snow Breeze">
-    <p class="perfume-name">Pine Snow Breeze</p>
-    <p>HK$450</p>
-    <button class="add-to-cart" onclick="addToCart('Pine Snow Breeze', 450)">Add to Cart</button>
+    <img src="https://images.unsplash.com/photo-1607427733818-0467a8655269" onclick="showDetail('Pine Snow',450,'Top: Mint, Cedarwood<br>Heart: Pine Needles<br>Base: Oakmoss, Musk<br>50ml')">
+    <div class="perfume-name">Pine Snow</div>
+    <div class="price">HK$450</div>
+    <button class="add-to-cart" onclick="addToCart('Pine Snow',450)">Add to Cart</button>
+    <button class="add-wish" onclick="addToWish('Pine Snow',450)">❤️ Wish</button>
   </div>
+
   <div class="perfume-item">
-    <img src="https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/0c677e09500940a0ad218694f4ff6e79.jpeg~tplv-a9rns2rl98-image_dld_watermark_1_6.png" alt="Amber Oud Sandalwood">
-    <p class="perfume-name">Amber Oud Sandalwood</p>
-    <p>HK$550</p>
-    <button class="add-to-cart" onclick="addToCart('Amber Oud Sandalwood', 550)">Add to Cart</button>
+    <img src="https://images.unsplash.com/photo-1591408542935-a72a434aa7ab" onclick="showDetail('Amber Oud',550,'Top: Pepper, Saffron<br>Heart: Sandalwood, Agarwood<br>Base: Amber, Frankincense<br>50ml')">
+    <div class="perfume-name">Amber Oud</div>
+    <div class="price">HK$550</div>
+    <button class="add-to-cart" onclick="addToCart('Amber Oud',550)">Add to Cart</button>
+    <button class="add-wish" onclick="addToWish('Amber Oud',550)">❤️ Wish</button>
   </div>
+
   <div class="perfume-item">
-    <img src="https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/0c677e09500940a0ad218694f4ff6e79.jpeg~tplv-a9rns2rl98-image_dld_watermark_1_6.png" alt="Moonlit White Orchid">
-    <p class="perfume-name">Moonlit White Orchid</p>
-    <p>HK$460</p>
-    <button class="add-to-cart" onclick="addToCart('Moonlit White Orchid', 460)">Add to Cart</button>
-  </div>
-  <div class="perfume-item">
-    <img src="https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/0c677e09500940a0ad218694f4ff6e79.jpeg~tplv-a9rns2rl98-image_dld_watermark_1_6.png" alt="Misty Oolong">
-    <p class="perfume-name">Misty Oolong</p>
-    <p>HK$430</p>
-    <button class="add-to-cart" onclick="addToCart('Misty Oolong', 430)">Add to Cart</button>
-  </div>
-  <div class="perfume-item">
-    <img src="https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/0c677e09500940a0ad218694f4ff6e79.jpeg~tplv-a9rns2rl98-image_dld_watermark_1_6.png" alt="Love Bean Acacia">
-    <p class="perfume-name">Love Bean Acacia</p>
-    <p>HK$470</p>
-    <button class="add-to-cart" onclick="addToCart('Love Bean Acacia', 470)">Add to Cart</button>
-  </div>
-  <div class="perfume-item">
-    <img src="https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/0c677e09500940a0ad218694f4ff6e79.jpeg~tplv-a9rns2rl98-image_dld_watermark_1_6.png" alt="Lime Mint Breeze">
-    <p class="perfume-name">Lime Mint Breeze</p>
-    <p>HK$410</p>
-    <button class="add-to-cart" onclick="addToCart('Lime Mint Breeze', 410)">Add to Cart</button>
-  </div>
-  <div class="perfume-item">
-    <img src="https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/0c677e09500940a0ad218694f4ff6e79.jpeg~tplv-a9rns2rl98-image_dld_watermark_1_6.png" alt="Black Gold Oud">
-    <p class="perfume-name">Black Gold Oud</p>
-    <p>HK$580</p>
-    <button class="add-to-cart" onclick="addToCart('Black Gold Oud', 580)">Add to Cart</button>
+    <img src="https://images.unsplash.com/photo-1541643184530-2b7b83f07702" onclick="showDetail('Moon Orchid',460,'Top: Green Leaves, Citrus<br>Heart: White Orchid, Lily<br>Base: Vanilla, Musk<br>50ml')">
+    <div class="perfume-name">Moon Orchid</div>
+    <div class="price">HK$460</div>
+    <button class="add-to-cart" onclick="addToCart('Moon Orchid',460)">Add to Cart</button>
+    <button class="add-wish" onclick="addToWish('Moon Orchid',460)">❤️ Wish</button>
   </div>
 </div>
 
-<!-- Shop Now 按鈕 -->
-<div class="shop-now">
-  <button class="shop-btn" onclick="openCart()">Shop Now</button>
+<!-- Product Detail -->
+<div class="modal" id="detailModal">
+  <div class="modal-content">
+    <div class="close-modal" onclick="closeDetail()">✕ Close</div>
+    <div class="product-detail" id="detailContent"></div>
+  </div>
 </div>
 
-<!-- 購物車彈窗 -->
-<div class="cart-modal" id="cartModal">
-  <div class="cart-content">
-    <div class="close-cart" onclick="closeCart()">✕ Close</div>
+<!-- Cart -->
+<div class="modal" id="cartModal">
+  <div class="modal-content">
+    <div class="close-modal" onclick="closeCart()">✕ Close</div>
     <h2>Your Cart</h2>
     <div id="cartItems"></div>
+    <input type="text" class="discount-input" placeholder="Discount Code (e.g. OAPERF10)" id="discountCode">
+    <button onclick="applyDiscount()" style="background:#ffd700;padding:10px;border-radius:8px;margin-bottom:10px">Apply Discount</button>
     <div class="cart-total">Total: HK$<span id="cartTotal">0</span></div>
-    <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+    <button class="checkout-btn" onclick="goToPayment()">Checkout & Pay</button>
   </div>
 </div>
 
-<!-- 底部 -->
+<!-- Wishlist -->
+<div class="modal" id="wishModal">
+  <div class="modal-content">
+    <div class="close-modal" onclick="closeWishlist()">✕ Close</div>
+    <h2>Your Wishlist</h2>
+    <div id="wishItems"></div>
+  </div>
+</div>
+
+<!-- Payment -->
+<div class="modal" id="paymentModal">
+  <div class="modal-content">
+    <div class="close-modal" onclick="closePayment()">✕ Close</div>
+    <h2>Select Payment Method</h2>
+    <br>
+    <div class="payment-method" onclick="payWith('PayMe')">PayMe</div>
+    <div class="payment-method" onclick="payWith('FPS')">FPS</div>
+    <div class="payment-method" onclick="payWith('Credit Card')">Credit Card</div>
+    <div class="payment-method" onclick="payWith('Bank Transfer')">Bank Transfer</div>
+    <br>
+    <p style="text-align:center">After payment, send receipt to WhatsApp: 9047 5370</p>
+  </div>
+</div>
+
+<!-- Contact Form -->
+<div class="modal" id="contactModal">
+  <div class="modal-content">
+    <div class="close-modal" onclick="closeContact()">✕ Close</div>
+    <h2>Contact Us</h2>
+    <div class="contact-form">
+      <input type="text" placeholder="Your Name">
+      <input type="text" placeholder="Your Phone/WhatsApp">
+      <textarea rows="4" placeholder="Your Message"></textarea>
+      <button onclick="sendContact()">Send Message</button>
+    </div>
+  </div>
+</div>
+
+<!-- Login -->
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+    <div class="close-modal" onclick="closeLogin()">✕ Close</div>
+    <h2>Login</h2>
+    <div class="auth-form">
+      <input type="email" placeholder="Email">
+      <input type="password" placeholder="Password">
+      <button onclick="login()">Login</button>
+      <button onclick="openContact()" style="background:#ddd;margin-top:8px">Contact Us</button>
+    </div>
+  </div>
+</div>
+
+<!-- Register -->
+<div class="modal" id="registerModal">
+  <div class="modal-content">
+    <div class="close-modal" onclick="closeRegister()">✕ Close</div>
+    <h2>Register</h2>
+    <div class="auth-form">
+      <input type="email" placeholder="Email">
+      <input type="password" placeholder="Password">
+      <button onclick="register()">Register</button>
+    </div>
+  </div>
+</div>
+
+<!-- WhatsApp Float -->
+<div class="whatsapp-float" onclick="window.open('https://wa.me/85290475370','_blank')">WhatsApp Us</div>
+
+<!-- Footer -->
 <div class="footer">
-  <p>Address: Whatshop, Ying Kok, Kowloon, Hong Kong</p>
-  <p>💳 Payment: PayMe / FPS / Credit Card</p>
+  <p>Orphée & Ashworth</p>
+  <p>WhatsApp: 9047 5370</p>
+  <p>Payment: PayMe / FPS / Credit Card / Bank Transfer</p>
 </div>
 
 <script>
 let cart = [];
+let wishlist = [];
+let originalTotal = 0;
 
-// 加入購物車
+// Product Detail
+function showDetail(name, price, desc) {
+  document.getElementById('detailContent').innerHTML = `
+    <img src="https://images.unsplash.com/photo-1594059111965-7ed076fd3171">
+    <h2>${name}</h2>
+    <p>Price: HK$${price}</p>
+    <p>${desc}</p>
+    <button class="add-to-cart" style="margin-top:16px" onclick="addToCart('${name}',${price});closeDetail();">Add to Cart</button>
+  `;
+  document.getElementById('detailModal').style.display = 'flex';
+}
+function closeDetail() { document.getElementById('detailModal').style.display = 'none'; }
+
+// Cart
 function addToCart(name, price) {
   cart.push({name, price});
   updateCart();
-  alert(name + " added to cart!");
+  alert(name + " added to cart");
 }
-
-// 更新購物車顯示
 function updateCart() {
-  const cartCount = document.getElementById("cartCount");
-  const cartItems = document.getElementById("cartItems");
-  const cartTotal = document.getElementById("cartTotal");
-  
-  cartCount.textContent = cart.length;
-  
-  cartItems.innerHTML = "";
-  let total = 0;
-  cart.forEach(item => {
-    total += item.price;
-    cartItems.innerHTML += `
-      <div class="cart-item">
-        <span>${item.name}</span>
-        <span>HK$${item.price}</span>
-      </div>
-    `;
+  let count = document.getElementById('cartCount');
+  let items = document.getElementById('cartItems');
+  let total = document.getElementById('cartTotal');
+  count.innerText = cart.length;
+  items.innerHTML = '';
+  originalTotal = 0;
+  cart.forEach(i => {
+    originalTotal += i.price;
+    items.innerHTML += `<div class="cart-item"><span>${i.name}</span><span>HK$${i.price}</span></div>`;
   });
-  cartTotal.textContent = total;
+  total.innerText = originalTotal;
 }
+function openCart() { document.getElementById('cartModal').style.display = 'flex'; }
+function closeCart() { document.getElementById('cartModal').style.display = 'none'; }
 
-// 打開購物車
-function openCart() {
-  document.getElementById("cartModal").style.display = "flex";
-  updateCart();
+// Wishlist
+function addToWish(name, price) {
+  wishlist.push({name, price});
+  updateWish();
+  alert(name + " added to wishlist");
 }
-
-// 關閉購物車
-function closeCart() {
-  document.getElementById("cartModal").style.display = "none";
+function updateWish() {
+  let count = document.getElementById('wishCount');
+  let items = document.getElementById('wishItems');
+  count.innerText = wishlist.length;
+  items.innerHTML = '';
+  wishlist.forEach(i => {
+    items.innerHTML += `<div class="wish-item"><span>${i.name}</span><span>HK$${i.price}</span></div>`;
+  });
 }
+function openWishlist() { document.getElementById('wishModal').style.display = 'flex'; }
+function closeWishlist() { document.getElementById('wishModal').style.display = 'none'; }
 
-// 結帳（可對接真實支付）
-function checkout() {
-  if (cart.length === 0) {
-    alert("Your cart is empty!");
-    return;
+// Discount
+function applyDiscount() {
+  let code = document.getElementById('discountCode').value;
+  let totalEl = document.getElementById('cartTotal');
+  if(code === "OAPERF10") {
+    totalEl.innerText = Math.round(originalTotal * 0.9);
+    alert("Discount applied: 10% OFF");
+  } else if(code === "OAPERF20") {
+    totalEl.innerText = Math.round(originalTotal * 0.8);
+    alert("Discount applied: 20% OFF");
+  } else {
+    totalEl.innerText = originalTotal;
+    alert("Invalid discount code");
   }
-  alert("Proceeding to payment...\nTotal: HK$" + document.getElementById("cartTotal").textContent + "\n\nYou can connect to PayMe/FPS/Stripe for real payment.");
-  // 這裡可以跳轉到支付頁面，例如：
-  // window.location.href = "https://your-payment-page.com";
 }
+
+// Payment
+function goToPayment() {
+  if(cart.length === 0) return alert("Cart is empty");
+  document.getElementById('paymentModal').style.display = 'flex';
+}
+function closePayment() { document.getElementById('paymentModal').style.display = 'none'; }
+function payWith(method) {
+  alert("You selected: " + method + "\nPlease send receipt to WhatsApp 90475370");
+  closePayment();
+}
+
+// Contact
+function openContact() { document.getElementById('contactModal').style.display = 'flex'; }
+function closeContact() { document.getElementById('contactModal').style.display = 'none'; }
+function sendContact() {
+  alert("Your message has been sent! We will reply soon.");
+  closeContact();
+}
+
+// Auth
+function openLogin() { document.getElementById('loginModal').style.display = 'flex'; }
+function closeLogin() { document.getElementById('loginModal').style.display = 'none'; }
+function openRegister() { document.getElementById('registerModal').style.display = 'flex'; }
+function closeRegister() { document.getElementById('registerModal').style.display = 'none'; }
+function login() { alert("Login success"); closeLogin(); }
+function register() { alert("Register success"); closeRegister(); }
 </script>
+
 </body>
 </html>
-
