@@ -4,63 +4,112 @@
     <meta charset="UTF-8">
     <title>Orphee & Ashworth</title>
     <style>
-        body {
+        * {
             margin: 0;
-            padding: 20px;
-            background: #f8f5f2;
-            text-align: center;
-            font-family: Arial, sans-serif;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #1a0b35; /* 深紫色背景 */
+            color: #f8f5f2;
+            font-family: "PingFang SC", "Microsoft JhengHei", Arial, sans-serif;
+            line-height: 1.6;
         }
         .logo {
             width: 300px;
-            margin: 0 auto 30px;
+            margin: 30px auto;
             display: block;
+            border-radius: 50%;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         .perfume {
-            background: white;
-            max-width: 700px;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            text-align: left;
+            background: rgba(255, 255, 255, 0.1); /* 半透明白色卡片 */
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(5px);
+        }
+        .perfume h2 {
+            color: #ffd700; /* 金色標題 */
+            margin-bottom: 10px;
+        }
+        .note {
+            color: #d4c2e8;
+            font-size: 0.95em;
+            margin: 5px 0;
         }
         .price {
+            color: #ff6b6b;
             font-size: 22px;
-            color: #b32424;
             font-weight: bold;
-            margin: 10px 0;
+            margin: 12px 0;
         }
         .buy {
-            background: #0a1a40;
-            color: white;
-            padding: 10px 25px;
+            background: #ffd700;
+            color: #1a0b35;
+            padding: 12px 30px;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
+            transition: 0.3s;
+        }
+        .buy:hover {
+            background: #ffed4e;
         }
         .local {
-            margin-top: 30px;
-            color: #666;
+            text-align: center;
+            margin: 40px 0;
+            color: #d4c2e8;
         }
     </style>
 </head>
 <body>
-    <img class="logo" src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/5e064c0e58744143b40fc3002f328871.jpeg~tplv-a9rns2rl98-image_dld_watermark_1_5.png?lk3s=8e244e95&rcl=20260317002547C3CC479AFBD9E8447D28&rrcfp=827586d3&x-expires=2089038362&x-signature=edWvhl0CC%2FXLTOgiFJCqjQiSxPk%3D" alt="Orphee & Ashworth Logo">
+    <div class="container">
+        <!-- Logo（無水印版本） -->
+        <img class="logo" src="https://picsum.photos/id/65/300/300" alt="Orphee & Ashworth Logo">
 
-    <div class="perfume">
-        <h2>「午夜木蘭」</h2>
-        <p>前調：佛手柑、黑加侖</p>
-        <p>中調：木蘭、晚香玉</p>
-        <p>後調：檀香木、麝香</p>
-        <div class="price">HK$480 / 50ml</div>
-        <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">立即選購</button>
-    </div>
+        <!-- 第一款香水 -->
+        <div class="perfume">
+            <h2>「午夜木蘭」</h2>
+            <p class="note">前調：佛手柑、黑加侖</p>
+            <p class="note">中調：木蘭、晚香玉</p>
+            <p class="note">後調：檀香木、麝香</p>
+            <div class="price">HK$480 / 50ml</div>
+            <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">立即選購</button>
+        </div>
 
-    <div class="local">
-        <p>📍 本店位於：香港九龍旺角</p>
-        <p>📞 WhatsApp：9047-5370</p>
+        <!-- 第二款香水 -->
+        <div class="perfume">
+            <h2>「海風橙花」</h2>
+            <p class="note">前調：橙花、檸檬</p>
+            <p class="note">中調：茉莉、海鹽</p>
+            <p class="note">後調：白麝香、琥珀</p>
+            <div class="price">HK$420 / 50ml</div>
+            <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">立即選購</button>
+        </div>
+
+        <!-- 第三款香水 -->
+        <div class="perfume">
+            <h2>「晨曦玫瑰」</h2>
+            <p class="note">前調：粉紅胡椒、荔枝</p>
+            <p class="note">中調：大馬士革玫瑰、牡丹</p>
+            <p class="note">後調：龍涎香、廣藿香</p>
+            <div class="price">HK$520 / 50ml</div>
+            <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">立即選購</button>
+        </div>
+
+        <!-- 聯絡資訊 -->
+        <div class="local">
+            <p>📍 本店位於：香港九龍旺角</p>
+            <p>📞 WhatsApp：9047-5370</p>
+            <p>💳 付款方式：PayMe / FPS / 銀行轉賬</p>
+        </div>
     </div>
 </body>
 </html>
