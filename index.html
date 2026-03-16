@@ -5,7 +5,15 @@
   <title>Orphee & Ashworth</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <style>
-    body { background:#0b1d3a; color:#d4af37; font-family:'Playfair Display', serif; margin:0; }
+    body {
+      background:#0b1d3a url('https://www.transparenttextures.com/patterns/stardust.png');
+      color:#d4af37; font-family:'Playfair Display', serif; margin:0;
+      animation:stars 20s linear infinite;
+    }
+    @keyframes stars {
+      from { background-position:0 0; }
+      to { background-position:1000px 1000px; }
+    }
     header {
       text-align:center; padding:40px;
       background:linear-gradient(135deg,#0b1d3a,#001f3f);
@@ -18,12 +26,16 @@
     h1 { font-size:50px; color:#ffd700; animation:fadeIn 3s ease-in-out forwards; }
     @keyframes fadeIn { from {opacity:0; transform:scale(0.8);} to {opacity:1; transform:scale(1);} }
     .products { display:grid; grid-template-columns:repeat(5,1fr); gap:20px; padding:20px; }
-    .product { background:#fff; color:#0b1d3a; border:1px solid #d4af37; border-radius:10px; padding:15px; text-align:center; transition:transform 0.3s; }
+    .product {
+      background:#fff; color:#0b1d3a; border:1px solid #d4af37; border-radius:10px;
+      padding:15px; text-align:center; opacity:0; animation:slideUp 1s forwards;
+    }
+    @keyframes slideUp { from {transform:translateY(50px); opacity:0;} to {transform:translateY(0); opacity:1;} }
     .product:hover { transform:scale(1.05); box-shadow:0 0 15px #ffd700; }
     .product img { width:100%; border-radius:8px; cursor:pointer; transition:0.3s; }
     .product img:hover { transform:scale(1.1); }
     .btn { background:#fff; border:2px solid #d4af37; color:#0b1d3a; padding:8px 15px; border-radius:5px; cursor:pointer; transition:0.3s; }
-    .btn:hover { background:#d4af37; color:#fff; }
+    .btn:hover { background:linear-gradient(90deg,#d4af37,#ffd700); color:#fff; box-shadow:0 0 10px #ffd700; }
     .cart { position:fixed; top:20px; right:20px; background:#fff; color:#0b1d3a; padding:10px; border:1px solid #d4af37; border-radius:5px; cursor:pointer; }
     .whatsapp { position:fixed; bottom:20px; right:20px; background:#25D366; color:#fff; padding:12px 18px; text-decoration:none; border-radius:50px; font-weight:bold; }
     .payment { text-align:center; margin:30px; }
@@ -59,14 +71,14 @@
       <h3>Astingiray</h3>
       <button class="btn">立即購買</button>
     </div>
-    <!-- 其餘八件產品同樣結構，可以換 Unsplash 圖片 -->
+    <!-- 其餘八件產品同樣結構 -->
   </div>
 
   <div class="cart" onclick="showCart()">購物車：<span id="cartItems">0</span></div>
   <a class="whatsapp" href="https://wa.me/85290475370" target="_blank">WhatsApp</a>
 
   <div class="payment">
-    <p>接受付款方式：</p>
+    <p id="paymentText">接受付款方式：</p>
     <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa">
     <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="MasterCard">
     <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
@@ -87,7 +99,7 @@
   <div id="cartModal" class="modal">
     <div class="modal-content">
       <span onclick="closeCart()" style="cursor:pointer; float:right;">✖</span>
-      <h3>購物車內容</h3>
+      <h3 id="cartTitle">購物車內容</h3>
       <ul id="cartList"></ul>
     </div>
   </div>
@@ -116,19 +128,4 @@
       li.textContent = product;
       list.appendChild(li);
     });
-    document.getElementById('cartModal').style.display = "block";
-  }
-  function closeCart() { document.getElementById('cartModal').style.display = "none"; }
-
-  const translations = {
-    "zh-HK": { brand:"Orphee & Ashworth", companyDesc:"融合香港文化與歐洲美學，打造獨特香水" },
-    "zh-CN": { brand:"Orphee & Ashworth", companyDesc:"融合香港文化与欧洲美学，打造独特香水" },
-    "en": { brand:"Orphee & Ashworth", companyDesc:"Blending Hong Kong culture with European aesthetics to create unique perfumes." }
-  };
-  function changeLanguage(lang) {
-    document.getElementById("brand").innerText = translations[lang].brand;
-    document.getElementById("companyDesc").innerText = translations[lang].companyDesc;
-  }
-</script>
-</body>
-</html>
+    document.getElementById
