@@ -1,185 +1,168 @@
 <!DOCTYPE html>
-<html lang="zh-HK">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Orphee & Ashworth</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background-color: #000000; /* 純黑色背景 */
-            color: #f8f5f2;
-            font-family: "PingFang SC", "Microsoft JhengHei", Arial, sans-serif;
-            line-height: 1.6;
-        }
-        .logo {
-            width: 300px;
-            margin: 30px auto;
-            display: block;
-            border-radius: 50%;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .perfume {
-            background: rgba(255, 255, 255, 0.1); /* 半透明白色卡片 */
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 25px;
-            backdrop-filter: blur(5px);
-        }
-        .perfume h2 {
-            color: #ffd700; /* 金色標題 */
-            margin-bottom: 10px;
-        }
-        .note {
-            color: #d4c2e8;
-            font-size: 0.95em;
-            margin: 5px 0;
-        }
-        .price {
-            color: #ff6b6b;
-            font-size: 22px;
-            font-weight: bold;
-            margin: 12px 0;
-        }
-        .buy {
-            background: #ffd700;
-            color: #000000;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .buy:hover {
-            background: #ffed4e;
-        }
-        .local {
-            text-align: center;
-            margin: 40px 0;
-            color: #d4c2e8;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Orphee & Ashworth</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a22 100%);
+  color: #fff;
+  font-family: "Georgia", serif;
+  line-height: 1.6;
+}
+/* Your Logo */
+.logo {
+  width: 320px;
+  display: block;
+  margin: 30px auto;
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.perfume {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 26px;
+  margin-bottom: 22px;
+  backdrop-filter: blur(8px);
+  text-align: center;
+}
+.perfume h2 {
+  color: #ffd700;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+.note {
+  color: #d4c2e8;
+  margin: 4px 0;
+  font-size: 15px;
+}
+.buy {
+  background: #ffd700;
+  color: #000;
+  border: none;
+  padding: 13px 28px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 12px;
+}
+.footer {
+  text-align: center;
+  margin: 40px 0;
+  color: #aaa;
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <!-- 你嘅原創 Logo（無水印、無豆包字樣） -->
-        <img class="logo" src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/5e064c0e58744143b40fc3002f328871.jpeg~tplv-a9rns2rl98-image_dld_watermark_1_5.png" alt="Orphee & Ashworth Logo">
+<div class="container">
+  <!-- Your Original Logo -->
+  <img class="logo" src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/5e064c0e58744143b40fc3002f328871.jpeg~tplv-a9rns2rl98-image_dld_watermark_1_5.png" alt="Orphee & Ashworth Logo">
 
-        <!-- 1. 午夜木蘭 -->
-        <div class="perfume">
-            <h2>「午夜木蘭」</h2>
-            <p class="note">前調：佛手柑、黑加侖</p>
-            <p class="note">中調：木蘭、晚香玉</p>
-            <p class="note">後調：檀香木、麝香</p>
-            <div class="price">HK$480 / 50ml</div>
-            <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">立即選購</button>
-        </div>
+  <!-- 1. Midnight Magnolia -->
+  <div class="perfume">
+    <h2>Midnight Magnolia</h2>
+    <p class="note">Top: Bergamot, Blackcurrant</p>
+    <p class="note">Heart: Magnolia, Tuberose</p>
+    <p class="note">Base: Sandalwood, Musk</p>
+    <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">Buy Now</button>
+  </div>
 
-        <!-- 2. 海風橙花 -->
-        <div class="perfume">
-            <h2>「海風橙花」</h2>
-            <p class="note">前調：橙花、檸檬</p>
-            <p class="note">中調：茉莉、海鹽</p>
-            <p class="note">後調：白麝香、琥珀</p>
-            <div class="price">HK$420 / 50ml</div>
-            <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">立即選購</button>
-        </div>
+  <!-- 2. Sea Breeze Orange Blossom -->
+  <div class="perfume">
+    <h2>Sea Breeze Orange Blossom</h2>
+    <p class="note">Top: Orange Blossom, Lemon</p>
+    <p class="note">Heart: Jasmine, Sea Salt</p>
+    <p class="note">Base: White Musk, Amber</p>
+    <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">Buy Now</button>
+  </div>
 
-        <!-- 3. 晨曦玫瑰 -->
-        <div class="perfume">
-            <h2>「晨曦玫瑰」</h2>
-            <p class="note">前調：粉紅胡椒、荔枝</p>
-            <p class="note">中調：大馬士革玫瑰、牡丹</p>
-            <p class="note">後調：龍涎香、廣藿香</p>
-            <div class="price">HK$520 / 50ml</div>
-            <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">立即選購</button>
-        </div>
+  <!-- 3. Dawn Rose -->
+  <div class="perfume">
+    <h2>Dawn Rose</h2>
+    <p class="note">Top: Pink Pepper, Lychee</p>
+    <p class="note">Heart: Damask Rose, Peony</p>
+    <p class="note">Base: Ambergris, Patchouli</p>
+    <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">Buy Now</button>
+  </div>
 
-        <!-- 4. 松雪清風 -->
-        <div class="perfume">
-            <h2>「松雪清風」</h2>
-            <p class="note">前調：薄荷、雪松</p>
-            <p class="note">中調：松針、白松香</p>
-            <p class="note">後調：橡苔、麝香</p>
-            <div class="price">HK$450 / 50ml</div>
-            <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">立即選購</button>
-        </div>
+  <!-- 4. Pine Snow Breeze -->
+  <div class="perfume">
+    <h2>Pine Snow Breeze</h2>
+    <p class="note">Top: Mint, Cedarwood</p>
+    <p class="note">Heart: Pine Needles, White Pine Resin</p>
+    <p class="note">Base: Oakmoss, Musk</p>
+    <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">Buy Now</button>
+  </div>
 
-        <!-- 5. 琥珀沉檀 -->
-        <div class="perfume">
-            <h2>「琥珀沉檀」</h2>
-            <p class="note">前調：胡椒、藏紅花</p>
-            <p class="note">中調：檀香、沉香</p>
-            <p class="note">後調：琥珀、乳香</p>
-            <div class="price">HK$550 / 50ml</div>
-            <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">立即選購</button>
-        </div>
+  <!-- 5. Amber Oud Sandalwood -->
+  <div class="perfume">
+    <h2>Amber Oud Sandalwood</h2>
+    <p class="note">Top: Pepper, Saffron</p>
+    <p class="note">Heart: Sandalwood, Agarwood</p>
+    <p class="note">Base: Amber, Frankincense</p>
+    <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">Buy Now</button>
+  </div>
 
-        <!-- 6. 月下白蘭 -->
-        <div class="perfume">
-            <h2>「月下白蘭」</h2>
-            <p class="note">前調：綠葉、柑橘</p>
-            <p class="note">中調：白蘭花、鈴蘭</p>
-            <p class="note">後調：香草、麝香</p>
-            <div class="price">HK$460 / 50ml</div>
-            <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">立即選購</button>
-        </div>
+  <!-- 6. Moonlit White Orchid -->
+  <div class="perfume">
+    <h2>Moonlit White Orchid</h2>
+    <p class="note">Top: Green Leaves, Citrus</p>
+    <p class="note">Heart: White Orchid, Lily of the Valley</p>
+    <p class="note">Base: Vanilla, Musk</p>
+    <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">Buy Now</button>
+  </div>
 
-        <!-- 7. 煙雨烏龍 -->
-        <div class="perfume">
-            <h2>「煙雨烏龍」</h2>
-            <p class="note">前調：梨、佛手柑</p>
-            <p class="note">中調：烏龍茶、茉莉</p>
-            <p class="note">後調：麝香、木質調</p>
-            <div class="price">HK$430 / 50ml</div>
-            <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">立即選購</button>
-        </div>
+  <!-- 7. Misty Oolong -->
+  <div class="perfume">
+    <h2>Misty Oolong</h2>
+    <p class="note">Top: Pear, Bergamot</p>
+    <p class="note">Heart: Oolong Tea, Jasmine</p>
+    <p class="note">Base: Musk, Woody Notes</p>
+    <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">Buy Now</button>
+  </div>
 
-        <!-- 8. 紅豆相思 -->
-        <div class="perfume">
-            <h2>「紅豆相思」</h2>
-            <p class="note">前調：紅豆、覆盆子</p>
-            <p class="note">中調：玫瑰、牡丹</p>
-            <p class="note">後調：香草、廣藿香</p>
-            <div class="price">HK$470 / 50ml</div>
-            <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">立即選購</button>
-        </div>
+  <!-- 8. Love Bean Acacia -->
+  <div class="perfume">
+    <h2>Love Bean Acacia</h2>
+    <p class="note">Top: Red Bean, Raspberry</p>
+    <p class="note">Heart: Rose, Peony</p>
+    <p class="note">Base: Vanilla, Patchouli</p>
+    <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">Buy Now</button>
+  </div>
 
-        <!-- 9. 青檸薄荷 -->
-        <div class="perfume">
-            <h2>「青檸薄荷」</h2>
-            <p class="note">前調：青檸、薄荷</p>
-            <p class="note">中調：羅勒、紫蘇</p>
-            <p class="note">後調：白麝香、雪松</p>
-            <div class="price">HK$410 / 50ml</div>
-            <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">立即選購</button>
-        </div>
+  <!-- 9. Lime Mint Breeze -->
+  <div class="perfume">
+    <h2>Lime Mint Breeze</h2>
+    <p class="note">Top: Lime, Mint</p>
+    <p class="note">Heart: Basil, Perilla</p>
+    <p class="note">Base: White Musk, Cedarwood</p>
+    <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">Buy Now</button>
+  </div>
 
-        <!-- 10. 黑金烏木 -->
-        <div class="perfume">
-            <h2>「黑金烏木」</h2>
-            <p class="note">前調：皮革、煙草</p>
-            <p class="note">中調：烏木、沉香</p>
-            <p class="note">後調：麝香、龍涎香</p>
-            <div class="price">HK$580 / 50ml</div>
-            <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">立即選購</button>
-        </div>
+  <!-- 10. Black Gold Oud -->
+  <div class="perfume">
+    <h2>Black Gold Oud</h2>
+    <p class="note">Top: Leather, Tobacco</p>
+    <p class="note">Heart: Agarwood, Oud</p>
+    <p class="note">Base: Musk, Ambergris</p>
+    <button class="buy" onclick="window.location.href='https://wa.me/85290475370'">Buy Now</button>
+  </div>
 
-        <!-- 聯絡與付款 -->
-        <div class="local">
-            <p>📍 本店位於：香港九龍旺角</p>
-            <p>📞 WhatsApp：9047-5370</p>
-            <p>💳 付款方式：PayMe / FPS / 銀行轉賬</p>
-        </div>
-    </div>
+  <!-- Footer Info -->
+  <div class="footer">
+    <p>📍 Our Store: Mong Kok, Kowloon, Hong Kong</p>
+    <p>📞 WhatsApp: 9047-5370</p>
+    <p>💳 Payment: PayMe / FPS / Bank Transfer</p>
+  </div>
+</div>
 </body>
 </html>
