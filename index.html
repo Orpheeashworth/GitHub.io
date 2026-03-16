@@ -1,70 +1,109 @@
+Enable desktop notifications for Gmail.
+   OK  No thanks
+1 of 140
+(no subject)
+Inbox
+
+MA Ma
+4:00 AM (0 minutes ago)
+to me
+
 <!DOCTYPE html>
-<html>
+<html lang="zh-HK">
 <head>
-    <title>我的香水專賣店</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            max-width: 900px; 
-            margin: 0 auto; 
-            padding: 20px; 
-            background-color: #f8f5f2;
-        }
-        h1 { color: #5a3e36; text-align: center; }
-        .perfume { 
-            border: 1px solid #d4c5b8; 
-            padding: 18px; 
-            margin: 15px 0; 
-            border-radius: 10px; 
-            background: white;
-        }
-        .perfume h3 { margin: 0; color: #5a3e36; }
-        .note { color: #8a7568; font-size: 0.9em; margin: 5px 0; }
-        .price { color: #b05a4e; font-size: 1.3em; font-weight: bold; margin: 8px 0; }
-        button { 
-            background: #b05a4e; 
-            color: white; 
-            border: none; 
-            padding: 10px 20px; 
-            border-radius: 5px; 
-            cursor: pointer;
-            font-size: 1em;
-        }
-        button:hover { background: #8a453c; }
-        .contact { text-align: center; margin-top: 30px; color: #5a3e36; }
-    </style>
+  <meta charset="UTF-8">
+  <title>Orphee & Ashworth</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body { background-color: #a7c7e7; font-family: 'Playfair Display', serif; margin:0; }
+    header { text-align:center; padding:40px; }
+    h1 { animation: fadeIn 2s; color:#2c2c2c; font-size:48px; letter-spacing:2px; }
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+    p { color:#444; font-size:18px; }
+    nav { text-align:center; margin:20px; }
+    nav select { padding:8px; border-radius:5px; border:1px solid #ccc; }
+    .product { 
+      border:1px solid #ddd; margin:20px; padding:20px; background:#fff; 
+      display:inline-block; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .product:hover { transform: scale(1.05); }
+    .product img { width:250px; border-radius:8px; cursor:pointer; transition:0.3s; }
+    .product img:hover { transform: scale(1.1); }
+    .btn { 
+      background:#fff; border:2px solid #bfa14a; color:#2c2c2c; 
+      padding:10px 20px; margin:5px; border-radius:5px; cursor:pointer; 
+      transition:0.3s;
+    }
+    .btn:hover { background:#bfa14a; color:#fff; }
+    .cart { position:fixed; top:20px; right:20px; background:#fff; padding:10px; border:1px solid #333; border-radius:5px; }
+    .whatsapp { position:fixed; bottom:20px; right:20px; background:#25D366; color:#fff; padding:12px 18px; text-decoration:none; border-radius:50px; font-weight:bold; }
+  </style>
 </head>
 <body>
-    <h1>🌸 我的香水專賣店</h1>
-    <p style="text-align:center; color:#8a7568;">精選高品質香水，讓你散發獨特氣息</p>
+  <header>
+    <h1>Orphee & Ashworth</h1>
+    <p>公司簡介：融合香港文化與歐洲美學，打造獨特香水。</p>
+  </header>
 
-    <div class="perfume">
-        <h3>木質玫瑰香水</h3>
-        <p class="note">前調：玫瑰、佛手柑 | 中調：檀香、雪松 | 後調：麝香、琥珀</p>
-        <div class="price">HK$380 / 50ml</div>
-        <button>立即選購</button>
-    </div>
+  <nav>
+    <label>語言選擇：</label>
+    <select>
+      <option>English</option>
+      <option>Français</option>
+      <option>简体中文</option>
+      <option>繁體中文</option>
+      <option>Deutsch</option>
+      <option>Italiano</option>
+    </select>
+  </nav>
 
-    <div class="perfume">
-        <h3>清新柑橘淡香水</h3>
-        <p class="note">前調：檸檬、橙皮 | 中調：薄荷、迷迭香 | 後調：白麝香</p>
-        <div class="price">HK$320 / 50ml</div>
-        <button>立即選購</button>
-    </div>
+  <div class="product">
+    <img src="perfume.jpg" alt="香水" onclick="zoomImage(this)">
+    <h2>香水 A</h2>
+    <p>簡介：清新花香調</p>
+    <p>價錢：HK$880</p>
+    <button class="btn" onclick="checkoutStripe()">Stripe 付款</button>
+    <div id="paypal-button-container"></div>
+    <button class="btn" onclick="addToFavorites('香水 A')">我的最愛</button>
+  </div>
 
-    <div class="perfume">
-        <h3>東方花香濃香水</h3>
-        <p class="note">前調：茉莉、晚香玉 | 中調：香草、肉桂 | 後調：廣藿香、零陵香豆</p>
-        <div class="price">HK$420 / 50ml</div>
-        <button>立即選購</button>
-    </div>
+  <div class="cart">購物車：<span id="cartItems">0</span></div>
 
-    <div class="contact">
-        <p>📞 訂購熱線：WhatsApp 1234-5678</p>
-        <p>📍 歡迎查詢試香及優惠資訊</p>
-    </div>
+  <a class="whatsapp" href="https://wa.me/85290475370" target="_blank">WhatsApp</a>
+
+  <!-- Stripe JS -->
+  <script src="https://js.stripe.com/v3/"></script>
+  <!-- PayPal JS -->
+  <script src="https://www.paypal.com/sdk/js?client-id=你的PayPalClientID&currency=HKD"></script>
+
+  <script>
+    const stripe = Stripe("你的Stripe公開金鑰");
+    let cartCount = 0, favCount = 0;
+
+    function checkoutStripe() {
+      fetch("/create-checkout-session", { method: "POST" })
+        .then(res => res.json())
+        .then(session => stripe.redirectToCheckout({ sessionId: session.id }));
+    }
+
+    paypal.Buttons({
+      createOrder: (data, actions) => actions.order.create({
+        purchase_units: [{ amount: { value: '880.00', currency_code: 'HKD' }, description: '香水 A' }]
+      }),
+      onApprove: (data, actions) => actions.order.capture().then(details => alert('付款成功，謝謝 ' + details.payer.name.given_name)),
+      onCancel: () => alert('付款已取消')
+    }).render('#paypal-button-container');
+
+    function addToFavorites(item) {
+      favCount++;
+      alert(item + " 已加入我的最愛");
+    }
+
+    function zoomImage(img) {
+      let newWin = window.open("", "ImageZoom", "width=600,height=600");
+      newWin.document.write("<img src='" + img.src + "' style='width:100%'>");
+    }
+  </script>
 </body>
 </html>
-
-
-
