@@ -5,348 +5,107 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Orphee & Ashworth</title>
 <style>
-* {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: "Times New Roman", serif;
-}
-body {
-  background:#fff;
-  color:#111;
-  padding-bottom:50px;
-}
-/* 高級Logo樣式 */
-.header {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:24px 36px;
-  border-bottom:1px solid #e0e0e0;
-  position:sticky;
-  top:0;
-  background:#fff;
-  z-index:99;
-}
-.logo {
-  font-size:32px;
-  font-weight:600;
-  letter-spacing:2px;
-  color:#1a1a1a;
-  font-family: "Times New Roman", serif;
-}
-.logo span {
-  color:#888;
-  font-weight:400;
-}
-.nav {
-  display:flex;
-  gap:16px;
-  align-items:center;
-  flex-wrap:wrap;
-}
-.btn {
-  padding:10px 18px;
-  border:1px solid #111;
-  background:#fff;
-  border-radius:8px;
-  cursor:pointer;
-  transition:0.2s;
-  font-size:14px;
-  font-family: -apple-system, sans-serif;
-}
-.btn:hover {
-  background:#111;
-  color:#fff;
-}
-.whatsapp-btn {
-  background:#25D366;
-  color:#fff;
-  border-color:#25D366;
-  font-weight:500;
-}
-.whatsapp-btn:hover {
-  background:#128C7E;
-  color:#fff;
-}
-select.btn {
-  padding:9px 14px;
-}
-.container {
-  max-width:1300px;
-  margin:0 auto;
-  padding:50px 20px;
-}
-.section-title {
-  font-size:32px;
-  font-weight:500;
-  margin-bottom:40px;
-  text-align:center;
-  font-family: "Times New Roman", serif;
-}
-.perfume-grid {
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:28px;
-}
-.perfume-card {
-  border-radius:16px;
-  border:1px solid #eee;
-  overflow:hidden;
-  transition:0.3s;
-}
-.perfume-card:hover {
-  transform:translateY(-6px);
-  box-shadow:0 12px 24px rgba(0,0,0,0.08);
-}
-.perfume-img {
-  width:100%;
-  height:260px;
-  background:#f8f8f8;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.perfume-img img {
-  max-width:85%;
-  max-height:85%;
-  object-fit:contain;
-}
-.perfume-info {
-  padding:20px;
-  text-align:center;
-}
-.perfume-name {
-  font-size:16px;
-  font-weight:500;
-  margin-bottom:12px;
-  font-family: "Times New Roman", serif;
-}
-.add-cart {
-  width:100%;
-  padding:10px;
-  border:1px solid #111;
-  background:#fff;
-  border-radius:8px;
-  cursor:pointer;
-  font-size:14px;
-  transition:0.2s;
-}
-.add-cart:hover {
-  background:#111;
-  color:#fff;
-}
-@media(max-width:1000px) {
-  .perfume-grid {grid-template-columns:repeat(3,1fr)}
-}
-@media(max-width:600px) {
-  .perfume-grid {grid-template-columns:repeat(2,1fr)}
-  .logo {font-size:24px}
-  .nav {gap:8px}
-  .btn {padding:8px 12px;font-size:12px}
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:serif}
+body{background:#fff;color:#222;padding-bottom:60px}
+.header{display:flex;justify-content:space-between;align-items:center;padding:24px 32px;border-bottom:1px solid #ddd;position:sticky;top:0;background:#fff;z-index:99}
+.logo{font-size:30px;font-weight:600;letter-spacing:1.5px}
+.nav{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.btn{padding:9px 14px;border:1px solid #222;background:#fff;border-radius:6px;cursor:pointer}
+.btn:hover{background:#222;color:#fff}
+.whatsapp{background:#25D366;color:#fff;border-color:#25D366}
+.container{max-width:1300px;margin:0 auto;padding:40px 20px}
+.title{font-size:28px;text-align:center;margin-bottom:36px}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.card{border:1px solid #eee;border-radius:12px;overflow:hidden}
+.card:hover{transform:translateY(-4px);box-shadow:0 6px 16px rgba(0,0,0,.06)}
+.pic{height:220px;background:#f8f8f8;display:flex;align-items:center;justify-content:center}
+.pic img{max-height:85%;max-width:85%}
+.info{padding:16px;text-align:center}
+.name{margin-bottom:10px;font-size:16px}
+.add{width:100%;padding:8px;border:1px solid #222;background:#fff;border-radius:6px;cursor:pointer}
+.add:hover{background:#222;color:#fff}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
+
 <body>
 
 <div class="header">
-  <!-- 高級Logo：Orphee & Ashworth -->
-  <div class="logo">Orphee <span>&</span> Ashworth</div>
+  <div class="logo">Orphee & Ashworth</div>
   <div class="nav">
-    <select id="langSelect" class="btn">
-      <option value="zh-HK">繁體中文</option>
-      <option value="zh-CN">简体中文</option>
+    <select id="lang" class="btn">
+      <option value="hk">繁體中文</option>
+      <option value="cn">简体中文</option>
       <option value="en">English</option>
-      <option value="ja">日本語</option>
-      <option value="ko">한국어</option>
+      <option value="jp">日本語</option>
+      <option value="kr">한국어</option>
       <option value="it">Italiano</option>
       <option value="fr">Français</option>
     </select>
-    <button class="btn" data-i18n="wish">願望</button>
-    <button class="btn" data-i18n="cart">購物車 (<span id="cartCount">0</span>)</button>
-    <button class="btn" data-i18n="checkout">收款</button>
-    <!-- WhatsApp按鈕文字改為「WhatsApp多謝」 -->
-    <a href="https://wa.me/85290475370" target="_blank" class="btn whatsapp-btn" data-i18n="whatsapp">WhatsApp多謝</a>
+    <button class="btn" i18n="wish">願望</button>
+    <button class="btn" i18n="cart">購物車 (<span id="cart">0</span>)</button>
+    <button class="btn" i18n="checkout">收款</button>
+    <a href="https://wa.me/85290475370" target="_blank" class="btn whatsapp" i18n="wa">WhatsApp 多謝</a>
   </div>
 </div>
 
 <div class="container">
-  <h2 class="section-title" data-i18n="title">15款精選香水</h2>
-  <div class="perfume-grid">
-    <!-- 15支香水樽卡片 -->
-    <div class="perfume-card">
-      <div class="perfume-img">
-        <img src="https://cdn-icons-png.flaticon.com/512/2909/2909838.png" alt="Perfume 01">
-      </div>
-      <div class="perfume-info">
-        <div class="perfume-name">Perfume 01</div>
-        <button class="add-cart" data-i18n="add">加入購物車</button>
-      </div>
-    </div>
-    <div class="perfume-card">
-      <div class="perfume-img">
-        <img src="https://cdn-icons-png.flaticon.com/512/2909/2909838.png" alt="Perfume 02">
-      </div>
-      <div class="perfume-info">
-        <div class="perfume-name">Perfume 02</div>
-        <button class="add-cart" data-i18n="add">加入購物車</button>
-      </div>
-    </div>
-    <div class="perfume-card">
-      <div class="perfume-img">
-        <img src="https://cdn-icons-png.flaticon.com/512/2909/2909838.png" alt="Perfume 03">
-      </div>
-      <div class="perfume-info">
-        <div class="perfume-name">Perfume 03</div>
-        <button class="add-cart" data-i18n="add">加入購物車</button>
-      </div>
-    </div>
-    <div class="perfume-card">
-      <div class="perfume-img">
-        <img src="https://cdn-icons-png.flaticon.com/512/2909/2909838.png" alt="Perfume 04">
-      </div>
-      <div class="perfume-info">
-        <div class="perfume-name">Perfume 04</div>
-        <button class="add-cart" data-i18n="add">加入購物車</button>
-      </div>
-    </div>
-    <div class="perfume-card">
-      <div class="perfume-img">
-        <img src="https://cdn-icons-png.flaticon.com/512/2909/2909838.png" alt="Perfume 05">
-      </div>
-      <div class="perfume-info">
-        <div class="perfume-name">Perfume 05</div>
-        <button class="add-cart" data-i18n="add">加入購物車</button>
-      </div>
-    </div>
-    <div class="perfume-card">
-      <div class="perfume-img">
-        <img src="https://cdn-icons-png.flaticon.com/512/2909/2909838.png" alt="Perfume 06">
-      </div>
-      <div class="perfume-info">
-        <div class="perfume-name">Perfume 06</div>
-        <button class="add-cart" data-i18n="add">加入購物車</button>
-      </div>
-    </div>
-    <div class="perfume-card">
-      <div class="perfume-img">
-        <img src="https://cdn-icons-png.flaticon.com/512/2909/2909838.png" alt="Perfume 07">
-      </div>
-      <div class="perfume-info">
-        <div class="perfume-name">Perfume 07</div>
-        <button class="add-cart" data-i18n="add">加入購物車</button>
-      </div>
-    </div>
-    <div class="perfume-card">
-      <div class="perfume-img">
-        <img src="https://cdn-icons-png.flaticon.com/512/2909/2909838.png" alt="Perfume 08">
-      </div>
-      <div class="perfume-info">
-        <div class="perfume-name">Perfume 08</div>
-        <button class="add-cart" data-i18n="add">加入購物車</button>
-      </div>
-    </div>
-    <div class="perfume-card">
-      <div class="perfume-img">
-        <img src="https://cdn-icons-png.flaticon.com/512/2909/2909838.png" alt="Perfume 09">
-      </div>
-      <div class="perfume-info">
-        <div class="perfume-name">Perfume 09</div>
-        <button class="add-cart" data-i18n="add">加入購物車</button>
-      </div>
-    </div>
-    <div class="perfume-card">
-      <div class="perfume-img">
-        <img src="https://cdn-icons-png.flaticon.com/512/2909/2909838.png" alt="Perfume 10">
-      </div>
-      <div class="perfume-info">
-        <div class="perfume-name">Perfume 10</div>
-        <button class="add-cart" data-i18n="add">加入購物車</button>
-      </div>
-    </div>
-    <div class="perfume-card">
-      <div class="perfume-img">
-        <img src="https://cdn-icons-png.flaticon.com/512/2909/2909838.png" alt="Perfume 11">
-      </div>
-      <div class="perfume-info">
-        <div class="perfume-name">Perfume 11</div>
-        <button class="add-cart" data-i18n="add">加入購物車</button>
-      </div>
-    </div>
-    <div class="perfume-card">
-      <div class="perfume-img">
-        <img src="https://cdn-icons-png.flaticon.com/512/2909/2909838.png" alt="Perfume 12">
-      </div>
-      <div class="perfume-info">
-        <div class="perfume-name">Perfume 12</div>
-        <button class="add-cart" data-i18n="add">加入購物車</button>
-      </div>
-    </div>
-    <div class="perfume-card">
-      <div class="perfume-img">
-        <img src="https://cdn-icons-png.flaticon.com/512/2909/2909838.png" alt="Perfume 13">
-      </div>
-      <div class="perfume-info">
-        <div class="perfume-name">Perfume 13</div>
-        <button class="add-cart" data-i18n="add">加入購物車</button>
-      </div>
-    </div>
-    <div class="perfume-card">
-      <div class="perfume-img">
-        <img src="https://cdn-icons-png.flaticon.com/512/2909/2909838.png" alt="Perfume 14">
-      </div>
-      <div class="perfume-info">
-        <div class="perfume-name">Perfume 14</div>
-        <button class="add-cart" data-i18n="add">加入購物車</button>
-      </div>
-    </div>
-    <div class="perfume-card">
-      <div class="perfume-img">
-        <img src="https://cdn-icons-png.flaticon.com/512/2909/2909838.png" alt="Perfume 15">
-      </div>
-      <div class="perfume-info">
-        <div class="perfume-name">Perfume 15</div>
-        <button class="add-cart" data-i18n="add">加入購物車</button>
-      </div>
-    </div>
+  <h2 class="title" i18n="title">15款精選香水</h2>
+  <div class="grid">
+
+<div class="card"><div class="pic"><img src="https://cdn-icons-png.flaticon/512/2909/2909838.png"></div><div class="info"><div class="name">Perfume 01</div><button class="add">加入購物車</button></div></div>
+<div class="card"><div class="pic"><img src="https://cdn-icons-png.flaticon/512/2909/2909838.png"></div><div class="info"><div class="name">Perfume 02</div><button class="add">加入購物車</button></div></div>
+<div class="card"><div class="pic"><img src="https://cdn-icons-png.flaticon/512/2909/2909838.png"></div><div class="info"><div class="name">Perfume 03</div><button class="add">加入購物車</button></div></div>
+<div class="card"><div class="pic"><img src="https://cdn-icons-png.flaticon/512/2909/2909838.png"></div><div class="info"><div class="name">Perfume 04</div><button class="add">加入購物車</button></div></div>
+<div class="card"><div class="pic"><img src="https://cdn-icons-png.flaticon/512/2909/2909838.png"></div><div class="info"><div class="name">Perfume 05</div><button class="add">加入購物車</button></div></div>
+
+<div class="card"><div class="pic"><img src="https://cdn-icons-png.flaticon/512/2909/2909838.png"></div><div class="info"><div class="name">Perfume 06</div><button class="add">加入購物車</button></div></div>
+<div class="card"><div class="pic"><img src="https://cdn-icons-png.flaticon/512/2909/2909838.png"></div><div class="info"><div class="name">Perfume 07</div><button class="add">加入購物車</button></div></div>
+<div class="card"><div class="pic"><img src="https://cdn-icons-png.flaticon/512/2909/2909838.png"></div><div class="info"><div class="name">Perfume 08</div><button class="add">加入購物車</button></div></div>
+<div class="card"><div class="pic"><img src="https://cdn-icons-png.flaticon/512/2909/2909838.png"></div><div class="info"><div class="name">Perfume 09</div><button class="add">加入購物車</button></div></div>
+<div class="card"><div class="pic"><img src="https://cdn-icons-png.flaticon/512/2909/2909838.png"></div><div class="info"><div class="name">Perfume 10</div><button class="add">加入購物車</button></div></div>
+
+<div class="card"><div class="pic"><img src="https://cdn-icons-png.flaticon/512/2909/2909838.png"></div><div class="info"><div class="name">Perfume 11</div><button class="add">加入購物車</button></div></div>
+<div class="card"><div class="pic"><img src="https://cdn-icons-png.flaticon/512/2909/2909838.png"></div><div class="info"><div class="name">Perfume 12</div><button class="add">加入購物車</button></div></div>
+<div class="card"><div class="pic"><img src="https://cdn-icons-png.flaticon/512/2909/2909838.png"></div><div class="info"><div class="name">Perfume 13</div><button class="add">加入購物車</button></div></div>
+<div class="card"><div class="pic"><img src="https://cdn-icons-png.flaticon/512/2909/2909838.png"></div><div class="info"><div class="name">Perfume 14</div><button class="add">加入購物車</button></div></div>
+<div class="card"><div class="pic"><img src="https://cdn-icons-png.flaticon/512/2909/2909838.png"></div><div class="info"><div class="name">Perfume 15</div><button class="add">加入購物車</button></div></div>
+
   </div>
 </div>
 
 <script>
-// 多語言翻譯（已更新WhatsApp文字為「WhatsApp多謝」）
-const translations = {
-  "zh-HK": { wish: "願望", cart: "購物車", checkout: "收款", whatsapp: "WhatsApp多謝", add: "加入購物車", title: "15款精選香水" },
-  "zh-CN": { wish: "愿望", cart: "购物车", checkout: "收款", whatsapp: "WhatsApp多谢", add: "加入购物车", title: "15款精选香水" },
-  "en": { wish: "Wishlist", cart: "Cart", checkout: "Checkout", whatsapp: "WhatsApp Us", add: "Add to Cart", title: "15 Selected Perfumes" },
-  "ja": { wish: "お気に入り", cart: "カート", checkout: "お会計", whatsapp: "WhatsAppでお問い合わせ", add: "カートに追加", title: "15種の厳選香水" },
-  "ko": { wish: "위시리스트", cart: "장바구니", checkout: "결제", whatsapp: "WhatsApp 문의", add: "장바구니 담기", title: "15가지 선정 향수" },
-  "it": { wish: "Desideri", cart: "Carrello", checkout: "Pagamento", whatsapp: "Contattaci su WhatsApp", add: "Aggiungi al carrello", title: "15 Profumi Selezione" },
-  "fr": { wish: "Souhaits", cart: "Panier", checkout: "Paiement", whatsapp: "Contactez-nous sur WhatsApp", add: "Ajouter au panier", title: "15 Parfums Sélectionnés" }
+let count = 0;
+document.querySelectorAll('.add').forEach(b=>{
+  b.onclick=()=>{
+    count++;
+    document.getElementById('cart').textContent=count;
+    alert('已加入購物車');
+  }
+});
+
+const text={
+  hk:{wish:"願望",cart:"購物車",checkout:"收款",wa:"WhatsApp 多謝",title:"15款精選香水"},
+  cn:{wish:"愿望",cart:"购物車",checkout:"收款",wa:"WhatsApp 多謝",title:"15款精选香水"},
+  en:{wish:"Wishlist",cart:"Cart",checkout:"Checkout",wa:"WhatsApp Us",title:"15 Selected Perfumes"},
+  jp:{wish:"お気に入り",cart:"カート",checkout:"お会計",wa:"WhatsApp で連絡",title:"15種の香水"},
+  kr:{wish:"위시",cart:"장바구니",checkout:"결제",wa:"WhatsApp 문의",title:"15가지 향수"},
+  it:{wish:"Desideri",cart:"Carrello",checkout:"Pagamento",wa:"WhatsApp",title:"15 Profumi"},
+  fr:{wish:"Souhaits",cart:"Panier",checkout:"Paiement",wa:"WhatsApp",title:"15 Parfums"}
 };
 
-// 語言切換事件
-document.getElementById('langSelect').addEventListener('change', function(e) {
-  const lang = e.target.value;
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    if(el.getAttribute('data-i18n') === 'cart') {
-      el.innerHTML = translations[lang].cart + ' (<span id="cartCount">' + cartCount + '</span>)';
-    } else {
-      el.textContent = translations[lang][el.getAttribute('data-i18n')];
+document.getElementById('lang').onchange=e=>{
+  const t=text[e.target.value];
+  document.querySelectorAll('[i18n]').forEach(el=>{
+    if(el.id==='cart'){
+      el.innerHTML=count;
+      el.closest('.btn').textContent=t.cart+' ('+count+')';
+    }else{
+      el.textContent=t[el.getAttribute('i18n')];
     }
   });
-});
-
-// 購物車計數
-let cartCount = 0;
-document.querySelectorAll('.add-cart').forEach(btn => {
-  btn.addEventListener('click', function() {
-    cartCount++;
-    const cartEl = document.querySelector('[data-i18n="cart"]');
-    const lang = document.getElementById('langSelect').value;
-    cartEl.innerHTML = translations[lang].cart + ' (<span id="cartCount">' + cartCount + '</span>)';
-    alert('已加入購物車！');
-  });
-});
+};
 </script>
 
 </body>
