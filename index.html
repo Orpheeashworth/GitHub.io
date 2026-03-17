@@ -5,201 +5,76 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Orphee & Ashworth</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family: sans-serif;}
-body{background:#fff;color:#222;padding-bottom:60px;}
-header{padding:16px;background:#fff;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10;}
-.logo{font-size:16px;font-weight:bold;}
-.lang{display:flex;gap:6px;font-size:12px;}
-.banner{height:220px;background:url(https://images.unsplash.com/photo-1591457375283-4956cec81109) center/cover;display:flex;align-items:center;color:#fff;padding:20px;}
-.banner h1{font-size:24px;margin-bottom:8px;}
-.section{padding:20px 16px;}
-.section-title{font-size:18px;margin-bottom:16px;}
-.video{margin-bottom:16px;}
-.products{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.product{border:1px solid #eee;border-radius:8px;overflow:hidden;}
-.product img{width:100%;height:180px;object-fit:cover;}
-.product-info{padding:10px;}
-.product-name{font-size:14px;margin-bottom:4px;}
-.product-price{font-size:13px;color:#666;margin-bottom:8px;}
-.btn{background:#111;color:#fff;border:none;padding:8px 12px;border-radius:4px;font-size:12px;width:100%;}
-.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:20;}
-.modal-box{background:#fff;margin:10% auto;width:90%;max-width:400px;padding:20px;border-radius:8px;max-height:80vh;overflow-y:auto;}
-.close{text-align:right;font-size:20px;cursor:pointer;}
-.payment{margin-top:20px;text-align:center;}
-.payment img{height:24px;margin:0 4px;}
-.cart-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #eee;}
-.cart-item img{width:50px;height:50px;object-fit:cover;}
-.remove{background:#222;color:#fff;border:none;padding:4px 8px;font-size:11px;border-radius:4px;}
-footer{position:fixed;bottom:0;left:0;width:100%;background:#fff;padding:12px;border-top:1px solid #eee;text-align:center;font-size:12px;}
-.whatsapp{color:#07c15f;font-weight:bold;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#fff;color:#222;padding-bottom:30px}
+header{padding:20px;border-bottom:1px solid #eee}
+.logo{font-size:22px;font-weight:700}
+.hero{height:280px;background:#f3f3f3;display:flex;align-items:center;justify-content:center;color:#222}
+.hero-inner{text-align:center}
+.hero h1{font-size:28px;margin-bottom:10px}
+.container{padding:20px}
+.section-title{font-size:20px;margin:20px 0;text-align:center}
+.products{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.product{border:1px solid #eee;border-radius:8px;overflow:hidden}
+.product-img{height:160px;background:#eee}
+.product-info{padding:12px}
+.product-name{font-size:15px;margin-bottom:6px}
+.product-price{font-size:14px;color:#666;margin-bottom:10px}
+.btn{background:#000;color:#fff;padding:8px 0;text-align:center;border-radius:4px;font-size:13px}
+.contact{margin-top:30px;padding:20px;background:#f9f9f9;border-radius:8px;text-align:center}
+.contact p{margin:6px 0}
 </style>
 </head>
-
 <body>
-
 <header>
-  <div class="logo">Orphee & Ashworth</div>
-  <div class="lang">EN 繁 简 IT 한국어</div>
+<div class="logo">Orphee & Ashworth</div>
 </header>
-
-<div class="banner">
-  <div>
-    <h1>Luxury Fragrance</h1>
-    <p>Timeless elegance in every bottle</p>
-  </div>
+<div class="hero">
+<div class="hero-inner">
+<h1>奢華香氛體驗</h1>
+<p>來自香港的高級香水品牌</p>
 </div>
-
-<div class="section">
-  <div class="section-title">香氛影片</div>
-  <div class="video">
-    <video width="100%" controls muted>
-      <source src="https://assets.mixkit.co/videos/preview/mixkit-luxury-perfume-bottle-3970-large.mp4" type="video/mp4">
-    </video>
-  </div>
 </div>
-
-<div class="section">
-  <div class="section-title">精選香水</div>
-  <div class="products">
-
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1591458182619-156181cbf37" onclick="openInfo(1)">
-      <div class="product-info">
-        <div class="product-name">Orphee EDP</div>
-        <div class="product-price">HK$1,480</div>
-        <button class="btn" onclick="addToCart(1)">加入購物車</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1528974771832-51f36c2ba970" onclick="openInfo(2)">
-      <div class="product-info">
-        <div class="product-name">Ashworth Woody</div>
-        <div class="product-price">HK$1,520</div>
-        <button class="btn" onclick="addToCart(2)">加入購物車</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1594059119168-05f4f19e8413" onclick="openInfo(3)">
-      <div class="product-info">
-        <div class="product-name">Floral Essence</div>
-        <div class="product-price">HK$1,390</div>
-        <button class="btn" onclick="addToCart(3)">加入購物車</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1607950088288-071827519ad7" onclick="openInfo(4)">
-      <div class="product-info">
-        <div class="product-name">Oud Signature</div>
-        <div class="product-price">HK$1,680</div>
-        <button class="btn" onclick="addToCart(4)">加入購物車</button>
-      </div>
-    </div>
-
-  </div>
+<div class="container">
+<div class="section-title">精選產品</div>
+<div class="products">
+<div class="product">
+<div class="product-img"></div>
+<div class="product-info">
+<div class="product-name">Orphee EDP</div>
+<div class="product-price">HK$1,480</div>
+<div class="btn">加入查詢</div>
 </div>
-
-<div class="section">
-  <button class="btn" onclick="openCart()" style="max-width:200px;margin:auto;">購物車</button>
 </div>
-
-<div class="modal" id="infoModal">
-  <div class="modal-box">
-    <div class="close" onclick="closeInfo()">×</div>
-    <img id="infoImg" style="width:100%;margin-bottom:16px">
-    <h3 id="infoName"></h3>
-    <p id="infoDesc" style="margin:16px 0;line-height:1.6"></p>
-
-    <p><strong>Orphee & Ashworth</strong></p>
-    <p style="font-size:13px;margin:8px 0;">來自香港的高級香氛品牌，堅持使用全球優質原料，打造獨特優雅香氣。</p>
-
-    <div class="payment">
-      <p>付款方式</p>
-      <div style="margin-top:8px">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Alipay_logo.svg">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/WeChat_Pay.svg">
-      </div>
-    </div>
-  </div>
+<div class="product">
+<div class="product-img"></div>
+<div class="product-info">
+<div class="product-name">Ashworth Woody</div>
+<div class="product-price">HK$1,520</div>
+<div class="btn">加入查詢</div>
 </div>
-
-<div class="modal" id="cartModal">
-  <div class="modal-box">
-    <div class="close" onclick="closeCart()">×</div>
-    <h3>購物車</h3>
-    <div id="cartList" style="margin-top:16px"></div>
-  </div>
 </div>
-
-<footer>
-  <div>© 2026 Orphee & Ashworth</div>
-  <div class="whatsapp" onclick="window.open('https://wa.me/85290475370')">
-    WhatsApp：9047 5370
-  </div>
-</footer>
-
-<script>
-const items = [
-  {},
-  {name:"Orphee EDP",price:1480,img:"https://images.unsplash.com/photo-1591458182619-156181cbf37",desc:"優雅花香調，持久散發溫柔氣質。"},
-  {name:"Ashworth Woody",price:1520,img:"https://images.unsplash.com/photo-1528974771832-51f36c2ba970",desc:"木質沉穩香調，適合成熟男士。"},
-  {name:"Floral Essence",price:1390,img:"https://images.unsplash.com/photo-1594059119168-05f4f19e8413",desc:"清新花果香，明亮柔和。"},
-  {name:"Oud Signature",price:1680,img:"https://images.unsplash.com/photo-1607950088288-071827519ad7",desc:"奢華烏木沉香，高級獨特。"}
-];
-
-let cart = [];
-
-function openInfo(id){
-  const p = items[id];
-  document.getElementById("infoImg").src = p.img;
-  document.getElementById("infoName").innerText = p.name;
-  document.getElementById("infoDesc").innerText = p.desc;
-  document.getElementById("infoModal").style.display = "block";
-}
-function closeInfo(){
-  document.getElementById("infoModal").style.display = "none";
-}
-
-function addToCart(id){
-  cart.push(items[id]);
-  alert("已加入購物車");
-}
-
-function openCart(){
-  let list = document.getElementById("cartList");
-  list.innerHTML = "";
-  if(cart.length === 0){
-    list.innerHTML = "<p>購物車係空嘅</p>";
-  }else{
-    cart.forEach((item,i)=>{
-      let div = document.createElement("div");
-      div.className = "cart-item";
-      div.innerHTML = `
-        <div style="display:flex;align-items:center;gap:10px">
-          <img src="${item.img}">
-          <div>${item.name}<br>HK$${item.price}</div>
-        </div>
-        <button class="remove" onclick="del(${i})">刪除</button>
-      `;
-      list.appendChild(div);
-    });
-  }
-  document.getElementById("cartModal").style.display = "block";
-}
-
-function closeCart(){
-  document.getElementById("cartModal").style.display = "none";
-}
-
-function del(index){
-  cart.splice(index,1);
-  openCart();
-}
-</script>
-
+<div class="product">
+<div class="product-img"></div>
+<div class="product-info">
+<div class="product-name">Floral Essence</div>
+<div class="product-price">HK$1,390</div>
+<div class="btn">加入查詢</div>
+</div>
+</div>
+<div class="product">
+<div class="product-img"></div>
+<div class="product-info">
+<div class="product-name">Oud Signature</div>
+<div class="product-price">HK$1,680</div>
+<div class="btn">加入查詢</div>
+</div>
+</div>
+</div>
+<div class="contact">
+<p>付款方式：Visa、Mastercard、支付寶、微信支付</p>
+<p>WhatsApp：9047 5370</p>
+</div>
+</div>
 </body>
 </html>
