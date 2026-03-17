@@ -1,599 +1,466 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-HK">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>orphee & Ashworth — 香水</title>
-  <style>
-    :root{
-      --accent:#b88fbf;
-      --muted:#e9e7ef;
-      --bg1:#0b2540;
-      --bg2:#1b3a5a;
-      --card-bg: rgba(255,255,255,0.06);
-      --glass: rgba(255,255,255,0.06);
-      --glass-2: rgba(255,255,255,0.03);
-      --text:#f6f5f8;
-      --glass-border: rgba(255,255,255,0.08);
-      font-family: Inter, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
-    }
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg1),var(--bg2));color:var(--text);-webkit-font-smoothing:antialiased}
-    /* Background layers */
-    .scene{position:fixed;inset:0;overflow:hidden;z-index:-1}
-    .sky{
-      position:absolute;inset:0;
-      background: radial-gradient(ellipse at 20% 10%, rgba(255,255,255,0.06) 0%, transparent 20%),
-                  linear-gradient(180deg, rgba(10,20,40,0.6), rgba(5,10,20,0.9));
-      filter: blur(0.6px);
-    }
-    /* twinkling stars */
-    .stars{position:absolute;inset:0;pointer-events:none}
-    .star{
-      position:absolute;width:2px;height:2px;border-radius:50%;background:rgba(255,255,255,0.9);opacity:0;
-      box-shadow:0 0 6px rgba(255,255,255,0.6);
-      animation:twinkle 3s infinite ease-in-out;
-    }
-    @keyframes twinkle{
-      0%{opacity:0; transform:scale(0.6)}
-      50%{opacity:1; transform:scale(1.2)}
-      100%{opacity:0; transform:scale(0.6)}
-    }
-    /* forest silhouettes */
-    .forest{
-      position:absolute;left:0;right:0;bottom:0;height:45%;
-      background-repeat:no-repeat;background-position:bottom center;
-      background-size:cover;pointer-events:none;
-    }
-    .forest.layer1{background-image:linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.25)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="400"><rect width="100%" height="100%" fill="transparent"/><g fill="%230b2b1f"><path d="M0 300 L80 240 L160 300 L240 220 L320 300 L400 200 L480 300 L560 230 L640 300 L720 210 L800 300 L880 240 L960 300 L1040 220 L1120 300 L1200 200 L1280 300 L1360 240 L1440 300 L1520 220 L1600 300 L1600 400 L0 400 Z"/></g></svg>');opacity:0.9;transform:translateY(10px)}
-    .forest.layer2{height:55%;background-image:linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.35)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="500"><rect width="100%" height="100%" fill="transparent"/><g fill="%23061b12"><path d="M0 400 L120 320 L240 400 L360 300 L480 400 L600 260 L720 400 L840 320 L960 400 L1080 300 L1200 400 L1320 320 L1440 400 L1600 300 L1600 500 L0 500 Z"/></g></svg>');opacity:0.95;transform:translateY(20px)}
-    /* subtle parallax */
-    .forest.layer1, .forest.layer2{transition:transform 0.6s ease}
-    /* page layout */
-    .container{max-width:1100px;margin:40px auto;padding:28px;display:grid;grid-template-columns:1fr 380px;gap:28px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .logo{display:flex;align-items:center;gap:12px}
-    .logo .mark{
-      width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#6f4f9a);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;color:white;box-shadow:0 6px 18px rgba(0,0,0,0.35)
-    }
-    .brand{font-size:20px;font-weight:600;letter-spacing:0.6px}
-    .controls{display:flex;gap:10px;align-items:center}
-    select.lang{background:var(--glass);border:1px solid var(--glass-border);color:var(--text);padding:8px;border-radius:8px}
-    .icon-btn{background:var(--glass);border:1px solid var(--glass-border);padding:8px 12px;border-radius:10px;color:var(--text);cursor:pointer}
-    main{padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;border:1px solid var(--glass-border)}
-    .product{
-      display:flex;gap:18px;align-items:center;
-    }
-    .bottle{
-      width:220px;height:320px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));border-radius:18px;border:1px solid rgba(255,255,255,0.04);box-shadow:inset 0 -20px 40px rgba(0,0,0,0.25)
-    }
-    .info{flex:1}
-    h1{margin:0 0 8px 0;font-size:22px}
-    p.lead{margin:0 0 12px 0;color:var(--muted)}
-    .actions{display:flex;gap:10px;margin-top:12px}
-    button.primary{background:var(--accent);border:none;color:white;padding:10px 14px;border-radius:10px;cursor:pointer}
-    button.ghost{background:transparent;border:1px solid var(--glass-border);color:var(--text);padding:10px 12px;border-radius:10px;cursor:pointer}
-    aside.card{padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;border:1px solid var(--glass-border)}
-    .meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-    .small{font-size:13px;color:var(--muted)}
-    .list{display:flex;flex-direction:column;gap:10px}
-    .item{display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:10px;background:var(--glass-2);border:1px solid rgba(255,255,255,0.02)}
-    footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
-    /* modal */
-    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.6));z-index:40}
-    .modal.open{display:flex}
-    .modal .panel{background:linear-gradient(180deg,#0f1724, #0b1220);padding:18px;border-radius:12px;min-width:320px;max-width:520px;border:1px solid var(--glass-border)}
-    .close{background:transparent;border:0;color:var(--muted);cursor:pointer}
-    /* responsive */
-    @media (max-width:980px){
-      .container{grid-template-columns:1fr; padding:18px}
-      .bottle{width:180px;height:260px}
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orphee & Ashworth | Luxury Fragrance</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Georgia, serif, sans-serif;
+  }
+  body {
+    background: #fff;
+    color: #111;
+  }
+  img, video {
+    max-width: 100%;
+    display: block;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  button {
+    cursor: pointer;
+  }
+
+  /* 導航 */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 40px;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 100;
+    border-bottom: 1px solid #eee;
+  }
+  .logo {
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+  .lang {
+    display: flex;
+    gap: 8px;
+    font-size: 13px;
+  }
+  .lang button {
+    background: none;
+    border: none;
+  }
+  .nav-links a {
+    margin-left: 24px;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+  .nav-icons {
+    display: flex;
+    gap: 18px;
+    font-size: 17px;
+  }
+
+  /* 主海報 */
+  .hero {
+    height: 80vh;
+    background: url(https://images.unsplash.com/photo-1591457375283-4956cec81109) center/cover;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    color: #fff;
+  }
+  .hero-text h1 {
+    font-size: 42px;
+    margin-bottom: 14px;
+  }
+  .hero-text p {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+  .btn {
+    padding: 12px 30px;
+    background: #fff;
+    color: #111;
+    border: none;
+  }
+
+  /* 影片區 */
+  .video-sec {
+    padding: 80px 40px;
+    text-align: center;
+  }
+  .sec-title {
+    font-size: 26px;
+    margin-bottom: 40px;
+  }
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .video-card video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  /* 產品 */
+  .product-sec {
+    padding: 0 40px 90px;
+  }
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .product {
+    position: relative;
+    cursor: pointer;
+  }
+  .wishlist {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    background: #fff;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    z-index: 2;
+  }
+  .product img {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .p-name {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .p-price {
+    font-size: 13px;
+    color: #666;
+  }
+  .add-to-cart {
+    margin-top: 8px;
+    padding: 6px 12px;
+    background: #111;
+    color: #fff;
+    border: none;
+    font-size: 12px;
+  }
+
+  /* 彈窗 */
+  .modal, .cart-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+    place-items: center;
+  }
+  .modal-box, .cart-box {
+    background: #fff;
+    width: 90%;
+    max-width: 600px;
+    padding: 40px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  .modal-img {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .modal-desc {
+    margin: 16px 0;
+    line-height: 1.6;
+  }
+  .company {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+  }
+
+  /* 付款 */
+  .payment {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    text-align: center;
+  }
+  .payment h4 {
+    margin-bottom: 12px;
+  }
+  .cards {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+  .cards img {
+    height: 28px;
+  }
+
+  /* 購物車項目 */
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+  }
+  .cart-item-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .cart-item img {
+    width: 60px;
+  }
+  .remove {
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+
+  /* 底部 */
+  footer {
+    padding: 40px;
+    background: #f8f8f8;
+  }
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .whatsapp {
+    color: #25D366;
+    font-weight: 500;
+  }
+</style>
 </head>
+
 <body>
-  <div class="scene" aria-hidden="true">
-    <div class="sky"></div>
-    <div class="stars" id="stars"></div>
-    <div class="forest layer2"></div>
-    <div class="forest layer1"></div>
+
+<!-- 導航 -->
+<nav>
+  <div class="logo">Orphee & Ashworth</div>
+  <div class="lang">
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('tc')">繁</button>
+    <button onclick="setLang('sc')">简</button>
+    <button onclick="setLang('it')">IT</button>
+    <button onclick="setLang('kr')">한국어</button>
   </div>
-
-  <div class="container">
-    <header>
-      <div class="logo">
-        <div class="mark">OA</div>
-        <div>
-          <div class="brand">orphee &amp; Ashworth</div>
-          <div class="small" id="tagline">Fine Fragrance House</div>
-        </div>
-      </div>
-
-      <div class="controls">
-        <select class="lang" id="langSelect" aria-label="Language selector">
-          <option value="zh-HK">繁體中文</option>
-          <option value="zh-CN">简体中文</option>
-          <option value="en">English</option>
-          <option value="ja">日本語</option>
-          <option value="ko">한국어</option>
-          <option value="it">Italiano</option>
-          <option value="fr">Français</option>
-        </select>
-        <button class="icon-btn" id="wishlistBtn">♡ <span id="wishCount">0</span></button>
-        <button class="icon-btn" id="cartBtn">🛒 <span id="cartCount">0</span></button>
-      </div>
-    </header>
-
-    <main>
-      <div class="product" id="productArea">
-        <div class="bottle" id="bottleWrap">
-          <!-- Inline SVG perfume bottle -->
-          <svg width="140" height="220" viewBox="0 0 140 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Perfume bottle">
-            <defs>
-              <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0" stop-color="#fff" stop-opacity="0.9"/>
-                <stop offset="1" stop-color="#f3e6ff" stop-opacity="0.15"/>
-              </linearGradient>
-            </defs>
-            <rect x="30" y="40" rx="14" ry="14" width="80" height="140" fill="url(#g1)" stroke="#e6d7f0" stroke-opacity="0.25"/>
-            <rect x="48" y="18" width="44" height="28" rx="6" fill="#d9c6f0" stroke="#cbb6e6" stroke-opacity="0.3"/>
-            <circle cx="70" cy="110" r="28" fill="rgba(184,143,191,0.06)"/>
-            <text x="70" y="118" font-size="12" text-anchor="middle" fill="#fff" opacity="0.9" font-family="sans-serif">orphee</text>
-          </svg>
-        </div>
-
-        <div class="info">
-          <h1 id="productTitle">Look Eau de Parfum</h1>
-          <p class="lead" id="productShort">A luminous floral-woody fragrance with warm amber notes.</p>
-          <div class="small" id="price">HK$ 980</div>
-          <div class="actions">
-            <button class="primary" id="addCart">加入購物車</button>
-            <button class="ghost" id="addWish">加入願望清單</button>
-            <button class="ghost" id="contactWhats">WhatsApp 聯絡</button>
-          </div>
-
-          <section style="margin-top:16px">
-            <h3 id="descTitle">香水簡介</h3>
-            <p id="productDesc">A radiant composition blending bergamot, jasmine, and warm amber for an elegant evening presence.</p>
-          </section>
-
-          <section style="margin-top:12px">
-            <h3 id="companyTitle">公司簡介</h3>
-            <p id="companyDesc">orphee &amp; Ashworth is a boutique fragrance house crafting artisanal perfumes inspired by nature and memory.</p>
-          </section>
-        </div>
-      </div>
-
-      <footer>
-        <div class="small">© <span id="year"></span> orphee &amp; Ashworth</div>
-      </footer>
-    </main>
-
-    <aside class="card">
-      <div class="meta">
-        <div><strong id="cartLabel">購物車</strong></div>
-        <div class="small" id="cartSummary">0 items</div>
-      </div>
-
-      <div class="list" id="cartList">
-        <div class="small">購物車內暫無商品</div>
-      </div>
-
-      <div style="margin-top:12px;display:flex;gap:8px">
-        <button class="primary" id="checkoutBtn">結帳</button>
-        <button class="ghost" id="clearCart">清空</button>
-      </div>
-    </aside>
+  <div class="nav-links">
+    <a href="#">Fragrance</a>
+    <a href="#">New</a>
+    <a href="#">Gifts</a>
+    <a href="#">About</a>
   </div>
+  <div class="nav-icons">
+    <a href="#">♡</a>
+    <a onclick="openCart()">🛒</a>
+  </div>
+</nav>
 
-  <!-- modal for cart / wishlist / checkout -->
-  <div class="modal" id="modal">
-    <div class="panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <strong id="modalTitle">Cart</strong>
-        <button class="close" id="closeModal">✕</button>
-      </div>
-      <div id="modalBody" style="margin-top:12px"></div>
+<!-- 主畫面 -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>Luxury Fragrance</h1>
+    <p>Exclusive scents crafted for timeless elegance.</p>
+    <button class="btn">Discover</button>
+  </div>
+</section>
+
+<!-- 影片區 -->
+<section class="video-sec">
+  <h2 class="sec-title">Fragrance Videos • 香氛影片</h2>
+  <div class="video-grid">
+    <div class="video-card">
+      <video controls muted playsinline>
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-luxury-perfume-bottle-on-a-white-background-3970-large.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="video-card">
+      <video controls muted playsinline>
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-close-up-of-a-perfume-spray-3969-large.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="video-card">
+      <video controls muted playsinline>
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-perfume-bottle-on-a-marble-table-3972-large.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
+</section>
 
-  <script>
-    // ====== Configuration ======
-    const WHATSAPP_NUMBER = "85291234567"; // 替換為你的 WhatsApp 號碼，格式不含 + 或 00
-    const CURRENCY = "HK$";
+<!-- 產品 -->
+<section class="product-sec">
+  <h2 class="sec-title">Best Sellers</h2>
+  <div class="product-grid">
 
-    // ====== Translations ======
-    const translations = {
-      "zh-HK": {
-        productTitle: "Look 香水",
-        productShort: "光采花木調，溫暖琥珀尾韻",
-        price: "HK$ 980",
-        descTitle: "香水簡介",
-        productDesc: "光采花香與木質調交織，前調佛手柑，中調茉莉，尾調溫暖琥珀，適合晚宴與特別時刻。",
-        companyTitle: "公司簡介",
-        companyDesc: "orphee & Ashworth 是一家以自然與記憶為靈感的手工香氛品牌，專注於高品質原料與細緻調香。",
-        wishlist: "願望清單",
-        cart: "購物車",
-        checkout: "結帳",
-        contactWhats: "WhatsApp 聯絡",
-        addCart: "加入購物車",
-        addWish: "加入願望清單",
-        emptyCart: "購物車內暫無商品",
-        checkoutSuccess: "模擬付款成功，感謝你的訂購！"
-      },
-      "zh-CN": {
-        productTitle: "Look 香水",
-        productShort: "光采花木调，温暖琥珀尾调",
-        price: "HK$ 980",
-        descTitle: "香水简介",
-        productDesc: "光采花香与木质调交织，前调佛手柑，中调茉莉，尾调温暖琥珀，适合晚宴与特别时刻。",
-        companyTitle: "公司简介",
-        companyDesc: "orphee & Ashworth 是一家以自然与记忆为灵感的手工香氛品牌，专注于高品质原料与细致调香。",
-        wishlist: "愿望清单",
-        cart: "购物车",
-        checkout: "结账",
-        contactWhats: "WhatsApp 联系",
-        addCart: "加入购物车",
-        addWish: "加入愿望清单",
-        emptyCart: "购物车内暂无商品",
-        checkoutSuccess: "模拟付款成功，感谢你的订购！"
-      },
-      "en": {
-        productTitle: "Look Eau de Parfum",
-        productShort: "A luminous floral-woody fragrance with warm amber notes.",
-        price: "HK$ 980",
-        descTitle: "Perfume Description",
-        productDesc: "A radiant composition blending bergamot, jasmine, and warm amber for an elegant evening presence.",
-        companyTitle: "About the Company",
-        companyDesc: "orphee & Ashworth is a boutique fragrance house crafting artisanal perfumes inspired by nature and memory.",
-        wishlist: "Wishlist",
-        cart: "Cart",
-        checkout: "Checkout",
-        contactWhats: "Contact via WhatsApp",
-        addCart: "Add to Cart",
-        addWish: "Add to Wishlist",
-        emptyCart: "Your cart is empty",
-        checkoutSuccess: "Simulated payment successful. Thank you for your order!"
-      },
-      "ja": {
-        productTitle: "Look オードパルファム",
-        productShort: "温かいアンバーを含むフローラルウッディの香り",
-        price: "HK$ 980",
-        descTitle: "香水の説明",
-        productDesc: "ベルガモット、ジャスミン、温かいアンバーを調和させた、エレガントなイブニングフレグランス。",
-        companyTitle: "会社概要",
-        companyDesc: "orphee & Ashworth は自然と記憶に着想を得たブティックフレグランスハウスです。",
-        wishlist: "ウィッシュリスト",
-        cart: "カート",
-        checkout: "チェックアウト",
-        contactWhats: "WhatsAppで連絡",
-        addCart: "カートに追加",
-        addWish: "ウィッシュリストに追加",
-        emptyCart: "カートに商品がありません",
-        checkoutSuccess: "支払いのシミュレーションが完了しました。ご注文ありがとうございます！"
-      },
-      "ko": {
-        productTitle: "Look 오 드 퍼퓸",
-        productShort: "따뜻한 앰버 노트의 플로럴 우디 향",
-        price: "HK$ 980",
-        descTitle: "향수 소개",
-        productDesc: "베르가못, 재스민, 따뜻한 앰버가 어우러진 우아한 이브닝 향수입니다.",
-        companyTitle: "회사 소개",
-        companyDesc: "orphee & Ashworth는 자연과 기억에서 영감을 받은 부티크 향수 브랜드입니다.",
-        wishlist: "위시리스트",
-        cart: "장바구니",
-        checkout: "결제",
-        contactWhats: "WhatsApp 연락",
-        addCart: "장바구니에 추가",
-        addWish: "위시리스트에 추가",
-        emptyCart: "장바구니에 상품이 없습니다",
-        checkoutSuccess: "결제 시뮬레이션이 완료되었습니다. 주문해 주셔서 감사합니다!"
-      },
-      "it": {
-        productTitle: "Look Eau de Parfum",
-        productShort: "Fragranza floreale-legnosa luminosa con note di ambra calda",
-        price: "HK$ 980",
-        descTitle: "Descrizione del profumo",
-        productDesc: "Una composizione radiosa che fonde bergamotto, gelsomino e ambra calda per una presenza elegante.",
-        companyTitle: "Chi siamo",
-        companyDesc: "orphee & Ashworth è una maison di profumi artigianali ispirata alla natura e alla memoria.",
-        wishlist: "Lista dei desideri",
-        cart: "Carrello",
-        checkout: "Checkout",
-        contactWhats: "Contatta via WhatsApp",
-        addCart: "Aggiungi al carrello",
-        addWish: "Aggiungi alla lista dei desideri",
-        emptyCart: "Il carrello è vuoto",
-        checkoutSuccess: "Pagamento simulato riuscito. Grazie per il tuo ordine!"
-      },
-      "fr": {
-        productTitle: "Look Eau de Parfum",
-        productShort: "Un parfum floral-boisé lumineux aux notes d'ambre chaud",
-        price: "HK$ 980",
-        descTitle: "Description du parfum",
-        productDesc: "Une composition radieuse mêlant bergamote, jasmin et ambre chaud pour une présence élégante.",
-        companyTitle: "À propos de la société",
-        companyDesc: "orphee & Ashworth est une maison de parfums artisanale inspirée par la nature et la mémoire.",
-        wishlist: "Liste de souhaits",
-        cart: "Panier",
-        checkout: "Paiement",
-        contactWhats: "Contacter via WhatsApp",
-        addCart: "Ajouter au panier",
-        addWish: "Ajouter à la liste de souhaits",
-        emptyCart: "Votre panier est vide",
-        checkoutSuccess: "Paiement simulé réussi. Merci pour votre commande !"
-      }
-    };
+    <div class="product" onclick="openModal(1)">
+      <div class="wishlist">♡</div>
+      <img src="https://images.unsplash.com/photo-1591458182619-156181cbf37" alt="">
+      <div class="p-name">Orphee EDP</div>
+      <div class="p-price">HK$ 1,480</div>
+      <button class="add-to-cart" onclick="addToCart(1,event)">Add to Cart</button>
+    </div>
 
-    // ====== Product data (single product demo) ======
-    const product = {
-      id: "look-eau",
-      titleKey: "productTitle",
-      shortKey: "productShort",
-      descKey: "productDesc",
-      price: 980
-    };
+    <div class="product" onclick="openModal(2)">
+      <div class="wishlist">♡</div>
+      <img src="https://images.unsplash.com/photo-1528974771832-51f36c2ba970" alt="">
+      <div class="p-name">Ashworth Woody</div>
+      <div class="p-price">HK$ 1,520</div>
+      <button class="add-to-cart" onclick="addToCart(2,event)">Add to Cart</button>
+    </div>
 
-    // ====== Utilities ======
-    const el = id => document.getElementById(id);
-    const langSelect = el('langSelect');
-    const modal = el('modal');
-    const modalBody = el('modalBody');
-    const modalTitle = el('modalTitle');
-    const yearEl = el('year');
-    yearEl.textContent = new Date().getFullYear();
+    <div class="product" onclick="openModal(3)">
+      <div class="wishlist">♡</div>
+      <img src="https://images.unsplash.com/photo-1594059119168-05f4f19e8413" alt="">
+      <div class="p-name">Floral Essence</div>
+      <div class="p-price">HK$ 1,390</div>
+      <button class="add-to-cart" onclick="addToCart(3,event)">Add to Cart</button>
+    </div>
 
-    // ====== Stars generation ======
-    const starsWrap = el('stars');
-    for(let i=0;i<40;i++){
-      const s = document.createElement('div');
-      s.className='star';
-      s.style.left = Math.random()*100 + '%';
-      s.style.top = Math.random()*55 + '%';
-      s.style.animationDuration = (2 + Math.random()*3) + 's';
-      s.style.animationDelay = (Math.random()*3) + 's';
-      s.style.opacity = 0;
-      starsWrap.appendChild(s);
-    }
+    <div class="product" onclick="openModal(4)">
+      <div class="wishlist">♡</div>
+      <img src="https://images.unsplash.com/photo-1607950088288-071827519ad7" alt="">
+      <div class="p-name">Oud Signature</div>
+      <div class="p-price">HK$ 1,680</div>
+      <button class="add-to-cart" onclick="addToCart(4,event)">Add to Cart</button>
+    </div>
 
-    // ====== Parallax on mouse move ======
-    document.addEventListener('mousemove', e=>{
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      const nx = (e.clientX - w/2)/w;
-      const ny = (e.clientY - h/2)/h;
-      document.querySelectorAll('.forest.layer1').forEach((el)=>el.style.transform = `translateY(${10 + ny*10}px) translateX(${nx*6}px)`);
-      document.querySelectorAll('.forest.layer2').forEach((el)=>el.style.transform = `translateY(${20 + ny*20}px) translateX(${nx*12}px)`);
-    });
+  </div>
+</section>
 
-    // ====== Language handling ======
-    function applyLanguage(code){
-      const t = translations[code] || translations['en'];
-      el('productTitle').textContent = t.productTitle;
-      el('productShort').textContent = t.productShort;
-      el('price').textContent = t.price;
-      el('descTitle').textContent = t.descTitle;
-      el('productDesc').textContent = t.productDesc;
-      el('companyTitle').textContent = t.companyTitle;
-      el('companyDesc').textContent = t.companyDesc;
-      el('cartLabel').textContent = t.cart;
-      el('modalTitle').textContent = t.cart;
-      el('addCart').textContent = t.addCart;
-      el('addWish').textContent = t.addWish;
-      el('contactWhats').textContent = t.contactWhats;
-      // wishlist & cart button labels
-      el('wishlistBtn').title = t.wishlist;
-      el('cartBtn').title = t.cart;
-    }
-    // initial language
-    applyLanguage(langSelect.value);
+<!-- 產品彈窗 -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <span class="close" onclick="closeModal()">×</span>
+    <img class="modal-img" id="mimg">
+    <h3 id="mname"></h3>
+    <p class="modal-desc" id="mdesc"></p>
 
-    langSelect.addEventListener('change', ()=>{
-      applyLanguage(langSelect.value);
-    });
+    <div class="company">
+      <h4>Orphee & Ashworth</h4>
+      <p>Established in Hong Kong, we create luxury fragrances with fine ingredients from around the world.</p>
+    </div>
 
-    // ====== Cart and Wishlist logic ======
-    const CART_KEY = 'oa_cart_v1';
-    const WISH_KEY = 'oa_wish_v1';
+    <div class="payment">
+      <h4>Payment Methods</h4>
+      <div class="cards">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Master">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Alipay_logo.svg" alt="Alipay">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/WeChat_Pay.svg" alt="WeChat">
+      </div>
+    </div>
+  </div>
+</div>
 
-    function loadJSON(key){ try { return JSON.parse(localStorage.getItem(key)) || []; } catch(e){ return []; } }
-    function saveJSON(key, val){ localStorage.setItem(key, JSON.stringify(val)); }
+<!-- 購物車彈窗 -->
+<div class="cart-modal" id="cartModal">
+  <div class="cart-box">
+    <span class="close" onclick="closeCart()">×</span>
+    <h3>Shopping Cart</h3>
+    <div id="cartItems" style="margin:20px 0"></div>
+  </div>
+</div>
 
-    function updateCounts(){
-      const cart = loadJSON(CART_KEY);
-      const wish = loadJSON(WISH_KEY);
-      el('cartCount').textContent = cart.length;
-      el('wishCount').textContent = wish.length;
-      el('cartSummary').textContent = cart.length + ' items';
-      // update cart list
-      const list = el('cartList');
-      list.innerHTML = '';
-      if(cart.length===0){
-        const t = translations[langSelect.value] || translations.en;
-        list.innerHTML = `<div class="small">${t.emptyCart}</div>`;
-      } else {
-        cart.forEach(it=>{
-          const row = document.createElement('div');
-          row.className='item';
-          row.innerHTML = `<div><strong>${it.title}</strong><div class="small">${CURRENCY} ${it.price}</div></div>
-                           <div><button class="ghost" data-id="${it.id}">移除</button></div>`;
-          list.appendChild(row);
-        });
-      }
-    }
+<!-- 底部 -->
+<footer>
+  <div class="footer-row">
+    <div>© 2026 Orphee & Ashworth</div>
+    <a class="whatsapp" href="https://wa.me/85290475370" target="_blank">WhatsApp: 9047 5370</a>
+  </div>
+</footer>
 
-    // add to cart
-    el('addCart').addEventListener('click', ()=>{
-      const cart = loadJSON(CART_KEY);
-      cart.push({id:product.id,title:translations[langSelect.value].productTitle,price:product.price});
-      saveJSON(CART_KEY,cart);
-      updateCounts();
-      showToast('Added to cart');
-    });
+<script>
+  const products = [
+    {},
+    {id:1,name:"Orphee EDP",price:1480,img:"https://images.unsplash.com/photo-1591458182619-156181cbf37",desc:"Floral, elegant and long-lasting."},
+    {id:2,name:"Ashworth Woody",price:1520,img:"https://images.unsplash.com/photo-1528974771832-51f36c2ba970",desc:"Rich woody scent for gentlemen."},
+    {id:3,name:"Floral Essence",price:1390,img:"https://images.unsplash.com/photo-1594059119168-05f4f19e8413",desc:"Fresh floral with citrus notes."},
+    {id:4,name:"Oud Signature",price:1680,img:"https://images.unsplash.com/photo-1607950088288-071827519ad7",desc:"Luxury oriental oud fragrance."}
+  ];
 
-    // add to wishlist
-    el('addWish').addEventListener('click', ()=>{
-      const wish = loadJSON(WISH_KEY);
-      if(!wish.find(w=>w.id===product.id)){
-        wish.push({id:product.id,title:translations[langSelect.value].productTitle});
-        saveJSON(WISH_KEY,wish);
-        updateCounts();
-        showToast('Added to wishlist');
-      } else {
-        showToast('Already in wishlist');
-      }
-    });
+  let cart = [];
 
-    // wishlist modal
-    el('wishlistBtn').addEventListener('click', ()=>{
-      const wish = loadJSON(WISH_KEY);
-      modalTitle.textContent = translations[langSelect.value].wishlist || 'Wishlist';
-      if(wish.length===0){
-        modalBody.innerHTML = `<div class="small">No items in wishlist</div>`;
-      } else {
-        modalBody.innerHTML = wish.map(w=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0"><div>${w.title}</div><button class="ghost" data-id="${w.id}" data-action="remove-wish">移除</button></div>`).join('');
-      }
-      openModal();
-    });
+  function openModal(id){
+    const p = products[id];
+    document.getElementById("mimg").src = p.img;
+    document.getElementById("mname").innerText = p.name;
+    document.getElementById("mdesc").innerText = p.desc;
+    document.getElementById("modal").style.display = "grid";
+  }
+  function closeModal(){
+    document.getElementById("modal").style.display = "none";
+  }
 
-    // cart modal
-    el('cartBtn').addEventListener('click', ()=>{
-      const cart = loadJSON(CART_KEY);
-      modalTitle.textContent = translations[langSelect.value].cart || 'Cart';
-      if(cart.length===0){
-        modalBody.innerHTML = `<div class="small">${translations[langSelect.value].emptyCart}</div>`;
-      } else {
-        const total = cart.reduce((s,i)=>s+i.price,0);
-        modalBody.innerHTML = cart.map((c,idx)=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0"><div>${c.title} <div class="small">${CURRENCY} ${c.price}</div></div><div><button class="ghost" data-idx="${idx}" data-action="remove-cart">移除</button></div></div>`).join('') +
-          `<div style="margin-top:12px"><strong>Total: ${CURRENCY} ${total}</strong></div><div style="margin-top:10px"><button class="primary" id="modalCheckout">${translations[langSelect.value].checkout}</button></div>`;
-      }
-      openModal();
-    });
+  function addToCart(id,e){
+    e.stopPropagation();
+    cart.push(products[id]);
+    renderCart();
+  }
 
-    // modal open/close
-    function openModal(){ modal.classList.add('open'); }
-    function closeModal(){ modal.classList.remove('open'); }
-    el('closeModal').addEventListener('click', closeModal);
-    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
+  function openCart(){
+    renderCart();
+    document.getElementById("cartModal").style.display = "grid";
+  }
+  function closeCart(){
+    document.getElementById("cartModal").style.display = "none";
+  }
 
-    // modal body click handlers (delegate)
-    modalBody.addEventListener('click', (e)=>{
-      const action = e.target.dataset.action;
-      if(action==='remove-cart'){
-        const idx = parseInt(e.target.dataset.idx,10);
-        const cart = loadJSON(CART_KEY);
-        cart.splice(idx,1);
-        saveJSON(CART_KEY,cart);
-        updateCounts();
-        // refresh modal
-        el('cartBtn').click();
-      } else if(action==='remove-wish'){
-        const id = e.target.dataset.id;
-        let wish = loadJSON(WISH_KEY);
-        wish = wish.filter(w=>w.id!==id);
-        saveJSON(WISH_KEY,wish);
-        updateCounts();
-        el('wishlistBtn').click();
-      }
-    });
-
-    // remove from cart in aside
-    el('cartList').addEventListener('click', (e)=>{
-      if(e.target.tagName==='BUTTON'){
-        const id = e.target.dataset.id;
-        let cart = loadJSON(CART_KEY);
-        cart = cart.filter(c=>c.id!==id);
-        saveJSON(CART_KEY,cart);
-        updateCounts();
-      }
-    });
-
-    // clear cart
-    el('clearCart').addEventListener('click', ()=>{
-      saveJSON(CART_KEY,[]);
-      updateCounts();
-    });
-
-    // checkout button (aside)
-    el('checkoutBtn').addEventListener('click', ()=>{
-      const cart = loadJSON(CART_KEY);
-      if(cart.length===0){
-        showToast(translations[langSelect.value].emptyCart);
-        return;
-      }
-      modalTitle.textContent = translations[langSelect.value].checkout;
-      modalBody.innerHTML = `
-        <div>
-          <label class="small">Name</label>
-          <input id="chkName" style="width:100%;padding:8px;margin-top:6px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--text)"/>
+  function renderCart(){
+    const cont = document.getElementById("cartItems");
+    cont.innerHTML = "";
+    if(cart.length===0) cont.innerHTML = "<p>Cart is empty</p>";
+    cart.forEach((item,i)=>{
+      const div = document.createElement("div");
+      div.className = "cart-item";
+      div.innerHTML = `
+        <div class="cart-item-info">
+          <img src="${item.img}">
+          <div>
+            <div>${item.name}</div>
+            <div>HK$ ${item.price}</div>
+          </div>
         </div>
-        <div style="margin-top:8px">
-          <label class="small">Email</label>
-          <input id="chkEmail" style="width:100%;padding:8px;margin-top:6px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--text)"/>
-        </div>
-        <div style="margin-top:12px;display:flex;gap:8px">
-          <button class="primary" id="confirmPay">${translations[langSelect.value].checkout}</button>
-          <button class="ghost" id="cancelPay">取消</button>
-        </div>
+        <button class="remove" onclick="removeItem(${i})">Remove</button>
       `;
-      openModal();
-
-      // attach handlers
-      setTimeout(()=>{
-        el('cancelPay').addEventListener('click', closeModal);
-        el('confirmPay').addEventListener('click', ()=>{
-          // Simulate payment success
-          saveJSON(CART_KEY,[]);
-          updateCounts();
-          modalBody.innerHTML = `<div class="small">${translations[langSelect.value].checkoutSuccess}</div>`;
-          setTimeout(()=>{ closeModal(); }, 1600);
-        });
-      },50);
+      cont.appendChild(div);
     });
+  }
 
-    // WhatsApp contact
-    el('contactWhats').addEventListener('click', ()=>{
-      const phone = WHATSAPP_NUMBER;90475370
-      const text = encodeURIComponent("Hello, I would like to know more about Look perfume.");
-      const url = `https://wa.me/${phone}?text=${text}`;
-      window.open(url,'_blank');
-    });
+  function removeItem(index){
+    cart.splice(index,1);
+    renderCart();
+  }
 
-    // simple toast
-    function showToast(msg){
-      const t = document.createElement('div');
-      t.textContent = msg;
-      t.style.position='fixed';
-      t.style.right='20px';
-      t.style.bottom='20px';
-      t.style.background='rgba(0,0,0,0.6)';
-      t.style.padding='10px 14px';
-      t.style.borderRadius='10px';
-      t.style.color='white';
-      t.style.zIndex=60;
-      document.body.appendChild(t);
-      setTimeout(()=>t.style.opacity=0,2000);
-      setTimeout(()=>t.remove(),2600);
-    }
+  function setLang(lang){
+    console.log("Language:",lang);
+  }
+</script>
 
-    // modal close on Escape
-    document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
-
-    // initial load
-    updateCounts();
-
-    // small accessibility: update translations when language changes and modal open
-    langSelect.addEventListener('change', ()=>{
-      if(modal.classList.contains('open')){
-        // refresh modal content titles
-        if(modalTitle.textContent === translations['en'].cart || modalTitle.textContent === translations['zh-HK'].cart){
-          el('cartBtn').click();
-        }
-      }
-    });
-
-    // small UX: show toast on add
-    // already used showToast in addCart/addWish
-
-  </script>
 </body>
 </html>
