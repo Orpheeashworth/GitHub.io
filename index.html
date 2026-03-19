@@ -1,309 +1,152 @@
-<!DOCTYPE html>
+OrpheeAshworth/
+│
+├── index.html
+├── style.css
+├── script.js
+└── images/
+    ├── hero-bg.jpg
+    ├── product1.jpg
+    ├── product2.jpg
+    ├── ... product15.jpg
+    ├── paypal.png
+    ├── visa.png
+    ├── mastercard.png
+    ├── alipay.png
+    └── wechatpay.png
+    <!DOCTYPE html>
 <html lang="zh-HK">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Orphee & Ashworth</title>
-<style>
-* { box-sizing: border-box; }
-body {
-    margin: 0;
-    background: #051937;
-    color: #ffd700;
-    font-family: sans-serif;
-    padding: 10px;
-}
-.lang { text-align: right; margin-bottom: 15px; }
-.lang button {
-    background: transparent;
-    color: #ffd700;
-    border: 1px solid #ffd700;
-    padding: 5px 10px;
-    border-radius: 15px;
-    margin-left: 5px;
-    cursor: pointer;
-}
-.lang button.active {
-    background: #ffd700;
-    color: #051937;
-    font-weight: bold;
-}
-.nav {
-    text-align: right;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-.nav span { margin-left: 15px; }
-h2 {
-    font-size: 18px;
-    border-left: 4px solid #ffd700;
-    padding-left: 8px;
-    margin-top: 25px;
-}
-.product {
-    border: 1px solid #ffd700;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 15px;
-    background: #072247;
-}
-/* 用 CSS 渐变做香水瓶形状，100% 能显示 */
-.product-img {
-    width: 100%;
-    height: 140px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    background: linear-gradient(135deg, #1a2c4a 0%, #2a3c5a 100%);
-    position: relative;
-    overflow: hidden;
-}
-.product-img::after {
-    content: '';
-    position: absolute;
-    top: 10%;
-    left: 35%;
-    width: 30%;
-    height: 80%;
-    background: linear-gradient(180deg, rgba(255,215,0,0.2) 0%, rgba(255,215,0,0.05) 100%);
-    border-radius: 20px 20px 5px 5px;
-}
-.btn {
-    background: #ffd700;
-    color: #051937;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-weight: bold;
-    margin-right: 10px;
-    cursor: pointer;
-}
-.btngrey {
-    border: 1px solid #ffd700;
-    background: transparent;
-    color: #ffd700;
-    padding: 8px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-}
-.contact {
-    border: 1px solid #ffd700;
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-    margin-top: 20px;
-}
-.lang-content { display: none; }
-.lang-content.active { display: block; }
-</style>
+  <meta charset="UTF-8">
+  <title>OrpheeAshworth</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <!-- 封面動畫 -->
+  <header class="hero">
+    <h1 class="animate-title">OrpheeAshworth Perfume</h1>
+    <p class="animate-subtitle">Elegance · Myth · Culture</p>
+  </header>
 
-<div class="lang">
-    <button onclick="setLang('zh-HK')" class="active">繁</button>
-    <button onclick="setLang('zh-CN')">简</button>
-    <button onclick="setLang('en')">En</button>
-    <button onclick="setLang('ja')">日</button>
-    <button onclick="setLang('ko')">韩</button>
-</div>
+  <!-- 語言選擇 -->
+  <nav class="language-switch">
+    <select id="lang">
+      <option>繁體中文</option>
+      <option>简体中文</option>
+      <option>English</option>
+      <option>日本語</option>
+      <option>한국어</option>
+      <option>Français</option>
+      <option>Deutsch</option>
+      <option>Español</option>
+    </select>
+  </nav>
 
-<div class="nav">
-    <span>WhatsApp</span>
-    <span>心願</span>
-    <span>購物車</span>
-</div>
-
-<!-- 繁體 -->
-<div class="lang-content active" id="zh-HK">
-    <h2>產品及服務</h2>
-    <div class="product">
-        <div class="product-img"></div>
-        <h3>女士精品香水</h3>
-        <p>花香、果香、木質調，高級持久。</p>
-        <button class="btn">加入購物車</button>
-        <button class="btngrey">加入心願</button>
-    </div>
-    <div class="product">
-        <div class="product-img"></div>
-        <h3>男士紳士香水</h3>
-        <p>木質、海洋、紳士香氣。</p>
-        <button class="btn">加入購物車</button>
-        <button class="btngrey">加入心願</button>
-    </div>
-    <div class="product">
-        <div class="product-img"></div>
-        <h3>中性小眾香水</h3>
-        <p>無性別高級香，獨特不撞香。</p>
-        <button class="btn">加入購物車</button>
-        <button class="btngrey">加入心願</button>
-    </div>
+  <!-- 公司簡介 -->
+  <section class="about">
     <h2>關於我們</h2>
-    <p>Orphee & Ashworth 以優雅、品味、專業為核心，搜羅世界各地高質感香水。</p>
-    <p>香氣是個人風格的延伸，每種味道代表一種生活態度。</p>
-    <p>為將來英國市場發展鋪路，專注英倫風格香調。</p>
-    <div class="contact">
-        <h3>聯絡我們</h3>
-        <p>電話：90475370</p>
-        <p>Email：orphee.ashworth@gmail.com</p>
-        <button class="btn">立即查詢</button>
-        <button class="btn">預約試香</button>
-    </div>
-</div>
+    <p>OrpheeAshworth 結合香港文化符號、神話動物同歐洲美學，打造獨特香水品牌。</p>
+    <p>聯絡我們：orphee.ashworth1@gmail.com | WhatsApp: <a href="https://wa.me/85290475370">9047 5370</a></p>
+  </section>
 
-<!-- 簡體 -->
-<div class="lang-content" id="zh-CN">
-    <h2>产品及服务</h2>
-    <div class="product">
-        <div class="product-img"></div>
-        <h3>女士精品香水</h3>
-        <p>花香、果香、木质调，高级持久。</p>
-        <button class="btn">加入购物车</button>
-        <button class="btngrey">加入心愿</button>
+  <!-- 產品展示 -->
+  <section class="products">
+    <h2>產品系列</h2>
+    <div class="product-grid">
+      <!-- 15件產品 -->
+      <div class="product"><img src="images/product1.jpg" alt="Perfume 1"><h3>香水 1</h3><p>奢華玻璃瓶</p><button onclick="addToCart('香水 1')">加入購物車</button></div>
+      <div class="product"><img src="images/product2.jpg" alt="Perfume 2"><h3>香水 2</h3><p>極簡設計</p><button onclick="addToCart('香水 2')">加入購物車</button></div>
+      <!-- 重複至 product15.jpg -->
     </div>
-    <div class="product">
-        <div class="product-img"></div>
-        <h3>男士绅士香水</h3>
-        <p>木质、海洋、绅士香气。</p>
-        <button class="btn">加入购物车</button>
-        <button class="btngrey">加入心愿</button>
-    </div>
-    <div class="product">
-        <div class="product-img"></div>
-        <h3>中性小众香水</h3>
-        <p>无性别高级香，独特不撞香。</p>
-        <button class="btn">加入购物车</button>
-        <button class="btngrey">加入心愿</button>
-    </div>
-    <h2>关于我们</h2>
-    <p>Orphee & Ashworth 以优雅、品味、专业为核心，搜罗世界各地高品质香水。</p>
-    <p>香气是个人风格的延伸，每种味道代表一种生活态度。</p>
-    <p>为未来英国市场发展铺路，专注英伦风格香调。</p>
-    <div class="contact">
-        <h3>联系我们</h3>
-        <p>电话：90475370</p>
-        <p>Email：orphee.ashworth@gmail.com</p>
-        <button class="btn">立即咨询</button>
-        <button class="btn">预约试香</button>
-    </div>
-</div>
-
-<!-- English -->
-<div class="lang-content" id="en">
-    <h2>Products & Services</h2>
-    <div class="product">
-        <div class="product-img"></div>
-        <h3>Women's Luxury Perfume</h3>
-        <p>Floral, fruity, woody, long-lasting.</p>
-        <button class="btn">Add to Cart</button>
-        <button class="btngrey">Add to Wishlist</button>
-    </div>
-    <div class="product">
-        <div class="product-img"></div>
-        <h3>Men's Gentleman Perfume</h3>
-        <p>Woody, marine, elegant scent.</p>
-        <button class="btn">Add to Cart</button>
-        <button class="btngrey">Add to Wishlist</button>
-    </div>
-    <div class="product">
-        <div class="product-img"></div>
-        <h3>Unisex Niche Perfume</h3>
-        <p>Gender-free premium fragrance, unique.</p>
-        <button class="btn">Add to Cart</button>
-        <button class="btngrey">Add to Wishlist</button>
-    </div>
-    <h2>About Us</h2>
-    <p>Orphee & Ashworth focuses on elegance, taste and professionalism, offering high-quality perfumes worldwide.</p>
-    <p>Scent is an extension of personal style, each fragrance represents an attitude.</p>
-    <p>Preparing for UK market expansion with British-style fragrances.</p>
-    <div class="contact">
-        <h3>Contact Us</h3>
-        <p>Tel: 90475370</p>
-        <p>Email: orphee.ashworth@gmail.com</p>
-        <button class="btn">Inquire Now</button>
-        <button class="btn">Book a Test</button>
-    </div>
-</div>
-
-<!-- 日本語 -->
-<div class="lang-content" id="ja">
-    <h2>商品・サービス</h2>
-    <div class="product">
-        <div class="product-img"></div>
-        <h3>レディース香水</h3>
-        <p>フローラル、フルーティ、ウッディで長持ち。</p>
-        <button class="btn">カートに入れる</button>
-        <button class="btngrey">ウィッシュリスト</button>
-    </div>
-    <div class="product">
-        <div class="product-img"></div>
-        <h3>メンズ香水</h3>
-        <p>ウッディ、マリン、上品な香り。</p>
-        <button class="btn">カートに入れる</button>
-        <button class="btngrey">ウィッシュリスト</button>
-    </div>
-    <div class="product">
-        <div class="product-img"></div>
-        <h3>ユニセックス香水</h3>
-        <p>ジェンダーレスな高級香、個性的。</p>
-        <button class="btn">カートに入れる</button>
-        <button class="btngrey">ウィッシュリスト</button>
-    </div>
-    <h2>私たちについて</h2>
-    <p>Orphee & Ashworth はエレガンスと専門性を重視、世界の高級香水をセレクト。</p>
-    <p>香りは個性の一部で、それぞれが生き方を表します。</p>
-    <p>イギリス市場展開を見据え、英国風の香調を中心に展開。</p>
-    <div class="contact">
-        <h3>お問い合わせ</h3>
-        <p>TEL: 90475370</p>
-        <p>Email: orphee.ashworth@gmail.com</p>
-        <button class="btn">お問い合わせ</button>
-        <button class="btn">試香予約</button>
-    </div>
-</div>
-
-<!-- 한국어 -->
-<div class="lang-content" id="ko">
-    <h2>제품 및 서비스</h2>
-    <div class="product">
-        <div class="product-img"></div>
-        <h3>여성용 고급 향수</h3>
-        <p>플로럴, 후르티, 우디 계열 오래 지속됨.</p>
-        <button class="btn">장바구니</button>
-        <button class="btngrey">위시리스트</button>
-    </div>
-    <div class="product">
-        <div class="product-img"></div>
-        <h3>남성용 시그니처 향수</h3>
-        <p>우디, 마린, 고급스러운 향.</p>
-        <button class="btn">장바구니</button>
-        <button class="btngrey">위시리스트</button>
-    </div>
-    <div class="product">
-        <div class="product-img"></div>
-        <h3>젠더리스 니치 향수</h3>
-        <p>성별 구분 없는 고급 향, 독특하고 희귀함.</p>
-        <button class="btn">장바구니</button>
-        <button class="btngrey">위시리스트</button>
-    </div>
-    <h2>회사 소개</h2>
-    <p>Orphee & Ashworth는 우아함과 전문성을 바탕으로 세계 각국의 고급 향수를 엄선합니다.</p>
-    <p>향수는 개인 스타일의 연장이며, 각 향은 삶의 태도를 나타냅니다.</p>
-    <p>영국 시장 진출을 준비하며 영국풍 향을 중심으로 합니다.</p>
-    <div class="contact">
-        <h3>문의하기</h3>
-        <p>전화: 90475370</p>
-        <p>Email: orphee.ashworth@gmail.com</p>
-        <button class="btn">문의하기</button>
-        <button class="btn">시향 예약</button>
-    </div>
-</div>
-
-<script>
-function setLang(lang) {
-    document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.lang button').forEach(btn => btn.classList.remove('active'));
-    document.getElementById(lang).classList.add('active');
-    event.target.classList.add('active');
+  </section>
+    body {
+  font-family: 'Helvetica Neue', sans-serif;
+  margin: 0;
+  background: #fff;
+  color: #333;
 }
-</script>
+
+.hero {
+  background: url('images/hero-bg.jpg') no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.animate-title {
+  font-size: 3em;
+  animation: slideDown 2s ease;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.product img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.cart {
+  background: #f9f9f9;
+  padding: 20px;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes slideDown {
+  from {transform: translateY(-50px);}
+  to {transform: translateY(0);}
+}
+    let cart = [];
+
+function addToCart(product) {
+  cart.push(product);
+  renderCart();
+}
+
+function renderCart() {
+  const cartList = document.getElementById('cart-items');
+  cartList.innerHTML = '';
+  cart.forEach((item, index) => {
+    cartList.innerHTML += `<li>${item} <button onclick="removeItem(${index})">刪除</button></li>`;
+  });
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  renderCart();
+}
+
+function checkout() {
+  alert("付款方式: PayPal / Visa / Master / 支付寶 / 微信");
+}
+    
+
+  <!-- 購物車 -->
+  <section class="cart">
+    <h2>購物車</h2>
+    <ul id="cart-items"></ul>
+    <button onclick="checkout()">付款</button>
+  </section>
+
+  <!-- 付款方式 -->
+  <footer>
+    <h2>付款方式</h2>
+    <img src="images/paypal.png" alt="PayPal">
+    <img src="images/visa.png" alt="Visa">
+    <img src="images/mastercard.png" alt="MasterCard">
+    <img src="images/alipay.png" alt="支付寶">
+    <img src="images/wechatpay.png" alt="微信支付">
+  </footer>
 </body>
 </html>
