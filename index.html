@@ -2,87 +2,90 @@
 <html lang="zh-HK">
 <head>
   <meta charset="UTF-8">
-  <title>OrpheeAshworth Perfume</title>
+  <title>Orphee & Ashworth Perfume</title>
   <style>
-    body {font-family: 'Helvetica Neue', sans-serif; margin: 0; background: #fff; color: #333;}
-    .hero {background: url('images/hero-bg.jpg') no-repeat center center/cover; height: 100vh; display: flex; flex-direction: column; justify-content: center; text-align: center; color: white; animation: fadeIn 2s ease-in-out;}
-    .animate-title {font-size: 3em; animation: slideDown 2s ease;}
-    .animate-subtitle {font-size: 1.5em; animation: fadeInUp 3s ease;}
-    .product-grid {display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 20px;}
-    .product {background:#fafafa; padding:15px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s;}
-    .product:hover {transform: scale(1.05);}
-    .product img {width: 100%; border-radius: 8px;}
-    .cart {background: #f9f9f9; padding: 20px;}
-    footer {background:#222; color:#fff; text-align:center; padding:20px;}
-    footer img {height:40px; margin:0 10px;}
-    @keyframes fadeIn {from {opacity: 0;} to {opacity: 1;}}
-    @keyframes slideDown {from {transform: translateY(-50px);} to {transform: translateY(0);}}
-    @keyframes fadeInUp {from {opacity:0; transform:translateY(50px);} to {opacity:1; transform:translateY(0);}}
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      background: url('images/hero-bg.jpg') no-repeat center center/cover;
+      animation: fadeIn 2s ease;
+      color: #fff;
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    header {
+      text-align: center;
+      padding: 100px 20px 40px;
+      background: rgba(0,0,0,0.4);
+    }
+    header h1 { font-size: 48px; margin-bottom: 10px; }
+    header p { font-size: 20px; margin-bottom: 20px; }
+    .lang-switch { position: absolute; top: 20px; right: 20px; }
+    .lang-switch button {
+      margin-left: 10px; padding: 5px 10px;
+      background: #fff; color: #333;
+      border: none; border-radius: 5px; cursor: pointer;
+    }
+    .product-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px; padding: 40px; background: #fff; color: #333;
+    }
+    .product {
+      background: #f9f9f9; padding: 20px; border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+      text-align: center; transition: transform 0.3s ease;
+    }
+    .product:hover { transform: scale(1.05); }
+    .product img { max-width: 100%; border-radius: 8px; margin-bottom: 10px; }
+    footer { background: #eee; text-align: center; padding: 20px; }
+    .payments img { height: 24px; margin: 0 5px; }
+    .whatsapp { position: fixed; bottom: 20px; right: 20px; }
+    .whatsapp img { height: 48px; }
   </style>
 </head>
 <body>
-  <header class="hero">
-    <h1 class="animate-title">OrpheeAshworth Perfume</h1>
-    <p class="animate-subtitle">Elegance · Myth · Culture</p>
+  <div class="lang-switch">
+    <button>中文</button>
+    <button>English</button>
+  </div>
+
+  <header>
+    <h1>Orphee & Ashworth Perfume</h1>
+    <p>香港文化 × 歐洲美學</p>
   </header>
 
-  <nav class="language-switch" style="text-align:center; margin:20px;">
-    <select id="lang">
-      <option>繁體中文</option>
-      <option>简体中文</option>
-      <option>English</option>
-      <option>日本語</option>
-      <option>한국어</option>
-      <option>Français</option>
-      <option>Deutsch</option>
-      <option>Español</option>
-    </select>
-  </nav>
-
-  <section class="about" style="padding:20px; text-align:center;">
-    <h2>關於我們</h2>
-    <p>OrpheeAshworth 結合香港文化符號、神話動物同歐洲美學，打造獨特香水品牌。</p>
-    <p>聯絡我們：orphee.ashworth1@gmail.com | WhatsApp: <a href="https://wa.me/85290475370">9047 5370</a></p>
-  </section>
-
-  <section class="products">
-    <h2 style="text-align:center;">產品系列</h2>
-    <div class="product-grid">
-      <div class="product"><img src="images/product1.jpg" alt="Perfume 1"><h3>香水 1</h3><p>奢華玻璃瓶</p><button onclick="addToCart('香水 1')">加入購物車</button></div>
-      <div class="product"><img src="images/product2.jpg" alt="Perfume 2"><h3>香水 2</h3><p>極簡設計</p><button onclick="addToCart('香水 2')">加入購物車</button></div>
-      <div class="product"><img src="images/product3.jpg" alt="Perfume 3"><h3>香水 3</h3><p>水晶切割</p><button onclick="addToCart('香水 3')">加入購物車</button></div>
-      <div class="product"><img src="images/product4.jpg" alt="Perfume 4"><h3>香水 4</h3><p>藝術花紋</p><button onclick="addToCart('香水 4')">加入購物車</button></div>
-      <div class="product"><img src="images/product5.jpg" alt="Perfume 5"><h3>香水 5</h3><p>現代設計</p><button onclick="addToCart('香水 5')">加入購物車</button></div>
+  <section class="product-grid">
+    <div class="product">
+      <img src="images/product1.jpg" alt="Perfume 1">
+      <h2>香水一號</h2>
+      <p>優雅花香調</p>
+    </div>
+    <div class="product">
+      <img src="images/product2.jpg" alt="Perfume 2">
+      <h2>香水二號</h2>
+      <p>清新果香調</p>
+    </div>
+    <div class="product">
+      <img src="images/product3.jpg" alt="Perfume 3">
+      <h2>香水三號</h2>
+      <p>神秘木質調</p>
     </div>
   </section>
 
-  <section class="cart">
-    <h2>購物車</h2>
-    <ul id="cart-items"></ul>
-    <button onclick="checkout()">付款</button>
-  </section>
-
   <footer>
-    <h2>付款方式</h2>
-    <img src="images/paypal.png" alt="PayPal">
-    <img src="images/visa.png" alt="Visa">
-    <img src="images/mastercard.png" alt="MasterCard">
-    <img src="images/alipay.png" alt="支付寶">
-    <img src="images/wechatpay.png" alt="微信支付">
+    <p>© 2026 Orphee & Ashworth Perfume</p>
+    <div class="payments">
+      <img src="images/visa.png" alt="Visa">
+      <img src="images/mastercard.png" alt="MasterCard">
+      <img src="images/paypal.png" alt="PayPal">
+      <img src="images/alipay.png" alt="Alipay">
+      <img src="images/wechatpay.png" alt="WeChat Pay">
+    </div>
   </footer>
 
-  <script>
-    let cart = [];
-    function addToCart(product) {cart.push(product); renderCart();}
-    function renderCart() {
-      const cartList = document.getElementById('cart-items');
-      cartList.innerHTML = '';
-      cart.forEach((item, index) => {
-        cartList.innerHTML += `<li>${item} <button onclick="removeItem(${index})">刪除</button></li>`;
-      });
-    }
-    function removeItem(index) {cart.splice(index, 1); renderCart();}
-    function checkout() {alert("付款方式: PayPal / Visa / Master / 支付寶 / 微信");}
-  </script>
+  <div class="whatsapp">
+    <a href="https://wa.me/85260000000" target="_blank">
+      <img src="images/whatsapp.png" alt="WhatsApp">
+    </a>
+  </div>
 </body>
 </html>
