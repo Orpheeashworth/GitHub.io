@@ -5,153 +5,272 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Orphee & Ashworth</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#051937;color:#ffd700;font-family:sans-serif;padding:12px}
-header{text-align:center;padding:20px 0;border-bottom:1px solid #ffd700}
-h1{font-size:26px}
-.lang{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0}
-.lang button{background:transparent;color:#ffd700;border:1px solid #ffd700;padding:6px 10px;border-radius:20px;cursor:pointer}
-.lang button.active{background:#ffd700;color:#051937}
-.nav{display:flex;justify-content:center;gap:15px;margin:15px 0;font-weight:bold}
-.section{margin-bottom:30px}
-h2{font-size:18px;border-left:5px solid #ffd700;padding-left:10px}
-.product{border:1px solid #ffd700;padding:15px;border-radius:10px;margin-bottom:12px}
-.product img{width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:10px}
-.btn{background:#ffd700;color:#051937;padding:8px 12px;border-radius:20px;border:none;margin:5px}
-.btngrey{border:1px solid #ffd700;background:transparent;color:#ffd700;padding:8px 12px;border-radius:20px}
-.contact{text-align:center;border:1px solid #ffd700;padding:20px;border-radius:10px}
-footer{text-align:center;padding:20px;border-top:1px solid #ffd700;margin-top:20px}
-.lang-content{display:none}
-.lang-content.active{display:block}
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    background: #051937;
+    color: #ffd700;
+    font-family: sans-serif;
+    padding: 10px;
+}
+.lang { text-align: right; margin-bottom: 15px; }
+.lang button {
+    background: transparent;
+    color: #ffd700;
+    border: 1px solid #ffd700;
+    padding: 5px 10px;
+    border-radius: 15px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+.lang button.active {
+    background: #ffd700;
+    color: #051937;
+    font-weight: bold;
+}
+.nav {
+    text-align: right;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.nav span { margin-left: 15px; }
+h2 {
+    font-size: 18px;
+    border-left: 4px solid #ffd700;
+    padding-left: 8px;
+    margin-top: 25px;
+}
+.product {
+    border: 1px solid #ffd700;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #072247;
+}
+/* 圖片設定 - 這裡保证一定显示 */
+.product-img {
+    width: 100%;
+    height: 140px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-size: cover !important;
+    background-position: center !important;
+}
+.btn {
+    background: #ffd700;
+    color: #051937;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.btngrey {
+    border: 1px solid #ffd700;
+    background: transparent;
+    color: #ffd700;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.contact {
+    border: 1px solid #ffd700;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+.lang-content { display: none; }
+.lang-content.active { display: block; }
 </style>
 </head>
 <body>
 
-<header>
-<h1>Orphee & Ashworth</h1>
-<p id="tag">精品香水專門店｜英國業務拓展</p>
-</header>
-
 <div class="lang">
-<button onclick="setLang('zh-HK')" class="active">繁</button>
-<button onclick="setLang('zh-CN')">简</button>
-<button onclick="setLang('en')">En</button>
-<button onclick="setLang('ja')">日</button>
-<button onclick="setLang('ko')">韩</button>
+    <button onclick="setLang('zh-HK')" class="active">繁</button>
+    <button onclick="setLang('zh-CN')">简</button>
+    <button onclick="setLang('en')">En</button>
+    <button onclick="setLang('ja')">日</button>
+    <button onclick="setLang('ko')">韩</button>
 </div>
 
 <div class="nav">
-<span>WhatsApp</span> <span>心願</span> <span>購物車</span>
+    <span>WhatsApp</span>
+    <span>心願</span>
+    <span>購物車</span>
 </div>
 
-<!-- 女士香水 -->
-<div class="section">
-<h2 id="title-products">產品及服務</h2>
+<!-- 🔥 繁體 🔥 -->
+<div class="lang-content active" id="zh-HK">
+    <h2>產品及服務</h2>
 
-<div class="product">
-<img src="https://images.unsplash.com/photo-1591417419416-0f1fe1ed86f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="女士香水">
-<h3 id="p1">女士精品香水</h3>
-<p id="p1-desc">花香、果香、木質調，高級持久。</p>
-<button class="btn" id="add-cart">加入購物車</button>
-<button class="btngrey" id="add-wish">加入心願</button>
+    <div class="product">
+        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1591417419416-0f1fe1ed86f3?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <h3>女士精品香水</h3>
+        <p>花香、果香、木質調，高級持久。</p>
+        <button class="btn">加入購物車</button>
+        <button class="btngrey">加入心願</button>
+    </div>
+
+    <div class="product">
+        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1559563458-cd4ed482b37b?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <h3>男士紳士香水</h3>
+        <p>木質、海洋、紳士香氣。</p>
+        <button class="btn">加入購物車</button>
+        <button class="btngrey">加入心願</button>
+    </div>
+
+    <div class="product">
+        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1541973559095-46face02a33f?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <h3>中性小眾香水</h3>
+        <p>無性別高級香，獨特不撞香。</p>
+        <button class="btn">加入購物車</button>
+        <button class="btngrey">加入心願</button>
+    </div>
+
+    <h2>關於我們</h2>
+    <p>Orphee & Ashworth 以優雅、品味、專業為核心，搜羅世界各地高質感香水。</p>
+    <p>香氣是個人風格的延伸，每種味道代表一種生活態度。</p>
+    <p>為將來英國市場發展鋪路，專注英倫風格香調。</p>
+
+    <div class="contact">
+        <h3>聯絡我們</h3>
+        <p>電話：90475370</p>
+        <p>Email：orphee.ashworth@gmail.com</p>
+        <button class="btn">立即查詢</button>
+        <button class="btn">預約試香</button>
+    </div>
 </div>
 
-<div class="product">
-<img src="https://images.unsplash.com/photo-1559563458-cd4ed482b37b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="男士香水">
-<h3 id="p2">男士紳士香水</h3>
-<p id="p2-desc">木質、海洋、紳士香氣。</p>
-<button class="btn">加入購物車</button>
-<button class="btngrey">加入心願</button>
+<!-- 🇨🇳 簡體 🇨🇳 -->
+<div class="lang-content" id="zh-CN">
+    <h2>产品及服务</h2>
+    <div class="product">
+        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1591417419416-0f1fe1ed86f3?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <h3>女士精品香水</h3>
+        <p>花香、果香、木质调，高级持久。</p>
+        <button class="btn">加入购物车</button>
+        <button class="btngrey">加入心愿</button>
+    </div>
+    <div class="product">
+        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1559563458-cd4ed482b37b?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <h3>男士绅士香水</h3>
+        <p>木质、海洋、绅士香气。</p>
+        <button class="btn">加入购物车</button>
+        <button class="btngrey">加入心愿</button>
+    </div>
+    <div class="product">
+        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1541973559095-46face02a33f?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <h3>中性小众香水</h3>
+        <p>无性别高级香，独特不撞香。</p>
+        <button class="btn">加入购物车</button>
+        <button class="btngrey">加入心愿</button>
+    </div>
+    <h2>关于我们</h2>
+    <p>Orphee & Ashworth 以优雅、品味、专业为核心，搜罗世界各地高品质香水。</p>
+    <p>香气是个人风格的延伸，每种味道代表一种生活态度。</p>
+    <p>为未来英国市场发展铺路，专注英伦风格香调。</p>
+    <div class="contact">
+        <h3>联系我们</h3>
+        <p>电话：90475370</p>
+        <p>Email：orphee.ashworth@gmail.com</p>
+        <button class="btn">立即咨询</button>
+        <button class="btn">预约试香</button>
+    </div>
 </div>
 
-<div class="product">
-<img src="https://images.unsplash.com/photo-1541973559095-46face02a33f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="中性香水">
-<h3 id="p3">中性小眾香水</h3>
-<p id="p3-desc">無性別高級香，獨特不撞香。</p>
-<button class="btn">加入購物車</button>
-<button class="btngrey">加入心願</button>
+<!-- 🇺🇸 English 🇺🇸 -->
+<div class="lang-content" id="en">
+    <h2>Products & Services</h2>
+    <div class="product">
+        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1591417419416-0f1fe1ed86f3?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <h3>Women's Luxury Perfume</h3>
+        <p>Floral, fruity, woody, long-lasting.</p>
+        <button class="btn">Add to Cart</button>
+        <button class="btngrey">Add to Wishlist</button>
+    </div>
+    <div class="product">
+        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1559563458-cd4ed482b37b?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <h3>Men's Gentleman Perfume</h3>
+        <p>Woody, marine, elegant scent.</p>
+        <button class="btn">Add to Cart</button>
+        <button class="btngrey">Add to Wishlist</button>
+    </div>
+    <div class="product">
+        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1541973559095-46face02a33f?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <h3>Unisex Niche Perfume</h3>
+        <p>Gender-free premium fragrance, unique.</p>
+        <button class="btn">Add to Cart</button>
+        <button class="btngrey">Add to Wishlist</button>
+    </div>
+    <h2>About Us</h2>
+    <p>Orphee & Ashworth focuses on elegance, taste and professionalism, offering high-quality perfumes worldwide.</p>
+    <p>Scent is an extension of personal style, each fragrance represents an attitude.</p>
+    <p>Preparing for UK market expansion with British-style fragrances.</p>
+    <div class="contact">
+        <h3>Contact Us</h3>
+        <p>Tel: 90475370</p>
+        <p>Email: orphee.ashworth@gmail.com</p>
+        <button class="btn">Inquire Now</button>
+        <button class="btn">Book a Test</button>
+    </div>
 </div>
+
+<!-- 🇯🇵 日本語 🇯🇵 -->
+<div class="lang-content" id="ja">
+    <h2>商品・サービス</h2>
+    <div class="product">
+        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1591417419416-0f1fe1ed86f3?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <h3>レディース香水</h3>
+        <p>フローラル、フルーティ、ウッディで長持ち。</p>
+        <button class="btn">カートに入れる</button>
+        <button class="btngrey">ウィッシュリスト</button>
+    </div>
+    <div class="product">
+        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1559563458-cd4ed482b37b?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <h3>メンズ香水</h3>
+        <p>ウッディ、マリン、上品な香り。</p>
+        <button class="btn">カートに入れる</button>
+        <button class="btngrey">ウィッシュリスト</button>
+    </div>
+    <div class="product">
+        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1541973559095-46face02a33f?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <h3>ユニセックス香水</h3>
+        <p>ジェンダーレスな高級香、個性的。</p>
+        <button class="btn">カートに入れる</button>
+        <button class="btngrey">ウィッシュリスト</button>
+    </div>
+    <h2>私たちについて</h2>
+    <p>Orphee & Ashworth はエレガンスと専門性を重視、世界の高級香水をセレクト。</p>
+    <p>香りは個性の一部で、それぞれが生き方を表します。</p>
+    <p>イギリス市場展開を見据え、英国風の香調を中心に展開。</p>
+    <div class="contact">
+        <h3>お問い合わせ</h3>
+        <p>TEL: 90475370</p>
+        <p>Email: orphee.ashworth@gmail.com</p>
+        <button class="btn">お問い合わせ</button>
+        <button class="btn">試香予約</button>
+    </div>
 </div>
 
-<div class="section">
-<h2 id="title-about">關於我們</h2>
-<p id="about1">Orphee & Ashworth 以優雅、品味、專業為核心，搜羅世界各地高質感香水。</p>
-<p id="about2">香氣是個人風格的延伸，每種味道代表一種生活態度。</p>
-<p id="about3">為將來英國市場發展鋪路，專注英倫風格香調。</p>
-</div>
+<!-- 🇰🇷 한국어 🇰🇷 -->
+<div class="lang-content" id="ko">
+    <h2>제품 및 서비스</h2>
+    <div class="product">
+        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1591417419416-0f1fe1ed86f3?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <h3>여성용 고급 향수</h3>
+        <p>플로럴, 후르티, 우디 계열 오래 지속됨.</p>
+        <button class="btn">장바구니</button>
+        <button class="btngrey">위시리스트</button>
+    </div>
+    <div class="product">
+        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1559563458-cd4ed482b37b?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <h3>남성용 시그니처 향수</h3>
+        <p>우디, 마린, 고급스러운 향.</p>
+        <button class="btn">장바구니</button>
+        <button class="btngrey">위시리스트</button>
+    </div>
+    <div class="product">
+        <div
 
-<div class="section">
-<h2 id="title-review">客戶見證</h2>
-<p id="rev1">「店主專業細心，找到最適合自己的香氣！」</p>
-<p id="rev2">「禮盒高級，送禮一流。」</p>
-</div>
-
-<div class="contact">
-<h2 id="title-contact">聯絡我們</h2>
-<p id="tel">電話：90475370</p>
-<p id="email">Email：orphee.ashworth@gmail.com</p>
-<button class="btn" id="inquiry">立即查詢</button>
-<button class="btn" id="book">預約試香</button>
-</div>
-
-<footer>
-<p id="copy">Orphee & Ashworth © 2014 版權所有</p>
-</footer>
-
-<script>
-const langs = {
-"zh-HK":{
-tag:"精品香水專門店｜英國業務拓展",
-"title-products":"產品及服務",p1:"女士精品香水","p1-desc":"花香、果香、木質調，高級持久。",p2:"男士紳士香水","p2-desc":"木質、海洋、紳士香氣。",p3:"中性小眾香水","p3-desc":"無性別高級香，獨特不撞香。","add-cart":"加入購物車","add-wish":"加入心願",
-"title-about":"關於我們",about1:"Orphee & Ashworth 以優雅、品味、專業為核心，搜羅世界各地高質感香水。",about2:"香氣是個人風格的延伸，每種味道代表一種生活態度。",about3:"為將來英國市場發展鋪路，專注英倫風格香調。",
-"title-review":"客戶見證",rev1:"「店主專業細心，找到最適合自己的香氣！」",rev2:"「禮盒高級，送禮一流。」",
-"title-contact":"聯絡我們",tel:"電話：90475370",email:"Email：orphee.ashworth@gmail.com",inquiry:"立即查詢",book:"預約試香",
-copy:"Orphee & Ashworth © 2014 版權所有"
-},
-"zh-CN":{
-tag:"精品香水专门店｜英国业务拓展",
-"title-products":"产品及服务",p1:"女士精品香水","p1-desc":"花香、果香、木质调，高级持久。",p2:"男士绅士香水","p2-desc":"木质、海洋、绅士香气。",p3:"中性小众香水","p3-desc":"无性别高级香，独特不撞香。","add-cart":"加入购物车","add-wish":"加入心愿",
-"title-about":"关于我们",about1:"Orphee & Ashworth 以优雅、品味、专业为核心，搜罗世界各地高品质香水。",about2:"香气是个人风格的延伸，每种味道代表一种生活态度。",about3:"为未来英国市场发展铺路，专注英伦风格香调。",
-"title-review":"客户见证",rev1:"「店主专业细心，找到最适合自己的香气！」",rev2:"「礼盒高级，送礼一流。」",
-"title-contact":"联系我们",tel:"电话：90475370",email:"Email：orphee.ashworth@gmail.com",inquiry:"立即咨询",book:"预约试香",
-copy:"Orphee & Ashworth © 2014 版权所有"
-},
-"en":{
-tag:"Luxury Perfume Shop | UK Business Development",
-"title-products":"Products & Services",p1:"Women's Luxury Perfume","p1-desc":"Floral, fruity, woody, long-lasting.",p2:"Men's Gentleman Perfume","p2-desc":"Woody, marine, elegant scent.",p3:"Unisex Niche Perfume","p3-desc":"Gender-free premium fragrance, unique and rare.",
-"add-cart":"Add to Cart","add-wish":"Add to Wishlist",
-"title-about":"About Us",about1:"Orphee & Ashworth focuses on elegance, taste and professionalism, offering high-quality perfumes worldwide.",about2:"Scent is an extension of personal style, each fragrance represents an attitude.",about3:"Preparing for UK market expansion with British-style fragrances.",
-"title-review":"Testimonials",rev1:"Professional service, found my perfect scent!",rev2:"Luxury gift box, ideal for presents.",
-"title-contact":"Contact Us",tel:"Tel: 90475370",email:"Email: orphee.ashworth@gmail.com",inquiry:"Inquire Now",book:"Book a Test",
-copy:"Orphee & Ashworth © 2014 All Rights Reserved"
-},
-"ja":{
-tag:"高級香水専門店｜イギリス事業展開",
-"title-products":"商品・サービス",p1:"レディース香水","p1-desc":"フローラル、フルーティ、ウッディで長持ち。",p2:"メンズ香水","p2-desc":"ウッディ、マリン、上品な香り。",p3:"ユニセックス香水","p3-desc":"ジェンダーレスな高級香、個性的。",
-"add-cart":"カートに入れる","add-wish":"ウィッシュリスト",
-"title-about":"私たちについて",about1:"Orphee & Ashworth はエレガンスと専門性を重視、世界の高級香水をセレクト。",about2:"香りは個性の一部で、それぞれが生き方を表します。",about3:"イギリス市場展開を見据え、英国風の香調を中心に展開。",
-"title-review":"お客様の声",rev1:"「専門的で丁寧なアドバイス、自分に合う香りが見つかりました」",rev2:"「ギフトボックスが豪華でプレゼントに最適」",
-"title-contact":"お問い合わせ",tel:"TEL: 90475370",email:"Email: orphee.ashworth@gmail.com",inquiry:"お問い合わせ",book:"試香予約",
-copy:"Orphee & Ashworth © 2014 全著作権所有"
-},
-"ko":{
-tag:"고급 향수 전문점｜영국 사업 확장",
-"title-products":"제품 및 서비스",p1:"여성용 고급 향수","p1-desc":"플로럴, 후르티, 우디 계열 오래 지속됨.",p2:"남성용 시그니처 향수","p2-desc":"우디, 마린, 고급스러운 향.",p3:"젠더리스 니치 향수","p3-desc":"성별 구분 없는 고급 향, 독특하고 희귀함.",
-"add-cart":"장바구니","add-wish":"위시리스트",
-"title-about":"회사 소개",about1:"Orphee & Ashworth는 우아함과 전문성을 바탕으로 세계 각국의 고급 향수를 엄선합니다.",about2:"향수는 개인 스타일의 연장이며, 각 향은 삶의 태도를 나타냅니다.",about3:"영국 시장 진출을 준비하며 영국풍 향을 중심으로 합니다.",
-"title-review":"고객 후기",rev1:""전문적이고 꼼꼼한 서비스, 완벽한 향을 찾았습니다!"",rev2:""고급스러운 선물 포장, 선물하기 최고입니다."",
-"title-contact":"문의하기",tel:"전화: 90475370",email:"Email: orphee.ashworth@gmail.com",inquiry:"문의하기",book:"시향 예약",
-copy:"Orphee & Ashworth © 2014 판권 소유"
-}
-}
-
-function setLang(lang){
-document.querySelectorAll('.lang button').forEach(b=>b.classList.remove('active'))
-event.target.classList.add('active')
-const t = langs[lang]
-for(const id in t) document.getElementById(id)&&(document.getElementById(id).innerText=t[id])
-}
-setLang('zh-HK')
-</script>
-</body>
-</html>
