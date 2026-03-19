@@ -47,14 +47,25 @@ h2 {
     margin-bottom: 15px;
     background: #072247;
 }
-/* 圖片設定 - 這裡保证一定显示 */
+/* 用 CSS 渐变做香水瓶形状，100% 能显示 */
 .product-img {
     width: 100%;
     height: 140px;
     border-radius: 5px;
     margin-bottom: 10px;
-    background-size: cover !important;
-    background-position: center !important;
+    background: linear-gradient(135deg, #1a2c4a 0%, #2a3c5a 100%);
+    position: relative;
+    overflow: hidden;
+}
+.product-img::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 35%;
+    width: 30%;
+    height: 80%;
+    background: linear-gradient(180deg, rgba(255,215,0,0.2) 0%, rgba(255,215,0,0.05) 100%);
+    border-radius: 20px 20px 5px 5px;
 }
 .btn {
     background: #ffd700;
@@ -101,39 +112,34 @@ h2 {
     <span>購物車</span>
 </div>
 
-<!-- 🔥 繁體 🔥 -->
+<!-- 繁體 -->
 <div class="lang-content active" id="zh-HK">
     <h2>產品及服務</h2>
-
     <div class="product">
-        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1591417419416-0f1fe1ed86f3?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <div class="product-img"></div>
         <h3>女士精品香水</h3>
         <p>花香、果香、木質調，高級持久。</p>
         <button class="btn">加入購物車</button>
         <button class="btngrey">加入心願</button>
     </div>
-
     <div class="product">
-        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1559563458-cd4ed482b37b?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <div class="product-img"></div>
         <h3>男士紳士香水</h3>
         <p>木質、海洋、紳士香氣。</p>
         <button class="btn">加入購物車</button>
         <button class="btngrey">加入心願</button>
     </div>
-
     <div class="product">
-        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1541973559095-46face02a33f?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <div class="product-img"></div>
         <h3>中性小眾香水</h3>
         <p>無性別高級香，獨特不撞香。</p>
         <button class="btn">加入購物車</button>
         <button class="btngrey">加入心願</button>
     </div>
-
     <h2>關於我們</h2>
     <p>Orphee & Ashworth 以優雅、品味、專業為核心，搜羅世界各地高質感香水。</p>
     <p>香氣是個人風格的延伸，每種味道代表一種生活態度。</p>
     <p>為將來英國市場發展鋪路，專注英倫風格香調。</p>
-
     <div class="contact">
         <h3>聯絡我們</h3>
         <p>電話：90475370</p>
@@ -143,25 +149,25 @@ h2 {
     </div>
 </div>
 
-<!-- 🇨🇳 簡體 🇨🇳 -->
+<!-- 簡體 -->
 <div class="lang-content" id="zh-CN">
     <h2>产品及服务</h2>
     <div class="product">
-        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1591417419416-0f1fe1ed86f3?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <div class="product-img"></div>
         <h3>女士精品香水</h3>
         <p>花香、果香、木质调，高级持久。</p>
         <button class="btn">加入购物车</button>
         <button class="btngrey">加入心愿</button>
     </div>
     <div class="product">
-        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1559563458-cd4ed482b37b?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <div class="product-img"></div>
         <h3>男士绅士香水</h3>
         <p>木质、海洋、绅士香气。</p>
         <button class="btn">加入购物车</button>
         <button class="btngrey">加入心愿</button>
     </div>
     <div class="product">
-        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1541973559095-46face02a33f?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <div class="product-img"></div>
         <h3>中性小众香水</h3>
         <p>无性别高级香，独特不撞香。</p>
         <button class="btn">加入购物车</button>
@@ -180,25 +186,25 @@ h2 {
     </div>
 </div>
 
-<!-- 🇺🇸 English 🇺🇸 -->
+<!-- English -->
 <div class="lang-content" id="en">
     <h2>Products & Services</h2>
     <div class="product">
-        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1591417419416-0f1fe1ed86f3?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <div class="product-img"></div>
         <h3>Women's Luxury Perfume</h3>
         <p>Floral, fruity, woody, long-lasting.</p>
         <button class="btn">Add to Cart</button>
         <button class="btngrey">Add to Wishlist</button>
     </div>
     <div class="product">
-        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1559563458-cd4ed482b37b?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <div class="product-img"></div>
         <h3>Men's Gentleman Perfume</h3>
         <p>Woody, marine, elegant scent.</p>
         <button class="btn">Add to Cart</button>
         <button class="btngrey">Add to Wishlist</button>
     </div>
     <div class="product">
-        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1541973559095-46face02a33f?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <div class="product-img"></div>
         <h3>Unisex Niche Perfume</h3>
         <p>Gender-free premium fragrance, unique.</p>
         <button class="btn">Add to Cart</button>
@@ -217,25 +223,25 @@ h2 {
     </div>
 </div>
 
-<!-- 🇯🇵 日本語 🇯🇵 -->
+<!-- 日本語 -->
 <div class="lang-content" id="ja">
     <h2>商品・サービス</h2>
     <div class="product">
-        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1591417419416-0f1fe1ed86f3?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <div class="product-img"></div>
         <h3>レディース香水</h3>
         <p>フローラル、フルーティ、ウッディで長持ち。</p>
         <button class="btn">カートに入れる</button>
         <button class="btngrey">ウィッシュリスト</button>
     </div>
     <div class="product">
-        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1559563458-cd4ed482b37b?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <div class="product-img"></div>
         <h3>メンズ香水</h3>
         <p>ウッディ、マリン、上品な香り。</p>
         <button class="btn">カートに入れる</button>
         <button class="btngrey">ウィッシュリスト</button>
     </div>
     <div class="product">
-        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1541973559095-46face02a33f?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <div class="product-img"></div>
         <h3>ユニセックス香水</h3>
         <p>ジェンダーレスな高級香、個性的。</p>
         <button class="btn">カートに入れる</button>
@@ -254,23 +260,50 @@ h2 {
     </div>
 </div>
 
-<!-- 🇰🇷 한국어 🇰🇷 -->
+<!-- 한국어 -->
 <div class="lang-content" id="ko">
     <h2>제품 및 서비스</h2>
     <div class="product">
-        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1591417419416-0f1fe1ed86f3?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <div class="product-img"></div>
         <h3>여성용 고급 향수</h3>
         <p>플로럴, 후르티, 우디 계열 오래 지속됨.</p>
         <button class="btn">장바구니</button>
         <button class="btngrey">위시리스트</button>
     </div>
     <div class="product">
-        <div class="product-img" style="background: url('https://images.unsplash.com/photo-1559563458-cd4ed482b37b?ixlib=rb-4.0.3&q=80&w=500');"></div>
+        <div class="product-img"></div>
         <h3>남성용 시그니처 향수</h3>
         <p>우디, 마린, 고급스러운 향.</p>
         <button class="btn">장바구니</button>
         <button class="btngrey">위시리스트</button>
     </div>
     <div class="product">
-        <div
+        <div class="product-img"></div>
+        <h3>젠더리스 니치 향수</h3>
+        <p>성별 구분 없는 고급 향, 독특하고 희귀함.</p>
+        <button class="btn">장바구니</button>
+        <button class="btngrey">위시리스트</button>
+    </div>
+    <h2>회사 소개</h2>
+    <p>Orphee & Ashworth는 우아함과 전문성을 바탕으로 세계 각국의 고급 향수를 엄선합니다.</p>
+    <p>향수는 개인 스타일의 연장이며, 각 향은 삶의 태도를 나타냅니다.</p>
+    <p>영국 시장 진출을 준비하며 영국풍 향을 중심으로 합니다.</p>
+    <div class="contact">
+        <h3>문의하기</h3>
+        <p>전화: 90475370</p>
+        <p>Email: orphee.ashworth@gmail.com</p>
+        <button class="btn">문의하기</button>
+        <button class="btn">시향 예약</button>
+    </div>
+</div>
 
+<script>
+function setLang(lang) {
+    document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.lang button').forEach(btn => btn.classList.remove('active'));
+    document.getElementById(lang).classList.add('active');
+    event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
