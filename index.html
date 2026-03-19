@@ -1,1 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orphee & Ashworth - 精品香水專門店</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'PingFang HK', 'Microsoft JhengHei', sans-serif;
+}
+body {
+  background-color: #051937;
+  color: #ffd700;
+  line-height: 1.7;
+  padding: 0;
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
+/* 頂部工具列 */
+.top-bar {
+  background: rgba(255,215,0,0.05);
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 1100px;
+}
+.whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #25D366;
+  color: #fff;
+  padding: 9px 16px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+.whatsapp img {
+  height: 20px;
+}
+.top-icons {
+  display: flex;
+  gap: 12px;
+}
+.top-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #ffd700;
+  padding: 8px 14px;
+  border-radius: 30px;
+  color: #ffd700;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 50px 20px;
+  border-bottom: 1px solid rgba(255,215,0,0.3);
+  margin-bottom: 40px;
+}
+h1 {
+  font-size: 42px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+header p {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+/* 導航 */
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.nav a {
+  color: #ffd700;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.nav a:hover {
+  opacity: 0.7;
+}
+
+/* 版面標題 */
+.section-title {
+  font-size: 26px;
+  margin-bottom: 20px;
+  border-left: 6px solid #ffd700;
+  padding-left: 14px;
+}
+
+/* 產品卡 */
+.product {
+  background: rgba(255,215,0,0.03);
+  border: 1px solid rgba(255,215,0,0.2);
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+.product:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+.product h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.product p {
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+.product-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.btn-cart {
+  background: #ffd700;
+  color: #051937;
+  border: none;
+  padding: 11px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-wish {
+  border: 1px solid #ffd700;
+  background: transparent;
+  color: #ffd700;
+  padding: 11px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-cart:hover, .btn-wish:hover {
+  opacity: 0.8;
+}
+
+/* 客戶見證 */
+.testimonial {
+  background: rgba(255,215,0,0.04);
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+/* 聯絡版面 */
+.contact-box {
+  background: rgba(255,215,0,0.05);
+  border: 1px solid rgba(255,215,0,0.2);
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  margin-top: 20px;
+}
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin: 24px 0;
+}
+.social a {
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: bold;
+}
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+/* 底部 */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 1px solid rgba(255,215,0,0.2);
+  margin-top: 50px;
+  opacity: 0.8;
+}
+
+/* 間距 */
+section {
+  margin-bottom: 50px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">
+  <a href="https://wa.me/85290475370" target="_blank" class="whatsapp">
+    <img src="https://cdn-icons-png.flaticon.com/512/124/124036.png" alt="WhatsApp">
+    WhatsApp 聯絡
+  </a>
+  <div class="top-icons">
+    <a href="#" class="top-btn">❤️ 願望清單</a>
+    <a href="#" class="top-btn">🛒 購物車</a>
+  </div>
+</div>
+
+<div class="container">
+  <header>
+    <h1>Orphee & Ashworth</h1>
+    <p>精品香水專門店｜為英國業務拓展全面鋪路</p>
+  </header>
+
+  <div class="nav">
+    <a href="#about">關於我們</a>
+    <a href="#products">產品系列</a>
+    <a href="#testi">客戶見證</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+
+  <section id="about">
+    <h2 class="section-title">關於我們</h2>
+    <p>Orphee & Ashworth 以優雅、品味、專業為核心，為您搜羅世界各地高質感精品香水，堅持獨特、高級、不易撞香的選擇。</p>
+    <p>我們深信香氣是個人風格的延伸，每一種味道都代表一種生活態度。</p>
+    <p>本店同時為將來英國市場發展作好準備，專注英倫風格香調與歐洲精品，未來將拓展跨境服務及實體店經營。</p>
+  </section>
+
+  <section id="products">
+    <h2 class="section-title">產品及服務</h2>
+
+    <div class="product">
+      <h3>女士精品香水</h3>
+      <p>花香調、果香調、東方調、木質調，適合日常、約會、晚宴及正式場合。</p>
+      <p>特色：高級持久、小眾獨特、氣質高貴。</p>
+      <div class="product-actions">
+        <button class="btn-cart">🛒 加入購物車</button>
+        <button class="btn-wish">❤️ 加入願望</button>
+      </div>
+    </div>
+
+    <div class="product">
+      <h3>男士紳士香水</h3>
+      <p>木質調、海洋調、皮革調、清新紳士香，適合上班、約會、宴會及日常穿搭。</p>
+      <div class="product-actions">
+        <button class="btn-cart">🛒 加入購物車</button>
+        <button class="btn-wish">❤️ 加入願望</button>
+      </div>
+    </div>
+
+    <div class="product">
+      <h3>中性小眾香水</h3>
+      <p>無性別高級香氣，文藝冷淡風，適合追求獨特品味、不喜歡撞香的客人。</p>
+      <div class="product-actions">
+        <button class="btn-cart">🛒 加入購物車</button>
+        <button class="btn-wish">❤️ 加入願望</button>
+      </div>
+    </div>
+
+    <div class="product">
+      <h3>專業服務</h3>
+      <p>一對一香氛諮詢、精緻禮盒包裝、企業禮品訂製、英國品牌採購查詢、跨境選品配對。</p>
+    </div>
+  </section>
+
+  <section id="testi">
+    <h2 class="section-title">客戶見證</h2>
+    <div class="testimonial">「店主專業細心，幫我找到最適合自己的香氣，非常滿意！」</div>
+    <div class="testimonial">「禮盒高級得體，送禮一流，朋友非常喜歡。」</div>
+    <div class="testimonial">「好多英國同歐洲品牌，香氣獨特有品味，值得推介。」</div>
+    <div class="testimonial">「服務詳細有耐心，解說清楚，整體體驗極好。」</div>
+  </section>
+
+  <section id="contact" class="contact-box">
+    <h2 class="section-title">聯絡我們</h2>
+    <p><strong>電話：</strong>90475370</p>
+    <p><strong>Email：</strong>orphee & Ashworth @gmail.com</p>
+
+    <div class="social">
+      <a href="#">Facebook</a>
+      <a href="#">Instagram</a>
+      <a href="#">LINE</a>
+      <a href="#">YouTube</a>
+    </div>
+
+    <div class="action-buttons">
+      <button class="btn-cart">立即查詢</button>
+      <button class="btn-cart">預約試香</button>
+      <button class="btn-cart">英國業務查詢</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>Orphee & Ashworth © 2025 版權所有</p>
+    <p>香港精品香水店｜英國市場拓展計劃進行中</p>
+  </footer>
+</div>
+
+</body>
+</html>
