@@ -3,386 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orphee & Ashworth - Parfum</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#E5E5E5',
-                        secondary: '#1A1A1A',
-                        accent: '#D4AF37'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif']
-                    }
-                }
+    <title>Orphée & Ashworth | 極致香氛</title>
+    <style>
+        /* 全局樣式 - 奢華黑金主題，完美匹配Logo */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', serif;
+        }
+        body {
+            background-color: #0a0a0a;
+            color: #f5f5f0;
+            line-height: 1.6;
+        }
+        /* 頂部導航欄 - 放Logo嘅核心位置 */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0,0,0,0.9);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #d4af37;
+        }
+        .logo img {
+            height: 60px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        .logo img:hover {
+            transform: scale(1.05); /* 滑鼠hover放大，高級感拉滿 */
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        nav a {
+            color: #f5f5f0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #d4af37;
+        }
+        /* 首頁Banner - 大Logo展示，第一眼就靚 */
+        .banner {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('banner-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+        .banner-logo img {
+            height: 200px;
+            width: auto;
+            margin-bottom: 2rem;
+            animation: fadeIn 2s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .banner h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #d4af37;
+        }
+        .banner p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        .btn {
+            padding: 1rem 2rem;
+            background-color: #d4af37;
+            color: #000;
+            text-decoration: none;
+            border-radius: 0;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #f5f5f0;
+            transform: translateY(-2px);
+        }
+        /* 產品展示區 */
+        .products {
+            padding: 5rem 5%;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #d4af37;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .product-card {
+            background-color: #1a1a1a;
+            border: 1px solid #d4af37;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+        }
+        .product-card img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+        .product-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #d4af37;
+        }
+        .product-card .scent-notes {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            color: #aaa;
+        }
+        .product-card .price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #d4af37;
+            margin-bottom: 1rem;
+        }
+        .product-card .btn-small {
+            padding: 0.5rem 1.5rem;
+            background-color: #d4af37;
+            color: #000;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        /* 頁腳 - 再放一次Logo，強化品牌 */
+        footer {
+            background-color: #000;
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid #d4af37;
+        }
+        .footer-logo img {
+            height: 80px;
+            width: auto;
+            margin-bottom: 1rem;
+        }
+        footer p {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        /* 手機端響應式，唔會變形 */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+            .banner h1 {
+                font-size: 2rem;
+            }
+            .banner-logo img {
+                height: 150px;
             }
         }
-    </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .fade-in { animation: fadeIn 0.8s ease-in; }
-            .slide-up { animation: slideUp 0.6s ease-out; }
-            .hover-scale { transition: transform 0.3s ease; }
-            .hover-scale:hover { transform: scale(1.03); }
-        }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        html { scroll-behavior: smooth; }
     </style>
+    <!-- 引入高級襯線字體，完美匹配Logo風格 -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-primary text-secondary min-h-screen">
-    <!-- Header -->
-    <header class="sticky top-0 bg-white/90 backdrop-blur-sm shadow-sm z-50 fade-in">
-        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-            <div class="flex items-center">
-                <!-- 正確的Logo圖片 -->
-                <img src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/112ca8157d324236bc83bce148c365d8.jpeg~tplv-a9rns2rl98-image_dld_watermark_1_5.png?lk3s=8e244e95&rcl=20260322040256174978479E7D6D4000C4&rrcfp=827586d3&x-expires=2089483391&x-signature=vQzmQTxvuGAQe3ah3qAaREKXn94%3D" alt="Orphee & Ashworth Logo" class="h-14">
-            </div>
-            
-            <!-- Language Switch -->
-            <div class="relative group">
-                <button class="px-3 py-1 text-sm border border-secondary/20 rounded flex items-center gap-1">
-                    <i class="fa fa-globe"></i> 語言 <i class="fa fa-chevron-down text-xs"></i>
-                </button>
-                <div class="absolute right-0 top-full mt-1 bg-white shadow-lg rounded w-36 hidden group-hover:block z-40">
-                    <a href="#" class="block px-3 py-2 text-sm hover:bg-primary" onclick="changeLang('zh-TW')">繁體中文</a>
-                    <a href="#" class="block px-3 py-2 text-sm hover:bg-primary" onclick="changeLang('zh-CN')">简体中文</a>
-                    <a href="#" class="block px-3 py-2 text-sm hover:bg-primary" onclick="changeLang('en')">English</a>
-                    <a href="#" class="block px-3 py-2 text-sm hover:bg-primary" onclick="changeLang('ja')">日本語</a>
-                    <a href="#" class="block px-3 py-2 text-sm hover:bg-primary" onclick="changeLang('ko')">한국어</a>
-                    <a href="#" class="block px-3 py-2 text-sm hover:bg-primary" onclick="changeLang('fr')">Français</a>
-                </div>
-            </div>
-            
-            <!-- Cart & Wishlist -->
-            <div class="flex gap-4 items-center">
-                <button id="wishlistBtn" class="text-xl relative">
-                    <i class="fa fa-heart-o"></i>
-                    <span id="wishlistCount" class="absolute -top-2 -right-2 bg-accent text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
-                </button>
-                <button id="cartBtn" class="text-xl relative">
-                    <i class="fa fa-shopping-bag"></i>
-                    <span id="cartCount" class="absolute -top-2 -right-2 bg-accent text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
-                </button>
-            </div>
-        </div>
+<body>
+    <!-- 頂部導航欄 - Logo位置 -->
+    <header>
+        <a href="#" class="logo">
+            <!-- 直接調用你上傳嘅OA Logo -->
+            <img src="oa-logo.png" alt="Orphée & Ashworth Logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#home">首頁</a></li>
+                <li><a href="#products">香氛系列</a></li>
+                <li><a href="#about">品牌故事</a></li>
+                <li><a href="#contact">聯絡我們</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="h-[70vh] flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1541602477810-09c61532bf33?q=80&w=1200')] bg-cover bg-center relative">
-        <div class="absolute inset-0 bg-black/40"></div>
-        <div class="container mx-auto px-4 text-center text-white relative z-10 slide-up">
-            <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-serif mb-4">Orphee & Ashworth</h1>
-            <p class="text-[clamp(1rem,2vw,1.25rem)] max-w-2xl mx-auto mb-8">法式優雅 × 英式質感 · 定義專屬你的香氣印記</p>
-            <a href="#products" class="bg-white text-secondary px-6 py-3 rounded-sm hover:bg-accent hover:text-white transition-colors">探索香氛</a>
+    <!-- 首頁Banner - 大Logo展示 -->
+    <section class="banner" id="home">
+        <div class="banner-logo">
+            <img src="oa-logo.png" alt="Orphée & Ashworth">
         </div>
+        <h1>ORPHÉE & ASHWORTH</h1>
+        <p>極致香氛，喚醒感官 | Scent That Speaks to the Soul</p>
+        <a href="#products" class="btn">探索香氛系列</a>
     </section>
 
-    <!-- Products Section -->
-    <section id="products" class="py-16 container mx-auto px-4">
-        <h2 class="text-3xl font-serif text-center mb-12 fade-in">精選香氛</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <!-- Product 1 -->
-            <div class="bg-white rounded-sm shadow-sm overflow-hidden hover-scale fade-in">
-                <img src="https://images.unsplash.com/photo-1523956291332-12c066251fc7?q=80&w=500" alt="Woody Elegance" class="w-full h-64 object-cover">
-                <div class="p-4">
-                    <h3 class="font-medium">Woody Elegance</h3>
-                    <p class="text-sm text-secondary/70 mb-2">前調：柑橘｜中調：檀香｜後調：琥珀</p>
-                    <p class="text-accent font-bold mb-3">HK$1,280</p>
-                    <div class="flex gap-2">
-                        <button onclick="addToCart(1, 'Woody Elegance', 1280, 'https://images.unsplash.com/photo-1523956291332-12c066251fc7?q=80&w=500')" class="flex-1 bg-secondary text-white py-1 text-sm">加入購物車</button>
-                        <button onclick="addToWishlist(1, 'Woody Elegance', 1280, 'https://images.unsplash.com/photo-1523956291332-12c066251fc7?q=80&w=500')" class="w-8 h-8 border border-secondary/20 flex items-center justify-center"><i class="fa fa-heart-o"></i></button>
-                    </div>
-                </div>
+    <!-- 產品系列區 -->
+    <section class="products" id="products">
+        <h2 class="section-title">精選香氛</h2>
+        <div class="product-grid">
+            <!-- 產品1: Oriental Night -->
+            <div class="product-card">
+                <img src="oriental-night.jpg" alt="Oriental Night">
+                <h3>Oriental Night</h3>
+                <p class="scent-notes">前調：香料 | 中調：沉香 | 後調：香草</p>
+                <p class="price">HK$1,480</p>
+                <a href="#" class="btn-small">立即選購</a>
             </div>
-            <!-- Product 2 -->
-            <div class="bg-white rounded-sm shadow-sm overflow-hidden hover-scale fade-in">
-                <img src="https://images.unsplash.com/photo-1532476348531-8ad34d4c4965?q=80&w=500" alt="Floral Dream" class="w-full h-64 object-cover">
-                <div class="p-4">
-                    <h3 class="font-medium">Floral Dream</h3>
-                    <p class="text-sm text-secondary/70 mb-2">前調：玫瑰｜中調：茉莉｜後調：麝香</p>
-                    <p class="text-accent font-bold mb-3">HK$1,180</p>
-                    <div class="flex gap-2">
-                        <button onclick="addToCart(2, 'Floral Dream', 1180, 'https://images.unsplash.com/photo-1532476348531-8ad34d4c4965?q=80&w=500')" class="flex-1 bg-secondary text-white py-1 text-sm">加入購物車</button>
-                        <button onclick="addToWishlist(2, 'Floral Dream', 1180, 'https://images.unsplash.com/photo-1532476348531-8ad34d4c4965?q=80&w=500')" class="w-8 h-8 border border-secondary/20 flex items-center justify-center"><i class="fa fa-heart-o"></i></button>
-                    </div>
-                </div>
+            <!-- 產品2: Fresh Linen -->
+            <div class="product-card">
+                <img src="fresh-linen.jpg" alt="Fresh Linen">
+                <h3>Fresh Linen</h3>
+                <p class="scent-notes">前調：柑橘 | 中調：亞麻 | 後調：白麝香</p>
+                <p class="price">HK$1,480</p>
+                <a href="#" class="btn-small">立即選購</a>
             </div>
-            <!-- Product 3 -->
-            <div class="bg-white rounded-sm shadow-sm overflow-hidden hover-scale fade-in">
-                <img src="https://images.unsplash.com/photo-1594059165920-94696ae67e24?q=80&w=500" alt="Citrus Breeze" class="w-full h-64 object-cover">
-                <div class="p-4">
-                    <h3 class="font-medium">Citrus Breeze</h3>
-                    <p class="text-sm text-secondary/70 mb-2">前調：檸檬｜中調：薄荷｜後調：雪松</p>
-                    <p class="text-accent font-bold mb-3">HK$980</p>
-                    <div class="flex gap-2">
-                        <button onclick="addToCart(3, 'Citrus Breeze', 980, 'https://images.unsplash.com/photo-1594059165920-94696ae67e24?q=80&w=500')" class="flex-1 bg-secondary text-white py-1 text-sm">加入購物車</button>
-                        <button onclick="addToWishlist(3, 'Citrus Breeze', 980, 'https://images.unsplash.com/photo-1594059165920-94696ae67e24?q=80&w=500')" class="w-8 h-8 border border-secondary/20 flex items-center justify-center"><i class="fa fa-heart-o"></i></button>
-                    </div>
-                </div>
+            <!-- 產品3: Amber Rose -->
+            <div class="product-card">
+                <img src="amber-rose.jpg" alt="Amber Rose">
+                <h3>Amber Rose</h3>
+                <p class="scent-notes">前調：柑橘 | 中調：玫瑰 | 後調：琥珀</p>
+                <p class="price">HK$1,480</p>
+                <a href="#" class="btn-small">立即選購</a>
             </div>
-            <!-- Product 4 -->
-            <div class="bg-white rounded-sm shadow-sm overflow-hidden hover-scale fade-in">
-                <img src="https://images.unsplash.com/photo-1617013612673-22d6dba4d5ab?q=80&w=500" alt="Oriental Night" class="w-full h-64 object-cover">
-                <div class="p-4">
-                    <h3 class="font-medium">Oriental Night</h3>
-                    <p class="text-sm text-secondary/70 mb-2">前調：香料｜中調：沉香｜後調：香草</p>
-                    <p class="text-accent font-bold mb-3">HK$1,480</p>
-                    <div class="flex gap-2">
-                        <button onclick="addToCart(4, 'Oriental Night', 1480, 'https://images.unsplash.com/photo-1617013612673-22d6dba4d5ab?q=80&w=500')" class="flex-1 bg-secondary text-white py-1 text-sm">加入購物車</button>
-                        <button onclick="addToWishlist(4, 'Oriental Night', 1480, 'https://images.unsplash.com/photo-1617013612673-22d6dba4d5ab?q=80&w=500')" class="w-8 h-8 border border-secondary/20 flex items-center justify-center"><i class="fa fa-heart-o"></i></button>
-                    </div>
-                </div>
-            </div>
-            <!-- Product 5 -->
-            <div class="bg-white rounded-sm shadow-sm overflow-hidden hover-scale fade-in">
-                <img src="https://images.unsplash.com/photo-1559598467-f8b76c8165d0?q=80&w=500" alt="Fresh Linen" class="w-full h-64 object-cover">
-                <div class="p-4">
-                    <h3 class="font-medium">Fresh Linen</h3>
-                    <p class="text-sm text-secondary/70 mb-2">前調：佛手柑｜中調：百合｜後調：白麝香</p>
-                    <p class="text-accent font-bold mb-3">HK$880</p>
-                    <div class="flex gap-2">
-                        <button onclick="addToCart(5, 'Fresh Linen', 880, 'https://images.unsplash.com/photo-1559598467-f8b76c8165d0?q=80&w=500')" class="flex-1 bg-secondary text-white py-1 text-sm">加入購物車</button>
-                        <button onclick="addToWishlist(5, 'Fresh Linen', 880, 'https://images.unsplash.com/photo-1559598467-f8b76c8165d0?q=80&w=500')" class="w-8 h-8 border border-secondary/20 flex items-center justify-center"><i class="fa fa-heart-o"></i></button>
-                    </div>
-                </div>
-            </div>
-            <!-- Product 6 -->
-            <div class="bg-white rounded-sm shadow-sm overflow-hidden hover-scale fade-in">
-                <img src="https://images.unsplash.com/photo-1591254714112-4c526a40d1b8?q=80&w=500" alt="Royal Oud" class="w-full h-64 object-cover">
-                <div class="p-4">
-                    <h3 class="font-medium">Royal Oud</h3>
-                    <p class="text-sm text-secondary/70 mb-2">前調：藏紅花｜中調：烏木｜後調：皮革</p>
-                    <p class="text-accent font-bold mb-3">HK$1,680</p>
-                    <div class="flex gap-2">
-                        <button onclick="addToCart(6, 'Royal Oud', 1680, 'https://images.unsplash.com/photo-1591254714112-4c526a40d1b8?q=80&w=500')" class="flex-1 bg-secondary text-white py-1 text-sm">加入購物車</button>
-                        <button onclick="addToWishlist(6, 'Royal Oud', 1680, 'https://images.unsplash.com/photo-1591254714112-4c526a40d1b8?q=80&w=500')" class="w-8 h-8 border border-secondary/20 flex items-center justify-center"><i class="fa fa-heart-o"></i></button>
-                    </div>
-                </div>
-            </div>
-            <!-- Product 7 -->
-            <div class="bg-white rounded-sm shadow-sm overflow-hidden hover-scale fade-in">
-                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=500" alt="Ocean Breeze" class="w-full h-64 object-cover">
-                <div class="p-4">
-                    <h3 class="font-medium">Ocean Breeze</h3>
-                    <p class="text-sm text-secondary/70 mb-2">前調：海鹽｜中調：海藻｜後調：龍涎香</p>
-                    <p class="text-accent font-bold mb-3">HK$1,080</p>
-                    <div class="flex gap-2">
-                        <button onclick="addToCart(7, 'Ocean Breeze', 1080, 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=500')" class="flex-1 bg-secondary text-white py-1 text-sm">加入購物車</button>
-                        <button onclick="addToWishlist(7, 'Ocean Breeze', 1080, 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=500')" class="w-8 h-8 border border-secondary/20 flex items-center justify-center"><i class="fa fa-heart-o"></i></button>
-                    </div>
-                </div>
-            </div>
-            <!-- Product 8 -->
-            <div class="bg-white rounded-sm shadow-sm overflow-hidden hover-scale fade-in">
-                <img src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?q=80&w=500" alt="Velvet Rose" class="w-full h-64 object-cover">
-                <div class="p-4">
-                    <h3 class="font-medium">Velvet Rose</h3>
-                    <p class="text-sm text-secondary/70 mb-2">前調：黑加侖｜中調：大馬士革玫瑰｜後調：廣藿香</p>
-                    <p class="text-accent font-bold mb-3">HK$1,380</p>
-                    <div class="flex gap-2">
-                        <button onclick="addToCart(8, 'Velvet Rose', 1380, 'https://images.unsplash.com/photo-1542281286-9e0a16bb7366?q=80&w=500')" class="flex-1 bg-secondary text-white py-1 text-sm">加入購物車</button>
-                        <button onclick="addToWishlist(8, 'Velvet Rose', 1380, 'https://images.unsplash.com/photo-1542281286-9e0a16bb7366?q=80&w=500')" class="w-8 h-8 border border-secondary/20 flex items-center justify-center"><i class="fa fa-heart-o"></i></button>
-                    </div>
-                </div>
-            </div>
-            <!-- Product 9 -->
-            <div class="bg-white rounded-sm shadow-sm overflow-hidden hover-scale fade-in">
-                <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=500" alt="Spice Market" class="w-full h-64 object-cover">
-                <div class="p-4">
-                    <h3 class="font-medium">Spice Market</h3>
-                    <p class="text-sm text-secondary/70 mb-2">前調：胡椒｜中調：豆蔻｜後調：沒藥</p>
-                    <p class="text-accent font-bold mb-3">HK$1,220</p>
-                    <div class="flex gap-2">
-                        <button onclick="addToCart(9, 'Spice Market', 1220, 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=500')" class="flex-1 bg-secondary text-white py-1 text-sm">加入購物車</button>
-                        <button onclick="addToWishlist(9, 'Spice Market', 1220, 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=500')" class="w-8 h-8 border border-secondary/20 flex items-center justify-center"><i class="fa fa-heart-o"></i></button>
-                    </div>
-                </div>
-            </div>
-            <!-- Product 10 -->
-            <div class="bg-white rounded-sm shadow-sm overflow-hidden hover-scale fade-in">
-                <img src="https://images.unsplash.com/photo-1527799894290-d628c5ab3575?q=80&w=500" alt="White Tea" class="w-full h-64 object-cover">
-                <div class="p-4">
-                    <h3 class="font-medium">White Tea</h3>
-                    <p class="text-sm text-secondary/70 mb-2">前調：白茶｜中調：小蒼蘭｜後調：馬黛茶</p>
-                    <p class="text-accent font-bold mb-3">HK$920</p>
-                    <div class="flex gap-2">
-                        <button onclick="addToCart(10, 'White Tea', 920, 'https://images.unsplash.com/photo-1527799894290-d628c5ab3575?q=80&w=500')" class="flex-1 bg-secondary text-white py-1 text-sm">加入購物車</button>
-                        <button onclick="addToWishlist(10, 'White Tea', 920, 'https://images.unsplash.com/photo-1527799894290-d628c5ab3575?q=80&w=500')" class="w-8 h-8 border border-secondary/20 flex items-center justify-center"><i class="fa fa-heart-o"></i></button>
-                    </div>
-                </div>
+            <!-- 產品4: Sandalwood Oud -->
+            <div class="product-card">
+                <img src="sandalwood-oud.jpg" alt="Sandalwood Oud">
+                <h3>Sandalwood Oud</h3>
+                <p class="scent-notes">前調：佛手柑 | 中調：檀香 | 後調：雪松</p>
+                <p class="price">HK$1,580</p>
+                <a href="#" class="btn-small">立即選購</a>
             </div>
         </div>
     </section>
 
-    <!-- Cart Sidebar -->
-    <div id="cartSidebar" class="fixed top-0 right-0 h-full w-80 bg-white shadow-lg transform translate-x-full transition-transform duration-300 z-50">
-        <div class="p-4 border-b">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-serif">購物車</h3>
-                <button onclick="closeCart()" class="text-xl">&times;</button>
-            </div>
+    <!-- 頁腳 - Logo位置 -->
+    <footer>
+        <div class="footer-logo">
+            <img src="oa-logo.png" alt="Orphée & Ashworth">
         </div>
-        <div id="cartItems" class="p-4 h-[calc(100vh-200px)] overflow-y-auto">
-            <p class="text-center text-secondary/60" id="emptyCartText">購物車為空</p>
-        </div>
-        <div class="p-4 border-t">
-            <a href="https://wa.me/85290475370" target="_blank" class="block w-full bg-[#25D366] text-white py-2 text-center rounded-sm mb-2">
-                <i class="fa fa-whatsapp mr-2"></i>WhatsApp查詢
-            </a>
-            <p class="text-right font-bold">總金額: HK$<span id="cartTotal">0</span></p>
-        </div>
-    </div>
-
-    <!-- Wishlist Sidebar -->
-    <div id="wishlistSidebar" class="fixed top-0 right-0 h-full w-80 bg-white shadow-lg transform translate-x-full transition-transform duration-300 z-50">
-        <div class="p-4 border-b">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-serif">願望清單</h3>
-                <button onclick="closeWishlist()" class="text-xl">&times;</button>
-            </div>
-        </div>
-        <div id="wishlistItems" class="p-4 h-[calc(100vh-150px)] overflow-y-auto">
-            <p class="text-center text-secondary/60" id="emptyWishlistText">願望清單為空</p>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-secondary text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <!-- 頁腳Logo也替換為正確圖片 -->
-            <img src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/112ca8157d324236bc83bce148c365d8.jpeg~tplv-a9rns2rl98-image_dld_watermark_1_5.png?lk3s=8e244e95&rcl=20260322040256174978479E7D6D4000C4&rrcfp=827586d3&x-expires=2089483391&x-signature=vQzmQTxvuGAQe3ah3qAaREKXn94%3D" alt="Orphee & Ashworth Logo" class="h-16 mx-auto mb-4">
-            <p class="mb-4">Orphee & Ashworth © 2014 保留所有權利</p>
-            <a href="https://wa.me/85290475370" target="_blank" class="inline-flex items-center gap-2 text-[#25D366]">
-                <i class="fa fa-whatsapp text-xl"></i> +852 9047 5370
-            </a>
-        </div>
+        <p>© 2026 Orphée & Ashworth. All Rights Reserved.</p>
+        <p>極致香氛，為品味而生</p>
     </footer>
-
-    <!-- Overlay -->
-    <div id="overlay" class="fixed inset-0 bg-black/30 hidden z-40" onclick="closeAllSidebars()"></div>
-
-    <script>
-        // Cart & Wishlist Data
-        let cart = [];
-        let wishlist = [];
-        const cartSidebar = document.getElementById('cartSidebar');
-        const wishlistSidebar = document.getElementById('wishlistSidebar');
-        const overlay = document.getElementById('overlay');
-
-        // Language Switch
-        function changeLang(lang) {
-            document.documentElement.lang = lang;
-            alert('語言已切換為: ' + lang);
-        }
-
-        // Cart Functions
-        function openCart() {
-            cartSidebar.classList.remove('translate-x-full');
-            overlay.classList.remove('hidden');
-        }
-        function closeCart() {
-            cartSidebar.classList.add('translate-x-full');
-            overlay.classList.add('hidden');
-        }
-        function addToCart(id, name, price, img) {
-            const existing = cart.find(item => item.id === id);
-            if(existing) {
-                existing.quantity += 1;
-            } else {
-                cart.push({id, name, price, img, quantity: 1});
-            }
-            updateCart();
-            openCart();
-        }
-        function removeFromCart(id) {
-            cart = cart.filter(item => item.id !== id);
-            updateCart();
-        }
-        function updateCart() {
-            const cartItems = document.getElementById('cartItems');
-            const cartCount = document.getElementById('cartCount');
-            const cartTotal = document.getElementById('cartTotal');
-            cartCount.textContent = cart.length;
-            let total = 0;
-            if(cart.length === 0) {
-                cartItems.innerHTML = '<p class="text-center text-secondary/60">購物車為空</p>';
-                cartTotal.textContent = '0';
-                return;
-            }
-            cartItems.innerHTML = '';
-            cart.forEach(item => {
-                total += item.price * item.quantity;
-                cartItems.innerHTML += `
-                    <div class="flex gap-3 mb-4 pb-4 border-b">
-                        <img src="${item.img}" alt="${item.name}" class="w-16 h-16 object-cover">
-                        <div class="flex-1">
-                            <h4 class="font-medium">${item.name}</h4>
-                            <p>HK$${item.price} × ${item.quantity}</p>
-                            <button onclick="removeFromCart(${item.id})" class="text-sm text-red-500">刪除</button>
-                        </div>
-                    </div>
-                `;
-            });
-            cartTotal.textContent = total;
-        }
-
-        // Wishlist Functions
-        function openWishlist() {
-            wishlistSidebar.classList.remove('translate-x-full');
-            overlay.classList.remove('hidden');
-        }
-        function closeWishlist() {
-            wishlistSidebar.classList.add('translate-x-full');
-            overlay.classList.add('hidden');
-        }
-        function addToWishlist(id, name, price, img) {
-            const existing = wishlist.find(item => item.id === id);
-            if(!existing) wishlist.push({id, name, price, img});
-            updateWishlist();
-            openWishlist();
-        }
-        function removeFromWishlist(id) {
-            wishlist = wishlist.filter(item => item.id !== id);
-            updateWishlist();
-        }
-        function updateWishlist() {
-            const wishlistItems = document.getElementById('wishlistItems');
-            const wishlistCount = document.getElementById('wishlistCount');
-            wishlistCount.textContent = wishlist.length;
-            if(wishlist.length === 0) {
-                wishlistItems.innerHTML = '<p class="text-center text-secondary/60">願望清單為空</p>';
-                return;
-            }
-            wishlistItems.innerHTML = '';
-            wishlist.forEach(item => {
-                wishlistItems.innerHTML += `
-                    <div class="flex gap-3 mb-4 pb-4 border-b">
-                        <img src="${item.img}" alt="${item.name}" class="w-16 h-16 object-cover">
-                        <div class="flex-1">
-                            <h4 class="font-medium">${item.name}</h4>
-                            <p class="text-accent">HK$${item.price}</p>
-                            <button onclick="removeFromWishlist(${item.id})" class="text-sm text-red-500">刪除</button>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        // Close All
-        function closeAllSidebars() {
-            closeCart();
-            closeWishlist();
-        }
-
-        // Button Events
-        document.getElementById('cartBtn').onclick = openCart;
-        document.getElementById('wishlistBtn').onclick = openWishlist;
-    </script>
 </body>
 </html>
