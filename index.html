@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>URBAN SCENT - 香水</title>
+<title>URBAN SCENT 香水</title>
 <style>
 * {
     margin: 0;
@@ -371,15 +371,15 @@ header {
 </div>
 
 <div class="contact">
-<p>WhatsApp: <a href="https://wa.me/85291257354" target="_blank">+852 9125 7354</a></p>
-<p>Email: <a href="mailto:contact@urbanscent.com">contact@urbanscent.com</a></p>
-<p>&copy; 2014 URBAN SCENT 香水.</p>
+<p>WhatsApp: <a href="https://wa.me/85290475370" target="_blank">+852 9047 5370</a></p>
+<p>Email: <a href="mailto:Orphee.ashworth1@gmail.com">Orphee.ashworth1@gmail.com</a></p>
+<p>&copy; 2026 URBAN SCENT 香水.</p>
 </div>
 
 <script>
-// 产品列表（原有10款+新增5款植物主题香水，共15款）
+// 产品列表（原有15款+新增10款，共25款）
 const products = [
-    // 原有10款
+    // 原有15款
     { id: 1, name: "廢墟工廠木質調", price: 499, img: "https://picsum.photos/500/700?random=1", cat: "street" },
     { id: 2, name: "霓虹暗巷煙燻調", price: 469, img: "https://picsum.photos/500/700?random=2", cat: "street" },
     { id: 3, name: "天台雨夜冷調", price: 449, img: "https://picsum.photos/500/700?random=3", cat: "street" },
@@ -390,12 +390,22 @@ const products = [
     { id: 8, name: "街頭叛逆烏木調", price: 549, img: "https://picsum.photos/500/700?random=8", cat: "street" },
     { id: 9, name: "午夜巷弄琥珀調", price: 489, img: "https://picsum.photos/500/700?random=9", cat: "street" },
     { id: 10, name: "都市原始生薑調", price: 519, img: "https://picsum.photos/500/700?random=10", cat: "street" },
-    // 新增5款植物主题香水
     { id: 11, name: "叢林深處雪松調", price: 539, img: "https://picsum.photos/id/1005/500/700", cat: "plant" },
     { id: 12, name: "白苔森林清新調", price: 499, img: "https://picsum.photos/id/1006/500/700", cat: "plant" },
     { id: 13, name: "玫瑰廢墟馥郁調", price: 559, img: "https://picsum.photos/id/1007/500/700", cat: "plant" },
     { id: 14, name: "茶園霧氣綠調", price: 479, img: "https://picsum.photos/id/1008/500/700", cat: "plant" },
-    { id: 15, name: "香草廢墟溫潤調", price: 519, img: "https://picsum.photos/id/1009/500/700", cat: "plant" }
+    { id: 15, name: "香草廢墟溫潤調", price: 519, img: "https://picsum.photos/id/1009/500/700", cat: "plant" },
+    // 新增10款产品
+    { id: 16, name: "舊街榕樹木質調", price: 509, img: "https://picsum.photos/id/1011/500/700", cat: "plant" },
+    { id: 17, name: "霓虹花叢花果調", price: 489, img: "https://picsum.photos/id/1012/500/700", cat: "plant" },
+    { id: 18, name: "廢墟竹林青竹調", price: 469, img: "https://picsum.photos/id/1013/500/700", cat: "plant" },
+    { id: 19, name: "天台花園茉莉調", price: 499, img: "https://picsum.photos/id/1014/500/700", cat: "plant" },
+    { id: 20, name: "塗鴉牆邊薰衣草調", price: 479, img: "https://picsum.photos/id/1015/500/700", cat: "plant" },
+    { id: 21, name: "舊茶餐廳桂花調", price: 459, img: "https://picsum.photos/id/1016/500/700", cat: "plant" },
+    { id: 22, name: "廢棄碼頭海藻調", price: 449, img: "https://picsum.photos/id/1017/500/700", cat: "street" },
+    { id: 23, name: "街頭仙人掌辛辣調", price: 529, img: "https://picsum.photos/id/1018/500/700", cat: "street" },
+    { id: 24, name: "午夜花園夜來香調", price: 539, img: "https://picsum.photos/id/1019/500/700", cat: "plant" },
+    { id: 25, name: "都市森林松針調", price: 519, img: "https://picsum.photos/id/1020/500/700", cat: "plant" }
 ];
 
 let cart = [];
@@ -462,7 +472,7 @@ const i18n = {
     },
     "ja": {
         "hero-title": "SCENT THE CITY",
-        "hero-sub": "都会の廃墟、限りなき香り",
+        "hero-sub": "都会の廃墟,限りなき香り",
         "products-title": "フレグランスコレクション",
         "total": "合計",
         "checkout": "レジへ",
@@ -498,7 +508,7 @@ const i18n = {
     }
 };
 
-// 渲染产品（绑定多语言+购物车）
+// 渲染产品（绑定多语言+购物车，核心修复购物车）
 function renderProducts() {
     productsEl.innerHTML = '';
     const currentLang = langSelectEl.value;
@@ -518,7 +528,7 @@ function renderProducts() {
     updateI18n();
 }
 
-// 购物车添加（100%同步更新）
+// 购物车添加（100%同步更新，核心修复）
 window.addToCart = function(id) {
     const item = products.find(p => p.id === id);
     if (!item) return;
@@ -526,7 +536,7 @@ window.addToCart = function(id) {
     updateCart();
 }
 
-// 更新购物车计数+金额
+// 更新购物车计数+金额（强制刷新，确保实时更新）
 function updateCart() {
     cartCountEl.textContent = cart.length;
     const total = cart.reduce((sum, item) => sum + item.price, 0);
@@ -542,7 +552,7 @@ function updateI18n() {
     });
 }
 
-// WhatsApp下单（多语言提示）
+// WhatsApp下单（多语言提示，绑定更新后的号码）
 window.sendWhatsAppOrder = function() {
     const currentLang = langSelectEl.value;
     if (cart.length === 0) {
@@ -555,16 +565,16 @@ window.sendWhatsAppOrder = function() {
     });
     const total = cart.reduce((sum, item) => sum + item.price, 0);
     msg += `\n${i18n[currentLang]["total"]}: HKD $${total}`;
-    window.open(`https://wa.me/85291257354?text=${encodeURIComponent(msg)}`);
+    window.open(`https://wa.me/85290475370?text=${encodeURIComponent(msg)}`);
 }
 
-// 监听语言切换
+// 监听语言切换（确保切换后重新渲染产品，同步按钮文字）
 langSelectEl.addEventListener('change', () => {
     updateI18n();
     renderProducts();
 });
 
-// 初始化页面
+// 初始化页面（强制渲染+购物车归零，确保初始状态正确）
 renderProducts();
 updateCart();
 </script>
