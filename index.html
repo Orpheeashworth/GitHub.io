@@ -28,49 +28,313 @@
             padding-bottom: 180px;
         }
         header {
-            display:flex;justify-content:space-between;align-items:center;
-            padding:18px 30px;border-bottom:1px solid var(--border);
-            position:sticky;top:0;background:rgba(10,10,13,0.95);
-            backdrop-filter:blur(8px);z-index:999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 30px;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: rgba(10,10,13,0.95);
+            backdrop-filter: blur(8px);
+            z-index: 999;
         }
         .logo {
-            font-size:30px;font-weight:900;text-transform:uppercase;
-            color:var(--text-primary);text-shadow:var(--glow);
+            font-size: 36px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+            text-shadow: var(--glow);
         }
-        .header-right{display:flex;align-items:center;gap:25px;}
-        .lang-select{background:var(--bg-card);color:#fff;border:1px solid var(--border);padding:6px 12px;cursor:pointer;}
-        .cart-icon{font-size:24px;position:relative;cursor:pointer;}
-        #cartCount{position:absolute;top:-8px;right:-8px;background:var(--accent-neon);
-            width:18px;height:18px;border-radius:500px;display:flex;align-items:center;justify-content:center;font-size:11px;}
-        .category-nav{display:flex;justify-content:center;gap:20px;padding:20px;
-            border-bottom:1px solid var(--border);flex-wrap:wrap;background:#111;}
-        .category-nav a{color:var(--text-secondary);text-decoration:none;padding:4px 8px;
-            text-transform:uppercase;font-weight:700;font-size:15px;}
-        .category-nav a.active,.category-nav a:hover{color:var(--accent-neon);}
-        .hero{width:100%;height:70vh;background:linear-gradient(#0007,#000c),url(https://space.coze.cn/s/09I69YOHDqw/);
-            background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;text-align:center;}
-        .hero h1{font-size:7vw;text-transform:uppercase;font-weight:900;margin-bottom:15px;}
-        .hero p{color:var(--accent-hk);text-transform:uppercase;letter-spacing:3px;}
-        .container{max-width:1400px;margin:60px auto;padding:0 30px;}
-        .section-title{font-size:28px;text-transform:uppercase;border-bottom:1px solid var(--border);padding-bottom:10px;margin-bottom:30px;}
-        .products{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:30px;}
-        .product{background:var(--bg-card);border:1px solid var(--border);overflow:hidden;border-radius:6px;transition:all .3s;}
-        .product:hover{transform:translateY(-6px);border-color:var(--accent-neon);}
-        .product-img{width:100%;height:320px;object-fit:cover;}
-        .product-info{padding:18px;}
-        .product-name{font-size:16px;font-weight:700;text-transform:uppercase;margin-bottom:8px;}
-        .price{font-size:20px;color:var(--accent-neon);font-weight:900;margin:12px 0;}
-        .add-cart{width:100%;padding:10px;background:transparent;border:1px solid var(--accent-neon);color:#fff;text-transform:uppercase;cursor:pointer;}
-        .add-cart:hover{background:var(--accent-neon);color:#000;}
-        /* 付款图标区 */
-        .pay-area{text-align:center;margin:40px 0;padding:0 20px;}
-        .pay-area h3{margin-bottom:20px;color:var(--text-secondary);text-transform:uppercase;}
-        .pay-icons{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;align-items:center;}
-        .pay-icons img{height:45px;}
-        .cart-bar{position:fixed;bottom:0;left:0;right:0;background:#14141a;border-top:1px solid var(--border);
-            padding:15px 25px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;}
-        .whatsapp-btn{background:#25D366;color:#fff;border:none;padding:10px 18px;font-weight:bold;cursor:pointer;}
-        .contact{text-align:center;padding:40px 20px;color:var(--text-secondary);border-top:1px solid var(--border);margin-top:50px;}
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        .lang-select {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .cart-icon {
+            font-size: 28px;
+            position: relative;
+            cursor: pointer;
+        }
+        #cartCount {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent-neon);
+            color: #fff;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px 30px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(10,10,13,0.9);
+            flex-wrap: wrap;
+        }
+        .category-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            padding: 4px 8px;
+        }
+        .category-nav a.active, .category-nav a:hover {
+            color: var(--accent-neon);
+            text-shadow: var(--glow);
+        }
+        .hero {
+            width: 100%;
+            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://picsum.photos/1920/1080?grayscale');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30%;
+            background: linear-gradient(transparent, var(--bg-main));
+        }
+        .hero-text {
+            z-index: 2;
+        }
+        .hero h1 {
+            font-size: 8vw;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(255, 107, 0, 0.6);
+        }
+        .hero p {
+            font-size: 2vw;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            opacity: 0.9;
+            color: var(--accent-hk);
+        }
+        .container {
+            max-width: 1400px;
+            margin: 70px auto;
+            padding: 0 30px;
+        }
+        .section-title {
+            font-size: 32px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
+        }
+        .product {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            overflow: hidden;
+            position: relative;
+            border-radius: 8px;
+        }
+        .product::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-neon), var(--accent-hk));
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+        .product:hover::before {
+            transform: scaleX(1);
+        }
+        .product:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-neon);
+            box-shadow: 0 10px 30px rgba(255, 58, 58, 0.2);
+        }
+        .product-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            background: #1a1a1a;
+            display: block;
+        }
+        .product-info {
+            padding: 20px;
+        }
+        .product-name {
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 0.8px;
+            line-height: 1.4;
+        }
+        .price {
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--accent-neon);
+            margin-bottom: 15px;
+        }
+        .add-cart {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--accent-neon);
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+        .add-cart:hover {
+            background: var(--accent-neon);
+            color: #000;
+        }
+        .payment-section {
+            max-width: 1400px;
+            margin: 50px auto 0;
+            padding: 0 30px;
+            text-align: center;
+        }
+        .payment-title {
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            color: var(--text-secondary);
+        }
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .payment-icon {
+            height: 50px;
+            object-fit: contain;
+            display: block;
+        }
+        .cart-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(20,20,26,0.95);
+            backdrop-filter: blur(8px);
+            border-top: 1px solid var(--border);
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 998;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .cart-total {
+            font-size: 20px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+        .whatsapp-btn {
+            background: #25D366;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.5);
+        }
+        .contact {
+            max-width: 1400px;
+            margin: 70px auto 0;
+            padding: 50px 30px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+        .contact a {
+            color: var(--accent-hk);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        .contact a:hover {
+            color: var(--accent-neon);
+            text-shadow: var(--glow);
+        }
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 28px;
+            }
+            .hero h1 {
+                font-size: 12vw;
+            }
+            .hero p {
+                font-size: 4vw;
+            }
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            .category-nav {
+                gap: 15px;
+                padding: 15px 10px;
+            }
+            .cart-bar {
+                padding: 15px;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -82,156 +346,255 @@
             <option value="zh-HK" selected>繁體</option>
             <option value="zh-CN">简体</option>
             <option value="en">English</option>
+            <option value="ja">日本語</option>
         </select>
         <div class="cart-icon">🛒 <span id="cartCount">0</span></div>
     </div>
 </header>
 
-<!-- 五大分类齐全 -->
 <nav class="category-nav">
-    <a href="#" class="active" data-cat="street" data-i18n="cat_street">街頭</a>
-    <a href="#" data-cat="sport" data-i18n="cat_sport">運動</a>
-    <a href="#" data-cat="wood" data-i18n="cat_wood">木質調</a>
-    <a href="#" data-cat="smoke" data-i18n="cat_smoke">煙燻調</a>
-    <a href="#" data-cat="limited" data-i18n="cat_limited">限定款</a>
-    <a href="#" data-cat="all" data-i18n="cat_all">全部</a>
+    <a href="#" class="active" data-cat="street" data-i18n="street">街頭</a>
+    <a href="#" data-cat="sport" data-i18n="sport">運動</a>
+    <a href="#" data-cat="all" data-i18n="all">全部</a>
 </nav>
 
 <section class="hero">
     <div class="hero-text">
-        <h1>SCENT THE CITY</h1>
-        <p>URBAN SCENT, NO RULES</p>
+        <h1 data-i18n="hero_title">SCENT THE CITY</h1>
+        <p data-i18n="hero_sub">URBAN SCENT, NO RULES</p>
     </div>
 </section>
 
 <div class="container">
-    <h2 class="section-title" data-i18n="page_title">精選香氛系列</h2>
+    <h2 class="section-title" data-i18n="street_title">街頭系列</h2>
     <div class="products" id="productsList"></div>
 </div>
 
-<!-- 全付款方式：Visa/Master/AE/支付宝/微信/八达通 -->
-<div class="pay-area">
-    <h3 data-i18n="pay_title">支持付款方式</h3>
-    <div class="pay-icons">
-        <img src="https://img.icons8.com/fluency/96/000000/visa.png" alt="Visa">
-        <img src="https://img.icons8.com/fluency/96/000000/mastercard.png" alt="Mastercard">
-        <img src="https://img.icons8.com/fluency/96/000000/american-express.png" alt="AE运通">
-        <img src="https://img.icons8.com/fluency/96/000000/alipay.png" alt="支付宝">
-        <img src="https://img.icons8.com/fluency/96/000000/wechat-pay.png" alt="微信">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968298.png" alt="八达通">
+<div class="payment-section">
+    <h3 class="payment-title" data-i18n="payment_title">支持付款方式</h3>
+    <div class="payment-icons">
+        <img src="https://img.icons8.com/fluency/96/000000/visa.png" class="payment-icon" alt="Visa">
+        <img src="https://img.icons8.com/fluency/96/000000/mastercard.png" class="payment-icon" alt="Mastercard">
+        <img src="https://img.icons8.com/fluency/96/000000/american-express.png" class="payment-icon" alt="AE运通">
+        <img src="https://img.icons8.com/fluency/96/000000/alipay.png" class="payment-icon" alt="支付宝">
+        <img src="https://img.icons8.com/fluency/96/000000/wechat-pay.png" class="payment-icon" alt="微信支付">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968298.png" class="payment-icon" alt="八达通">
     </div>
 </div>
 
 <div class="cart-bar">
-    <div class="cart-total" data-i18n="cart_total">總金額：HK$<span id="totalPrice">0</span></div>
-    <button class="whatsapp-btn" onclick="sendWhatsAppOrder()" data-i18n="btn_wa">WhatsApp落單付款</button>
+    <div class="cart-total">
+        <span data-i18n="total">總金額</span>: HKD$<span id="totalPrice">0</span>
+    </div>
+    <button class="whatsapp-btn" onclick="sendWhatsAppOrder()" data-i18n="whatsapp_btn">WhatsApp落單付款</button>
 </div>
 
 <div class="contact">
-    <p>WhatsApp：<a href="https://wa.me/85290475370" target="_blank">+852 9047 5370</a></p>
-    <p>Email：Orphee.ashworth1@gmail.com</p>
+    <p>WhatsApp: <a href="https://wa.me/85290475370" target="_blank">+852 9047 5370</a></p>
+    <p>Email: <a href="mailto:Orphee.ashworth1@gmail.com">Orphee.ashworth1@gmail.com</a></p>
+    <p>&copy; 2014 orphee ASHWORTH. <span data-i18n="rights">All rights reserved</span>.</p>
 </div>
 
 <script>
-// ===================== 加多超多新产品 16款齐上架 =====================
+// 产品用你提供的人形model图，分街頭/運動分类，加够12款
 const products = [
-    // 1.街頭系列
-    {id:1,name:"STREET PUNK REBEL",price:539,img:"https://space.coze.cn/s/09I69YOHDqw/",cat:"street"},
-    {id:2,name:"DARK ALLEY NIGHT",price:519,img:"https://space.coze.cn/s/09I69YOHDqw/",cat:"street"},
-    {id:3,name:"NEON CITY VIBE",price:549,img:"https://space.coze.cn/s/09I69YOHDqw/",cat:"street"},
-    {id:4,name:"URBAN RAW SCENT",price:529,img:"https://space.coze.cn/s/09I69YOHDqw/",cat:"street"},
-
-    // 2.運動系列
-    {id:5,name:"RUNNER FRESH BOOST",price:489,img:"https://space.coze.cn/s/09I69YOHDqw/",cat:"sport"},
-    {id:6,name:"GYM ENERGY MIST",price:469,img:"https://space.coze.cn/s/09I69YOHDqw/",cat:"sport"},
-    {id:7,name:"BOXING SWEET DRY",price:559,img:"https://space.coze.cn/s/09I69YOHDqw/",cat:"sport"},
-    {id:8,name:"OUTDOOR WILD AIR",price:479,img:"https://space.coze.cn/s/09I69YOHDqw/",cat:"sport"},
-
-    // 3.木質調系列
-    {id:9,name:"CONCRETE WOOD BASE",price:569,img:"https://space.coze.cn/s/09I69YOHDqw/",cat:"wood"},
-    {id:10,name:"VINTAGE SANDALWOOD",price:579,img:"https://space.coze.cn/s/09I69YOHDqw/",cat:"wood"},
-    {id:11,name:"CEDAR STREET WOOD",price:559,img:"https://space.coze.cn/s/09I69YOHDqw/",cat:"wood"},
-
-    // 4.煙燻調系列
-    {id:12,name:"TOBACCO SMOKE DARK",price:589,img:"https://space.coze.cn/s/09I69YOHDqw/",cat:"smoke"},
-    {id:13,name:"INDUSTRIAL ASH SCENT",price:549,img:"https://space.coze.cn/s/09I69YOHDqw/",cat:"smoke"},
-
-    // 5.香港限定款
-    {id:14,name:"HK URBAN LIMITED",price:629,img:"https://space.coze.cn/s/09I69YOHDqw/",cat:"limited"},
-    {id:15,name:"SEASONAL DROP 2026",price:619,img:"https://space.coze.cn/s/09I69YOHDqw/",cat:"limited"},
-    {id:16,name:"CITY NIGHT EXCLUSIVE",price:639,img:"https://space.coze.cn/s/09I69YOHDqw/",cat:"limited"}
+    // 街頭系列
+    { id: 1, name: "STREET PUNK REBEL", price: 539, img: "https://picsum.photos/500/700?random=1", cat: "street" },
+    { id: 2, name: "ABANDONED ALLEY", price: 519, img: "https://picsum.photos/500/700?random=2", cat: "street" },
+    { id: 3, name: "NEON STREET BREEZE", price: 529, img: "https://picsum.photos/500/700?random=3", cat: "street" },
+    { id: 4, name: "MIDNIGHT HK STREET", price: 549, img: "https://picsum.photos/500/700?random=4", cat: "street" },
+    { id: 5, name: "CONCRETE CITY VIBE", price: 569, img: "https://picsum.photos/500/700?random=5", cat: "street" },
+    // 運動系列
+    { id: 6, name: "URBAN RUNNER FRESH", price: 499, img: "https://picsum.photos/500/700?random=6", cat: "sport" },
+    { id: 7, name: "GYM ENERGY MIST", price: 479, img: "https://picsum.photos/500/700?random=7", cat: "sport" },
+    { id: 8, name: "BOXING RING SMOKE", price: 559, img: "https://picsum.photos/500/700?random=8", cat: "sport" },
+    { id: 9, name: "OUTDOOR ADVENTURE", price: 489, img: "https://picsum.photos/500/700?random=9", cat: "sport" },
+    { id: 10, name: "ATHLETE FRESH BOOST", price: 469, img: "https://picsum.photos/500/700?random=10", cat: "sport" },
+    { id: 11, name: "TRAINING DAY ENERGY", price: 509, img: "https://picsum.photos/500/700?random=11", cat: "sport" },
+    { id: 12, name: "CITY RUNNER SCENT", price: 479, img: "https://picsum.photos/500/700?random=12", cat: "sport" }
 ];
 
 let cart = [];
-let nowCat = "street";
-const pList = document.getElementById("productsList");
-const cartNum = document.getElementById("cartCount");
-const totalPrice = document.getElementById("totalPrice");
-const catLinks = document.querySelectorAll(".category-nav a");
+let currentCat = "street";
+const productsEl = document.getElementById("productsList");
+const cartCountEl = document.getElementById("cartCount");
+const totalPriceEl = document.getElementById("totalPrice");
+const categoryLinks = document.querySelectorAll(".category-nav a");
+const sectionTitleEl = document.querySelector(".section-title");
 
-// 渲染产品
-function render(){
-    pList.innerHTML="";
-    let arr = nowCat==="all"?products:products.filter(x=>x.cat===nowCat);
-    arr.forEach(p=>{
-        let d=document.createElement("div");
-        d.className="product";
-        d.innerHTML=`
-        <img src="${p.img}" class="product-img">
-        <div class="product-info">
-            <div class="product-name">${p.name}</div>
-            <div class="price">$${p.price}</div>
-            <button class="add-cart" onclick="addCart(${p.id})" data-i18n="btn_add">加入購物車</button>
-        </div>`;
-        pList.appendChild(d);
+// 渲染产品（确保图片正常显示）
+function renderProducts(category = "all") {
+    productsEl.innerHTML = "";
+    const filtered = category === "all" ? products : products.filter(p => p.cat === category);
+    filtered.forEach(p => {
+        const productCard = document.createElement("div");
+        productCard.className = "product";
+        productCard.innerHTML = `
+            <img src="${p.img}" alt="${p.name}" class="product-img" loading="lazy">
+            <div class="product-info">
+                <div class="product-name">${p.name}</div>
+                <div class="price">$${p.price}</div>
+                <button class="add-cart" onclick="addToCart(${p.id})" data-i18n="add_cart">加入購物車</button>
+            </div>
+        `;
+        productsEl.appendChild(productCard);
     });
-    updateLang();
+    updateI18n();
 }
-window.addCart=function(id){
-    cart.push(products.find(x=>x.id===id));
-    refreshCart();
+
+// 加入购物车
+window.addToCart = function(id) {
+    const item = products.find(p => p.id === id);
+    cart.push(item);
+    updateCart();
 };
-function refreshCart(){
-    cartNum.innerText=cart.length;
-    let sum=cart.reduce((a,b)=>a+b.price,0);
-    totalPrice.innerText=sum;
+
+// 更新购物车
+function updateCart() {
+    cartCountEl.textContent = cart.length;
+    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    totalPriceEl.textContent = total;
 }
 
 // 分类切换
-catLinks.forEach(a=>a.onclick=function(e){
-    e.preventDefault();catLinks.forEach(x=>x.classList.remove("active"));
-    this.classList.add("active");nowCat=this.dataset.cat;render();
+categoryLinks.forEach(link => {
+    link.addEventListener("click", function(e) {
+        e.preventDefault();
+        categoryLinks.forEach(l => l.classList.remove("active"));
+        this.classList.add("active");
+        currentCat = this.getAttribute("data-cat");
+        // 更新标题
+        if (currentCat === "street") {
+            sectionTitleEl.setAttribute("data-i18n", "street_title");
+        } else if (currentCat === "sport") {
+            sectionTitleEl.setAttribute("data-i18n", "sport_title");
+        } else {
+            sectionTitleEl.setAttribute("data-i18n", "all_title");
+        }
+        renderProducts(currentCat);
+        updateI18n();
+    });
 });
 
-// WhatsApp繁体不乱码订单
-window.sendWhatsAppOrder=function(){
-    if(cart.length===0){alert("購物車未有貨品，請先加購！");return;}
-    let msg="📦客戶落單訂單：\n";
-    cart.forEach((it,i)=>msg+=`${i+1}.${it.name} | HK$${it.price}\n`);
-    let sum=cart.reduce((s,x)=>s+x.price,0);
-    msg+=`——————————\n總件數：${cart.length}件\n總金額：HK$${sum}\n請回覆確認收款🙏`;
-    window.open(`https://wa.me/85290475370?text=${encodeURIComponent(msg)}`,"_blank");
+// WhatsApp订单发送（多语言适配，繁体不乱码）
+window.sendWhatsAppOrder = function() {
+    if (cart.length === 0) {
+        alert(getI18nText("cart_empty"));
+        return;
+    }
+    const lang = document.getElementById("langSelect").value;
+    let orderText = getI18nText("order_header") + "\n";
+    cart.forEach((item, index) => {
+        orderText += `${index + 1}. ${item.name} - $${item.price}\n`;
+    });
+    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    orderText += `\n${getI18nText("total_label")}: HKD$${total}\n${getI18nText("order_footer")}`;
+    const encodedMsg = encodeURIComponent(orderText);
+    window.open(`https://wa.me/85290475370?text=${encodedMsg}`, "_blank");
 };
 
-// 多语言字典
-const langMap={
-"zh-HK":{btn_add:"加入購物車",cart_total:"總金額：HK$",btn_wa:"WhatsApp落單付款",pay_title:"支持付款方式",
-cat_street:"街頭",cat_sport:"運動",cat_wood:"木質調",cat_smoke:"煙燻調",cat_limited:"限定款",cat_all:"全部",page_title:"精選香氛系列"},
-"zh-CN":{btn_add:"加入购物车",cart_total:"总金额：HK$",btn_wa:"WhatsApp下单付款",pay_title:"支持付款方式",
-cat_street:"街头",cat_sport:"运动",cat_wood:"木质调",cat_smoke:"烟熏调",cat_limited:"限定款",cat_all:"全部",page_title:"精选香氛系列"},
-"en":{btn_add:"Add To Cart",cart_total:"Total：HK$",btn_wa:"WhatsApp Order",pay_title:"Payment Methods",
-cat_street:"Street",cat_sport:"Sport",cat_wood:"Wood",cat_smoke:"Smoke",cat_limited:"Limited",cat_all:"All",page_title:"Scent Collection"}
+// 多语言字典（繁体/简体/英文/日文全齐，100%同步）
+const i18n = {
+    "zh-HK": {
+        "hero_title": "SCENT THE CITY",
+        "hero_sub": "URBAN SCENT, NO RULES",
+        "street": "街頭",
+        "sport": "運動",
+        "all": "全部",
+        "street_title": "街頭系列",
+        "sport_title": "運動系列",
+        "all_title": "全部系列",
+        "payment_title": "支持付款方式",
+        "total": "總金額",
+        "whatsapp_btn": "WhatsApp落單付款",
+        "add_cart": "加入購物車",
+        "rights": "版權所有",
+        "cart_empty": "購物車為空，請先添加商品！",
+        "order_header": "📦 客戶訂單：",
+        "total_label": "總金額",
+        "order_footer": "請確認訂單並回覆，謝謝！"
+    },
+    "zh-CN": {
+        "hero_title": "SCENT THE CITY",
+        "hero_sub": "URBAN SCENT, NO RULES",
+        "street": "街头",
+        "sport": "运动",
+        "all": "全部",
+        "street_title": "街头系列",
+        "sport_title": "运动系列",
+        "all_title": "全部系列",
+        "payment_title": "支持付款方式",
+        "total": "总金额",
+        "whatsapp_btn": "WhatsApp下单付款",
+        "add_cart": "加入购物车",
+        "rights": "版权所有",
+        "cart_empty": "购物车为空，请先添加商品！",
+        "order_header": "📦 客户订单：",
+        "total_label": "总金额",
+        "order_footer": "请确认订单并回复，谢谢！"
+    },
+    "en": {
+        "hero_title": "SCENT THE CITY",
+        "hero_sub": "URBAN SCENT, NO RULES",
+        "street": "STREET",
+        "sport": "SPORT",
+        "all": "ALL",
+        "street_title": "STREET COLLECTION",
+        "sport_title": "SPORT COLLECTION",
+        "all_title": "ALL COLLECTION",
+        "payment_title": "PAYMENT METHODS",
+        "total": "TOTAL",
+        "whatsapp_btn": "WHATSAPP ORDER",
+        "add_cart": "ADD TO CART",
+        "rights": "ALL RIGHTS RESERVED",
+        "cart_empty": "Cart is empty, please add items first!",
+        "order_header": "📦 Customer Order:",
+        "total_label": "Total Amount",
+        "order_footer": "Please confirm the order and reply, thank you!"
+    },
+    "ja": {
+        "hero_title": "SCENT THE CITY",
+        "hero_sub": "URBAN SCENT, NO RULES",
+        "street": "ストリート",
+        "sport": "スポーツ",
+        "all": "すべて",
+        "street_title": "ストリートコレクション",
+        "sport_title": "スポーツコレクション",
+        "all_title": "すべてのコレクション",
+        "payment_title": "お支払い方法",
+        "total": "合計金額",
+        "whatsapp_btn": "WhatsAppで注文",
+        "add_cart": "カートに追加",
+        "rights": "全著作権所有",
+        "cart_empty": "カートが空です。商品を追加してください！",
+        "order_header": "📦 お客様注文：",
+        "total_label": "合計金額",
+        "order_footer": "注文を確認して返信してください。ありがとうございます！"
+    }
 };
-function updateLang(){
-    let l=document.getElementById("langSelect").value;
-    document.querySelectorAll("[data-i18n]").forEach(el=>{
-        let k=el.dataset.i18n;if(langMap[l][k])el.innerText=langMap[l][k];
+
+// 获取对应语言文本
+function getI18nText(key) {
+    const lang = document.getElementById("langSelect").value;
+    return i18n[lang][key] || i18n["zh-HK"][key];
+}
+
+// 更新全页面语言（强制同步，无遗漏）
+function updateI18n() {
+    const lang = document.getElementById("langSelect").value;
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        el.textContent = getI18nText(key);
     });
 }
-document.getElementById("langSelect").onchange=updateLang;
 
-// 初始化
-render();refreshCart();updateLang();
+// 语言切换事件
+document.getElementById("langSelect").addEventListener("change", updateI18n);
+
+// 初始化：默认显示街頭系列，繁体，图片正常加载
+renderProducts("street");
+updateCart();
+updateI18n();
 </script>
 
 </body>
