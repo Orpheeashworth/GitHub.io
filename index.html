@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STREET SCENT - 街头潮牌香水</title>
+    <title>URBAN SCENT - 港风废土潮牌香水</title>
     <style>
         * {
             margin: 0;
@@ -12,65 +12,82 @@
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
         :root {
-            --primary: #ffffff;
-            --accent: #ff3333;
-            --bg-dark: #0a0a0a;
-            --bg-card: #141414;
-            --border: #2a2a2a;
+            --bg-main: #0a0a0d;
+            --bg-card: #14141a;
+            --accent-neon: #ff3a3a;
+            --accent-hk: #ff6b00;
+            --text-primary: #f0f0f0;
+            --text-secondary: #a0a0a8;
+            --border: #2a2a33;
+            --glow: 0 0 15px rgba(255, 58, 58, 0.4);
         }
         body {
-            background: var(--bg-dark);
-            color: var(--primary);
-            line-height: 1.4;
+            background: var(--bg-main);
+            color: var(--text-primary);
+            background-image: 
+                linear-gradient(rgba(10,10,13,0.95), rgba(10,10,13,0.98)),
+                url('https://picsum.photos/1920/1080?grayscale&blur=2');
+            background-attachment: fixed;
+            line-height: 1.5;
             padding-bottom: 120px;
         }
-        /* 头部 - Supreme式极简红标风 */
+        /* 头部 - 港风极简+霓虹感 */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 24px;
+            padding: 18px 30px;
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
-            background: var(--bg-dark);
+            background: rgba(10,10,13,0.95);
+            backdrop-filter: blur(8px);
             z-index: 999;
         }
         .logo {
-            font-size: 28px;
+            font-size: 30px;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: -1px;
-            color: var(--primary);
+            color: var(--text-primary);
+            text-shadow: var(--glow);
             /* 替换成你的Logo图片即可 */
-            content: url('你的logo.png');
         }
         .header-right {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
         }
         .lang-select {
             background: var(--bg-card);
-            color: var(--primary);
+            color: var(--text-primary);
             border: 1px solid var(--border);
-            padding: 6px 10px;
+            padding: 6px 12px;
             border-radius: 0;
             text-transform: uppercase;
             font-size: 12px;
             cursor: pointer;
+            transition: all 0.3s;
+        }
+        .lang-select:hover {
+            border-color: var(--accent-neon);
+            box-shadow: var(--glow);
         }
         .cart-icon {
-            font-size: 22px;
+            font-size: 24px;
             cursor: pointer;
             position: relative;
+            transition: transform 0.2s;
+        }
+        .cart-icon:hover {
+            transform: scale(1.1);
         }
         #cartCount {
             position: absolute;
             top: -8px;
             right: -8px;
-            background: var(--accent);
-            color: var(--primary);
+            background: var(--accent-neon);
+            color: var(--text-primary);
             font-size: 11px;
             width: 18px;
             height: 18px;
@@ -79,12 +96,15 @@
             align-items: center;
             justify-content: center;
             font-weight: bold;
+            box-shadow: var(--glow);
         }
-        /* 首屏Banner - Supreme联名大片风 */
+        /* 首屏Banner - 港风废土大片感 */
         .hero {
             width: 100%;
-            height: 70vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://picsum.photos/1920/1080?grayscale');
+            height: 80vh;
+            background: 
+                linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+                url('https://picsum.photos/1920/1080?grayscale');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -92,156 +112,197 @@
             justify-content: center;
             text-align: center;
             position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30%;
+            background: linear-gradient(transparent, var(--bg-main));
         }
         .hero-text {
             z-index: 2;
         }
         .hero h1 {
-            font-size: 6vw;
+            font-size: 7vw;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: -2px;
-            margin-bottom: 10px;
+            letter-spacing: -3px;
+            margin-bottom: 15px;
             line-height: 1;
+            text-shadow: 0 0 20px rgba(255, 107, 0, 0.6);
         }
         .hero p {
-            font-size: 1.5vw;
+            font-size: 1.8vw;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            opacity: 0.8;
+            letter-spacing: 4px;
+            opacity: 0.9;
+            color: var(--accent-hk);
         }
-        /* 产品区 - Supreme式网格 */
+        /* 产品区 - 废土港风网格 */
         .container {
             max-width: 1400px;
-            margin: 60px auto;
-            padding: 0 24px;
+            margin: 70px auto;
+            padding: 0 30px;
         }
         .section-title {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 900;
             text-transform: uppercase;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 10px;
+            padding-bottom: 12px;
+            letter-spacing: 1px;
         }
         .products {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
         }
         .product {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             overflow: hidden;
+            position: relative;
+        }
+        .product::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-neon), var(--accent-hk));
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+        .product:hover::before {
+            transform: scaleX(1);
         }
         .product:hover {
-            transform: translateY(-6px);
-            border-color: var(--accent);
+            transform: translateY(-8px);
+            border-color: var(--accent-neon);
+            box-shadow: 0 10px 30px rgba(255, 58, 58, 0.2);
         }
         .product-img {
             width: 100%;
-            height: 320px;
+            height: 350px;
             object-fit: cover;
             background: #1a1a1a;
-            filter: grayscale(20%);
-            transition: filter 0.3s;
+            filter: grayscale(30%) contrast(1.2);
+            transition: filter 0.4s;
         }
         .product:hover .product-img {
-            filter: grayscale(0%);
+            filter: grayscale(0%) contrast(1.1);
         }
         .product-info {
-            padding: 16px;
+            padding: 20px;
         }
         .product-name {
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 700;
             text-transform: uppercase;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            letter-spacing: 0.8px;
         }
         .price {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 900;
-            color: var(--accent);
-            margin-bottom: 12px;
+            color: var(--accent-neon);
+            margin-bottom: 15px;
         }
         .add-cart {
             width: 100%;
-            padding: 10px;
-            background: var(--primary);
-            color: var(--bg-dark);
-            border: none;
+            padding: 12px;
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--accent-neon);
             font-weight: 900;
             text-transform: uppercase;
             font-size: 12px;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: all 0.3s;
         }
         .add-cart:hover {
-            background: var(--accent);
-            color: var(--primary);
+            background: var(--accent-neon);
+            color: var(--bg-main);
+            box-shadow: var(--glow);
         }
-        /* 购物车栏 - 固定底部 */
+        /* 购物车栏 - 港风固定底部 */
         .cart-bar {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            background: var(--bg-card);
+            background: rgba(20,20,26,0.95);
+            backdrop-filter: blur(8px);
             border-top: 1px solid var(--border);
-            padding: 16px 24px;
+            padding: 18px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 998;
         }
         .cart-total {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 900;
             text-transform: uppercase;
         }
         .checkout-btn {
-            padding: 10px 24px;
-            background: var(--accent);
-            color: var(--primary);
+            padding: 12px 30px;
+            background: linear-gradient(90deg, var(--accent-neon), var(--accent-hk));
+            color: var(--text-primary);
             border: none;
             font-weight: 900;
             text-transform: uppercase;
             cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: var(--glow);
         }
-        /* 联系区 - 极简风 */
+        .checkout-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 58, 58, 0.6);
+        }
+        /* 联系区 - 港风暗巷感 */
         .contact {
             max-width: 1400px;
-            margin: 60px auto 0;
-            padding: 0 24px 40px;
+            margin: 70px auto 0;
+            padding: 0 30px 50px;
             border-top: 1px solid var(--border);
-            padding-top: 40px;
+            padding-top: 50px;
             text-align: center;
-            color: #888;
-            font-size: 14px;
+            color: var(--text-secondary);
+            font-size: 15px;
         }
         .contact a {
-            color: var(--primary);
+            color: var(--accent-hk);
             text-decoration: none;
             font-weight: 700;
-            transition: color 0.2s;
+            transition: all 0.3s;
         }
         .contact a:hover {
-            color: var(--accent);
+            color: var(--accent-neon);
+            text-shadow: var(--glow);
         }
-        /* 响应式 */
+        /* 响应式适配 */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 10vw;
+                font-size: 12vw;
             }
             .hero p {
-                font-size: 3vw;
+                font-size: 4vw;
             }
             .products {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 16px;
+                gap: 20px;
+            }
+            header {
+                padding: 15px 20px;
             }
         }
     </style>
@@ -249,7 +310,7 @@
 <body>
 
 <header>
-    <div class="logo">STREET SCENT</div>
+    <div class="logo">URBAN SCENT</div>
     <div class="header-right">
         <select class="lang-select" id="langSelect">
             <option value="zh-HK">繁體</option>
@@ -267,8 +328,8 @@
 
 <section class="hero">
     <div class="hero-text">
-        <h1 data-i18n="hero-title">SCENT THE STREET</h1>
-        <p data-i18n="hero-sub">街头气味，无需定义</p>
+        <h1 data-i18n="hero-title">SCENT THE CITY</h1>
+        <p data-i18n="hero-sub">港風廢土，氣味無界</p>
     </div>
 </section>
 
@@ -286,23 +347,23 @@
 
 <div class="contact">
     <p>WhatsApp: <a href="https://wa.me/85291257354" target="_blank">+852 9125 7354</a></p>
-    <p>Email: <a href="mailto:contact@streetscent.com">contact@streetscent.com</a></p>
-    <p>&copy; 2026 STREET SCENT. All rights reserved.</p>
+    <p>Email: <a href="mailto:contact@urbanscent.com">contact@urbanscent.com</a></p>
+    <p>&copy; 2026 URBAN SCENT. 港風潮牌香水.</p>
 </div>
 
 <script>
-    // 10款香水产品（完全Supreme联名风命名）
+    // 10款香水产品（完全匹配废土港风调性）
     const products = [
-        { id: 1, name: "BOX LOGO WOOD", price: 499, img: "https://picsum.photos/500/700?random=1" },
-        { id: 2, name: "NYC STREET PULSE", price: 459, img: "https://picsum.photos/500/700?random=2" },
-        { id: 3, name: "MM6 LEATHER CODE", price: 529, img: "https://picsum.photos/500/700?random=3" },
-        { id: 4, name: "BOXING RING SMOKE", price: 479, img: "https://picsum.photos/500/700?random=4" },
-        { id: 5, name: "GRAFFITI CITRUS", price: 439, img: "https://picsum.photos/500/700?random=5" },
-        { id: 6, name: "FURRY PUNCH", price: 549, img: "https://picsum.photos/500/700?random=6" },
-        { id: 7, name: "HOODIE NIGHT", price: 469, img: "https://picsum.photos/500/700?random=7" },
-        { id: 8, name: "EAGLE WING", price: 519, img: "https://picsum.photos/500/700?random=8" },
-        { id: 9, name: "STREET REBEL", price: 489, img: "https://picsum.photos/500/700?random=9" },
-        { id: 10, name: "RAW SUPREME", price: 599, img: "https://picsum.photos/500/700?random=10" }
+        { id: 1, name: "WALLed CITY WOOD", price: 529, img: "https://picsum.photos/500/700?random=1" },
+        { id: 2, name: "NEON ALLEY SMOKE", price: 499, img: "https://picsum.photos/500/700?random=2" },
+        { id: 3, name: "RUIN FACTORY LEATHER", price: 559, img: "https://picsum.photos/500/700?random=3" },
+        { id: 4, name: "HK ROOFTOP RAIN", price: 479, img: "https://picsum.photos/500/700?random=4" },
+        { id: 5, name: "GRAFFITI CITRUS", price: 459, img: "https://picsum.photos/500/700?random=5" },
+        { id: 6, name: "PUNK CHAIN OUD", price: 589, img: "https://picsum.photos/500/700?random=6" },
+        { id: 7, name: "ABANDONED DOCK", price: 519, img: "https://picsum.photos/500/700?random=7" },
+        { id: 8, name: "STREET PUNK REBEL", price: 539, img: "https://picsum.photos/500/700?random=8" },
+        { id: 9, name: "MIDNIGHT ALLEY", price: 569, img: "https://picsum.photos/500/700?random=9" },
+        { id: 10, name: "URBAN RAW SCENT", price: 599, img: "https://picsum.photos/500/700?random=10" }
     ];
 
     // 购物车逻辑
@@ -344,67 +405,67 @@
         totalPriceEl.textContent = total;
     }
 
-    // 多语言翻译（完全匹配Supreme国际联名风）
+    // 多语言翻译（适配港风+国际市场）
     const i18n = {
         "zh-HK": {
-            "hero-title": "SCENT THE STREET",
-            "hero-sub": "街頭氣味，無需定義",
+            "hero-title": "SCENT THE CITY",
+            "hero-sub": "港風廢土，氣味無界",
             "products-title": "香水系列",
             "total": "總金額",
             "checkout": "立即結賬",
             "add-cart": "加入購物車"
         },
         "zh-CN": {
-            "hero-title": "SCENT THE STREET",
-            "hero-sub": "街头气味，无需定义",
+            "hero-title": "SCENT THE CITY",
+            "hero-sub": "港风废土，气味无界",
             "products-title": "香水系列",
             "total": "总金额",
             "checkout": "立即结账",
             "add-cart": "加入购物车"
         },
         "en": {
-            "hero-title": "SCENT THE STREET",
-            "hero-sub": "STREET SCENT, NO RULES",
+            "hero-title": "SCENT THE CITY",
+            "hero-sub": "URBAN RUIN, UNBOUND SCENT",
             "products-title": "FRAGRANCE COLLECTION",
             "total": "TOTAL",
             "checkout": "CHECKOUT",
             "add-cart": "ADD TO CART"
         },
         "fr": {
-            "hero-title": "SCENT THE STREET",
-            "hero-sub": "PARFUM DE RUE, SANS RÈGLES",
+            "hero-title": "SCENT THE CITY",
+            "hero-sub": "RUIN URBAINE, PARFUM SANS LIMITE",
             "products-title": "COLLECTION PARFUM",
             "total": "TOTAL",
             "checkout": "PAYER",
             "add-cart": "AJOUTER AU PANIER"
         },
         "it": {
-            "hero-title": "SCENT THE STREET",
-            "hero-sub": "PROFUMO DI STRADA, SENZA REGOLE",
+            "hero-title": "SCENT THE CITY",
+            "hero-sub": "ROVINA URBANA, PROFUMO SENZA LIMITI",
             "products-title": "COLLEZIONE PROFUMI",
             "total": "TOTALE",
             "checkout": "PAGA",
             "add-cart": "AGGIUNGI AL CARRELLO"
         },
         "es": {
-            "hero-title": "SCENT THE STREET",
-            "hero-sub": "FRAGANCIA CALLEJERA, SIN REGLAS",
+            "hero-title": "SCENT THE CITY",
+            "hero-sub": "RUINA URBANA, FRAGANCIA SIN LÍMITES",
             "products-title": "COLECCIÓN FRAGANCIAS",
             "total": "TOTAL",
             "checkout": "PAGAR",
             "add-cart": "AÑADIR AL CARRITO"
         },
         "ja": {
-            "hero-title": "SCENT THE STREET",
-            "hero-sub": "ストリートの香り、ルールなし",
+            "hero-title": "SCENT THE CITY",
+            "hero-sub": "都会の廃墟、限りなき香り",
             "products-title": "フレグランスコレクション",
             "total": "合計",
             "checkout": "レジへ",
             "add-cart": "カートに追加"
         },
         "ko": {
-            "hero-title": "SCENT THE STREET",
-            "hero-sub": "스트리트 향, 규칙 없음",
+            "hero-title": "SCENT THE CITY",
+            "hero-sub": "도시 폐허, 경계 없는 향기",
             "products-title": "향수 컬렉션",
             "total": "총액",
             "checkout": "결제하기",
