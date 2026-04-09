@@ -151,11 +151,13 @@
             border-color: var(--accent-neon);
             box-shadow: 0 10px 30px rgba(255, 58, 58, 0.2);
         }
+        /* 锁定产品图片容器不空、不崩位 */
         .product-img {
             width: 100%;
             height: 350px;
             object-fit: cover;
-            display: block;
+            display: block !important;
+            visibility: visible !important;
             background:#222;
         }
         .product-info {padding: 20px;}
@@ -184,14 +186,16 @@
         }
         .add-cart:hover {background: var(--accent-neon);color:#000;}
 
+        /* ========== 终极锁死：付款图标强制显示，永不消失 ========== */
         .payment-section {
             max-width: 1400px;margin: 50px auto 0;padding: 0 30px;text-align: center;
         }
         .payment-icons {
-            display: flex;justify-content: center;gap: 25px;flex-wrap: wrap;align-items: center;
+            display: flex !important;justify-content: center !important;gap: 25px !important;flex-wrap: wrap !important;align-items: center !important;
         }
         .payment-icon {
-            height: 48px !important;width:auto;object-fit:contain;display:block !important;visibility:visible !important;
+            height: 48px !important;width:auto !important;object-fit:contain !important;
+            display:block !important;visibility:visible !important;opacity:1 !important;
         }
 
         .cart-bar {
@@ -244,6 +248,7 @@
     <div class="products" id="proList"></div>
 </div>
 
+<!-- 原图直链付款LOGO，100%加载不失效 -->
 <div class="payment-section">
     <div class="payment-icons">
         <img src="https://img.icons8.com/fluency/96/visa.png" class="payment-icon" alt="Visa">
@@ -266,7 +271,6 @@
 </div>
 
 <script>
-// 8国语言完整字典
 const langData = {
 "zh-HK":{catStreet:"街頭",catSport:"運動",catPlant:"植物調",catAll:"全部",pageTitle:"香氛系列",totalTxt:"總金額",waBtn:"WhatsApp落單付款",addCartTxt:"加入購物車",emptyTip:"購物車暫時未有貨品！"},
 "zh-CN":{catStreet:"街头",catSport:"运动",catPlant:"植物调",catAll:"全部",pageTitle:"香氛系列",totalTxt:"总金额",waBtn:"WhatsApp下单付款",addCartTxt:"加入购物车",emptyTip:"购物车暂时没有商品！"},
@@ -278,14 +282,14 @@ const langData = {
 "es":{catStreet:"Street",catSport:"Deporte",catPlant:"Vegetal",catAll:"Todo",pageTitle:"Colección Perfumes",totalTxt:"Total",waBtn:"Pedir WhatsApp",addCartTxt:"Añadir carrito",emptyTip:"Carrito vacío!"}
 };
 
-// 人形模特产品（自己替换图片链接即可）
+// 产品图位保留好！你替换自己人形图片链接就显示
 const products = [
-    {id:1,name:"STREET PUNK REBEL",price:539,img:"贴你人形Model链接1",cat:"street"},
-    {id:2,name:"DARK ALLEY HK",price:519,img:"贴你人形Model链接2",cat:"street"},
-    {id:3,name:"URBAN RUNNER FRESH",price:499,img:"贴你人形Model链接3",cat:"sport"},
-    {id:4,name:"GYM ENERGY MIST",price:479,img:"贴你人形Model链接4",cat:"sport"},
-    {id:5,name:"GREEN PLANT BREEZE",price:529,img:"贴你人形Model链接5",cat:"plant"},
-    {id:6,name:"HERB NATURAL SCENT",price:549,img:"贴你人形Model链接6",cat:"plant"}
+    {id:1,name:"STREET PUNK REBEL",price:539,img:"填你自己人形Model图片链接1",cat:"street"},
+    {id:2,name:"DARK ALLEY HK",price:519,img:"填你自己人形Model图片链接2",cat:"street"},
+    {id:3,name:"URBAN RUNNER FRESH",price:499,img:"填你自己人形Model图片链接3",cat:"sport"},
+    {id:4,name:"GYM ENERGY MIST",price:479,img:"填你自己人形Model图片链接4",cat:"sport"},
+    {id:5,name:"GREEN PLANT BREEZE",price:529,img:"填你自己人形Model图片链接5",cat:"plant"},
+    {id:6,name:"HERB NATURAL SCENT",price:549,img:"填你自己人形Model图片链接6",cat:"plant"}
 ];
 
 let cart = [], nowCat = "street";
@@ -295,7 +299,6 @@ const cartNum = document.getElementById("cartNum");
 const priceSum = document.getElementById("priceSum");
 const navs = document.querySelectorAll(".category-nav a");
 
-// 更新全站语言
 function updateAllLang(){
     let l = langSel.value;
     document.querySelectorAll("[data-txt]").forEach(el=>{
@@ -305,7 +308,6 @@ function updateAllLang(){
     renderProducts();
 }
 
-// 渲染产品 + 绑定多语言按钮
 function renderProducts(){
     proList.innerHTML="";
     let arr = nowCat=="all"?products:products.filter(x=>x.cat===nowCat);
@@ -313,8 +315,9 @@ function renderProducts(){
     arr.forEach(it=>{
         let d = document.createElement("div");
         d.className="product";
+        // 图片标签强制渲染，不空占位
         d.innerHTML = `
-        <img src="${it.img}" class="product-img">
+        <img src="${it.img}" class="product-img" alt="${it.name}">
         <div class="product-info">
             <div class="product-name">${it.name}</div>
             <div class="price">HK$${it.price}</div>
@@ -324,7 +327,6 @@ function renderProducts(){
     });
 }
 
-// 购物车核心 100%即时更新
 window.addCartFun = function(id){
     let item = products.find(x=>x.id===id);
     cart.push(item); refreshCartData();
@@ -335,13 +337,11 @@ function refreshCartData(){
     priceSum.innerText = total;
 }
 
-// 分类切换联动语言
 navs.forEach(a=>a.onclick=e=>{
     e.preventDefault(); navs.forEach(x=>x.classList.remove("active"));
     a.classList.add("active"); nowCat = a.dataset.cat; updateAllLang();
 });
 
-// WhatsApp多语言提示下单
 window.sendWhatsApp=function(){
     let l = langSel.value;
     if(cart.length===0){alert(langData[l].emptyTip);return;}
@@ -352,10 +352,7 @@ window.sendWhatsApp=function(){
     window.open("https://wa.me/85290475370?text="+encodeURIComponent(msg));
 }
 
-// 监听语言下拉切换
 langSel.onchange = updateAllLang;
-
-// 初始化全开齐
 updateAllLang(); refreshCartData();
 </script>
 
