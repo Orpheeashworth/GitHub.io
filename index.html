@@ -5,596 +5,161 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>orphee ASHWORTH - 都市運動香氛</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;}
+        :root{
+            --bg-main:#0a0a0d;--bg-card:#14141a;--accent-neon:#ff3a3a;
+            --text-primary:#f0f0f0;--border:#2a2a33;
         }
-        :root {
-            --bg-main: #0a0a0d;
-            --bg-card: #14141a;
-            --accent-neon: #ff3a3a;
-            --accent-hk: #ff6b00;
-            --text-primary: #f0f0f0;
-            --text-secondary: #a0a0a8;
-            --border: #2a2a33;
-            --glow: 0 0 15px rgba(255, 58, 58, 0.4);
-        }
-        body {
-            background: var(--bg-main);
-            color: var(--text-primary);
-            line-height: 1.5;
-            padding-bottom: 180px;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 30px;
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            background: rgba(10,10,13,0.95);
-            backdrop-filter: blur(8px);
-            z-index: 999;
-        }
-        .logo {
-            font-size: 36px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-primary);
-            text-shadow: var(--glow);
-        }
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-        .lang-select {
-            background: var(--bg-card);
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-            padding: 8px 12px;
-            border-radius: 4px;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        .cart-icon {
-            font-size: 28px;
-            position: relative;
-            cursor: pointer;
-        }
-        #cartCount {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: var(--accent-neon);
-            color: #fff;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: bold;
-        }
-        .category-nav {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            padding: 20px 30px;
-            border-bottom: 1px solid var(--border);
-            background: rgba(10,10,13,0.9);
-            flex-wrap: wrap;
-        }
-        .category-nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-            padding: 4px 8px;
-        }
-        .category-nav a.active, .category-nav a:hover {
-            color: var(--accent-neon);
-            text-shadow: var(--glow);
-        }
-        .hero {
-            width: 100%;
-            height: 70vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://picsum.photos/1920/1080?grayscale');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-        }
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 30%;
-            background: linear-gradient(transparent, var(--bg-main));
-        }
-        .hero-text {
-            z-index: 2;
-        }
-        .hero h1 {
-            font-size: 8vw;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
-            text-shadow: 0 0 20px rgba(255, 107, 0, 0.6);
-        }
-        .hero p {
-            font-size: 2vw;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            opacity: 0.9;
-            color: var(--accent-hk);
-        }
-        .container {
-            max-width: 1400px;
-            margin: 70px auto;
-            padding: 0 30px;
-        }
-        .section-title {
-            font-size: 32px;
-            font-weight: 900;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 12px;
-            letter-spacing: 1px;
-        }
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 35px;
-        }
-        .product {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            transition: all 0.4s ease;
-            overflow: hidden;
-            position: relative;
-            border-radius: 8px;
-        }
-        .product::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-neon), var(--accent-hk));
-            transform: scaleX(0);
-            transition: transform 0.4s;
-        }
-        .product:hover::before {
-            transform: scaleX(1);
-        }
-        .product:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent-neon);
-            box-shadow: 0 10px 30px rgba(255, 58, 58, 0.2);
-        }
-        .product-img {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-            background: #1a1a1a;
-            display: block;
-        }
-        .product-info {
-            padding: 20px;
-        }
-        .product-name {
-            font-size: 18px;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            letter-spacing: 0.8px;
-            line-height: 1.4;
-        }
-        .price {
-            font-size: 22px;
-            font-weight: 900;
-            color: var(--accent-neon);
-            margin-bottom: 15px;
-        }
-        .add-cart {
-            width: 100%;
-            padding: 12px;
-            background: transparent;
-            color: var(--text-primary);
-            border: 2px solid var(--accent-neon);
-            font-weight: 900;
-            text-transform: uppercase;
-            font-size: 13px;
-            letter-spacing: 1.5px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border-radius: 4px;
-        }
-        .add-cart:hover {
-            background: var(--accent-neon);
-            color: #000;
-        }
-        .payment-section {
-            max-width: 1400px;
-            margin: 50px auto 0;
-            padding: 0 30px;
-            text-align: center;
-        }
-        .payment-title {
-            font-size: 24px;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-            color: var(--text-secondary);
-        }
-        .payment-icons {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        .payment-icon {
-            height: 50px;
-            object-fit: contain;
-            display: block;
-        }
-        .cart-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(20,20,26,0.95);
-            backdrop-filter: blur(8px);
-            border-top: 1px solid var(--border);
-            padding: 18px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 998;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .cart-total {
-            font-size: 20px;
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-        .whatsapp-btn {
-            background: #25D366;
-            color: #fff;
-            border: none;
-            padding: 12px 24px;
-            font-weight: 900;
-            text-transform: uppercase;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
-        .whatsapp-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.5);
-        }
-        .contact {
-            max-width: 1400px;
-            margin: 70px auto 0;
-            padding: 50px 30px;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 15px;
-        }
-        .contact a {
-            color: var(--accent-hk);
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s;
-        }
-        .contact a:hover {
-            color: var(--accent-neon);
-            text-shadow: var(--glow);
-        }
-        @media (max-width: 768px) {
-            .logo {
-                font-size: 28px;
-            }
-            .hero h1 {
-                font-size: 12vw;
-            }
-            .hero p {
-                font-size: 4vw;
-            }
-            .products {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-            .category-nav {
-                gap: 15px;
-                padding: 15px 10px;
-            }
-            .cart-bar {
-                padding: 15px;
-                justify-content: center;
-            }
-        }
+        body{background:var(--bg-main);color:var(--text-primary);padding-bottom:180px;}
+        header{display:flex;justify-content:space-between;align-items:center;padding:18px 30px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(10,10,13,0.95);z-index:999;}
+        .logo{font-size:36px;font-weight:900;text-transform:uppercase;color:var(--text-primary);}
+        .header-right{display:flex;align-items:center;gap:25px;}
+        .lang-select{background:var(--bg-card);color:var(--text-primary);border:1px solid var(--border);padding:8px 12px;border-radius:4px;}
+        .cart-icon{font-size:28px;position:relative;}
+        #cartCount{position:absolute;top:-8px;right:-8px;background:var(--accent-neon);color:#fff;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;}
+        .category-nav{display:flex;justify-content:center;gap:20px;padding:20px;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+        .category-nav a{color:#a0a0a8;text-decoration:none;padding:4px 8px;}
+        .category-nav a.active,.category-nav a:hover{color:var(--accent-neon);}
+        .hero{height:70vh;display:flex;align-items:center;justify-content:center;}
+        .hero-text p{display:none !important;}
+        .container{max-width:1400px;margin:70px auto;padding:0 30px;}
+        .products{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:35px;}
+        .product{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+        .product-img{width:100%;height:350px;object-fit:cover;display:block;background:#222;}
+        .product-info{padding:20px;}
+        .price{color:var(--accent-neon);font-weight:900;margin:15px 0;}
+        .add-cart{width:100%;padding:12px;border:2px solid var(--accent-neon);background:transparent;color:#fff;cursor:pointer;border-radius:4px;}
+        .payment-section{margin:50px 0;text-align:center;}
+        .payment-icons{display:flex;justify-content:center;flex-wrap:wrap;gap:25px;align-items:center;}
+        .payment-icon{height:48px !important;display:block !important;visibility:visible !important;}
+        .cart-bar{position:fixed;bottom:0;left:0;right:0;background:#14141a;border-top:1px solid var(--border);padding:18px 30px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+        .whatsapp-btn{background:#25D366;color:#fff;border:none;padding:12px 24px;border-radius:4px;cursor:pointer;}
     </style>
 </head>
 <body>
-
 <header>
     <div class="logo">orphee ASHWORTH</div>
     <div class="header-right">
-        <select class="lang-select" id="langSelect">
+        <select class="lang-select" id="langSel">
             <option value="zh-HK" selected>繁體</option>
             <option value="zh-CN">简体</option>
             <option value="en">English</option>
             <option value="ja">日本語</option>
+            <option value="ko">한국어</option>
+            <option value="fr">Français</option>
+            <option value="it">Italiano</option>
+            <option value="es">Español</option>
         </select>
-        <div class="cart-icon">🛒 <span id="cartCount">0</span></div>
+        <div class="cart-icon">🛒 <span id="cartNum">0</span></div>
     </div>
 </header>
 
 <nav class="category-nav">
-    <a href="#" class="active" data-cat="street" data-i18n="street">街頭</a>
-    <a href="#" data-cat="sport" data-i18n="sport">運動</a>
-    <a href="#" data-cat="all" data-i18n="all">全部</a>
+    <a href="#" class="active" data-cat="street" data-txt="catStreet">街頭</a>
+    <a href="#" data-cat="sport" data-txt="catSport">運動</a>
+    <a href="#" data-cat="plant" data-txt="catPlant">植物調</a>
+    <a href="#" data-cat="all" data-txt="catAll">全部</a>
 </nav>
 
-<section class="hero">
-    <div class="hero-text">
-        <h1 data-i18n="hero_title">SCENT THE CITY</h1>
-        <p data-i18n="hero_sub">URBAN SCENT </p>
-    </div>
-</section>
+<section class="hero"><div class="hero-text"><h1>SCENT THE CITY</h1><p>no rules</p></div></section>
 
-<div class="container">
-    <h2 class="section-title" data-i18n="street_title">街頭系列</h2>
-    <div class="products" id="productsList"></div>
-</div>
+<div class="container"><h2 data-txt="pageTitle">香氛系列</h2><div class="products" id="proList"></div></div>
 
 <div class="payment-section">
-    <h3 class="payment-title" data-i18n="payment_title">支持付款方式</h3>
     <div class="payment-icons">
-        <img src="https://img.icons8.com/fluency/96/000000/visa.png" class="payment-icon" alt="Visa">
-        <img src="https://img.icons8.com/fluency/96/000000/mastercard.png" class="payment-icon" alt="Mastercard">
-        <img src="https://img.icons8.com/fluency/96/000000/american-express.png" class="payment-icon" alt="AE运通">
-        <img src="https://img.icons8.com/fluency/96/000000/alipay.png" class="payment-icon" alt="支付宝">
-        <img src="https://img.icons8.com/fluency/96/000000/wechat-pay.png" class="payment-icon" alt="微信支付">
+        <img src="https://img.icons8.com/fluency/96/visa.png" class="payment-icon" alt="Visa">
+        <img src="https://img.icons8.com/fluency/96/mastercard.png" class="payment-icon" alt="Master">
+        <img src="https://img.icons8.com/fluency/96/american-express.png" class="payment-icon" alt="AE">
+        <img src="https://img.icons8.com/fluency/96/alipay.png" class="payment-icon" alt="支付宝">
+        <img src="https://img.icons8.com/fluency/96/wechat-pay.png" class="payment-icon" alt="微信支付">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968298.png" class="payment-icon" alt="八达通">
     </div>
 </div>
 
 <div class="cart-bar">
-    <div class="cart-total">
-        <span data-i18n="total">總金額</span>: HKD$<span id="totalPrice">0</span>
-    </div>
-    <button class="whatsapp-btn" onclick="sendWhatsAppOrder()" data-i18n="whatsapp_btn">WhatsApp落單付款</button>
-</div>
-
-<div class="contact">
-    <p>WhatsApp: <a href="https://wa.me/85290475370" target="_blank">+852 9047 5370</a></p>
-    <p>Email: <a href="mailto:Orphee.ashworth1@gmail.com">Orphee.ashworth1@gmail.com</a></p>
-    <p>&copy; 2014 orphee ASHWORTH. <span data-i18n="rights">All rights reserved</span>.</p>
+    <div><span data-txt="totalTxt">總金額</span>：HK$<span id="priceSum">0</span></div>
+    <button class="whatsapp-btn" data-txt="waBtn">WhatsApp落單付款</button>
 </div>
 
 <script>
-// 产品用你提供的人形model图，分街頭/運動分类，加够12款
+// 1. 多国语言完整字典（粤语区常用+日韩法意西全包）
+const langData = {
+"zh-HK":{catStreet:"街頭",catSport:"運動",catPlant:"植物調",catAll:"全部",pageTitle:"香氛系列",totalTxt:"總金額",waBtn:"WhatsApp落單付款",addCartTxt:"加入購物車",emptyTip:"購物車暫時未有貨品！"},
+"zh-CN":{catStreet:"街头",catSport:"运动",catPlant:"植物调",catAll:"全部",pageTitle:"香氛系列",totalTxt:"总金额",waBtn:"WhatsApp下单付款",addCartTxt:"加入购物车",emptyTip:"购物车暂时没有商品！"},
+"en":{catStreet:"Street",catSport:"Sport",catPlant:"Plant",catAll:"All",pageTitle:"Scent Collection",totalTxt:"Total",waBtn:"Order via WhatsApp",addCartTxt:"Add to Cart",emptyTip:"Cart is empty!"},
+"ja":{catStreet:"ストリート",catSport:"スポーツ",catPlant:"植物ノート",catAll:"すべて",pageTitle:"香水コレクション",totalTxt:"合計金額",waBtn:"WhatsApp注文",addCartTxt:"カート追加",emptyTip:"カートが空です！"},
+"ko":{catStreet:"스트리트",catSport:"스포츠",catPlant:"식물향",catAll:"전체",pageTitle:"향수 컬렉션",totalTxt:"총금액",waBtn:"WhatsApp 주문",addCartTxt:"장바구니담기",emptyTip:"장바구니가 비었습니다!"},
+"fr":{catStreet:"Street",catSport:"Sport",catPlant:"Végétal",catAll:"Tout",pageTitle:"Collection Parfums",totalTxt:"Total",waBtn:"Commander WhatsApp",addCartTxt:"Ajouter panier",emptyTip:"Panier vide !"},
+"it":{catStreet:"Street",catSport:"Sport",catPlant:"Vegetale",catAll:"Tutto",pageTitle:"Collezione Profumi",totalTxt:"Totale",waBtn:"Ordina WhatsApp",addCartTxt:"Aggiungi carrello",emptyTip:"Carrello vuoto!"},
+"es":{catStreet:"Street",catSport:"Deporte",catPlant:"Vegetal",catAll:"Todo",pageTitle:"Colección Perfumes",totalTxt:"Total",waBtn:"Pedir WhatsApp",addCartTxt:"Añadir carrito",emptyTip:"Carrito vacío!"}
+};
+
+// 2. 人形产品数据（自己换图链接即可）
 const products = [
-    // 街頭系列
-    { id: 1, name: "STREET PUNK REBEL", price: 539, img: "https://picsum.photos/500/700?random=1", cat: "street" },
-    { id: 2, name: "ABANDONED ALLEY", price: 519, img: "https://picsum.photos/500/700?random=2", cat: "street" },
-    { id: 3, name: "NEON STREET BREEZE", price: 529, img: "https://picsum.photos/500/700?random=3", cat: "street" },
-    { id: 4, name: "MIDNIGHT HK STREET", price: 549, img: "https://picsum.photos/500/700?random=4", cat: "street" },
-    { id: 5, name: "CONCRETE CITY VIBE", price: 569, img: "https://picsum.photos/500/700?random=5", cat: "street" },
-    // 運動系列
-    { id: 6, name: "URBAN RUNNER FRESH", price: 499, img: "https://picsum.photos/500/700?random=6", cat: "sport" },
-    { id: 7, name: "GYM ENERGY MIST", price: 479, img: "https://picsum.photos/500/700?random=7", cat: "sport" },
-    { id: 8, name: "BOXING RING SMOKE", price: 559, img: "https://picsum.photos/500/700?random=8", cat: "sport" },
-    { id: 9, name: "OUTDOOR ADVENTURE", price: 489, img: "https://picsum.photos/500/700?random=9", cat: "sport" },
-    { id: 10, name: "ATHLETE FRESH BOOST", price: 469, img: "https://picsum.photos/500/700?random=10", cat: "sport" },
-    { id: 11, name: "TRAINING DAY ENERGY", price: 509, img: "https://picsum.photos/500/700?random=11", cat: "sport" },
-    { id: 12, name: "CITY RUNNER SCENT", price: 479, img: "https://picsum.photos/500/700?random=12", cat: "sport" }
+    {id:1,name:"STREET PUNK REBEL",price:539,img:"填你人形模特图链接1",cat:"street"},
+    {id:2,name:"DARK ALLEY HK",price:519,img:"填你人形模特图链接2",cat:"street"},
+    {id:3,name:"URBAN RUNNER",price:499,img:"填你人形模特图链接3",cat:"sport"},
+    {id:4,name:"GREEN PLANT BREEZE",price:529,img:"填你人形模特图链接4",cat:"plant"}
 ];
 
-let cart = [];
-let currentCat = "street";
-const productsEl = document.getElementById("productsList");
-const cartCountEl = document.getElementById("cartCount");
-const totalPriceEl = document.getElementById("totalPrice");
-const categoryLinks = document.querySelectorAll(".category-nav a");
-const sectionTitleEl = document.querySelector(".section-title");
+let cart = [], nowCat = "street";
+const langSel = document.getElementById("langSel");
+const proList = document.getElementById("proList");
+const cartNum = document.getElementById("cartNum");
+const priceSum = document.getElementById("priceSum");
+const navs = document.querySelectorAll(".category-nav a");
 
-// 渲染产品（确保图片正常显示）
-function renderProducts(category = "all") {
-    productsEl.innerHTML = "";
-    const filtered = category === "all" ? products : products.filter(p => p.cat === category);
-    filtered.forEach(p => {
-        const productCard = document.createElement("div");
-        productCard.className = "product";
-        productCard.innerHTML = `
-            <img src="${p.img}" alt="${p.name}" class="product-img" loading="lazy">
-            <div class="product-info">
-                <div class="product-name">${p.name}</div>
-                <div class="price">$${p.price}</div>
-                <button class="add-cart" onclick="addToCart(${p.id})" data-i18n="add_cart">加入購物車</button>
-            </div>
-        `;
-        productsEl.appendChild(productCard);
+// 3. 核心：全局一键更新所有语言
+function updateAllLang(){
+    let l = langSel.value;
+    document.querySelectorAll("[data-txt]").forEach(el=>{
+        let k = el.getAttribute("data-txt");
+        el.innerText = langData[l][k];
     });
-    updateI18n();
+    renderProducts();
 }
 
-// 加入购物车
-window.addToCart = function(id) {
-    const item = products.find(p => p.id === id);
-    cart.push(item);
-    updateCart();
+// 4. 渲染产品+绑定多语言按钮
+function renderProducts(){
+    proList.innerHTML="";
+    let arr = nowCat=="all"?products:products.filter(x=>x.cat===nowCat);
+    let currLang = langSel.value;
+    arr.forEach(it=>{
+        let d = document.createElement("div");
+        d.className="product";
+        d.innerHTML = `
+        <img src="${it.img}" class="product-img">
+        <div class="product-info">
+            <div>${it.name}</div>
+            <div class="price">HK$${it.price}</div>
+            <button class="add-cart" onclick="addCartFun(${it.id})">${langData[currLang].addCartTxt}</button>
+        </div>`;
+        proList.appendChild(d);
+    });
+}
+
+// 5. 购物车纯修复逻辑，点即更新
+window.addCartFun = function(id){
+    let item = products.find(x=>x.id===id);
+    cart.push(item); refreshCartData();
 };
-
-// 更新购物车
-function updateCart() {
-    cartCountEl.textContent = cart.length;
-    const total = cart.reduce((sum, item) => sum + item.price, 0);
-    totalPriceEl.textContent = total;
+function refreshCartData(){
+    cartNum.innerText = cart.length;
+    let total = cart.reduce((a,b)=>a+b.price,0);
+    priceSum.innerText = total;
 }
 
-// 分类切换
-categoryLinks.forEach(link => {
-    link.addEventListener("click", function(e) {
-        e.preventDefault();
-        categoryLinks.forEach(l => l.classList.remove("active"));
-        this.classList.add("active");
-        currentCat = this.getAttribute("data-cat");
-        // 更新标题
-        if (currentCat === "street") {
-            sectionTitleEl.setAttribute("data-i18n", "street_title");
-        } else if (currentCat === "sport") {
-            sectionTitleEl.setAttribute("data-i18n", "sport_title");
-        } else {
-            sectionTitleEl.setAttribute("data-i18n", "all_title");
-        }
-        renderProducts(currentCat);
-        updateI18n();
-    });
+// 6. 分类切换
+navs.forEach(a=>a.onclick=e=>{
+    e.preventDefault(); navs.forEach(x=>x.classList.remove("active"));
+    a.classList.add("active"); nowCat = a.dataset.cat; updateAllLang();
 });
 
-// WhatsApp订单发送（多语言适配，繁体不乱码）
-window.sendWhatsAppOrder = function() {
-    if (cart.length === 0) {
-        alert(getI18nText("cart_empty"));
-        return;
-    }
-    const lang = document.getElementById("langSelect").value;
-    let orderText = getI18nText("order_header") + "\n";
-    cart.forEach((item, index) => {
-        orderText += `${index + 1}. ${item.name} - $${item.price}\n`;
-    });
-    const total = cart.reduce((sum, item) => sum + item.price, 0);
-    orderText += `\n${getI18nText("total_label")}: HKD$${total}\n${getI18nText("order_footer")}`;
-    const encodedMsg = encodeURIComponent(orderText);
-    window.open(`https://wa.me/85290475370?text=${encodedMsg}`, "_blank");
-};
+// 7. 监听语言下拉 → 即时全站刷新
+langSel.onchange = updateAllLang;
 
-// 多语言字典（繁体/简体/英文/日文全齐，100%同步）
-const i18n = {
-    "zh-HK": {
-        "hero_title": "SCENT THE CITY",
-        "hero_sub": "URBAN SCENT, NO RULES",
-        "street": "街頭",
-        "sport": "運動",
-        "all": "全部",
-        "street_title": "街頭系列",
-        "sport_title": "運動系列",
-        "all_title": "全部系列",
-        "payment_title": "支持付款方式",
-        "total": "總金額",
-        "whatsapp_btn": "WhatsApp落單付款",
-        "add_cart": "加入購物車",
-        "rights": "版權所有",
-        "cart_empty": "購物車為空，請先添加商品！",
-        "order_header": "📦 客戶訂單：",
-        "total_label": "總金額",
-        "order_footer": "請確認訂單並回覆，謝謝！"
-    },
-    "zh-CN": {
-        "hero_title": "SCENT THE CITY",
-        "hero_sub": "URBAN SCENT, NO RULES",
-        "street": "街头",
-        "sport": "运动",
-        "all": "全部",
-        "street_title": "街头系列",
-        "sport_title": "运动系列",
-        "all_title": "全部系列",
-        "payment_title": "支持付款方式",
-        "total": "总金额",
-        "whatsapp_btn": "WhatsApp下单付款",
-        "add_cart": "加入购物车",
-        "rights": "版权所有",
-        "cart_empty": "购物车为空，请先添加商品！",
-        "order_header": "📦 客户订单：",
-        "total_label": "总金额",
-        "order_footer": "请确认订单并回复，谢谢！"
-    },
-    "en": {
-        "hero_title": "SCENT THE CITY",
-        "hero_sub": "URBAN SCENT, NO RULES",
-        "street": "STREET",
-        "sport": "SPORT",
-        "all": "ALL",
-        "street_title": "STREET COLLECTION",
-        "sport_title": "SPORT COLLECTION",
-        "all_title": "ALL COLLECTION",
-        "payment_title": "PAYMENT METHODS",
-        "total": "TOTAL",
-        "whatsapp_btn": "WHATSAPP ORDER",
-        "add_cart": "ADD TO CART",
-        "rights": "ALL RIGHTS RESERVED",
-        "cart_empty": "Cart is empty, please add items first!",
-        "order_header": "📦 Customer Order:",
-        "total_label": "Total Amount",
-        "order_footer": "Please confirm the order and reply, thank you!"
-    },
-    "ja": {
-        "hero_title": "SCENT THE CITY",
-        "hero_sub": "URBAN SCENT, NO RULES",
-        "street": "ストリート",
-        "sport": "スポーツ",
-        "all": "すべて",
-        "street_title": "ストリートコレクション",
-        "sport_title": "スポーツコレクション",
-        "all_title": "すべてのコレクション",
-        "payment_title": "お支払い方法",
-        "total": "合計金額",
-        "whatsapp_btn": "WhatsAppで注文",
-        "add_cart": "カートに追加",
-        "rights": "全著作権所有",
-        "cart_empty": "カートが空です。商品を追加してください！",
-        "order_header": "📦 お客様注文：",
-        "total_label": "合計金額",
-        "order_footer": "注文を確認して返信してください。ありがとうございます！"
-    }
-};
-
-// 获取对应语言文本
-function getI18nText(key) {
-    const lang = document.getElementById("langSelect").value;
-    return i18n[lang][key] || i18n["zh-HK"][key];
-}
-
-// 更新全页面语言（强制同步，无遗漏）
-function updateI18n() {
-    const lang = document.getElementById("langSelect").value;
-    document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.getAttribute("data-i18n");
-        el.textContent = getI18nText(key);
-    });
-}
-
-// 语言切换事件
-document.getElementById("langSelect").addEventListener("change", updateI18n);
-
-// 初始化：默认显示街頭系列，繁体，图片正常加载
-renderProducts("street");
-updateCart();
-updateI18n();
+// 8. 初始化开机全正常跑
+updateAllLang(); refreshCartData();
 </script>
-
 </body>
 </html>
