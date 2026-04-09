@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>URBAN SCENT 香水</title>
+<title>URBAN SCENT  香水</title>
 <style>
 * {
     margin: 0;
@@ -30,296 +30,53 @@ body {
     padding-bottom: 120px;
 }
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 30px;
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    background: rgba(10,10,13,0.95);
-    backdrop-filter: blur(8px);
-    z-index: 999;
+    display:flex;justify-content:space-between;align-items:center;padding:18px 30px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(10,10,13,0.95);backdrop-filter:blur(8px);z-index:999;
 }
-.logo {
-    font-size: 30px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-    color: var(--text-primary);
-    text-shadow: var(--glow);
-}
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-}
-.lang-select {
-    background: var(--bg-card);
-    color: var(--text-primary);
-    border: 1px solid var(--border);
-    padding: 6px 12px;
-    border-radius: 0;
-    text-transform: uppercase;
-    font-size: 12px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-.lang-select:hover {
-    border-color: var(--accent-neon);
-    box-shadow: var(--glow);
-}
-.cart-icon {
-    font-size: 24px;
-    cursor: pointer;
-    position: relative;
-    transition: transform 0.2s;
-}
-.cart-icon:hover {
-    transform: scale(1.1);
-}
-#cartCount {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background: var(--accent-neon);
-    color: var(--text-primary);
-    font-size: 11px;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    box-shadow: var(--glow);
-}
-.hero {
-    width: 100%;
-    height: 80vh;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://picsum.photos/id/1067/1920/1080?grayscale');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-.hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 30%;
-    background: linear-gradient(transparent, var(--bg-main));
-}
-.hero-text {
-    z-index: 2;
-}
-.hero h1 {
-    font-size: 7vw;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: -3px;
-    margin-bottom: 15px;
-    line-height: 1;
-    text-shadow: 0 0 20px rgba(255, 107, 0, 0.6);
-}
-.hero p {
-    font-size: 1.8vw;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    opacity: 0.9;
-    color: var(--accent-hk);
-}
-.container {
-    max-width: 1400px;
-    margin: 70px auto;
-    padding: 0 30px;
-}
-.section-title {
-    font-size: 32px;
-    font-weight: 900;
-    text-transform: uppercase;
-    margin-bottom: 40px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 12px;
-    letter-spacing: 1px;
-}
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 35px;
-}
-.product {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    transition: all 0.4s ease;
-    overflow: hidden;
-    position: relative;
-}
-.product::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent-neon), var(--accent-hk));
-    transform: scaleX(0);
-    transition: transform 0.4s;
-}
-.product:hover::before {
-    transform: scaleX(1);
-}
-.product:hover {
-    transform: translateY(-8px);
-    border-color: var(--accent-neon);
-    box-shadow: 0 10px 30px rgba(255, 58, 58, 0.2);
-}
-.product-img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    background: #1a1a1a;
-    filter: grayscale(30%) contrast(1.2);
-    transition: filter 0.4s;
-}
-.product:hover .product-img {
-    filter: grayscale(0%) contrast(1.1);
-}
-.product-info {
-    padding: 20px;
-}
-.product-name {
-    font-size: 17px;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    letter-spacing: 0.8px;
-}
-.price {
-    font-size: 20px;
-    font-weight: 900;
-    color: var(--accent-neon);
-    margin-bottom: 15px;
-}
-.add-cart {
-    width: 100%;
-    padding: 12px;
-    background: transparent;
-    color: var(--text-primary);
-    border: 1px solid var(--accent-neon);
-    font-weight: 900;
-    text-transform: uppercase;
-    font-size: 12px;
-    letter-spacing: 1.5px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-.add-cart:hover {
-    background: var(--accent-neon);
-    color: var(--bg-main);
-    box-shadow: var(--glow);
-}
-/* 付款图标强制显示样式 */
-.payment-section {
-    max-width: 1400px;
-    margin: 50px auto 0;
-    padding: 0 30px;
-    text-align: center;
-}
-.payment-icons {
-    display: flex !important;
-    justify-content: center !important;
-    gap: 30px !important;
-    flex-wrap: wrap !important;
-    align-items: center !important;
-}
-.payment-icon {
-    height: 48px !important;
-    width: auto !important;
-    object-fit: contain !important;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-.cart-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(20,20,26,0.95);
-    backdrop-filter: blur(8px);
-    border-top: 1px solid var(--border);
-    padding: 18px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 998;
-}
-.cart-total {
-    font-size: 20px;
-    font-weight: 900;
-    text-transform: uppercase;
-}
-.checkout-btn {
-    padding: 12px 30px;
-    background: linear-gradient(90deg, var(--accent-neon), var(--accent-hk));
-    color: var(--text-primary);
-    border: none;
-    font-weight: 900;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: var(--glow);
-}
-.checkout-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(255, 58, 58, 0.6);
-}
-.contact {
-    max-width: 1400px;
-    margin: 70px auto 0;
-    padding: 0 30px 50px;
-    border-top: 1px solid var(--border);
-    padding-top: 50px;
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 15px;
-}
-.contact a {
-    color: var(--accent-hk);
-    text-decoration: none;
-    font-weight: 700;
-    transition: all 0.3s;
-}
-.contact a:hover {
-    color: var(--accent-neon);
-    text-shadow: var(--glow);
-}
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 12vw;
-    }
-    .hero p {
-        font-size: 4vw;
-    }
-    .products {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-    header {
-        padding: 15px 20px;
-    }
+.logo {font-size:30px;font-weight:900;text-transform:uppercase;letter-spacing:-1px;color:var(--text-primary);text-shadow:var(--glow);}
+.header-right {display:flex;align-items:center;gap:25px;}
+.lang-select {background:var(--bg-card);color:var(--text-primary);border:1px solid var(--border);padding:6px 12px;border-radius:0;text-transform:uppercase;font-size:12px;cursor:pointer;transition:all 0.3s;}
+.lang-select:hover {border-color:var(--accent-neon);box-shadow:var(--glow);}
+.cart-icon {font-size:24px;cursor:pointer;position:relative;transition:transform 0.2s;}
+.cart-icon:hover {transform:scale(1.1);}
+#cartCount {position:absolute;top:-8px;right:-8px;background:var(--accent-neon);color:var(--text-primary);font-size:11px;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;box-shadow:var(--glow);}
+.hero {width:100%;height:80vh;background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.9)),url('https://picsum.photos/id/1067/1920/1080?grayscale');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;}
+.hero::after {content:'';position:absolute;bottom:0;left:0;right:0;height:30%;background:linear-gradient(transparent,var(--bg-main));}
+.hero-text {z-index:2;}
+.hero h1 {font-size:7vw;font-weight:900;text-transform:uppercase;letter-spacing:-3px;margin-bottom:15px;line-height:1;text-shadow:0 0 20px rgba(255,107,0,0.6);}
+.hero p {font-size:1.8vw;text-transform:uppercase;letter-spacing:4px;opacity:0.9;color:var(--accent-hk);}
+.container {max-width:1400px;margin:70px auto;padding:0 30px;}
+.section-title {font-size:32px;font-weight:900;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid var(--border);padding-bottom:12px;letter-spacing:1px;}
+.products {display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:35px;}
+.product {background:var(--bg-card);border:1px solid var(--border);transition:all 0.4s ease;overflow:hidden;position:relative;}
+.product::before {content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent-neon),var(--accent-hk));transform:scaleX(0);transition:transform 0.4s;}
+.product:hover::before {transform:scaleX(1);}
+.product:hover {transform:translateY(-8px);border-color:var(--accent-neon);box-shadow:0 10px 30px rgba(255,58,58,0.2);}
+.product-img {width:100%;height:350px;object-fit:cover;background:#1a1a1a;filter:grayscale(30%) contrast(1.2);transition:filter 0.4s;}
+.product:hover .product-img {filter:grayscale(0%) contrast(1.1);}
+.product-info {padding:20px;}
+.product-name {font-size:17px;font-weight:700;text-transform:uppercase;margin-bottom:10px;letter-spacing:0.8px;}
+.price {font-size:20px;font-weight:900;color:var(--accent-neon);margin-bottom:15px;}
+.add-cart {width:100%;padding:12px;background:transparent;color:var(--text-primary);border:1px solid var(--accent-neon);font-weight:900;text-transform:uppercase;font-size:12px;letter-spacing:1.5px;cursor:pointer;transition:all 0.3s;}
+.add-cart:hover {background:var(--accent-neon);color:var(--bg-main);box-shadow:var(--glow);}
+.payment-section {max-width:1400px;margin:50px auto 0;padding:0 30px;text-align:center;}
+.payment-icons {display:flex !important;justify-content:center !important;gap:30px !important;flex-wrap:wrap !important;align-items:center !important;}
+.payment-icon {height:48px !important;width:auto !important;object-fit:contain !important;display:block !important;visibility:visible !important;opacity:1 !important;}
+.cart-bar {position:fixed;bottom:0;left:0;right:0;background:rgba(20,20,26,0.95);backdrop-filter:blur(8px);border-top:1px solid var(--border);padding:18px 30px;display:flex;justify-content:space-between;align-items:center;z-index:998;}
+.cart-total {font-size:20px;font-weight:900;text-transform:uppercase;}
+.checkout-btn {padding:12px 30px;background:linear-gradient(90deg,var(--accent-neon),var(--accent-hk));color:var(--text-primary);border:none;font-weight:900;text-transform:uppercase;cursor:pointer;transition:all 0.3s;box-shadow:var(--glow);}
+.checkout-btn:hover {transform:scale(1.05);box-shadow:0 0 25px rgba(255,58,58,0.6);}
+.contact {max-width:1400px;margin:70px auto 0;padding:0 30px 50px;border-top:1px solid var(--border);padding-top:50px;text-align:center;color:var(--text-secondary);font-size:15px;}
+.contact a {color:var(--accent-hk);text-decoration:none;font-weight:700;transition:all 0.3s;}
+.contact a:hover {color:var(--accent-neon);text-shadow:var(--glow);}
+@media(max-width:768px){
+.hero h1{font-size:12vw;}
+.hero p{font-size:4vw;}
+.products{grid-template-columns:repeat(2,1fr);gap:20px;}
+header{padding:15px 20px;}
 }
 </style>
 </head>
 <body>
-
 <header>
 <div class="logo">URBAN SCENT</div>
 <div class="header-right">
@@ -342,7 +99,7 @@ header {
 <section class="hero">
 <div class="hero-text">
 <h1 data-i18n="hero-title">SCENT THE CITY</h1>
-<p data-i18n="hero-sub">氣味無界</p>
+<p data-i18n="hero-sub"> 氣味無界</p>
 </div>
 </section>
 
@@ -351,7 +108,6 @@ header {
 <div class="products" id="productsList"></div>
 </div>
 
-<!-- 付款图标区（支付宝/微信/AE/visa/master/八达通全修复） -->
 <div class="payment-section">
 <div class="payment-icons">
 <img src="https://img.icons8.com/fluency/96/visa.png" class="payment-icon" alt="Visa">
@@ -370,42 +126,40 @@ header {
 <button class="checkout-btn" data-i18n="checkout" onclick="sendWhatsAppOrder()">立即結賬</button>
 </div>
 
+<!-- 呢段contact固定底部，电话邮箱实写死，唔会唔见 -->
 <div class="contact">
 <p>WhatsApp: <a href="https://wa.me/85290475370" target="_blank">+852 9047 5370</a></p>
 <p>Email: <a href="mailto:Orphee.ashworth1@gmail.com">Orphee.ashworth1@gmail.com</a></p>
-<p>&copy; 2026 URBAN SCENT 香水.</p>
+<p>&copy; 2014 URBAN SCENT. 香水.</p>
 </div>
 
 <script>
-// 产品列表（原有15款+新增10款，共25款）
 const products = [
-    // 原有15款
-    { id: 1, name: "廢墟工廠木質調", price: 499, img: "https://picsum.photos/500/700?random=1", cat: "street" },
-    { id: 2, name: "霓虹暗巷煙燻調", price: 469, img: "https://picsum.photos/500/700?random=2", cat: "street" },
-    { id: 3, name: "天台雨夜冷調", price: 449, img: "https://picsum.photos/500/700?random=3", cat: "street" },
-    { id: 4, name: "塗鴉巷弄柑橘調", price: 429, img: "https://picsum.photos/500/700?random=4", cat: "street" },
-    { id: 5, name: "朋克鉚釘皮革調", price: 529, img: "https://picsum.photos/500/700?random=5", cat: "street" },
-    { id: 6, name: "舊茶餐廳檀木調", price: 479, img: "https://picsum.photos/500/700?random=6", cat: "street" },
-    { id: 7, name: "廢棄碼頭鹹香調", price: 459, img: "https://picsum.photos/500/700?random=7", cat: "street" },
-    { id: 8, name: "街頭叛逆烏木調", price: 549, img: "https://picsum.photos/500/700?random=8", cat: "street" },
-    { id: 9, name: "午夜巷弄琥珀調", price: 489, img: "https://picsum.photos/500/700?random=9", cat: "street" },
-    { id: 10, name: "都市原始生薑調", price: 519, img: "https://picsum.photos/500/700?random=10", cat: "street" },
-    { id: 11, name: "叢林深處雪松調", price: 539, img: "https://picsum.photos/id/1005/500/700", cat: "plant" },
-    { id: 12, name: "白苔森林清新調", price: 499, img: "https://picsum.photos/id/1006/500/700", cat: "plant" },
-    { id: 13, name: "玫瑰廢墟馥郁調", price: 559, img: "https://picsum.photos/id/1007/500/700", cat: "plant" },
-    { id: 14, name: "茶園霧氣綠調", price: 479, img: "https://picsum.photos/id/1008/500/700", cat: "plant" },
-    { id: 15, name: "香草廢墟溫潤調", price: 519, img: "https://picsum.photos/id/1009/500/700", cat: "plant" },
-    // 新增10款产品
-    { id: 16, name: "舊街榕樹木質調", price: 509, img: "https://picsum.photos/id/1011/500/700", cat: "plant" },
-    { id: 17, name: "霓虹花叢花果調", price: 489, img: "https://picsum.photos/id/1012/500/700", cat: "plant" },
-    { id: 18, name: "廢墟竹林青竹調", price: 469, img: "https://picsum.photos/id/1013/500/700", cat: "plant" },
-    { id: 19, name: "天台花園茉莉調", price: 499, img: "https://picsum.photos/id/1014/500/700", cat: "plant" },
-    { id: 20, name: "塗鴉牆邊薰衣草調", price: 479, img: "https://picsum.photos/id/1015/500/700", cat: "plant" },
-    { id: 21, name: "舊茶餐廳桂花調", price: 459, img: "https://picsum.photos/id/1016/500/700", cat: "plant" },
-    { id: 22, name: "廢棄碼頭海藻調", price: 449, img: "https://picsum.photos/id/1017/500/700", cat: "street" },
-    { id: 23, name: "街頭仙人掌辛辣調", price: 529, img: "https://picsum.photos/id/1018/500/700", cat: "street" },
-    { id: 24, name: "午夜花園夜來香調", price: 539, img: "https://picsum.photos/id/1019/500/700", cat: "plant" },
-    { id: 25, name: "都市森林松針調", price: 519, img: "https://picsum.photos/id/1020/500/700", cat: "plant" }
+{id:1,name:"廢墟工廠木質調",price:499,img:"https://picsum.photos/500/700?random=1",cat:"street"},
+{id:2,name:"霓虹暗巷煙燻調",price:469,img:"https://picsum.photos/500/700?random=2",cat:"street"},
+{id:3,name:"天台雨夜冷調",price:449,img:"https://picsum.photos/500/700?random=3",cat:"street"},
+{id:4,name:"塗鴉巷弄柑橘調",price:429,img:"https://picsum.photos/500/700?random=4",cat:"street"},
+{id:5,name:"朋克鉚釘皮革調",price:529,img:"https://picsum.photos/500/700?random=5",cat:"street"},
+{id:6,name:"舊茶餐廳檀木調",price:479,img:"https://picsum.photos/500/700?random=6",cat:"street"},
+{id:7,name:"廢棄碼頭鹹香調",price:459,img:"https://picsum.photos/500/700?random=7",cat:"street"},
+{id:8,name:"街頭叛逆烏木調",price:549,img:"https://picsum.photos/500/700?random=8",cat:"street"},
+{id:9,name:"午夜巷弄琥珀調",price:489,img:"https://picsum.photos/500/700?random=9",cat:"street"},
+{id:10,name:"都市原始生薑調",price:519,img:"https://picsum.photos/500/700?random=10",cat:"street"},
+{id:11,name:"叢林深處雪松調",price:539,img:"https://picsum.photos/id/1005/500/700",cat:"plant"},
+{id:12,name:"白苔森林清新調",price:499,img:"https://picsum.photos/id/1006/500/700",cat:"plant"},
+{id:13,name:"玫瑰廢墟馥郁調",price:559,img:"https://picsum.photos/id/1007/500/700",cat:"plant"},
+{id:14,name:"茶園霧氣綠調",price:479,img:"https://picsum.photos/id/1008/500/700",cat:"plant"},
+{id:15,name:"香草廢墟溫潤調",price:519,img:"https://picsum.photos/id/1009/500/700",cat:"plant"},
+{id:16,name:"舊街榕樹木質調",price:509,img:"https://picsum.photos/id/1011/500/700",cat:"plant"},
+{id:17,name:"霓虹花叢花果調",price:489,img:"https://picsum.photos/id/1012/500/700",cat:"plant"},
+{id:18,name:"廢墟竹林青竹調",price:469,img:"https://picsum.photos/id/1013/500/700",cat:"plant"},
+{id:19,name:"天台花園茉莉調",price:499,img:"https://picsum.photos/id/1014/500/700",cat:"plant"},
+{id:20,name:"塗鴉牆邊薰衣草調",price:479,img:"https://picsum.photos/id/1015/500/700",cat:"plant"},
+{id:21,name:"舊茶餐廳桂花調",price:459,img:"https://picsum.photos/id/1016/500/700",cat:"plant"},
+{id:22,name:"廢棄碼頭海藻調",price:449,img:"https://picsum.photos/id/1017/500/700",cat:"street"},
+{id:23,name:"街頭仙人掌辛辣調",price:529,img:"https://picsum.photos/id/1018/500/700",cat:"street"},
+{id:24,name:"午夜花園夜來香調",price:539,img:"https://picsum.photos/id/1019/500/700",cat:"plant"},
+{id:25,name:"都市森林松針調",price:519,img:"https://picsum.photos/id/1020/500/700",cat:"plant"}
 ];
 
 let cart = [];
@@ -414,170 +168,64 @@ const cartCountEl = document.getElementById('cartCount');
 const totalPriceEl = document.getElementById('totalPrice');
 const langSelectEl = document.getElementById('langSelect');
 
-// 10国语言字典（原有8种+泰文/德文，全量翻译）
-const i18n = {
-    "zh-HK": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "氣味無界",
-        "products-title": "香水系列",
-        "total": "總金額",
-        "checkout": "立即結賬",
-        "add-cart": "加入購物車",
-        "empty-cart": "購物車暫無商品"
-    },
-    "zh-CN": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "气味无界",
-        "products-title": "香水系列",
-        "total": "总金额",
-        "checkout": "立即结账",
-        "add-cart": "加入购物车",
-        "empty-cart": "购物车暂无商品"
-    },
-    "en": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "URBAN RUIN, UNBOUND SCENT",
-        "products-title": "FRAGRANCE COLLECTION",
-        "total": "TOTAL",
-        "checkout": "CHECKOUT",
-        "add-cart": "ADD TO CART",
-        "empty-cart": "Cart is empty"
-    },
-    "fr": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "RUIN URBAINE, PARFUM SANS LIMITE",
-        "products-title": "COLLECTION PARFUM",
-        "total": "TOTAL",
-        "checkout": "PAYER",
-        "add-cart": "AJOUTER AU PANIER",
-        "empty-cart": "Panier vide"
-    },
-    "it": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "ROVINA URBANA, PROFUMO SENZA LIMITI",
-        "products-title": "COLLEZIONE PROFUMI",
-        "total": "TOTALE",
-        "checkout": "PAGA",
-        "add-cart": "AGGIUNGI AL CARRELLO",
-        "empty-cart": "Carrello vuoto"
-    },
-    "es": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "RUINA URBANA, FRAGANCIA SIN LÍMITES",
-        "products-title": "COLECCIÓN FRAGANCIAS",
-        "total": "TOTAL",
-        "checkout": "PAGAR",
-        "add-cart": "AÑADIR AL CARRITO",
-        "empty-cart": "Carrito vacío"
-    },
-    "ja": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "都会の廃墟,限りなき香り",
-        "products-title": "フレグランスコレクション",
-        "total": "合計",
-        "checkout": "レジへ",
-        "add-cart": "カートに追加",
-        "empty-cart": "カートが空です"
-    },
-    "ko": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "도시 폐허, 경계 없는 향기",
-        "products-title": "향수 컬렉션",
-        "total": "총액",
-        "checkout": "결제하기",
-        "add-cart": "장바구니에 추가",
-        "empty-cart": "장바구니가 비었습니다"
-    },
-    "th": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "ความหายนะในเมือง กลิ่นที่ไร้ขีดจำกัด",
-        "products-title": "คอลเลกชันน้ำหอม",
-        "total": "ยอดรวม",
-        "checkout": "ชำระเงิน",
-        "add-cart": "ใส่ตะกร้า",
-        "empty-cart": "ตะกร้าว่างเปล่า"
-    },
-    "de": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "URBANE RUINE, GRENZENLOSE DÜFTE",
-        "products-title": "DUFTKOLLEKTION",
-        "total": "GESAMT",
-        "checkout": "ZUR KASSE",
-        "add-cart": "IN WARENKORB",
-        "empty-cart": "Warenkorb ist leer"
-    }
+const i18n={
+"zh-HK":{"hero-title":"SCENT THE CITY","hero-sub":"氣味無界","products-title":"香水系列","total":"總金額","checkout":"立即結賬","add-cart":"加入購物車","empty-cart":"購物車暫無商品"},
+"zh-CN":{"hero-title":"SCENT THE CITY","hero-sub":"气味无界","products-title":"香水系列","total":"总金额","checkout":"立即结账","add-cart":"加入购物车","empty-cart":"购物车暂无商品"},
+"en":{"hero-title":"SCENT THE CITY","hero-sub":"URBAN RUIN, UNBOUND SCENT","products-title":"FRAGRANCE COLLECTION","total":"TOTAL","checkout":"CHECKOUT","add-cart":"ADD TO CART","empty-cart":"Cart is empty"},
+"fr":{"hero-title":"SCENT THE CITY","hero-sub":"RUIN URBAINE, PARFUM SANS LIMITE","products-title":"COLLECTION PARFUM","total":"TOTAL","checkout":"PAYER","add-cart":"AJOUTER AU PANIER","empty-cart":"Panier vide"},
+"it":{"hero-title":"SCENT THE CITY","hero-sub":"ROVINA URBANA, PROFUMO SENZA LIMITI","products-title":"COLLEZIONE PROFUMI","total":"TOTALE","checkout":"PAGA","add-cart":"AGGIUNGI AL CARRELLO","empty-cart":"Carrello vuoto"},
+"es":{"hero-title":"SCENT THE CITY","hero-sub":"RUINA URBANA, FRAGANCIA SIN LÍMITES","products-title":"COLECCIÓN FRAGANCIAS","total":"TOTAL","checkout":"PAGAR","add-cart":"AÑADIR AL CARRITO","empty-cart":"Carrito vacío"},
+"ja":{"hero-title":"SCENT THE CITY","hero-sub":"都会の廃墟、限りなき香り","products-title":"フレグランスコレクション","total":"合計","checkout":"レジへ","add-cart":"カートに追加","empty-cart":"カートが空です"},
+"ko":{"hero-title":"SCENT THE CITY","hero-sub":"도시 폐허, 경계 없는 향기","products-title":"향수 컬렉션","total":"총액","checkout":"결제하기","add-cart":"장바구니에 추가","empty-cart":"장바구니가 비었습니다"},
+"th":{"hero-title":"SCENT THE CITY","hero-sub":"ความหายนะในเมือง กลิ่นที่ไร้ขีดจำกัด","products-title":"คอลเลกชันน้ำหอม","total":"ยอดรวม","checkout":"ชำระเงิน","add-cart":"ใส่ตะกร้า","empty-cart":"ตะกร้าว่างเปล่า"},
+"de":{"hero-title":"SCENT THE CITY","hero-sub":"URBANE RUINE, GRENZENLOSE DÜFTE","products-title":"DUFTKOLLEKTION","total":"GESAMT","checkout":"ZUR KASSE","add-cart":"IN WARENKORB","empty-cart":"Warenkorb ist leer"}
 };
 
-// 渲染产品（绑定多语言+购物车，核心修复购物车）
-function renderProducts() {
-    productsEl.innerHTML = '';
-    const currentLang = langSelectEl.value;
-    products.forEach(p => {
-        const productCard = document.createElement('div');
-        productCard.className = 'product';
-        productCard.innerHTML = `
-            <img src="${p.img}" alt="${p.name}" class="product-img">
-            <div class="product-info">
-                <div class="product-name">${p.name}</div>
-                <div class="price">$${p.price}</div>
-                <button class="add-cart" onclick="addToCart(${p.id})" data-i18n="add-cart">${i18n[currentLang]["add-cart"]}</button>
-            </div>
-        `;
-        productsEl.appendChild(productCard);
-    });
-    updateI18n();
-}
-
-// 购物车添加（100%同步更新，核心修复）
-window.addToCart = function(id) {
-    const item = products.find(p => p.id === id);
-    if (!item) return;
-    cart.push(item);
-    updateCart();
-}
-
-// 更新购物车计数+金额（强制刷新，确保实时更新）
-function updateCart() {
-    cartCountEl.textContent = cart.length;
-    const total = cart.reduce((sum, item) => sum + item.price, 0);
-    totalPriceEl.textContent = total;
-}
-
-// 全局语言更新（切换即同步所有元素）
-function updateI18n() {
-    const currentLang = langSelectEl.value;
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        el.textContent = i18n[currentLang][key];
-    });
-}
-
-// WhatsApp下单（多语言提示，绑定更新后的号码）
-window.sendWhatsAppOrder = function() {
-    const currentLang = langSelectEl.value;
-    if (cart.length === 0) {
-        alert(i18n[currentLang]["empty-cart"]);
-        return;
-    }
-    let msg = `${i18n[currentLang]["checkout"]}:\n`;
-    cart.forEach((item, index) => {
-        msg += `${index + 1}. ${item.name} | HKD $${item.price}\n`;
-    });
-    const total = cart.reduce((sum, item) => sum + item.price, 0);
-    msg += `\n${i18n[currentLang]["total"]}: HKD $${total}`;
-    window.open(`https://wa.me/85290475370?text=${encodeURIComponent(msg)}`);
-}
-
-// 监听语言切换（确保切换后重新渲染产品，同步按钮文字）
-langSelectEl.addEventListener('change', () => {
-    updateI18n();
-    renderProducts();
+// 渲染所有产品，保证25款全部出齐
+function renderProducts(){
+productsEl.innerHTML="";
+let curLang=langSelectEl.value;
+products.forEach(p=>{
+let card=document.createElement("div");
+card.className="product";
+card.innerHTML=`<img src="${p.img}" alt="${p.name}" class="product-img"><div class="product-info"><div class="product-name">${p.name}</div><div class="price">$${p.price}</div><button class="add-cart" onclick="addToCart(${p.id})">${i18n[curLang]['add-cart']}</button></div>`;
+productsEl.appendChild(card);
 });
+updateI18n();
+}
 
-// 初始化页面（强制渲染+购物车归零，确保初始状态正确）
+// 【核心修复购物车】全局可调用、即刻刷新数字
+window.addToCart=function(id){
+let findItem=products.find(x=>x.id===id);
+if(!findItem)return;
+cart.push(findItem);
+// 强制即时更新UI
+let sumTotal=cart.reduce((a,b)=>a+b.price,0);
+cartCountEl.innerText=cart.length;
+totalPriceEl.innerText=sumTotal;
+};
+
+function updateI18n(){
+let cur=langSelectEl.value;
+document.querySelectorAll("[data-i18n]").forEach(el=>{
+let k=el.getAttribute("data-i18n");el.innerText=i18n[cur][k];
+});
+}
+
+window.sendWhatsAppOrder=function(){
+let cur=langSelectEl.value;
+if(cart.length===0){alert(i18n[cur]["empty-cart"]);return;}
+let msg=i18n[cur]["checkout"]+":\n";
+cart.forEach((it,idx)=>msg+=`${idx+1}.${it.name}|HKD$${it.price}\n`);
+let all=cart.reduce((a,b)=>a+b.price,0);
+msg+=`\n${i18n[cur]["total"]}:HKD$${all}`;
+window.open("https://wa.me/85290475370?text="+encodeURIComponent(msg));
+}
+
+langSelectEl.addEventListener("change",()=>{updateI18n();renderProducts();});
+// 初始化载入
 renderProducts();
-updateCart();
+cartCountEl.innerText="0";totalPriceEl.innerText="0";
 </script>
-
 </body>
 </html>
