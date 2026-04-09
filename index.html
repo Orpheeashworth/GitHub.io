@@ -5,38 +5,214 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>orphee ASHWORTH - 都市運動香氛</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;}
-        :root{
-            --bg-main:#0a0a0d;--bg-card:#14141a;--accent-neon:#ff3a3a;
-            --text-primary:#f0f0f0;--border:#2a2a33;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
-        body{background:var(--bg-main);color:var(--text-primary);padding-bottom:180px;}
-        header{display:flex;justify-content:space-between;align-items:center;padding:18px 30px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(10,10,13,0.95);z-index:999;}
-        .logo{font-size:36px;font-weight:900;text-transform:uppercase;color:var(--text-primary);}
-        .header-right{display:flex;align-items:center;gap:25px;}
-        .lang-select{background:var(--bg-card);color:var(--text-primary);border:1px solid var(--border);padding:8px 12px;border-radius:4px;}
-        .cart-icon{font-size:28px;position:relative;}
-        #cartCount{position:absolute;top:-8px;right:-8px;background:var(--accent-neon);color:#fff;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;}
-        .category-nav{display:flex;justify-content:center;gap:20px;padding:20px;border-bottom:1px solid var(--border);flex-wrap:wrap;}
-        .category-nav a{color:#a0a0a8;text-decoration:none;padding:4px 8px;}
-        .category-nav a.active,.category-nav a:hover{color:var(--accent-neon);}
-        .hero{height:70vh;display:flex;align-items:center;justify-content:center;}
-        .hero-text p{display:none !important;}
-        .container{max-width:1400px;margin:70px auto;padding:0 30px;}
-        .products{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:35px;}
-        .product{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
-        .product-img{width:100%;height:350px;object-fit:cover;display:block;background:#222;}
-        .product-info{padding:20px;}
-        .price{color:var(--accent-neon);font-weight:900;margin:15px 0;}
-        .add-cart{width:100%;padding:12px;border:2px solid var(--accent-neon);background:transparent;color:#fff;cursor:pointer;border-radius:4px;}
-        .payment-section{margin:50px 0;text-align:center;}
-        .payment-icons{display:flex;justify-content:center;flex-wrap:wrap;gap:25px;align-items:center;}
-        .payment-icon{height:48px !important;display:block !important;visibility:visible !important;}
-        .cart-bar{position:fixed;bottom:0;left:0;right:0;background:#14141a;border-top:1px solid var(--border);padding:18px 30px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
-        .whatsapp-btn{background:#25D366;color:#fff;border:none;padding:12px 24px;border-radius:4px;cursor:pointer;}
+        :root {
+            --bg-main: #0a0a0d;
+            --bg-card: #14141a;
+            --accent-neon: #ff3a3a;
+            --accent-hk: #ff6b00;
+            --text-primary: #f0f0f0;
+            --text-secondary: #a0a0a8;
+            --border: #2a2a33;
+            --glow: 0 0 15px rgba(255, 58, 58, 0.4);
+        }
+        body {
+            background: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.5;
+            padding-bottom: 180px;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 30px;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: rgba(10,10,13,0.95);
+            backdrop-filter: blur(8px);
+            z-index: 999;
+        }
+        .logo {
+            font-size: 36px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+            text-shadow: var(--glow);
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        .lang-select {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .cart-icon {
+            font-size: 28px;
+            position: relative;
+            cursor: pointer;
+        }
+        #cartNum {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent-neon);
+            color: #fff;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px 30px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(10,10,13,0.9);
+            flex-wrap: wrap;
+        }
+        .category-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 8px;
+            transition: all 0.3s;
+        }
+        .category-nav a.active, .category-nav a:hover {
+            color: var(--accent-neon);
+            text-shadow: var(--glow);
+        }
+        .hero {
+            width: 100%;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        .hero-text h1 {
+            font-size: 8vw;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(255, 107, 0, 0.6);
+        }
+        .hero-text p {display:none !important;}
+        .container {
+            max-width: 1400px;
+            margin: 70px auto;
+            padding: 0 30px;
+        }
+        .section-title {
+            font-size: 32px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
+        }
+        .product {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            overflow: hidden;
+            position: relative;
+            border-radius: 8px;
+        }
+        .product:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-neon);
+            box-shadow: 0 10px 30px rgba(255, 58, 58, 0.2);
+        }
+        .product-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+            background:#222;
+        }
+        .product-info {padding: 20px;}
+        .product-name {
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .price {
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--accent-neon);
+            margin-bottom: 15px;
+        }
+        .add-cart {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--accent-neon);
+            font-weight: 900;
+            cursor: pointer;
+            border-radius: 4px;
+            transition:0.3s;
+        }
+        .add-cart:hover {background: var(--accent-neon);color:#000;}
+
+        .payment-section {
+            max-width: 1400px;margin: 50px auto 0;padding: 0 30px;text-align: center;
+        }
+        .payment-icons {
+            display: flex;justify-content: center;gap: 25px;flex-wrap: wrap;align-items: center;
+        }
+        .payment-icon {
+            height: 48px !important;width:auto;object-fit:contain;display:block !important;visibility:visible !important;
+        }
+
+        .cart-bar {
+            position: fixed;bottom: 0;left: 0;right: 0;background: #14141a;border-top: 1px solid var(--border);
+            padding: 18px 30px;display: flex;justify-content: space-between;align-items: center;
+            flex-wrap: wrap;gap:20px;z-index:998;
+        }
+        .cart-total {font-size: 20px;font-weight: 900;}
+        .whatsapp-btn {
+            background: #25D366;color: #fff;border: none;padding: 12px 24px;font-weight: 900;cursor: pointer;border-radius:4px;
+            transition:0.3s;
+        }
+        .whatsapp-btn:hover{transform:scale(1.05);}
+        .contact {text-align:center;padding:50px 20px;color:var(--text-secondary);border-top:1px solid var(--border);margin-top:60px;}
+        @media (max-width: 768px) {
+            .products{grid-template-columns:repeat(2,1fr);}
+        }
     </style>
 </head>
 <body>
+
 <header>
     <div class="logo">orphee ASHWORTH</div>
     <div class="header-right">
@@ -63,13 +239,16 @@
 
 <section class="hero"><div class="hero-text"><h1>SCENT THE CITY</h1><p>no rules</p></div></section>
 
-<div class="container"><h2 data-txt="pageTitle">香氛系列</h2><div class="products" id="proList"></div></div>
+<div class="container">
+    <h2 class="section-title" data-txt="pageTitle">香氛系列</h2>
+    <div class="products" id="proList"></div>
+</div>
 
 <div class="payment-section">
     <div class="payment-icons">
         <img src="https://img.icons8.com/fluency/96/visa.png" class="payment-icon" alt="Visa">
         <img src="https://img.icons8.com/fluency/96/mastercard.png" class="payment-icon" alt="Master">
-        <img src="https://img.icons8.com/fluency/96/american-express.png" class="payment-icon" alt="AE">
+        <img src="https://img.icons8.com/fluency/96/american-express.png" class="payment-icon" alt="AE运通">
         <img src="https://img.icons8.com/fluency/96/alipay.png" class="payment-icon" alt="支付宝">
         <img src="https://img.icons8.com/fluency/96/wechat-pay.png" class="payment-icon" alt="微信支付">
         <img src="https://cdn-icons-png.flaticon.com/512/5968/5968298.png" class="payment-icon" alt="八达通">
@@ -77,12 +256,17 @@
 </div>
 
 <div class="cart-bar">
-    <div><span data-txt="totalTxt">總金額</span>：HK$<span id="priceSum">0</span></div>
-    <button class="whatsapp-btn" data-txt="waBtn">WhatsApp落單付款</button>
+    <div class="cart-total"><span data-txt="totalTxt">總金額</span>：HK$<span id="priceSum">0</span></div>
+    <button class="whatsapp-btn" onclick="sendWhatsApp()" data-txt="waBtn">WhatsApp落單付款</button>
+</div>
+
+<div class="contact">
+    <p>WhatsApp：+852 9047 5370</p>
+    <p>Email：Orphee.ashworth1@gmail.com</p>
 </div>
 
 <script>
-// 1. 多国语言完整字典（粤语区常用+日韩法意西全包）
+// 8国语言完整字典
 const langData = {
 "zh-HK":{catStreet:"街頭",catSport:"運動",catPlant:"植物調",catAll:"全部",pageTitle:"香氛系列",totalTxt:"總金額",waBtn:"WhatsApp落單付款",addCartTxt:"加入購物車",emptyTip:"購物車暫時未有貨品！"},
 "zh-CN":{catStreet:"街头",catSport:"运动",catPlant:"植物调",catAll:"全部",pageTitle:"香氛系列",totalTxt:"总金额",waBtn:"WhatsApp下单付款",addCartTxt:"加入购物车",emptyTip:"购物车暂时没有商品！"},
@@ -94,12 +278,14 @@ const langData = {
 "es":{catStreet:"Street",catSport:"Deporte",catPlant:"Vegetal",catAll:"Todo",pageTitle:"Colección Perfumes",totalTxt:"Total",waBtn:"Pedir WhatsApp",addCartTxt:"Añadir carrito",emptyTip:"Carrito vacío!"}
 };
 
-// 2. 人形产品数据（自己换图链接即可）
+// 人形模特产品（自己替换图片链接即可）
 const products = [
-    {id:1,name:"STREET PUNK REBEL",price:539,img:"填你人形模特图链接1",cat:"street"},
-    {id:2,name:"DARK ALLEY HK",price:519,img:"填你人形模特图链接2",cat:"street"},
-    {id:3,name:"URBAN RUNNER",price:499,img:"填你人形模特图链接3",cat:"sport"},
-    {id:4,name:"GREEN PLANT BREEZE",price:529,img:"填你人形模特图链接4",cat:"plant"}
+    {id:1,name:"STREET PUNK REBEL",price:539,img:"贴你人形Model链接1",cat:"street"},
+    {id:2,name:"DARK ALLEY HK",price:519,img:"贴你人形Model链接2",cat:"street"},
+    {id:3,name:"URBAN RUNNER FRESH",price:499,img:"贴你人形Model链接3",cat:"sport"},
+    {id:4,name:"GYM ENERGY MIST",price:479,img:"贴你人形Model链接4",cat:"sport"},
+    {id:5,name:"GREEN PLANT BREEZE",price:529,img:"贴你人形Model链接5",cat:"plant"},
+    {id:6,name:"HERB NATURAL SCENT",price:549,img:"贴你人形Model链接6",cat:"plant"}
 ];
 
 let cart = [], nowCat = "street";
@@ -109,7 +295,7 @@ const cartNum = document.getElementById("cartNum");
 const priceSum = document.getElementById("priceSum");
 const navs = document.querySelectorAll(".category-nav a");
 
-// 3. 核心：全局一键更新所有语言
+// 更新全站语言
 function updateAllLang(){
     let l = langSel.value;
     document.querySelectorAll("[data-txt]").forEach(el=>{
@@ -119,7 +305,7 @@ function updateAllLang(){
     renderProducts();
 }
 
-// 4. 渲染产品+绑定多语言按钮
+// 渲染产品 + 绑定多语言按钮
 function renderProducts(){
     proList.innerHTML="";
     let arr = nowCat=="all"?products:products.filter(x=>x.cat===nowCat);
@@ -130,7 +316,7 @@ function renderProducts(){
         d.innerHTML = `
         <img src="${it.img}" class="product-img">
         <div class="product-info">
-            <div>${it.name}</div>
+            <div class="product-name">${it.name}</div>
             <div class="price">HK$${it.price}</div>
             <button class="add-cart" onclick="addCartFun(${it.id})">${langData[currLang].addCartTxt}</button>
         </div>`;
@@ -138,7 +324,7 @@ function renderProducts(){
     });
 }
 
-// 5. 购物车纯修复逻辑，点即更新
+// 购物车核心 100%即时更新
 window.addCartFun = function(id){
     let item = products.find(x=>x.id===id);
     cart.push(item); refreshCartData();
@@ -149,17 +335,29 @@ function refreshCartData(){
     priceSum.innerText = total;
 }
 
-// 6. 分类切换
+// 分类切换联动语言
 navs.forEach(a=>a.onclick=e=>{
     e.preventDefault(); navs.forEach(x=>x.classList.remove("active"));
     a.classList.add("active"); nowCat = a.dataset.cat; updateAllLang();
 });
 
-// 7. 监听语言下拉 → 即时全站刷新
+// WhatsApp多语言提示下单
+window.sendWhatsApp=function(){
+    let l = langSel.value;
+    if(cart.length===0){alert(langData[l].emptyTip);return;}
+    let msg="📦客戶訂單：\n";
+    cart.forEach((o,i)=>msg+=`${i+1}.${o.name} | HK$${o.price}\n`);
+    let allSum = cart.reduce((s,x)=>s+x.price,0);
+    msg+=`————————\n總數：${cart.length}件\n總金額：HK$${allSum}`;
+    window.open("https://wa.me/85290475370?text="+encodeURIComponent(msg));
+}
+
+// 监听语言下拉切换
 langSel.onchange = updateAllLang;
 
-// 8. 初始化开机全正常跑
+// 初始化全开齐
 updateAllLang(); refreshCartData();
 </script>
+
 </body>
 </html>
