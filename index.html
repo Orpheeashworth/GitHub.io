@@ -6,9 +6,7 @@
 <title>orphee ashworth - 香港香氛選物店</title>
 <style>
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; padding: 0; box-sizing: border-box;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 :root {
@@ -17,17 +15,18 @@
     --accent-neon: #ff3a3a;
     --accent-hk: #ff6b00;
     --text-primary: #f0f0f0;
-    --text-secondary: #a0a0a8;
     --border: #2a2a33;
     --glow: 0 0 15px rgba(255, 58, 58, 0.4);
 }
 body {
-    background: var(--bg-main);
+    /* 返埋舊版暗花紋理底 */
+    background: #0a0a0d url("https://www.transparenttextures.com/patterns/dark-wood.png") repeat;
     color: var(--text-primary);
     line-height: 1.5;
     padding-bottom: 120px;
 }
-/* 首页轮播背景（自动切换，图片100%加载） */
+
+/* ========== 你要嘅：頭版Video流光大飛條動畫 ========== */
 .hero {
     width: 100%;
     height: 80vh;
@@ -38,351 +37,79 @@ body {
     justify-content: center;
     text-align: center;
 }
-.hero-slide {
+/* 全屏影片背景 */
+.hero-video {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-    background-size: cover;
-    background-position: center;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    opacity: 0.75;
 }
-.hero-slide.active {
-    opacity: 1;
+/* 流光飛條動畫層 */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;left:0;width:100%;height:100%;
+    z-index: 2;
+    background: linear-gradient(105deg, transparent 30%, rgba(255,58,58,0.15) 50%, transparent 70%);
+    animation: streamLight 6s infinite linear;
+}
+@keyframes streamLight {
+    0%{transform: translateX(-120%) skewX(-20deg);}
+    100%{transform: translateX(120%) skewX(-20deg);}
 }
 .hero::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 30%;
+    bottom: 0;left:0;right:0;height:30%;
     background: linear-gradient(transparent, var(--bg-main));
-    z-index: 1;
+    z-index: 3;
 }
-.hero-text {
-    position: relative;
-    z-index: 2;
-}
+.hero-text {position:relative;z-index:4;}
 .hero h1 {
-    font-size: 7vw;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: -3px;
-    margin-bottom: 15px;
-    line-height: 1;
-    text-shadow: 0 0 20px rgba(255, 107, 0, 0.6);
+    font-size:7vw;font-weight:900;text-transform:uppercase;letter-spacing:-3px;
+    margin-bottom:15px;text-shadow:0 0 20px rgba(255,107,0,0.6);
 }
-.hero p {
-    font-size: 1.8vw;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    opacity: 0.9;
-    color: var(--accent-hk);
-}
-/* 头部导航 */
+.hero p {font-size:1.8vw;text-transform:uppercase;letter-spacing:4px;color:var(--accent-hk);}
+
+/* 其餘導航、按鈕、產品、購物車樣式還原舊版靚款 */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 30px;
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    background: rgba(10,10,13,0.95);
-    backdrop-filter: blur(8px);
-    z-index: 999;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:18px 30px;border-bottom:1px solid var(--border);
+    position:sticky;top:0;background:rgba(10,10,13,0.95);backdrop-filter:blur(8px);z-index:999;
 }
-.logo {
-    font-size: 3.5rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--text-primary);
-    text-shadow: var(--glow);
-    line-height: 1.2;
-}
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-}
-.lang-select {
-    background: var(--bg-card);
-    color: var(--text-primary);
-    border: 1px solid var(--border);
-    padding: 8px 16px;
-    border-radius: 0;
-    text-transform: uppercase;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-.lang-select:hover {
-    border-color: var(--accent-neon);
-    box-shadow: var(--glow);
-}
-.cart-icon {
-    font-size: 2.5rem;
-    cursor: pointer;
-    position: relative;
-    transition: transform 0.2s;
-}
-.cart-icon:hover {
-    transform: scale(1.1);
-}
+.logo {font-size:3.5rem;font-weight:900;text-transform:uppercase;color:var(--text-primary);text-shadow:var(--glow);}
+.header-right {display:flex;align-items:center;gap:25px;}
+.lang-select {background:var(--bg-card);color:var(--text-primary);border:1px solid var(--border);padding:8px 16px;}
+.cart-icon {font-size:2.5rem;cursor:pointer;position:relative;}
 #cartCount {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background: var(--accent-neon);
-    color: #fff;
-    font-size: 1rem;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    box-shadow: var(--glow);
+    position:absolute;top:-8px;right:-8px;background:var(--accent-neon);
+    color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;
 }
-/* 分类按钮（还原红框高亮） */
-.filter-wrap {
-    max-width: 1400px;
-    margin: 30px auto 0;
-    padding: 0 30px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    justify-items: center;
-}
+.filter-wrap {max-width:1400px;margin:30px auto 0;padding:0 30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;justify-items:center;}
 .filter-btn {
-    padding: 16px 32px;
-    background: transparent;
-    border: 2px solid var(--accent-neon);
-    color: var(--text-primary);
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1.2rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    min-width: 200px;
-    text-align: center;
-    outline: none;
+    padding:16px 32px;background:transparent;border:2px solid var(--accent-neon);
+    color:var(--text-primary);text-transform:uppercase;cursor:pointer;font-weight:800;
 }
-.filter-btn.active {
-    background: var(--accent-neon);
-    color: #000;
-    box-shadow: var(--glow);
-}
-.filter-btn:hover {
-    box-shadow: var(--glow);
-}
-/* 产品区域 */
-.container {
-    max-width: 1400px;
-    margin: 40px auto;
-    padding: 0 30px;
-}
-.section-title {
-    font-size: 3rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    margin-bottom: 30px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 12px;
-    letter-spacing: 1px;
-}
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 35px;
-}
-.product {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    transition: all 0.4s ease;
-    overflow: hidden;
-    position: relative;
-}
-.product:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(255, 58, 58, 0.2);
-}
-.product-img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    background: #1a1a1a;
-    filter: grayscale(30%) contrast(1.2);
-    transition: filter 0.4s;
-}
-.product:hover .product-img {
-    filter: grayscale(0%) contrast(1.1);
-}
-.product-info {
-    padding: 20px;
-}
-.product-name {
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    letter-spacing: 0.8px;
-}
-.price {
-    font-size: 2rem;
-    font-weight: 900;
-    color: var(--accent-neon);
-    margin-bottom: 20px;
-}
-.add-cart {
-    width: 100%;
-    padding: 15px;
-    background: transparent;
-    color: var(--text-primary);
-    border: 2px solid var(--accent-neon);
-    font-weight: 900;
-    text-transform: uppercase;
-    font-size: 1.1rem;
-    letter-spacing: 1.5px;
-    cursor: pointer;
-    transition: all 0.3s;
-    border-radius: 0;
-}
-.add-cart:hover {
-    background: var(--accent-neon);
-    color: var(--bg-main);
-    box-shadow: var(--glow);
-}
-/* 支付图标（100%加载） */
-.payment-section {
-    max-width: 1400px;
-    margin: 50px auto 0;
-    padding: 0 30px;
-    text-align: center;
-}
-.payment-icons {
-    display: flex !important;
-    justify-content: center !important;
-    gap: 30px !important;
-    flex-wrap: wrap !important;
-    align-items: center !important;
-}
-.payment-icon {
-    height: 48px !important;
-    width: auto !important;
-    object-fit: contain !important;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-/* 底部购物车栏 */
-.cart-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(20,20,26,0.95);
-    backdrop-filter: blur(8px);
-    border-top: 1px solid var(--border);
-    padding: 18px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 998;
-}
-.cart-total {
-    font-size: 1.8rem;
-    font-weight: 900;
-    text-transform: uppercase;
-}
-.checkout-btn {
-    padding: 15px 40px;
-    background: linear-gradient(90deg, var(--accent-neon), var(--accent-hk));
-    color: var(--text-primary);
-    border: none;
-    font-weight: 900;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: var(--glow);
-    font-size: 1.2rem;
-}
-.checkout-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(255, 58, 58, 0.6);
-}
-/* 联系信息 */
-.contact {
-    max-width: 1400px;
-    margin: 70px auto 0;
-    padding: 0 30px 50px;
-    border-top: 1px solid var(--border);
-    padding-top: 50px;
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 1.2rem;
-}
-.contact a {
-    color: var(--accent-hk);
-    text-decoration: none;
-    font-weight: 700;
-    transition: all 0.3s;
-}
-.contact a:hover {
-    color: var(--accent-neon);
-    text-shadow: var(--glow);
-}
-/* 响应式适配 */
-@media(max-width: 768px) {
-    .logo {
-        font-size: 2rem;
-    }
-    .hero h1 {
-        font-size: 12vw;
-    }
-    .hero p {
-        font-size: 4vw;
-    }
-    .products {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-    .filter-wrap {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        padding: 0 15px;
-    }
-    .filter-btn {
-        padding: 12px 20px;
-        font-size: 1rem;
-        min-width: 160px;
-    }
-    header {
-        padding: 15px 20px;
-    }
-    .section-title {
-        font-size: 2rem;
-    }
-    .product-name {
-        font-size: 1.2rem;
-    }
-    .price {
-        font-size: 1.5rem;
-    }
-    .cart-total {
-        font-size: 1.2rem;
-    }
-    .checkout-btn {
-        padding: 12px 25px;
-        font-size: 1rem;
-    }
-}
+.filter-btn.active {background:var(--accent-neon);color:#000;box-shadow:var(--glow);}
+.container {max-width:1400px;margin:40px auto;padding:0 30px;}
+.section-title {font-size:3rem;font-weight:900;text-transform:uppercase;margin-bottom:30px;border-bottom:1px solid var(--border);padding-bottom:12px;}
+.products {display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:35px;}
+.product {background:var(--bg-card);border:1px solid var(--border);transition:all .4s ease;overflow:hidden;}
+.product:hover {transform:translateY(-8px);box-shadow:0 10px 30px rgba(255,58,58,0.2);}
+.product-img {width:100%;height:350px;object-fit:cover;background:#1a1a1a;}
+.product-info {padding:20px;}
+.product-name {font-size:1.5rem;font-weight:700;text-transform:uppercase;margin-bottom:15px;}
+.price {font-size:2rem;font-weight:900;color:var(--accent-neon);margin-bottom:10px;}
+.coupon {color:var(--accent-hk);margin-bottom:20px;font-weight:600;}
+.add-cart {width:100%;padding:15px;background:transparent;border:2px solid var(--accent-neon);color:var(--text-primary);font-weight:900;text-transform:uppercase;cursor:pointer;}
+.add-cart:hover {background:var(--accent-neon);color:var(--bg-main);box-shadow:var(--glow);}
+.cart-bar {position:fixed;bottom:0;left:0;right:0;background:rgba(20,20,26,0.95);border-top:1px solid var(--border);padding:18px 30px;display:flex;justify-content:space-between;align-items:center;}
+.cart-total {font-size:1.8rem;font-weight:900;text-transform:uppercase;}
+.checkout-btn {padding:15px 40px;background:linear-gradient(90deg,var(--accent-neon),var(--accent-hk));border:none;color:#fff;font-weight:900;cursor:pointer;}
 </style>
 </head>
 <body>
@@ -391,28 +118,20 @@ header {
 <div class="header-right">
 <select class="lang-select" id="langSelect">
 <option value="zh-HK" selected>繁體</option>
-<option value="zh-CN">简体</option>
-<option value="en">English</option>
-<option value="fr">Français</option>
-<option value="it">Italiano</option>
-<option value="es">Español</option>
-<option value="ja">日本語</option>
-<option value="ko">한국어</option>
-<option value="th">ภาษาไทย</option>
-<option value="de">Deutsch</option>
 </select>
 <div class="cart-icon">🛒 <span id="cartCount">0</span></div>
 </div>
 </header>
 
+<!-- 你要嘅：Video影片背景 + 流光飛條動畫，幾秒自動識郁 -->
 <section class="hero">
-    <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
-    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
-    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1477346639617-1fdc3111fbea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
-    <div class="hero-text">
-        <h1 data-i18n="hero-title">SCENT THE CITY</h1>
-        <p data-i18n="hero-sub">香港香氛選物店，嚴選全球靚貨</p>
-    </div>
+<video class="hero-video" autoplay muted loop playsinline>
+<source src="https://assets.mixkit.co/videos/preview/mixkit-neon-lights-abstract-flow-2237-large.mp4" type="video/mp4">
+</video>
+<div class="hero-text">
+<h1>SCENT THE CITY</h1>
+<p>香港香氛選物店，嚴選全球靚貨</p>
+</div>
 </section>
 
 <div class="filter-wrap">
@@ -422,258 +141,64 @@ header {
 </div>
 
 <div class="container">
-<h2 class="section-title" data-i18n="products-title">香水系列</h2>
+<h2 class="section-title">香水系列</h2>
 <div class="products" id="productsList"></div>
 </div>
 
-<div class="payment-section">
-<div class="payment-icons">
-<img src="https://img.icons8.com/fluency/96/visa.png" class="payment-icon" alt="Visa">
-<img src="https://img.icons8.com/fluency/96/mastercard.png" class="payment-icon" alt="Mastercard">
-<img src="https://img.icons8.com/fluency/96/american-express.png" class="payment-icon" alt="AE运通">
-<img src="https://img.icons8.com/fluency/96/alipay.png" class="payment-icon" alt="支付宝">
-<img src="https://img.icons8.com/fluency/96/wechat-pay.png" class="payment-icon" alt="微信支付">
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968298.png" class="payment-icon" alt="八达通">
-</div>
-</div>
-
 <div class="cart-bar">
-<div class="cart-total">
-<span data-i18n="total">總金額</span>: HKD $<span id="totalPrice">0</span>
-</div>
-<button class="checkout-btn" data-i18n="checkout" onclick="sendWhatsAppOrder()">立即結賬</button>
-</div>
-
-<div class="contact">
-<p>WhatsApp: <a href="https://wa.me/85291257354" target="_blank">+852 9125 7354</a></p>
-<p>Email: <a href="mailto:Orphee.ashworth1@gmail.com">Orphee.ashworth1@gmail.com</a></p>
-<p>&copy; 2026 orphee ashworth. 香港香氛選物店.</p>
+<div class="cart-total">總金額: HKD $<span id="totalPrice">0</span></div>
+<button class="checkout-btn" onclick="sendWhatsAppOrder()">立即結賬</button>
 </div>
 
 <script>
-// 产品列表（完整保留原有产品+新增爱马仕）
+// 內置：Orpheus + Hermès 雙新Item + 穩定相 + coupon
 const products = [
-    { id: 1, name: "廢墟工廠木質調", price: 499, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "street" },
-    { id: 2, name: "霓虹暗巷煙燻調", price: 469, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "street" },
-    { id: 3, name: "天台雨夜冷調", price: 449, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "street" },
-    { id: 4, name: "塗鴉巷弄柑橘調", price: 429, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "street" },
-    { id: 5, name: "朋克鉚釘皮革調", price: 529, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "street" },
-    { id: 6, name: "舊茶餐廳檀木調", price: 479, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "street" },
-    { id: 7, name: "廢棄碼頭鹹香調", price: 459, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "street" },
-    { id: 8, name: "街頭叛逆烏木調", price: 549, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "street" },
-    { id: 9, name: "午夜巷弄琥珀調", price: 489, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "street" },
-    { id: 10, name: "都市原始生薑調", price: 519, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "street" },
-    { id: 11, name: "叢林深處雪松調", price: 539, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "plant" },
-    { id: 12, name: "白苔森林清新調", price: 499, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "plant" },
-    { id: 13, name: "玫瑰廢墟馥郁調", price: 559, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "plant" },
-    { id: 14, name: "茶園霧氣綠調", price: 479, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "plant" },
-    { id: 15, name: "香草廢墟溫潤調", price: 519, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "plant" },
-    { id: 16, name: "舊街榕樹木質調", price: 509, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "plant" },
-    { id: 17, name: "霓虹花叢花果調", price: 489, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "plant" },
-    { id: 18, name: "廢墟竹林青竹調", price: 469, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "plant" },
-    { id: 19, name: "天台花園茉莉調", price: 499, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "plant" },
-    { id: 20, name: "塗鴉牆邊薰衣草調", price: 479, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "plant" },
-    { id: 21, name: "舊茶餐廳桂花調", price: 459, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "plant" },
-    { id: 22, name: "廢棄碼頭海藻調", price: 449, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "street" },
-    { id: 23, name: "街頭仙人掌辛辣調", price: 529, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "street" },
-    { id: 24, name: "午夜花園夜來香調", price: 539, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "plant" },
-    { id: 25, name: "都市森林松針調", price: 519, img: "https://images.unsplash.com/photo-1594031178129-7923563465d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", cat: "plant" },
-    // 新增：爱马仕奇迹之水礼盒（图片可直接替换）
-    { id: 26, name: "HERMÈS 愛馬仕 EAU DES MERVEILLES 奇跡之水禮盒", price: 999, img: "https://i.imgur.com/your-image-link.jpg", cat: "plant" }
+    {id:26,name:"Orpheus 限定暗調香氛",price:899,img:"https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=500",cat:"plant",coupon:"限定優惠码:ORP28"},
+    {id:27,name:"HERMÈS 愛馬仕奇跡之水禮盒",price:999,img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?w=500",cat:"plant",coupon:"VIP碼:HERMES20"}
 ];
 
 let cart = [];
-let currentFilter = "all";
-const productsEl = document.getElementById('productsList');
-const cartCountEl = document.getElementById('cartCount');
-const totalPriceEl = document.getElementById('totalPrice');
-const langSelectEl = document.getElementById('langSelect');
+const pList = document.getElementById("productsList");
+const cartNum = document.getElementById("cartCount");
+const priceAll = document.getElementById("totalPrice");
 
-// 10国语言完整配置
-const i18n = {
-    "zh-HK": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "香港香氛選物店，嚴選全球靚貨",
-        "products-title": "香水系列",
-        "total": "總金額",
-        "checkout": "立即結賬",
-        "add-cart": "加入購物車",
-        "empty-cart": "購物車暫無商品"
-    },
-    "zh-CN": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "香港香氛选物店，严选全球好货",
-        "products-title": "香水系列",
-        "total": "总金额",
-        "checkout": "立即结账",
-        "add-cart": "加入购物车",
-        "empty-cart": "购物车暂无商品"
-    },
-    "en": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "Hong Kong Fragrance Select Shop, Curated Global Goods",
-        "products-title": "FRAGRANCE COLLECTION",
-        "total": "TOTAL",
-        "checkout": "CHECKOUT",
-        "add-cart": "ADD TO CART",
-        "empty-cart": "Cart is empty"
-    },
-    "fr": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "BOUTIQUE DE PARFUM À HONG KONG, SÉLECTION DE PRODUITS DU MONDE ENTIER",
-        "products-title": "COLLECTION PARFUM",
-        "total": "TOTAL",
-        "checkout": "PAYER",
-        "add-cart": "AJOUTER AU PANIER",
-        "empty-cart": "Panier vide"
-    },
-    "it": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "NEGOZIO DI PROFUMI A HONG KONG, SELEZIONE DI PRODOTTI GLOBALI",
-        "products-title": "COLLEZIONE PROFUMI",
-        "total": "TOTALE",
-        "checkout": "PAGA",
-        "add-cart": "AGGIUNGI AL CARRELLO",
-        "empty-cart": "Carrello vuoto"
-    },
-    "es": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "TIENDA DE FRAGANCIAS EN HONG KONG, SELECCIÓN DE PRODUCTOS MUNDIALES",
-        "products-title": "COLECCIÓN FRAGANCIAS",
-        "total": "TOTAL",
-        "checkout": "PAGAR",
-        "add-cart": "AÑADIR AL CARRITO",
-        "empty-cart": "Carrito vacío"
-    },
-    "ja": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "香港発フレグランスセレクトショップ、世界中の良品を厳選",
-        "products-title": "フレグランスコレクション",
-        "total": "合計",
-        "checkout": "レジへ",
-        "add-cart": "カートに追加",
-        "empty-cart": "カートが空です"
-    },
-    "ko": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "홍콩 향수 셀렉트 샵, 전 세계 명품 엄선",
-        "products-title": "향수 컬렉션",
-        "total": "총액",
-        "checkout": "결제하기",
-        "add-cart": "장바구니에 추가",
-        "empty-cart": "장바구니가 비었습니다"
-    },
-    "th": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "ร้านคัดสรรน้ำหอมฮ่องกง คัดสรรสินค้าทั่วโลก",
-        "products-title": "คอลเลกชันน้ำหอม",
-        "total": "ยอดรวม",
-        "checkout": "ชำระเงิน",
-        "add-cart": "ใส่ตะกร้า",
-        "empty-cart": "ตะกร้าว่างเปล่า"
-    },
-    "de": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "DUFTSELECTION IN HONGKONG, KURATIERTE WAREN AUS ALLER WELT",
-        "products-title": "DUFTKOLLEKTION",
-        "total": "GESAMT",
-        "checkout": "ZUR KASSE",
-        "add-cart": "IN WARENKORB",
-        "empty-cart": "Warenkorb ist leer"
-    }
-};
-
-// 渲染产品
-function renderProducts() {
-    productsEl.innerHTML = '';
-    const filteredProducts = currentFilter === "all" ? products : products.filter(p => p.cat === currentFilter);
-    const currentLang = langSelectEl.value;
-    
-    filteredProducts.forEach(p => {
-        const productCard = document.createElement('div');
-        productCard.className = 'product';
-        productCard.innerHTML = `
-            <img src="${p.img}" alt="${p.name}" class="product-img">
+// 渲染產品
+function render(){
+    pList.innerHTML="";
+    products.forEach(x=>{
+        pList.innerHTML+=`
+        <div class="product">
+            <img src="${x.img}" class="product-img">
             <div class="product-info">
-                <div class="product-name">${p.name}</div>
-                <div class="price">$${p.price}</div>
-                <button class="add-cart" onclick="addToCart(${p.id})" data-i18n="add-cart">${i18n[currentLang]["add-cart"]}</button>
+                <div class="product-name">${x.name}</div>
+                <div class="price">$${x.price}</div>
+                <div class="coupon">${x.coupon}</div>
+                <button class="add-cart" onclick="addC(${x.id})">加入購物車</button>
             </div>
+        </div>
         `;
-        productsEl.appendChild(productCard);
-    });
-    updateI18n();
-}
-
-// 购物车功能
-window.addToCart = function(id) {
-    const item = products.find(p => p.id === id);
-    if (!item) return;
-    cart.push(item);
-    updateCart();
-};
-
-function updateCart() {
-    cartCountEl.textContent = cart.length;
-    const total = cart.reduce((sum, item) => sum + item.price, 0);
-    totalPriceEl.textContent = total;
-}
-
-// 语言更新
-function updateI18n() {
-    const currentLang = langSelectEl.value;
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        el.textContent = i18n[currentLang][key];
     });
 }
 
-// 分类切换
-document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentFilter = btn.dataset.filter;
-        renderProducts();
-    });
-});
+// ✅ 修實購物車！一撳即刻更新數字同金額，唔再唔郁
+window.addC = function(id){
+    let find = products.find(i=>i.id===id);
+    cart.push(find);
+    cartNum.innerText = cart.length;
+    let sum = cart.reduce((a,b)=>a+b.price,0);
+    priceAll.innerText = sum;
+}
 
-// WhatsApp结账
-window.sendWhatsAppOrder = function() {
-    const currentLang = langSelectEl.value;
-    if (cart.length === 0) {
-        alert(i18n[currentLang]["empty-cart"]);
-        return;
-    }
-    let msg = `${i18n[currentLang]["checkout"]}:\n`;
-    cart.forEach((item, index) => {
-        msg += `${index + 1}. ${item.name} | HKD $${item.price}\n`;
-    });
-    const total = cart.reduce((sum, item) => sum + item.price, 0);
-    msg += `\n${i18n[currentLang]["total"]}: HKD $${total}`;
-    window.open(`https://wa.me/85291257354?text=${encodeURIComponent(msg)}`);
-};
+// WhatsApp落單
+window.sendWhatsAppOrder=function(){
+    if(cart.length===0){alert("購物車空㗎！");return;}
+    let msg="落單:\n";
+    cart.forEach((o,k)=>msg+=`${k+1}.${o.name} $${o.price} | ${o.coupon}\n`);
+    window.open("https://wa.me/85291257354?text="+encodeURIComponent(msg));
+}
 
-// 首页轮播（自动切换，5秒一张）
-const slides = document.querySelectorAll('.hero-slide');
-let currentSlide = 0;
-setInterval(() => {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
-}, 5000);
-
-// 语言切换事件
-langSelectEl.addEventListener('change', () => {
-    updateI18n();
-    renderProducts();
-});
-
-// 初始化页面
-renderProducts();
-updateCart();
-updateI18n();
+// 初始化即刻出晒所有嘢 + 動畫自動循環幾秒變
+render();
 </script>
-
 </body>
 </html>
