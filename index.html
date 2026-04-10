@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>URBAN SCENT 香水</title>
+<title>URBAN SCENT - 港风废土潮牌香水</title>
 <style>
 * {
     margin: 0;
@@ -374,7 +374,7 @@ header {
 <section class="hero">
 <div class="hero-text">
 <h1 data-i18n="hero-title">SCENT THE CITY</h1>
-<p data-i18n="hero-sub">氣味無界</p>
+<p data-i18n="hero-sub">港風廢土，氣味無界</p>
 </div>
 </section>
 
@@ -409,9 +409,9 @@ header {
 </div>
 
 <div class="contact">
-<p>WhatsApp: <a href="https://wa.me/85290475370" target="_blank">+852 9125 7354</a></p>
-<p>Email: <a href="mailto:orphee.ashworth1@gmail.com">orphee.ashworth1@gmail.com</a></p>
-<p>&copy; 2016 URBAN SCENT  香水.</p>
+<p>WhatsApp: <a href="https://wa.me/85291257354" target="_blank">+852 9125 7354</a></p>
+<p>Email: <a href="mailto:contact@urbanscent.com">contact@urbanscent.com</a></p>
+<p>&copy; 2026 URBAN SCENT. 港風潮牌香水.</p>
 </div>
 
 <script>
@@ -453,7 +453,7 @@ const langSelectEl = document.getElementById('langSelect');
 const i18n = {
     "zh-HK": {
         "hero-title": "SCENT THE CITY",
-        "hero-sub": "氣味無界",
+        "hero-sub": "港風廢土，氣味無界",
         "products-title": "香水系列",
         "total": "總金額",
         "checkout": "立即結賬",
@@ -462,7 +462,7 @@ const i18n = {
     },
     "zh-CN": {
         "hero-title": "SCENT THE CITY",
-        "hero-sub": "气味无界",
+        "hero-sub": "港风废土，气味无界",
         "products-title": "香水系列",
         "total": "总金额",
         "checkout": "立即结账",
@@ -612,7 +612,7 @@ window.sendWhatsAppOrder = function() {
     });
     const total = cart.reduce((sum, item) => sum + item.price, 0);
     msg += `\n${i18n[currentLang]["total"]}: HKD $${total}`;
-    window.open(`https://wa.me/85290475370?text=${encodeURIComponent(msg)}`);
+    window.open(`https://wa.me/85291257354?text=${encodeURIComponent(msg)}`);
 };
 
 // 监听语言切换
