@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>orphee ashworth 香水</title>
+<title>orphee ashworth - 香港香氛選物店</title>
 <style>
 * {
     margin: 0;
@@ -85,7 +85,7 @@ header {
     background: var(--accent-neon);
     color: #fff;
     font-size: 11px;
-    min-width: 18px;
+    width: 18px;
     height: 18px;
     border-radius: 50%;
     display: flex;
@@ -93,15 +93,6 @@ header {
     justify-content: center;
     font-weight: bold;
     box-shadow: var(--glow);
-    padding: 0 4px;
-}
-#cartCount.pulse {
-    animation: pulse 0.25s ease;
-}
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.25); }
-    100% { transform: scale(1); }
 }
 .filter-wrap {
     max-width: 1400px;
@@ -159,249 +150,8 @@ header {
 .hero-text {
     z-index: 2;
 }
-.hero h1 {
-    font-size: 7vw;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: -3px;
-    margin-bottom: 15px;
-    line-height: 1;
-    text-shadow: 0 0 20px rgba(255, 107, 0, 0.6);
-}
-.hero p {
-    font-size: 1.8vw;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    opacity: 0.9;
-    color: var(--accent-hk);
-}
-.container {
-    max-width: 1400px;
-    margin: 40px auto;
-    padding: 0 30px;
-}
-.section-title {
-    font-size: 32px;
-    font-weight: 900;
-    text-transform: uppercase;
-    margin-bottom: 30px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 12px;
-    letter-spacing: 1px;
-}
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 35px;
-}
-.product {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    transition: all 0.4s ease;
-    overflow: hidden;
-    position: relative;
-}
-.product::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent-neon), var(--accent-hk));
-    transform: scaleX(0);
-    transition: transform 0.4s;
-}
-.product:hover::before {
-    transform: scaleX(1);
-}
-.product:hover {
-    transform: translateY(-8px);
-    border-color: var(--accent-neon);
-    box-shadow: 0 10px 30px rgba(255, 58, 58, 0.2);
-}
-.product-img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    background: #1a1a1a;
-    filter: grayscale(30%) contrast(1.2);
-    transition: filter 0.4s;
-}
-.product:hover .product-img {
-    filter: grayscale(0%) contrast(1.1);
-}
-.product-info {
-    padding: 20px;
-}
-.product-name {
-    font-size: 17px;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    letter-spacing: 0.8px;
-}
-.price {
-    font-size: 20px;
-    font-weight: 900;
-    color: var(--accent-neon);
-    margin-bottom: 15px;
-}
-.add-cart {
-    width: 100%;
-    padding: 12px;
-    background: transparent;
-    color: var(--text-primary);
-    border: 1px solid var(--accent-neon);
-    font-weight: 900;
-    text-transform: uppercase;
-    font-size: 12px;
-    letter-spacing: 1.5px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-.add-cart:hover {
-    background: var(--accent-neon);
-    color: var(--bg-main);
-    box-shadow: var(--glow);
-}
-.payment-section {
-    max-width: 1400px;
-    margin: 50px auto 0;
-    padding: 0 30px;
-    text-align: center;
-}
-.payment-icons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 26px;
-    flex-wrap: wrap;
-}
-.payment-icon {
-    width: 72px;
-    height: 48px;
-    object-fit: contain;
-    display: block;
-    background: transparent;
-    filter: none;
-    transition: transform 0.25s ease, opacity 0.25s ease;
-}
-.payment-icon:hover {
-    transform: translateY(-3px) scale(1.05);
-    opacity: 0.95;
-}
-.cart-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(20,20,26,0.95);
-    backdrop-filter: blur(8px);
-    border-top: 1px solid var(--border);
-    padding: 18px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 998;
-}
-.cart-total {
-    font-size: 20px;
-    font-weight: 900;
-    text-transform: uppercase;
-}
-.checkout-btn {
-    padding: 12px 30px;
-    background: linear-gradient(90deg, var(--accent-neon), var(--accent-hk));
-    color: var(--text-primary);
-    border: none;
-    font-weight: 900;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: var(--glow);
-}
-.checkout-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(255, 58, 58, 0.6);
-}
-.contact {
-    max-width: 1400px;
-    margin: 70px auto 0;
-    padding: 0 30px 50px;
-    border-top: 1px solid var(--border);
-    padding-top: 50px;
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 15px;
-}
-.contact a {
-    color: var(--accent-hk);
-    text-decoration: none;
-    font-weight: 700;
-    transition: all 0.3s;
-}
-.contact a:hover {
-    color: var(--accent-neon);
-    text-shadow: var(--glow);
-}
-@media(max-width: 768px) {
-    .hero h1 {
-        font-size: 12vw;
-    }
-    .hero p {
-        font-size: 4vw;
-    }
-    .products {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-    .filter-wrap {
-        gap: 15px;
-        padding: 0 15px;
-    }
-    .filter-btn {
-        padding: 12px 20px;
-        font-size: 13px;
-        min-width: 140px;
-    }
-    header {
-        padding: 15px 20px;
-    }
-    .payment-icons {
-        gap: 14px;
-    }
-    .payment-icon {
-        width: 62px;
-        height: 40px;
-    }
-}
-</style>
-</head>
-<body>
-<header>
-<div class="logo">orphee ashworth</div>
-<div class="header-right">
-<select class="lang-select" id="langSelect">
-<option value="zh-HK" selected>繁體</option>
-<option value="zh-CN">简体</option>
-<option value="en">English</option>
-<option value="fr">Français</option>
-<option value="it">Italiano</option>
-<option value="es">Español</option>
-<option value="ja">日本語</option>
-<option value="ko">한국어</option>
-<option value="th">ภาษาไทย</option>
-<option value="de">Deutsch</option>
-</select>
-<div class="cart-icon">🛒 <span id="cartCount">0</span></div>
-</div>
-</header>
-
-<section class="hero">
-<div class="hero-text">
-<h1 data-i18n="hero-title">SCENT THE CITY</h1>
-<p data-i18n="hero-sub">港風廢土，氣味無界</p>
+.hero h1 data-i18n="hero-title">orphee ashworth</h1>
+<p data-i18n="hero-sub">香港香氛選物店，嚴選全球靚貨</p>
 </div>
 </section>
 
@@ -418,12 +168,12 @@ header {
 
 <div class="payment-section">
 <div class="payment-icons">
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" class="payment-icon" alt="Visa">
-<img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" class="payment-icon" alt="Mastercard">
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg" class="payment-icon" alt="AE运通">
-<img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Alipay_logo.svg" class="payment-icon" alt="支付宝">
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/WeChat_Logo.png" class="payment-icon" alt="微信支付">
-<img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Octopus_logo.svg" class="payment-icon" alt="八达通">
+<img src="https://img.icons8.com/fluency/96/visa.png" class="payment-icon" alt="Visa">
+<img src="https://img.icons8.com/fluency/96/mastercard.png" class="payment-icon" alt="Mastercard">
+<img src="https://img.icons8.com/fluency/96/american-express.png" class="payment-icon" alt="AE运通">
+<img src="https://img.icons8.com/fluency/96/alipay.png" class="payment-icon" alt="支付宝">
+<img src="https://img.icons8.com/fluency/96/wechat-pay.png" class="payment-icon" alt="微信支付">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968298.png" class="payment-icon" alt="八达通">
 </div>
 </div>
 
@@ -435,13 +185,14 @@ header {
 </div>
 
 <div class="contact">
-<p>WhatsApp: <a href="https://wa.me/85290475370" target="_blank">+852 9047 5370</a></p>
+<p>WhatsApp: <a href="https://wa.me/85291257354" target="_blank">+852 9125 7354</a></p>
 <p>Email: <a href="mailto:Orphee.ashworth1@gmail.com">Orphee.ashworth1@gmail.com</a></p>
-<p>&copy; 2026 orphee ashworth. 港風潮牌香水.</p>
+<p>&copy; 2026 orphee ashworth. 香港香氛選物店.</p>
 </div>
 
 <script>
 const products = [
+    // 原有产品全部保留，新增爱马仕礼盒
     { id: 1, name: "廢墟工廠木質調", price: 499, img: "https://picsum.photos/500/700?random=1", cat: "street" },
     { id: 2, name: "霓虹暗巷煙燻調", price: 469, img: "https://picsum.photos/500/700?random=2", cat: "street" },
     { id: 3, name: "天台雨夜冷調", price: 449, img: "https://picsum.photos/500/700?random=3", cat: "street" },
@@ -452,8 +203,6 @@ const products = [
     { id: 8, name: "街頭叛逆烏木調", price: 549, img: "https://picsum.photos/500/700?random=8", cat: "street" },
     { id: 9, name: "午夜巷弄琥珀調", price: 489, img: "https://picsum.photos/500/700?random=9", cat: "street" },
     { id: 10, name: "都市原始生薑調", price: 519, img: "https://picsum.photos/500/700?random=10", cat: "street" },
-    { id: 22, name: "廢棄碼頭海藻調", price: 449, img: "https://picsum.photos/id/1017/500/700", cat: "street" },
-    { id: 23, name: "街頭仙人掌辛辣調", price: 529, img: "https://picsum.photos/id/1018/500/700", cat: "street" },
     { id: 11, name: "叢林深處雪松調", price: 539, img: "https://picsum.photos/id/1005/500/700", cat: "plant" },
     { id: 12, name: "白苔森林清新調", price: 499, img: "https://picsum.photos/id/1006/500/700", cat: "plant" },
     { id: 13, name: "玫瑰廢墟馥郁調", price: 559, img: "https://picsum.photos/id/1007/500/700", cat: "plant" },
@@ -465,8 +214,12 @@ const products = [
     { id: 19, name: "天台花園茉莉調", price: 499, img: "https://picsum.photos/id/1014/500/700", cat: "plant" },
     { id: 20, name: "塗鴉牆邊薰衣草調", price: 479, img: "https://picsum.photos/id/1015/500/700", cat: "plant" },
     { id: 21, name: "舊茶餐廳桂花調", price: 459, img: "https://picsum.photos/id/1016/500/700", cat: "plant" },
+    { id: 22, name: "廢棄碼頭海藻調", price: 449, img: "https://picsum.photos/id/1017/500/700", cat: "street" },
+    { id: 23, name: "街頭仙人掌辛辣調", price: 529, img: "https://picsum.photos/id/1018/500/700", cat: "street" },
     { id: 24, name: "午夜花園夜來香調", price: 539, img: "https://picsum.photos/id/1019/500/700", cat: "plant" },
-    { id: 25, name: "都市森林松針調", price: 519, img: "https://picsum.photos/id/1020/500/700", cat: "plant" }
+    { id: 25, name: "都市森林松針調", price: 519, img: "https://picsum.photos/id/1020/500/700", cat: "plant" },
+    // 新增爱马仕礼盒
+    { id: 26, name: "HERMÈS 愛馬仕 EAU DES MERVEILLES 奇跡之水禮盒", price: 999, img: "https://i.imgur.com/your-image-link.jpg", cat: "plant" }
 ];
 
 let cart = [];
@@ -477,23 +230,40 @@ const totalPriceEl = document.getElementById('totalPrice');
 const langSelectEl = document.getElementById('langSelect');
 
 const i18n = {
-    "zh-HK": {"hero-title":"SCENT THE CITY","hero-sub":"港風廢土，氣味無界","products-title":"香水系列","total":"總金額","checkout":"立即結賬","add-cart":"加入購物車","empty-cart":"購物車暫無商品"},
-    "zh-CN": {"hero-title":"SCENT THE CITY","hero-sub":"港风废土，气味无界","products-title":"香水系列","total":"总金额","checkout":"立即结账","add-cart":"加入购物车","empty-cart":"购物车暂无商品"},
-    "en": {"hero-title":"SCENT THE CITY","hero-sub":"URBAN RUIN, UNBOUND SCENT","products-title":"FRAGRANCE COLLECTION","total":"TOTAL","checkout":"CHECKOUT","add-cart":"ADD TO CART","empty-cart":"Cart is empty"},
-    "fr": {"hero-title":"SCENT THE CITY","hero-sub":"RUIN URBAINE, PARFUM SANS LIMITE","products-title":"COLLECTION PARFUM","total":"TOTAL","checkout":"PAYER","add-cart":"AJOUTER AU PANIER","empty-cart":"Panier vide"},
-    "it": {"hero-title":"SCENT THE CITY","hero-sub":"ROVINA URBANA, PROFUMO SENZA LIMITI","products-title":"COLLEZIONE PROFUMI","total":"TOTALE","checkout":"PAGA","add-cart":"AGGIUNGI AL CARRELLO","empty-cart":"Carrello vuoto"},
-    "es": {"hero-title":"SCENT THE CITY","hero-sub":"RUINA URBANA, FRAGANCIA SIN LÍMITES","products-title":"COLECCIÓN FRAGANCIAS","total":"TOTAL","checkout":"PAGAR","add-cart":"AÑADIR AL CARRITO","empty-cart":"Carrito vacío"},
-    "ja": {"hero-title":"SCENT THE CITY","hero-sub":"都会の廃墟、限りなき香り","products-title":"フレグランスコレクション","total":"合計","checkout":"レジへ","add-cart":"カートに追加","empty-cart":"カートが空です"},
-    "ko": {"hero-title":"SCENT THE CITY","hero-sub":"도시 폐허, 경계 없는 향기","products-title":"향수 컬렉션","total":"총액","checkout":"결제하기","add-cart":"장바구니에 추가","empty-cart":"장바구니가 비었습니다"},
-    "th": {"hero-title":"SCENT THE CITY","hero-sub":"ความหายนะในเมือง กลิ่นที่ไร้ขีดจำกัด","products-title":"คอลเลกชันน้ำหอม","total":"ยอดรวม","checkout":"ชำระเงิน","add-cart":"ใส่ตะกร้า","empty-cart":"ตะกร้าว่างเปล่า"},
-    "de": {"hero-title":"SCENT THE CITY","hero-sub":"URBANE RUINE, GRENZENLOSE DÜFTE","products-title":"DUFTKOLLEKTION","total":"GESAMT","checkout":"ZUR KASSE","add-cart":"IN WARENKORB","empty-cart":"Warenkorb ist leer"}
+    "zh-HK": {
+        "hero-title": "orphee ashworth",
+        "hero-sub": "香港香氛選物店，嚴選全球靚貨",
+        "products-title": "香水系列",
+        "total": "總金額",
+        "checkout": "立即結賬",
+        "add-cart": "加入購物車",
+        "empty-cart": "購物車暫無商品"
+    },
+    "zh-CN": {
+        "hero-title": "orphee ashworth",
+        "hero-sub": "香港香氛选物店，严选全球好货",
+        "products-title": "香水系列",
+        "total": "总金额",
+        "checkout": "立即结账",
+        "add-cart": "加入购物车",
+        "empty-cart": "购物车暂无商品"
+    },
+    "en": {
+        "hero-title": "orphee ashworth",
+        "hero-sub": "Hong Kong Fragrance Select Shop, Curated Global Goods",
+        "products-title": "FRAGRANCE COLLECTION",
+        "total": "TOTAL",
+        "checkout": "CHECKOUT",
+        "add-cart": "ADD TO CART",
+        "empty-cart": "Cart is empty"
+    }
 };
 
 function renderProducts() {
     productsEl.innerHTML = '';
     const filteredProducts = currentFilter === "all" ? products : products.filter(p => p.cat === currentFilter);
     const currentLang = langSelectEl.value;
-
+    
     filteredProducts.forEach(p => {
         const productCard = document.createElement('div');
         productCard.className = 'product';
@@ -501,40 +271,26 @@ function renderProducts() {
             <img src="${p.img}" alt="${p.name}" class="product-img">
             <div class="product-info">
                 <div class="product-name">${p.name}</div>
-                <div class="price">HKD $${p.price}</div>
-                <button class="add-cart" onclick="addToCart(${p.id})">${i18n[currentLang]["add-cart"]}</button>
+                <div class="price">$${p.price}</div>
+                <button class="add-cart" onclick="addToCart(${p.id})" data-i18n="add-cart">${i18n[currentLang]["add-cart"]}</button>
             </div>
         `;
         productsEl.appendChild(productCard);
     });
-
     updateI18n();
 }
 
 window.addToCart = function(id) {
     const item = products.find(p => p.id === id);
     if (!item) return;
-
-    const existing = cart.find(x => x.id === id);
-    if (existing) {
-        existing.qty += 1;
-    } else {
-        cart.push({ ...item, qty: 1 });
-    }
-
+    cart.push(item);
     updateCart();
 };
 
 function updateCart() {
-    const itemCount = cart.reduce((sum, item) => sum + item.qty, 0);
-    const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-
-    cartCountEl.textContent = itemCount;
-    totalPriceEl.textContent = total.toFixed(0);
-
-    cartCountEl.classList.remove('pulse');
-    void cartCountEl.offsetWidth;
-    cartCountEl.classList.add('pulse');
+    cartCountEl.textContent = cart.length;
+    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    totalPriceEl.textContent = total;
 }
 
 function updateI18n() {
@@ -560,19 +316,13 @@ window.sendWhatsAppOrder = function() {
         alert(i18n[currentLang]["empty-cart"]);
         return;
     }
-
-    let msg = `${i18n[currentLang]["checkout"]}:
-`;
+    let msg = `${i18n[currentLang]["checkout"]}:\n`;
     cart.forEach((item, index) => {
-        msg += `${index + 1}. ${item.name} x${item.qty} | HKD $${item.price * item.qty}
-`;
+        msg += `${index + 1}. ${item.name} | HKD $${item.price}\n`;
     });
-
-    const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-    msg += `
-${i18n[currentLang]["total"]}: HKD $${total}`;
-
-    window.open(`https://wa.me/85290475370?text=${encodeURIComponent(msg)}`);
+    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    msg += `\n${i18n[currentLang]["total"]}: HKD $${total}`;
+    window.open(`https://wa.me/85291257354?text=${encodeURIComponent(msg)}`);
 };
 
 langSelectEl.addEventListener('change', () => {
@@ -584,5 +334,6 @@ renderProducts();
 updateCart();
 updateI18n();
 </script>
+
 </body>
 </html>
