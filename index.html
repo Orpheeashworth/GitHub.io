@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>URBAN SCENT - 港风废土潮牌香水</title>
+<title>orphee ashworth - 港风废土潮牌香水</title>
 <style>
 * {
     margin: 0;
@@ -94,31 +94,37 @@ header {
     font-weight: bold;
     box-shadow: var(--glow);
 }
-/* 分类筛选按钮样式（优化排版，居中显示） */
+/* 分类筛选按钮样式（彻底重制，无框、无错位） */
 .filter-wrap {
     max-width: 1400px;
     margin: 30px auto 0;
     padding: 0 30px;
     display: flex;
-    gap: 20px;
+    gap: 25px;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
 }
 .filter-btn {
-    padding: 12px 24px;
+    padding: 14px 30px;
     background: transparent;
-    border: 1px solid var(--accent-neon);
+    border: 2px solid var(--accent-neon);
     color: var(--text-primary);
     text-transform: uppercase;
     cursor: pointer;
-    transition: all 0.3s;
-    font-size: 14px;
-    font-weight: 700;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    min-width: 180px;
+    text-align: center;
+    outline: none;
 }
 .filter-btn.active, .filter-btn:hover {
     background: var(--accent-neon);
     color: #000;
     box-shadow: var(--glow);
+    border-color: var(--accent-neon);
 }
 .hero {
     width: 100%;
@@ -170,7 +176,7 @@ header {
     font-size: 32px;
     font-weight: 900;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     border-bottom: 1px solid var(--border);
     padding-bottom: 12px;
     letter-spacing: 1px;
@@ -338,12 +344,13 @@ header {
         gap: 20px;
     }
     .filter-wrap {
-        gap: 10px;
+        gap: 15px;
         padding: 0 15px;
     }
     .filter-btn {
-        padding: 10px 16px;
-        font-size: 12px;
+        padding: 12px 20px;
+        font-size: 13px;
+        min-width: 140px;
     }
     header {
         padding: 15px 20px;
@@ -353,7 +360,7 @@ header {
 </head>
 <body>
 <header>
-<div class="logo">URBAN SCENT</div>
+<div class="logo">orphee ashworth</div>
 <div class="header-right">
 <select class="lang-select" id="langSelect">
 <option value="zh-HK" selected>繁體</option>
@@ -378,7 +385,7 @@ header {
 </div>
 </section>
 
-<!-- 分类筛选按钮 -->
+<!-- 分类筛选按钮（无框样式，居中显示） -->
 <div class="filter-wrap">
 <button class="filter-btn active" data-filter="all">全部產品</button>
 <button class="filter-btn" data-filter="street">街頭廢土調</button>
@@ -410,12 +417,12 @@ header {
 
 <div class="contact">
 <p>WhatsApp: <a href="https://wa.me/85291257354" target="_blank">+852 9125 7354</a></p>
-<p>Email: <a href="mailto:contact@urbanscent.com">contact@urbanscent.com</a></p>
-<p>&copy; 2026 URBAN SCENT. 港風潮牌香水.</p>
+<p>Email: <a href="mailto:Orphee.ashworth1@gmail.com">Orphee.ashworth1@gmail.com</a></p>
+<p>&copy; 2026 orphee ashworth. 港風潮牌香水.</p>
 </div>
 
 <script>
-// 产品列表（原有15款+新增5款，共20款，分好street/plant两类）
+// 产品列表（20款，分好street/plant两类）
 const products = [
     // 街頭廢土調
     { id: 1, name: "廢墟工廠木質調", price: 499, img: "https://picsum.photos/500/700?random=1", cat: "street" },
@@ -428,18 +435,22 @@ const products = [
     { id: 8, name: "街頭叛逆烏木調", price: 549, img: "https://picsum.photos/500/700?random=8", cat: "street" },
     { id: 9, name: "午夜巷弄琥珀調", price: 489, img: "https://picsum.photos/500/700?random=9", cat: "street" },
     { id: 10, name: "都市原始生薑調", price: 519, img: "https://picsum.photos/500/700?random=10", cat: "street" },
-    // 植物清香調（原有5款+新增5款）
+    { id: 22, name: "廢棄碼頭海藻調", price: 449, img: "https://picsum.photos/id/1017/500/700", cat: "street" },
+    { id: 23, name: "街頭仙人掌辛辣調", price: 529, img: "https://picsum.photos/id/1018/500/700", cat: "street" },
+    // 植物清香調
     { id: 11, name: "叢林深處雪松調", price: 539, img: "https://picsum.photos/id/1005/500/700", cat: "plant" },
     { id: 12, name: "白苔森林清新調", price: 499, img: "https://picsum.photos/id/1006/500/700", cat: "plant" },
     { id: 13, name: "玫瑰廢墟馥郁調", price: 559, img: "https://picsum.photos/id/1007/500/700", cat: "plant" },
     { id: 14, name: "茶園霧氣綠調", price: 479, img: "https://picsum.photos/id/1008/500/700", cat: "plant" },
     { id: 15, name: "香草廢墟溫潤調", price: 519, img: "https://picsum.photos/id/1009/500/700", cat: "plant" },
-    // 新增5款产品
     { id: 16, name: "舊街榕樹木質調", price: 509, img: "https://picsum.photos/id/1011/500/700", cat: "plant" },
     { id: 17, name: "霓虹花叢花果調", price: 489, img: "https://picsum.photos/id/1012/500/700", cat: "plant" },
     { id: 18, name: "廢墟竹林青竹調", price: 469, img: "https://picsum.photos/id/1013/500/700", cat: "plant" },
     { id: 19, name: "天台花園茉莉調", price: 499, img: "https://picsum.photos/id/1014/500/700", cat: "plant" },
-    { id: 20, name: "塗鴉牆邊薰衣草調", price: 479, img: "https://picsum.photos/id/1015/500/700", cat: "plant" }
+    { id: 20, name: "塗鴉牆邊薰衣草調", price: 479, img: "https://picsum.photos/id/1015/500/700", cat: "plant" },
+    { id: 21, name: "舊茶餐廳桂花調", price: 459, img: "https://picsum.photos/id/1016/500/700", cat: "plant" },
+    { id: 24, name: "午夜花園夜來香調", price: 539, img: "https://picsum.photos/id/1019/500/700", cat: "plant" },
+    { id: 25, name: "都市森林松針調", price: 519, img: "https://picsum.photos/id/1020/500/700", cat: "plant" }
 ];
 
 let cart = [];
