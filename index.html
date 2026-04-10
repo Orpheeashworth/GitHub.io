@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>orphee ashworth - 香水</title>
+<title>orphee ashworth 香水</title>
 <style>
 * {
     margin: 0;
@@ -85,7 +85,7 @@ header {
     background: var(--accent-neon);
     color: #fff;
     font-size: 11px;
-    width: 18px;
+    min-width: 18px;
     height: 18px;
     border-radius: 50%;
     display: flex;
@@ -93,6 +93,7 @@ header {
     justify-content: center;
     font-weight: bold;
     box-shadow: var(--glow);
+    padding: 0 4px;
 }
 #cartCount.pulse {
     animation: pulse 0.25s ease;
@@ -417,12 +418,12 @@ header {
 
 <div class="payment-section">
 <div class="payment-icons">
-<img src="https://img.icons8.com/fluency/96/visa.png" class="payment-icon" alt="Visa">
-<img src="https://img.icons8.com/fluency/96/mastercard.png" class="payment-icon" alt="Mastercard">
-<img src="https://img.icons8.com/fluency/96/american-express.png" class="payment-icon" alt="AE运通">
-<img src="https://img.icons8.com/fluency/96/alipay.png" class="payment-icon" alt="支付宝">
-<img src="https://img.icons8.com/fluency/96/wechat-pay.png" class="payment-icon" alt="微信支付">
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968298.png" class="payment-icon" alt="八达通">
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" class="payment-icon" alt="Visa">
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" class="payment-icon" alt="Mastercard">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg" class="payment-icon" alt="AE运通">
+<img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Alipay_logo.svg" class="payment-icon" alt="支付宝">
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/WeChat_Logo.png" class="payment-icon" alt="微信支付">
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Octopus_logo.svg" class="payment-icon" alt="八达通">
 </div>
 </div>
 
@@ -434,9 +435,9 @@ header {
 </div>
 
 <div class="contact">
-<p>WhatsApp: <a href="https://wa.me/85290475370" target="_blank">+852 90475370</a></p>
+<p>WhatsApp: <a href="https://wa.me/85290475370" target="_blank">+852 9047 5370</a></p>
 <p>Email: <a href="mailto:Orphee.ashworth1@gmail.com">Orphee.ashworth1@gmail.com</a></p>
-<p>&copy; 2016 orphee ashworth. 香水.</p>
+<p>&copy; 2026 orphee ashworth. 港風潮牌香水.</p>
 </div>
 
 <script>
@@ -476,8 +477,8 @@ const totalPriceEl = document.getElementById('totalPrice');
 const langSelectEl = document.getElementById('langSelect');
 
 const i18n = {
-    "zh-HK": {"hero-title":"SCENT THE CITY","hero-sub":"氣味無界","products-title":"香水系列","total":"總金額","checkout":"立即結賬","add-cart":"加入購物車","empty-cart":"購物車暫無商品"},
-    "zh-CN": {"hero-title":"SCENT THE CITY","hero-sub":"气味无界","products-title":"香水系列","total":"总金额","checkout":"立即结账","add-cart":"加入购物车","empty-cart":"购物车暂无商品"},
+    "zh-HK": {"hero-title":"SCENT THE CITY","hero-sub":"港風廢土，氣味無界","products-title":"香水系列","total":"總金額","checkout":"立即結賬","add-cart":"加入購物車","empty-cart":"購物車暫無商品"},
+    "zh-CN": {"hero-title":"SCENT THE CITY","hero-sub":"港风废土，气味无界","products-title":"香水系列","total":"总金额","checkout":"立即结账","add-cart":"加入购物车","empty-cart":"购物车暂无商品"},
     "en": {"hero-title":"SCENT THE CITY","hero-sub":"URBAN RUIN, UNBOUND SCENT","products-title":"FRAGRANCE COLLECTION","total":"TOTAL","checkout":"CHECKOUT","add-cart":"ADD TO CART","empty-cart":"Cart is empty"},
     "fr": {"hero-title":"SCENT THE CITY","hero-sub":"RUIN URBAINE, PARFUM SANS LIMITE","products-title":"COLLECTION PARFUM","total":"TOTAL","checkout":"PAYER","add-cart":"AJOUTER AU PANIER","empty-cart":"Panier vide"},
     "it": {"hero-title":"SCENT THE CITY","hero-sub":"ROVINA URBANA, PROFUMO SENZA LIMITI","products-title":"COLLEZIONE PROFUMI","total":"TOTALE","checkout":"PAGA","add-cart":"AGGIUNGI AL CARRELLO","empty-cart":"Carrello vuoto"},
@@ -506,6 +507,7 @@ function renderProducts() {
         `;
         productsEl.appendChild(productCard);
     });
+
     updateI18n();
 }
 
@@ -582,6 +584,5 @@ renderProducts();
 updateCart();
 updateI18n();
 </script>
-
 </body>
 </html>
