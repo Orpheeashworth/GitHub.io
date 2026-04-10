@@ -94,7 +94,14 @@ header {
     font-weight: bold;
     box-shadow: var(--glow);
 }
-/* 分类筛选按钮样式（彻底重制，无框、无错位） */
+#cartCount.pulse {
+    animation: pulse 0.25s ease;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.25); }
+    100% { transform: scale(1); }
+}
 .filter-wrap {
     max-width: 1400px;
     margin: 30px auto 0;
@@ -264,19 +271,24 @@ header {
     text-align: center;
 }
 .payment-icons {
-    display: flex !important;
-    justify-content: center !important;
-    gap: 30px !important;
-    flex-wrap: wrap !important;
-    align-items: center !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 26px;
+    flex-wrap: wrap;
 }
 .payment-icon {
-    height: 48px !important;
-    width: auto !important;
-    object-fit: contain !important;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+    width: 72px;
+    height: 48px;
+    object-fit: contain;
+    display: block;
+    background: transparent;
+    filter: none;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.payment-icon:hover {
+    transform: translateY(-3px) scale(1.05);
+    opacity: 0.95;
 }
 .cart-bar {
     position: fixed;
@@ -355,6 +367,13 @@ header {
     header {
         padding: 15px 20px;
     }
+    .payment-icons {
+        gap: 14px;
+    }
+    .payment-icon {
+        width: 62px;
+        height: 40px;
+    }
 }
 </style>
 </head>
@@ -381,11 +400,10 @@ header {
 <section class="hero">
 <div class="hero-text">
 <h1 data-i18n="hero-title">SCENT THE CITY</h1>
-<p data-i18n="hero-sub">氣味無界</p>
+<p data-i18n="hero-sub">港風廢土，氣味無界</p>
 </div>
 </section>
 
-<!-- 分类筛选按钮（无框样式，居中显示） -->
 <div class="filter-wrap">
 <button class="filter-btn active" data-filter="all">全部產品</button>
 <button class="filter-btn" data-filter="street">街頭廢土調</button>
@@ -416,15 +434,13 @@ header {
 </div>
 
 <div class="contact">
-<p>WhatsApp: <a href="https://wa.me/85291257354" target="_blank">+852 90475370</a></p>
+<p>WhatsApp: <a href="https://wa.me/85290475370" target="_blank">+852 90475370</a></p>
 <p>Email: <a href="mailto:Orphee.ashworth1@gmail.com">Orphee.ashworth1@gmail.com</a></p>
 <p>&copy; 2016 orphee ashworth. 香水.</p>
 </div>
 
 <script>
-// 产品列表（20款，分好street/plant两类）
 const products = [
-    // 街頭廢土調
     { id: 1, name: "廢墟工廠木質調", price: 499, img: "https://picsum.photos/500/700?random=1", cat: "street" },
     { id: 2, name: "霓虹暗巷煙燻調", price: 469, img: "https://picsum.photos/500/700?random=2", cat: "street" },
     { id: 3, name: "天台雨夜冷調", price: 449, img: "https://picsum.photos/500/700?random=3", cat: "street" },
@@ -437,7 +453,6 @@ const products = [
     { id: 10, name: "都市原始生薑調", price: 519, img: "https://picsum.photos/500/700?random=10", cat: "street" },
     { id: 22, name: "廢棄碼頭海藻調", price: 449, img: "https://picsum.photos/id/1017/500/700", cat: "street" },
     { id: 23, name: "街頭仙人掌辛辣調", price: 529, img: "https://picsum.photos/id/1018/500/700", cat: "street" },
-    // 植物清香調
     { id: 11, name: "叢林深處雪松調", price: 539, img: "https://picsum.photos/id/1005/500/700", cat: "plant" },
     { id: 12, name: "白苔森林清新調", price: 499, img: "https://picsum.photos/id/1006/500/700", cat: "plant" },
     { id: 13, name: "玫瑰廢墟馥郁調", price: 559, img: "https://picsum.photos/id/1007/500/700", cat: "plant" },
@@ -460,106 +475,24 @@ const cartCountEl = document.getElementById('cartCount');
 const totalPriceEl = document.getElementById('totalPrice');
 const langSelectEl = document.getElementById('langSelect');
 
-// 10国语言字典
 const i18n = {
-    "zh-HK": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "氣味無界",
-        "products-title": "香水系列",
-        "total": "總金額",
-        "checkout": "立即結賬",
-        "add-cart": "加入購物車",
-        "empty-cart": "購物車暫無商品"
-    },
-    "zh-CN": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "气味无界",
-        "products-title": "香水系列",
-        "total": "总金额",
-        "checkout": "立即结账",
-        "add-cart": "加入购物车",
-        "empty-cart": "购物车暂无商品"
-    },
-    "en": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "URBAN RUIN, UNBOUND SCENT",
-        "products-title": "FRAGRANCE COLLECTION",
-        "total": "TOTAL",
-        "checkout": "CHECKOUT",
-        "add-cart": "ADD TO CART",
-        "empty-cart": "Cart is empty"
-    },
-    "fr": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "RUIN URBAINE, PARFUM SANS LIMITE",
-        "products-title": "COLLECTION PARFUM",
-        "total": "TOTAL",
-        "checkout": "PAYER",
-        "add-cart": "AJOUTER AU PANIER",
-        "empty-cart": "Panier vide"
-    },
-    "it": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "ROVINA URBANA, PROFUMO SENZA LIMITI",
-        "products-title": "COLLEZIONE PROFUMI",
-        "total": "TOTALE",
-        "checkout": "PAGA",
-        "add-cart": "AGGIUNGI AL CARRELLO",
-        "empty-cart": "Carrello vuoto"
-    },
-    "es": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "RUINA URBANA, FRAGANCIA SIN LÍMITES",
-        "products-title": "COLECCIÓN FRAGANCIAS",
-        "total": "TOTAL",
-        "checkout": "PAGAR",
-        "add-cart": "AÑADIR AL CARRITO",
-        "empty-cart": "Carrito vacío"
-    },
-    "ja": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "都会の廃墟、限りなき香り",
-        "products-title": "フレグランスコレクション",
-        "total": "合計",
-        "checkout": "レジへ",
-        "add-cart": "カートに追加",
-        "empty-cart": "カートが空です"
-    },
-    "ko": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "도시 폐허, 경계 없는 향기",
-        "products-title": "향수 컬렉션",
-        "total": "총액",
-        "checkout": "결제하기",
-        "add-cart": "장바구니에 추가",
-        "empty-cart": "장바구니가 비었습니다"
-    },
-    "th": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "ความหายนะในเมือง กลิ่นที่ไร้ขีดจำกัด",
-        "products-title": "คอลเลกชันน้ำหอม",
-        "total": "ยอดรวม",
-        "checkout": "ชำระเงิน",
-        "add-cart": "ใส่ตะกร้า",
-        "empty-cart": "ตะกร้าว่างเปล่า"
-    },
-    "de": {
-        "hero-title": "SCENT THE CITY",
-        "hero-sub": "URBANE RUINE, GRENZENLOSE DÜFTE",
-        "products-title": "DUFTKOLLEKTION",
-        "total": "GESAMT",
-        "checkout": "ZUR KASSE",
-        "add-cart": "IN WARENKORB",
-        "empty-cart": "Warenkorb ist leer"
-    }
+    "zh-HK": {"hero-title":"SCENT THE CITY","hero-sub":"氣味無界","products-title":"香水系列","total":"總金額","checkout":"立即結賬","add-cart":"加入購物車","empty-cart":"購物車暫無商品"},
+    "zh-CN": {"hero-title":"SCENT THE CITY","hero-sub":"气味无界","products-title":"香水系列","total":"总金额","checkout":"立即结账","add-cart":"加入购物车","empty-cart":"购物车暂无商品"},
+    "en": {"hero-title":"SCENT THE CITY","hero-sub":"URBAN RUIN, UNBOUND SCENT","products-title":"FRAGRANCE COLLECTION","total":"TOTAL","checkout":"CHECKOUT","add-cart":"ADD TO CART","empty-cart":"Cart is empty"},
+    "fr": {"hero-title":"SCENT THE CITY","hero-sub":"RUIN URBAINE, PARFUM SANS LIMITE","products-title":"COLLECTION PARFUM","total":"TOTAL","checkout":"PAYER","add-cart":"AJOUTER AU PANIER","empty-cart":"Panier vide"},
+    "it": {"hero-title":"SCENT THE CITY","hero-sub":"ROVINA URBANA, PROFUMO SENZA LIMITI","products-title":"COLLEZIONE PROFUMI","total":"TOTALE","checkout":"PAGA","add-cart":"AGGIUNGI AL CARRELLO","empty-cart":"Carrello vuoto"},
+    "es": {"hero-title":"SCENT THE CITY","hero-sub":"RUINA URBANA, FRAGANCIA SIN LÍMITES","products-title":"COLECCIÓN FRAGANCIAS","total":"TOTAL","checkout":"PAGAR","add-cart":"AÑADIR AL CARRITO","empty-cart":"Carrito vacío"},
+    "ja": {"hero-title":"SCENT THE CITY","hero-sub":"都会の廃墟、限りなき香り","products-title":"フレグランスコレクション","total":"合計","checkout":"レジへ","add-cart":"カートに追加","empty-cart":"カートが空です"},
+    "ko": {"hero-title":"SCENT THE CITY","hero-sub":"도시 폐허, 경계 없는 향기","products-title":"향수 컬렉션","total":"총액","checkout":"결제하기","add-cart":"장바구니에 추가","empty-cart":"장바구니가 비었습니다"},
+    "th": {"hero-title":"SCENT THE CITY","hero-sub":"ความหายนะในเมือง กลิ่นที่ไร้ขีดจำกัด","products-title":"คอลเลกชันน้ำหอม","total":"ยอดรวม","checkout":"ชำระเงิน","add-cart":"ใส่ตะกร้า","empty-cart":"ตะกร้าว่างเปล่า"},
+    "de": {"hero-title":"SCENT THE CITY","hero-sub":"URBANE RUINE, GRENZENLOSE DÜFTE","products-title":"DUFTKOLLEKTION","total":"GESAMT","checkout":"ZUR KASSE","add-cart":"IN WARENKORB","empty-cart":"Warenkorb ist leer"}
 };
 
-// 渲染产品（绑定分类+多语言+购物车）
 function renderProducts() {
     productsEl.innerHTML = '';
     const filteredProducts = currentFilter === "all" ? products : products.filter(p => p.cat === currentFilter);
     const currentLang = langSelectEl.value;
-    
+
     filteredProducts.forEach(p => {
         const productCard = document.createElement('div');
         productCard.className = 'product';
@@ -567,8 +500,8 @@ function renderProducts() {
             <img src="${p.img}" alt="${p.name}" class="product-img">
             <div class="product-info">
                 <div class="product-name">${p.name}</div>
-                <div class="price">$${p.price}</div>
-                <button class="add-cart" onclick="addToCart(${p.id})" data-i18n="add-cart">${i18n[currentLang]["add-cart"]}</button>
+                <div class="price">HKD $${p.price}</div>
+                <button class="add-cart" onclick="addToCart(${p.id})">${i18n[currentLang]["add-cart"]}</button>
             </div>
         `;
         productsEl.appendChild(productCard);
@@ -576,22 +509,32 @@ function renderProducts() {
     updateI18n();
 }
 
-// 购物车添加（100%即时更新，核心修复）
 window.addToCart = function(id) {
     const item = products.find(p => p.id === id);
     if (!item) return;
-    cart.push(item);
+
+    const existing = cart.find(x => x.id === id);
+    if (existing) {
+        existing.qty += 1;
+    } else {
+        cart.push({ ...item, qty: 1 });
+    }
+
     updateCart();
 };
 
-// 更新购物车计数+金额
 function updateCart() {
-    cartCountEl.textContent = cart.length;
-    const total = cart.reduce((sum, item) => sum + item.price, 0);
-    totalPriceEl.textContent = total;
+    const itemCount = cart.reduce((sum, item) => sum + item.qty, 0);
+    const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+    cartCountEl.textContent = itemCount;
+    totalPriceEl.textContent = total.toFixed(0);
+
+    cartCountEl.classList.remove('pulse');
+    void cartCountEl.offsetWidth;
+    cartCountEl.classList.add('pulse');
 }
 
-// 全局语言更新
 function updateI18n() {
     const currentLang = langSelectEl.value;
     document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -600,7 +543,6 @@ function updateI18n() {
     });
 }
 
-// 分类切换事件
 document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -610,29 +552,32 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     });
 });
 
-// WhatsApp下单
 window.sendWhatsAppOrder = function() {
     const currentLang = langSelectEl.value;
     if (cart.length === 0) {
         alert(i18n[currentLang]["empty-cart"]);
         return;
     }
-    let msg = `${i18n[currentLang]["checkout"]}:\n`;
+
+    let msg = `${i18n[currentLang]["checkout"]}:
+`;
     cart.forEach((item, index) => {
-        msg += `${index + 1}. ${item.name} | HKD $${item.price}\n`;
+        msg += `${index + 1}. ${item.name} x${item.qty} | HKD $${item.price * item.qty}
+`;
     });
-    const total = cart.reduce((sum, item) => sum + item.price, 0);
-    msg += `\n${i18n[currentLang]["total"]}: HKD $${total}`;
-    window.open(`https://wa.me/85291257354?text=${encodeURIComponent(msg)}`);
+
+    const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    msg += `
+${i18n[currentLang]["total"]}: HKD $${total}`;
+
+    window.open(`https://wa.me/85290475370?text=${encodeURIComponent(msg)}`);
 };
 
-// 监听语言切换
 langSelectEl.addEventListener('change', () => {
     updateI18n();
     renderProducts();
 });
 
-// 初始化页面
 renderProducts();
 updateCart();
 updateI18n();
