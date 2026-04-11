@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SCENT THE CITY 代购模板（10件产品全齐版）</title>
+<title>SCENT THE CITY｜美国风香水代购</title>
 <style>
 * {
     margin: 0;
@@ -16,42 +16,47 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', '微軟雅黑', sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
 }
-/* 完全还原你原图的背景和尺寸 */
+
+/* 美国都市风背景，用返曼哈顿桥原图，唔会再出奇怪图 */
 .poster {
     position: relative;
     width: 1280px;
     height: 800px;
-    /* 用回你张桥的背景，我用相近的高清图，你可以替换成自己的原图链接 */
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), 
-                url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1280&q=80') center/cover no-repeat;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
+                url('https://images.unsplash.com/photo-1514565131-fce0801e5785?ixlib=rb-4.0.3&auto=format&fit=crop&w=1280&q=80') center/cover no-repeat;
     overflow: hidden;
     color: #fff;
+    filter: contrast(1.1) saturate(0.8);
 }
-/* 主标题完全还原 */
+
+/* 主标题：硬朗美国风，绝对唔会被挡住 */
 .tit-main {
     position: absolute;
-    top: 35%;
+    top: 32%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 80px;
+    font-size: 85px;
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 5px;
+    letter-spacing: 8px;
     color: #ffffff;
-    text-shadow: 0 0 20px rgba(255, 170, 100, 0.8);
+    text-shadow: 0 0 30px rgba(255, 150, 80, 0.6);
+    z-index: 10;
 }
 .tit-sub {
     position: absolute;
-    top: 55%;
+    top: 52%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 28px;
+    font-size: 26px;
     color: #ff9966;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    z-index: 10;
 }
-/* 十国语言按钮，放返右上角，唔挡住标题 */
+
+/* 10种语言切换按钮，放右上角，唔挡标题 */
 .lang-box {
     position: absolute;
     top: 30px;
@@ -62,68 +67,78 @@ body {
     z-index: 20;
 }
 .lang-btn {
-    padding: 5px 10px;
-    background: rgba(255, 255, 255, 0.15);
-    border: none;
-    border-radius: 6px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
     font-size: 12px;
     color: #fff;
     cursor: pointer;
+    transition: 0.2s;
 }
-/* 10件产品区域，调返位置唔挡住标题 */
+.lang-btn:hover {
+    background: rgba(255, 150, 80, 0.3);
+}
+
+/* 香水产品区：10件，分两组，有图有名有价，放喺下半部分 */
 .item-area {
     position: absolute;
-    bottom: 200px;
+    bottom: 160px;
     left: 50px;
     z-index: 10;
 }
 .cat-title {
     font-size: 16px;
     color: #ff9966;
-    margin: 10px 0 8px 0;
+    margin: 12px 0 10px 0;
     border-left: 3px solid #ff9966;
-    padding-left: 8px;
+    padding-left: 10px;
+    text-transform: uppercase;
 }
 .item-row {
     display: flex;
-    gap: 18px;
-    margin-bottom: 15px;
+    gap: 20px;
+    margin-bottom: 20px;
 }
 .item-card {
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(4px);
-    border-radius: 10px;
-    width: 95px;
-    padding: 10px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    width: 110px;
+    padding: 12px 8px;
     text-align: center;
 }
+/* 香水产品图，唔会再出奇怪图片 */
 .item-card img {
-    width: 50px;
-    margin-bottom: 5px;
-    /* 用香水图标占位，你可以替换成自己的产品图 */
-    content: url('https://cdn-icons-png.flaticon.com/512/1697/1697488.png');
+    width: 55px;
+    height: auto;
+    margin-bottom: 8px;
 }
 .item-name {
     font-size: 12px;
     color: #fff;
+    text-transform: uppercase;
 }
 .item-price {
     font-size: 11px;
     color: #ff9966;
-    margin-top: 3px;
+    margin-top: 4px;
 }
-/* 更新版购物车，带数字角标 */
+
+/* 更新版购物车：带红色数字角标，显示有新货 */
 .cart-new {
     position: absolute;
     bottom: 70px;
     right: 80px;
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 12px 20px;
+    padding: 12px 24px;
     border-radius: 50px;
     display: flex;
     align-items: center;
     gap: 10px;
+    z-index: 10;
 }
 .cart-badge {
     position: absolute;
@@ -132,27 +147,30 @@ body {
     background: #ff3333;
     color: #fff;
     border-radius: 50%;
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     font-size: 12px;
     text-align: center;
-    line-height: 18px;
+    line-height: 20px;
 }
-/* WhatsApp按钮 */
+
+/* WhatsApp联络按钮：可跳转，放左下角 */
 .whatsapp-btn {
     position: absolute;
     bottom: 70px;
     left: 80px;
     background: #25D366;
     color: #fff;
-    padding: 12px 20px;
+    padding: 12px 24px;
     border-radius: 50px;
     text-decoration: none;
     display: flex;
     align-items: center;
     gap: 10px;
+    z-index: 10;
 }
-/* 付款方式，放返底部 */
+
+/* 付款方式：Visa/Master/AE/支付宝/微信 */
 .payment-bar {
     position: absolute;
     bottom: 25px;
@@ -173,11 +191,11 @@ body {
 </head>
 <body>
 <div class="poster">
-    <!-- 还原主标题 -->
+    <!-- 主标题，绝对唔被挡住 -->
     <div class="tit-main">SCENT THE CITY</div>
     <div class="tit-sub">氣味無界</div>
 
-    <!-- 十国语言按钮 -->
+    <!-- 10种语言切换按钮 -->
     <div class="lang-box">
         <button class="lang-btn">繁體</button>
         <button class="lang-btn">简体</button>
@@ -186,36 +204,79 @@ body {
         <button class="lang-btn">Français</button>
         <button class="lang-btn">Español</button>
         <button class="lang-btn">Italiano</button>
+        <button class="lang-btn">Deutsch</button>
+        <button class="lang-btn">Português</button>
+        <button class="lang-btn">Русский</button>
     </div>
 
-    <!-- 10件产品，分两组，唔挡住标题 -->
+    <!-- 10件香水产品，分两组，有图有名有价 -->
     <div class="item-area">
         <div class="cat-title">淡香系列</div>
         <div class="item-row">
-            <div class="item-card"><div class="item-name">Item 01</div><div class="item-price">HK$XXX</div></div>
-            <div class="item-card"><div class="item-name">Item 02</div><div class="item-price">HK$XXX</div></div>
-            <div class="item-card"><div class="item-name">Item 03</div><div class="item-price">HK$XXX</div></div>
-            <div class="item-card"><div class="item-name">Item 04</div><div class="item-price">HK$XXX</div></div>
-            <div class="item-card"><div class="item-name">Item 05</div><div class="item-price">HK$XXX</div></div>
+            <div class="item-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/1697/1697488.png" alt="香水">
+                <div class="item-name">Floral Eau de Toilette</div>
+                <div class="item-price">HK$680</div>
+            </div>
+            <div class="item-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/1697/1697488.png" alt="香水">
+                <div class="item-name">Citrus Fresh EDT</div>
+                <div class="item-price">HK$720</div>
+            </div>
+            <div class="item-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/1697/1697488.png" alt="香水">
+                <div class="item-name">Light Breeze EDT</div>
+                <div class="item-price">HK$650</div>
+            </div>
+            <div class="item-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/1697/1697488.png" alt="香水">
+                <div class="item-name">Ocean Mist EDT</div>
+                <div class="item-price">HK$750</div>
+            </div>
+            <div class="item-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/1697/1697488.png" alt="香水">
+                <div class="item-name">Soft Bloom EDT</div>
+                <div class="item-price">HK$690</div>
+            </div>
         </div>
         <div class="cat-title">濃香系列</div>
         <div class="item-row">
-            <div class="item-card"><div class="item-name">Item 06</div><div class="item-price">HK$XXX</div></div>
-            <div class="item-card"><div class="item-name">Item 07</div><div class="item-price">HK$XXX</div></div>
-            <div class="item-card"><div class="item-name">Item 08</div><div class="item-price">HK$XXX</div></div>
-            <div class="item-card"><div class="item-name">Item 09</div><div class="item-price">HK$XXX</div></div>
-            <div class="item-card"><div class="item-name">Item 10</div><div class="item-price">HK$XXX</div></div>
+            <div class="item-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/1697/1697488.png" alt="香水">
+                <div class="item-name">Woody Intense EDP</div>
+                <div class="item-price">HK$880</div>
+            </div>
+            <div class="item-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/1697/1697488.png" alt="香水">
+                <div class="item-name">Spicy Night EDP</div>
+                <div class="item-price">HK$920</div>
+            </div>
+            <div class="item-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/1697/1697488.png" alt="香水">
+                <div class="item-name">Velvet Oud EDP</div>
+                <div class="item-price">HK$1080</div>
+            </div>
+            <div class="item-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/1697/1697488.png" alt="香水">
+                <div class="item-name">Dark Rose EDP</div>
+                <div class="item-price">HK$980</div>
+            </div>
+            <div class="item-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/1697/1697488.png" alt="香水">
+                <div class="item-name">Musk Noir EDP</div>
+                <div class="item-price">HK$1100</div>
+            </div>
         </div>
     </div>
 
-    <!-- 更新版购物车 -->
+    <!-- 更新版购物车，带数字角标 -->
     <div class="cart-new">
         <span>🛒 購物車</span>
         <span class="cart-badge">10</span>
     </div>
 
-    <!-- WhatsApp按钮，你要填自己号码 -->
-    <a href="https://wa.me/你的WhatsApp号码" class="whatsapp-btn">💬 WhatsApp</a>
+    <!-- WhatsApp联络按钮，记得填你自己的号码 -->
+    <a href="https://wa.me/你的WhatsApp号码" class="whatsapp-btn">💬 WhatsApp 查詢</a>
 
     <!-- 付款方式全齐 -->
     <div class="payment-bar">
