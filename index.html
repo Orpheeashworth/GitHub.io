@@ -1,186 +1,100 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SCENT THE CITY 代购宣传海报</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10件产品分类+多语言+全付款+购物车+WhatsApp</title>
+<style>
+* {margin:0;padding:0;box-sizing:border-box;}
+body{background:#000;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:苹方,微軟黑體;}
+.main-poster{
+width:1280px;height:800px;position:relative;
+background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.5)),#111 center/cover no-repeat;
+overflow:hidden;color:#fff;
+}
+.tit-main{position:absolute;top:35%;left:50%;transform:translate(-50%,-50%);font-size:80px;font-weight:900;letter-spacing:5px;text-shadow:0 0 20px #ffaa64;}
+.tit-sub{position:absolute;top:55%;left:50%;transform:translate(-50%,-50%);font-size:28px;color:#ff9966;}
 
-        body {
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            font-family: 'Arial', 'PingFang SC', 'Microsoft JhengHei', sans-serif;
-        }
+/* 十国语言按钮 */
+.lang-box{position:absolute;top:30px;right:40px;display:flex;flex-wrap:wrap;gap:8px;z-index:20;}
+.lang-btn{padding:5px 10px;background:rgba(255,255,255,0.15);border-radius:6px;font-size:12px;color:#fff;border:none;cursor:pointer;}
 
-        .poster {
-            position: relative;
-            width: 1280px;
-            height: 800px;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1514565131-fce0801e5785?ixlib=rb-4.0.3&auto=format&fit=crop&w=1280&q=80') center/cover no-repeat;
-            color: #fff;
-            overflow: hidden;
-        }
+/* 产品分类 + 10件Item布局 */
+.item-wrap{position:absolute;bottom:240px;left:50px;z-index:10;}
+.cat-title{font-size:16px;color:#ff9966;margin:10px 0 8px 0;border-left:3px solid #ff9966;padding-left:8px;}
+.item-row{display:flex;gap:18px;margin-bottom:15px;}
+.item-card{background:rgba(255,255,255,0.1);backdrop-filter:blur(4px);border-radius:10px;width:95px;padding:10px;text-align:center;}
+.item-card img{width:50px;margin-bottom:5px;}
+.item-name{font-size:12px;color:#fff;}
+.item-price{font-size:11px;color:#ff9966;margin-top:3px;}
 
-        /* 主标题 */
-        .main-title {
-            position: absolute;
-            top: 35%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 80px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            color: #ffffff;
-            text-shadow: 0 0 20px rgba(255, 170, 100, 0.8);
-            z-index: 10;
-        }
+/* 更新购物车带数字角标 */
+.cart-new{position:absolute;bottom:70px;right:80px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);padding:12px 20px;border-radius:50px;display:flex;align-items:center;gap:10px;}
+.cart-badge{background:#ff3333;color:#fff;border-radius:50%;width:18px;height:18px;font-size:12px;text-align:center;line-height:18px;position:absolute;top:-6px;right:-6px;}
 
-        /* 副标题 */
-        .sub-title {
-            position: absolute;
-            top: 55%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 28px;
-            color: #ff9966;
-            letter-spacing: 2px;
-            z-index: 10;
-        }
+/* WhatsApp按钮 */
+.whatsapp-btn{position:absolute;bottom:70px;left:80px;background:#25D366;color:#fff;padding:12px 20px;border-radius:50px;text-decoration:none;display:flex;align-items:center;gap:10px;}
 
-        /* 产品香水瓶 */
-        .product-container {
-            position: absolute;
-            bottom: 120px;
-            left: 150px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            z-index: 10;
-        }
-
-        .perfume-bottle {
-            width: 120px;
-            height: auto;
-            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
-        }
-
-        .product-info {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .product-name {
-            font-size: 20px;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        .product-price {
-            font-size: 18px;
-            color: #ff9966;
-        }
-
-        /* 购物车按钮 */
-        .cart-btn {
-            position: absolute;
-            bottom: 80px;
-            right: 100px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            padding: 12px 20px;
-            border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: #fff;
-            font-size: 18px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-
-        .cart-btn:hover {
-            background: rgba(255, 170, 100, 0.3);
-            transform: scale(1.05);
-        }
-
-        /* WhatsApp 按钮 */
-        .whatsapp-btn {
-            position: absolute;
-            bottom: 80px;
-            left: 100px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: #25D366;
-            padding: 12px 20px;
-            border-radius: 50px;
-            color: #fff;
-            font-size: 18px;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-
-        .whatsapp-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
-        }
-
-        /* 底部代购文字 */
-        .footer-text {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
-            letter-spacing: 1px;
-            z-index: 10;
-        }
-    </style>
+/* 全付款方式：Visa/Master/AE/支付宝/微信 */
+.payment-bar{position:absolute;bottom:25px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:15;}
+.pay-tag{padding:5px 10px;background:rgba(255,255,255,0.2);border-radius:6px;font-size:13px;color:#fff;}
+</style>
 </head>
 <body>
-    <div class="poster">
-        <div class="main-title">SCENT THE CITY</div>
-        <div class="sub-title">氣味無界</div>
+<div class="main-poster">
+    <div class="tit-main">SCENT THE CITY</div>
+    <div class="tit-sub">氣味無界</div>
 
-        <!-- 产品展示区 -->
-        <div class="product-container">
-            <!-- 这里用示例香水瓶图片，你可以替换成自己的产品图 -->
-            <img class="perfume-bottle" src="https://cdn-icons-png.flaticon.com/512/1697/1697488.png" alt="Perfume Bottle">
-            <div class="product-info">
-                <div class="product-name">经典城市淡香水</div>
-                <div class="product-price">HKD $680</div>
-            </div>
-        </div>
-
-        <!-- 购物车按钮 -->
-        <div class="cart-btn">
-            <span class="cart-icon">🛒</span>
-            <span>立即选购</span>
-        </div>
-
-        <!-- WhatsApp 按钮 -->
-        <a href="https://wa.me/你的WhatsApp号码" class="whatsapp-btn" target="_blank">
-            <span class="whatsapp-icon">💬</span>
-            <span>WhatsApp咨询</span>
-        </a>
-
-        <div class="footer-text">✈️ 海外直采 · 正品代购</div>
+    <!-- 十国语言切换 -->
+    <div class="lang-box">
+        <button class="lang-btn">繁體</button>
+        <button class="lang-btn">简体</button>
+        <button class="lang-btn">日本語</button>
+        <button class="lang-btn">한국어</button>
+        <button class="lang-btn">Français</button>
+        <button class="lang-btn">Español</button>
+        <button class="lang-btn">Italiano</button>
     </div>
+
+    <!-- 【已分好类 + 足足10件产品Item】直接改名换图就得 -->
+    <div class="item-wrap">
+        <!-- 第一分类：淡香系列 5件 -->
+        <div class="cat-title">淡香系列</div>
+        <div class="item-row">
+            <div class="item-card"><img src="perfume.png"><div class="item-name">Item 01</div><div class="item-price">HK$XXX</div></div>
+            <div class="item-card"><img src="perfume.png"><div class="item-name">Item 02</div><div class="item-price">HK$XXX</div></div>
+            <div class="item-card"><img src="perfume.png"><div class="item-name">Item 03</div><div class="item-price">HK$XXX</div></div>
+            <div class="item-card"><img src="perfume.png"><div class="item-name">Item 04</div><div class="item-price">HK$XXX</div></div>
+            <div class="item-card"><img src="perfume.png"><div class="item-name">Item 05</div><div class="item-price">HK$XXX</div></div>
+        </div>
+        <!-- 第二分类：浓香系列 5件 合计10件 -->
+        <div class="cat-title">濃香系列</div>
+        <div class="item-row">
+            <div class="item-card"><img src="perfume.png"><div class="item-name">Item 06</div><div class="item-price">HK$XXX</div></div>
+            <div class="item-card"><img src="perfume.png"><div class="item-name">Item 07</div><div class="item-price">HK$XXX</div></div>
+            <div class="item-card"><img src="perfume.png"><div class="item-name">Item 08</div><div class="item-price">HK$XXX</div></div>
+            <div class="item-card"><img src="perfume.png"><div class="item-name">Item 09</div><div class="item-price">HK$XXX</div></div>
+            <div class="item-card"><img src="perfume.png"><div class="item-name">Item 10</div><div class="item-price">HK$XXX</div></div>
+        </div>
+    </div>
+
+    <!-- 已更新购物车 -->
+    <div class="cart-new">
+        <span>🛒 購物車</span>
+        <span class="cart-badge">10</span>
+    </div>
+
+    <!-- WhatsApp联络 -->
+    <a href="https://wa.me/填你電話" class="whatsapp-btn">💬 WhatsApp</a>
+
+    <!-- 付款方式全齐：Visa Master AE 支付宝 微信 -->
+    <div class="payment-bar">
+        <span class="pay-tag">Visa</span>
+        <span class="pay-tag">Master</span>
+        <span class="pay-tag">AE</span>
+        <span class="pay-tag">支付宝</span>
+        <span class="pay-tag">微信</span>
+    </div>
+</div>
 </body>
 </html>
